@@ -1,7 +1,6 @@
-import pytest
-
 import abjad
 import pang
+import pytest
 from abjadext import nauert
 
 

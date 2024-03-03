@@ -32,9 +32,9 @@ isort-check:
 	--diff \
 	--line-width=88 \
 	--multi-line=3 \
-	--project=abjad \
-	--project=abjadext \
-	--project=pang \
+	--thirdparty=abjad \
+	--thirdparty=abjadext \
+	--thirdparty=pang \
 	--thirdparty=ply \
 	--thirdparty=roman \
 	--thirdparty=uqbar \
@@ -47,9 +47,9 @@ isort-reformat:
 	--case-sensitive \
 	--line-width=88 \
 	--multi-line=3 \
-	--project=abjad \
-	--project=abjadext \
-	--project=pang \
+	--thirdparty=abjad \
+	--thirdparty=abjadext \
+	--thirdparty=pang \
 	--thirdparty=ply \
 	--thirdparty=roman \
 	--thirdparty=uqbar \
