@@ -52,7 +52,7 @@ jobs:
         pip install /tmp/pang
     - name: Install dependencies
       run: |
-        export PATH=/tmp/lilypond-2.24.2/bin:/home/runner/bin:$PATH
+        export PATH=/tmp/lilypond-2.24.3/bin:/home/runner/bin:$PATH
         python -m pip install -e .[test]
         black --version
         flake8 --version
@@ -62,7 +62,7 @@ jobs:
         lilypond --version
     - name: Checks and Tests
       run: |
-        export PATH=/tmp/lilypond-2.24.2/bin:/home/runner/bin:$PATH
+        export PATH=/tmp/lilypond-2.24.3/bin:/home/runner/bin:$PATH
         export MYPYPATH=$MYPYPATH:/tmp/abjad
         export MYPYPATH=$MYPYPATH:/tmp/abjad-ext-nauert
         export MYPYPATH=$MYPYPATH:/tmp/pang
@@ -72,6 +72,6 @@ jobs:
         make pytest
     - name: Test Segments
       run: |
-        export PATH=/tmp/lilypond-2.24.2/bin:/home/runner/bin:$PATH
+        export PATH=/tmp/lilypond-2.24.3/bin:/home/runner/bin:$PATH
         export PANG_PATH=/tmp/pang
         make test-sections
