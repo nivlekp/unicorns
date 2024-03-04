@@ -28,3 +28,6 @@ test = [
     "isort",
     "pytest",
 ]
+
+[tool.hatch.build.targets.wheel]
+packages = ["unicorns"]
