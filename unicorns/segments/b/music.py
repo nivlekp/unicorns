@@ -38,17 +38,6 @@ def main():
         grace_handler=grace_handler,
     )
     metadata = pang.build.section(score, scope, command)
-    metadata["discarded_q_events_count"] = len(
-        [event for events in grace_handler.discarded_q_events for event in events]
-    )
-    metadata["discarded_pitched_q_events_count"] = len(
-        [
-            event
-            for events in grace_handler.discarded_q_events
-            for event in events
-            if isinstance(event, nauert.PitchedQEvent)
-        ]
-    )
     pang.build.persist(score, metadata)
 
 
