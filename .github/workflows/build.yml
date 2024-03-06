@@ -67,7 +67,7 @@ jobs:
         lualatex --version
         sudo apt install -y texlive
         sudo mkdir ~/texmf
-        tlmgr init-usertree
+        sudo tlmgr init-usertree
         sudo tlmgr install fontspec
         find /usr/share/texlive/ -name "fontspec.sty"
     - name: Checks and Tests
