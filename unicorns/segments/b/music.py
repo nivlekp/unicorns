@@ -39,6 +39,7 @@ def main():
     )
     metadata = pang.build.section(score, scope, command)
     pang.build.persist(score, metadata)
+    library.move_music_ily_from_segment_directory_to_build_directory("b")
 
 
 if __name__ == "__main__":

@@ -75,3 +75,4 @@ jobs:
         export PATH=/tmp/lilypond-2.24.3/bin:/home/runner/bin:$PATH
         export PANG_PATH=/tmp/pang
         make test-sections
+        make test-score
