@@ -64,7 +64,7 @@ jobs:
       run: |
         sudo apt update
         sudo apt install -y texlive-latex-base texlive-fonts-recommended
-        sudo apt install -y texlive-luatex
+        sudo apt install -y texlive texlive-luatex
         lualatex --version
     - name: Checks and Tests
       run: |
