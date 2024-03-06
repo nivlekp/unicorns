@@ -66,11 +66,7 @@ jobs:
         sudo apt install -y texlive-latex-base texlive-fonts-recommended
         lualatex --version
         sudo apt install -y texlive
-        sudo mkdir ~/texmf
-        sudo tlmgr init-usertree
-        sudo tlmgr update --self --all
-        sudo tlmgr install fontspec
-        find /usr/share/texlive/ -name "fontspec.sty"
+        sudo apt install -y texlive-latex-extra
     - name: Checks and Tests
       run: |
         export PATH=/tmp/lilypond-2.24.3/bin:/home/runner/bin:$PATH
