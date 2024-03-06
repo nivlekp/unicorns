@@ -60,8 +60,10 @@ jobs:
         pip --version
         pytest --version
         lilypond --version
+    - name: Install LuaLaTeX
+      run: |
         sudo apt update
-        sudo apt install -y texlive-latex-base
+        sudo apt install -y texlive-latex-base texlive-fonts-recommended
         lualatex --version
     - name: Checks and Tests
       run: |
