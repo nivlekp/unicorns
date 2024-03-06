@@ -61,7 +61,7 @@ jobs:
         pytest --version
         lilypond --version
         sudo apt update
-        sudo apt install -y texlive-luatex
+        sudo apt install -y texlive-latex-base
         lualatex --version
     - name: Checks and Tests
       run: |
