@@ -64,10 +64,8 @@ jobs:
       run: |
         sudo apt update
         sudo apt install -y texlive-latex-base texlive-fonts-recommended
-        lualatex --version
-        sudo apt install -y texlive
-        sudo apt install -y texlive-latex-extra
         sudo apt install -y texlive-luatex
+        lualatex --version
     - name: Checks and Tests
       run: |
         export PATH=/tmp/lilypond-2.24.3/bin:/home/runner/bin:$PATH
