@@ -79,5 +79,6 @@ jobs:
         export PANG_PATH=/tmp/pang
         make test-sections
     - name: Test Score
+      run: |
         make test-score
         make full-score
