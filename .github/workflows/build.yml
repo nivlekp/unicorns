@@ -60,6 +60,9 @@ jobs:
         pip --version
         pytest --version
         lilypond --version
+        sudo apt update
+        sudo apt install -y texlive-luatex
+        lualatex --version
     - name: Checks and Tests
       run: |
         export PATH=/tmp/lilypond-2.24.3/bin:/home/runner/bin:$PATH
@@ -75,4 +78,6 @@ jobs:
         export PATH=/tmp/lilypond-2.24.3/bin:/home/runner/bin:$PATH
         export PANG_PATH=/tmp/pang
         make test-sections
+    - name: Test Score
         make test-score
+        make full-score
