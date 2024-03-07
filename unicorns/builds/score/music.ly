@@ -9,6 +9,7 @@
         {
             \include "_sections/a.ily"
             \include "_sections/b.ily"
+            \include "_sections/c.ily"
         }
     >>
 }
