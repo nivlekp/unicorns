@@ -4,7 +4,7 @@ import shutil
 
 import abjad
 
-MAXIMUM_SPAN = 14
+MAXIMUM_SPAN = 10
 
 
 def make_empty_score():
