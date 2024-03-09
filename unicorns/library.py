@@ -26,6 +26,12 @@ def move_music_ily_from_segment_directory_to_build_directory(segment_name):
     shutil.copy(music_ily_path, target_path)
 
 
-def single_pitch_list_to_chord_set(pitch_list):
-    dyads = itertools.combinations(pitch_list, 2)
-    return set(dyads)
+def is_reachable_span(pitch_tuple) -> bool:
+    return max(pitch_tuple) - min(pitch_tuple) < 10
+
+
+def single_pitch_list_to_chord_set(pitch_list, filter_function=is_reachable_span):
+    chords = list(itertools.combinations(pitch_list, 2))
+    chords.extend(list(itertools.combinations(pitch_list, 3)))
+    chords = filter(filter_function, chords)
+    return set(chords)

@@ -10,10 +10,11 @@ def main():
     scope = pang.Scope(voice_name="Piano.Music")
     sieve = abjad.Pattern(indices=[0, 1, 3, 7], period=12)
     pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-6, high=35)
+    chord_set = library.single_pitch_list_to_chord_set(pitch_set)
     sound_points_generator = pang.GRWSoundPointsGenerator(
         arrival_rate=1.0,
         service_rate=1.5,
-        pitch_set=pitch_set,
+        pitch_set=list(chord_set),
         standard_deviation=1,
         seed=515,
     )
