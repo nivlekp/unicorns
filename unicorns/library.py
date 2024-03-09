@@ -1,3 +1,4 @@
+import itertools
 import pathlib
 import shutil
 
@@ -23,3 +24,8 @@ def move_music_ily_from_segment_directory_to_build_directory(segment_name):
     target_name = segment_directory.stem + ".ily"
     target_path = _sections_path / target_name
     shutil.copy(music_ily_path, target_path)
+
+
+def single_pitch_list_to_chord_set(pitch_list):
+    dyads = itertools.combinations(pitch_list, 2)
+    return set(dyads)
