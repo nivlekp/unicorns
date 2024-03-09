@@ -4,6 +4,8 @@ import shutil
 
 import abjad
 
+MAXIMUM_SPAN = 14
+
 
 def make_empty_score():
     """
@@ -27,11 +29,16 @@ def move_music_ily_from_segment_directory_to_build_directory(segment_name):
 
 
 def is_reachable_span(pitch_tuple) -> bool:
-    return max(pitch_tuple) - min(pitch_tuple) < 10
+    return max(pitch_tuple) - min(pitch_tuple) < MAXIMUM_SPAN
 
 
-def single_pitch_list_to_chord_set(pitch_list, filter_function=is_reachable_span):
-    chords = list(itertools.combinations(pitch_list, 2))
-    chords.extend(list(itertools.combinations(pitch_list, 3)))
+def single_pitch_list_to_chord_set(
+    pitch_list, filter_function=is_reachable_span, numbers_of_notes=None
+):
+    numbers_of_notes = numbers_of_notes or [2, 3]
+    chords = []
+    for number_of_notes in numbers_of_notes:
+        combinations = itertools.combinations(pitch_list, number_of_notes)
+        chords.extend(list(combinations))
     chords = filter(filter_function, chords)
     return set(chords)
