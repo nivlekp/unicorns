@@ -5,22 +5,43 @@ from abjadext import nauert
 from unicorns import library
 
 
-def main():
-    score = library.make_empty_score()
-    scope = pang.Scope(voice_name="Piano.Music")
-    sieve = abjad.Pattern(indices=[0, 1, 3, 7], period=12)
+def generate_first_sequence():
+    sieve = abjad.Pattern(indices=library.ALL_INTERVAL_TETRACHORD_0137, period=12)
+    sieve = sieve.rotate(n=2)
     pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-6, high=35)
     chord_set = library.single_pitch_list_to_chord_set(pitch_set)
-    sound_points_generator = pang.GRWSoundPointsGenerator(
+    sound_points_generator = pang.AtaxicSoundPointsGenerator(
         arrival_rate=1.0,
         service_rate=1.5,
         pitch_set=list(chord_set),
-        standard_deviation=1,
+        seed=5154,
+    )
+    return pang.Sequence(
+        sound_points_generator=sound_points_generator, sequence_duration=20
+    )
+
+
+def generate_second_sequence():
+    sieve = abjad.Pattern(indices=library.ALL_INTERVAL_TETRACHORD_0146, period=12)
+    sieve = sieve.rotate(n=5)
+    pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-6, high=35)
+    chord_set = library.single_pitch_list_to_chord_set(pitch_set)
+    sound_points_generator = pang.AtaxicSoundPointsGenerator(
+        arrival_rate=1.0,
+        service_rate=1.5,
+        pitch_set=list(chord_set),
         seed=515,
     )
-    sequence = pang.Sequence(
-        sound_points_generator=sound_points_generator, sequence_duration=60
+    return pang.Sequence(
+        sound_points_generator=sound_points_generator, sequence_duration=20
     )
+
+
+def main():
+    score = library.make_empty_score()
+    scope = pang.Scope(voice_name="Piano.Music")
+    sequence = generate_first_sequence()
+    sequence.extend(generate_second_sequence())
     sequence.durations = [max(duration, 0.154) for duration in sequence.durations]
     search_tree = nauert.UnweightedSearchTree(
         definition={

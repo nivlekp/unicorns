@@ -6,6 +6,9 @@ import abjad
 
 MAXIMUM_SPAN = 10
 
+ALL_INTERVAL_TETRACHORD_0146 = (0, 1, 4, 6)
+ALL_INTERVAL_TETRACHORD_0137 = (0, 1, 3, 7)
+
 
 def make_empty_score():
     """
