@@ -5,9 +5,7 @@ from abjadext import nauert
 from unicorns import library
 
 
-def main():
-    score = library.make_empty_score()
-    scope = pang.Scope(voice_name="Piano.Music")
+def generate_first_sequence():
     sieve = abjad.Pattern(indices=library.ALL_INTERVAL_TETRACHORD_0146, period=12)
     pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-6, high=35)
     sound_points_generator = pang.GRWSoundPointsGenerator(
@@ -17,9 +15,15 @@ def main():
         standard_deviation=1,
         seed=824587,
     )
-    sequence = pang.Sequence(
+    return pang.Sequence(
         sound_points_generator=sound_points_generator, sequence_duration=60
     )
+
+
+def main():
+    score = library.make_empty_score()
+    scope = pang.Scope(voice_name="Piano.Music")
+    sequence = generate_first_sequence()
     sequence.durations = [max(duration, 0.154) for duration in sequence.durations]
     search_tree = nauert.UnweightedSearchTree(
         definition={
