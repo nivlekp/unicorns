@@ -3,6 +3,8 @@ import pathlib
 import shutil
 
 import abjad
+import numpy as np
+import pang
 
 MAXIMUM_SPAN = 10
 
@@ -45,3 +47,45 @@ def single_pitch_list_to_chord_set(
         chords.extend(list(combinations))
     chords = filter(filter_function, chords)
     return set(chords)
+
+
+class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
+    """
+    Generates Sound Points with an arrival rates that has a bimodal
+    distribution, to simulate phrases in music, with space in between.
+    """
+
+    def __init__(
+        self,
+        arrival_rate_0,
+        arrival_rate_1,
+        standard_deviation_0,
+        standard_deviation_1,
+        mixing_parameter,
+        service_rate,
+        pitch_set,
+        seed,
+    ):
+        self._arrival_rate_0 = arrival_rate_0
+        self._arrival_rate_1 = arrival_rate_1
+        self._standard_deviation_0 = standard_deviation_0
+        self._standard_deviation_1 = standard_deviation_1
+        assert mixing_parameter >= 0 and mixing_parameter <= 1
+        self._mixing_parameter = mixing_parameter
+        self._service_rate = service_rate
+        self._pitch_set = pitch_set
+        self._rng = np.random.default_rng(seed)
+
+    def __call__(self, sequence_duration):
+        # TODO: think about whether this assertion makes sense
+        assert sequence_duration > 1 / self._arrival_rate_0 and sequence_duration > 1 / self._arrival_rate_1
+        number_of_notes = _generate_arrival_instances(sequence_duration)
+
+    def _generate_arrival_instances(sequence_duration):
+        first_arrival_instance = _generate_first_arrival_instance(sequence_duration)
+
+    def _generate_first_arrival_instance(sequence_duration):
+        modes = np.array([1 / self._arrival_rate_0, 1 / self._arrival_rate_1])
+        distribution = np.array([mixing_parameter, 1-mixing_parameter])
+        mode = self._rng.choice(modes, p=distribution)
+        return self._rng.random() * mode
