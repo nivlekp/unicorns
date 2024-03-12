@@ -57,19 +57,15 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
 
     def __init__(
         self,
-        arrival_rate_0,
-        arrival_rate_1,
-        standard_deviation_0,
-        standard_deviation_1,
+        arrival_rates,
+        standard_deviations,
         mixing_parameter,
         service_rate,
         pitch_set,
         seed,
     ):
-        self._arrival_rate_0 = arrival_rate_0
-        self._arrival_rate_1 = arrival_rate_1
-        self._standard_deviation_0 = standard_deviation_0
-        self._standard_deviation_1 = standard_deviation_1
+        self._arrival_rates = arrival_rates
+        self._standard_deviations = standard_deviations
         assert mixing_parameter >= 0 and mixing_parameter <= 1
         self._mixing_parameter = mixing_parameter
         self._service_rate = service_rate
@@ -78,14 +74,30 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
 
     def __call__(self, sequence_duration):
         # TODO: think about whether this assertion makes sense
-        assert sequence_duration > 1 / self._arrival_rate_0 and sequence_duration > 1 / self._arrival_rate_1
-        number_of_notes = _generate_arrival_instances(sequence_duration)
+        assert (
+            sequence_duration > 1 / self._arrival_rates[0]
+            and sequence_duration > 1 / self._arrival_rates[1]
+        )
+        arrival_instances = _generate_arrival_instances(sequence_duration)
+        number_of_notes = len(arrival_instances)
 
     def _generate_arrival_instances(sequence_duration):
         first_arrival_instance = _generate_first_arrival_instance(sequence_duration)
+        arrival_instances = [first_arrival_instance]
+        last_arrival_instance = first_arrival_instance
+        mode_indices = np.array([0, 1])
+        distribution = np.array([mixing_parameter, 1 - mixing_parameter])
+        while last_arrival_instance < sequence_duration:
+            mode_index = self._rng.choice(mode_indices, p=distribution)
+            time_since_last_arrival = self._rng.normal(
+                self._arrival_rates[mode_index], self._standard_deviations[mode_index]
+            )
+            last_arrival_instance += time_since_last_arrival
+            arrival_instances.extend(last_arrival_instance)
+        return arrival_instances
 
     def _generate_first_arrival_instance(sequence_duration):
-        modes = np.array([1 / self._arrival_rate_0, 1 / self._arrival_rate_1])
-        distribution = np.array([mixing_parameter, 1-mixing_parameter])
+        modes = np.reciprocal(self._arrival_rates)
+        distribution = np.array([mixing_parameter, 1 - mixing_parameter])
         mode = self._rng.choice(modes, p=distribution)
         return self._rng.random() * mode
