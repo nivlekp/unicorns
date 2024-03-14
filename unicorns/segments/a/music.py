@@ -8,12 +8,12 @@ from unicorns import library
 def generate_first_sequence():
     sieve = abjad.Pattern(indices=library.ALL_INTERVAL_TETRACHORD_0146, period=12)
     pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-6, high=35)
-    sound_points_generator = pang.GRWSoundPointsGenerator(
-        arrival_rate=0.7,
-        service_rate=1.5,
+    sound_points_generator = library.BimodalSoundPointsGenerator(
+        arrival_rates=(4, 0.3),
+        mixing_parameter=0.9,
+        service_rate=4,
         pitch_set=pitch_set,
-        standard_deviation=1,
-        seed=824587,
+        seed=689977866565684684723645872638573628756265,
     )
     return pang.Sequence(
         sound_points_generator=sound_points_generator, sequence_duration=60

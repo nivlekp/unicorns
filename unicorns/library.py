@@ -106,7 +106,7 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
         return self._rng.exponential(1 / self._service_rate, number_of_notes)
 
     def _generate_pitches(self, number_of_notes):
-        return self._rng.choice(self._pitch_set, number_of_notes)
+        return self._rng.choice(self._pitch_set, number_of_notes).tolist()
 
     def _generate_first_arrival_instance(self, sequence_duration):
         modes = np.reciprocal(self._arrival_rates)
