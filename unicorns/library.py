@@ -58,19 +58,15 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
     def __init__(
         self,
         arrival_rates,
-        arrival_standard_deviations,
         mixing_parameter,
         service_rate,
-        service_standard_deviation,
         pitch_set,
         seed,
     ):
         self._arrival_rates = arrival_rates
-        self._arrival_standard_deviations = arrival_standard_deviations
         assert mixing_parameter >= 0 and mixing_parameter <= 1
         self._mixing_parameter = mixing_parameter
         self._service_rate = service_rate
-        self._service_standard_deviation = service_standard_deviation
         self._pitch_set = pitch_set
         self._rng = np.random.default_rng(seed)
 
@@ -90,25 +86,24 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
         ]
 
     def _generate_arrival_instances(self, sequence_duration):
-        first_arrival_instance = self._generate_first_arrival_instance(sequence_duration)
+        first_arrival_instance = self._generate_first_arrival_instance(
+            sequence_duration
+        )
         arrival_instances = [first_arrival_instance]
         last_arrival_instance = first_arrival_instance
         mode_indices = np.array([0, 1])
         distribution = np.array([self._mixing_parameter, 1 - self._mixing_parameter])
         while last_arrival_instance < sequence_duration:
             mode_index = self._rng.choice(mode_indices, p=distribution)
-            time_since_last_arrival = self._rng.normal(
+            time_since_last_arrival = self._rng.exponential(
                 1 / self._arrival_rates[mode_index],
-                self._arrival_standard_deviations[mode_index],
             )
             last_arrival_instance += time_since_last_arrival
             arrival_instances.append(last_arrival_instance)
         return arrival_instances
 
     def _generate_durations(self, number_of_notes):
-        return self._rng.normal(
-            1 / self._service_rate, self._service_standard_deviation, number_of_notes
-        )
+        return self._rng.exponential(1 / self._service_rate, number_of_notes)
 
     def _generate_pitches(self, number_of_notes):
         return self._rng.choice(self._pitch_set, number_of_notes)
