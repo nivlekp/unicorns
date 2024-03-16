@@ -22,10 +22,28 @@ def generate_first_sequence():
     )
 
 
+def generate_second_sequence():
+    sieve = abjad.Pattern(
+        indices=library.THIRD_MODE_OF_LIMITED_TRANSPOSITION, period=12
+    ).rotate(n=2)
+    pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-6, high=35)
+    sound_points_generator = library.BimodalSoundPointsGenerator(
+        arrival_rates=(3, 0.5),
+        mixing_parameter=0.75,
+        service_rate=3,
+        pitch_set=pitch_set,
+        seed=26387683768276348573264596,
+    )
+    return pang.Sequence(
+        sound_points_generator=sound_points_generator, sequence_duration=30
+    )
+
+
 def main():
     score = library.make_empty_score()
     scope = pang.Scope(voice_name="Piano.Music")
     sequence = generate_first_sequence()
+    sequence.extend(generate_second_sequence())
     sequence.durations = [max(duration, 0.154) for duration in sequence.durations]
     search_tree = nauert.UnweightedSearchTree(
         definition={

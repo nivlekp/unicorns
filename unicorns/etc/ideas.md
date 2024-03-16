@@ -9,3 +9,5 @@ Things to explore:
 TODO:
 - sometimes there are chords that contains say, both c and c-sharp
   - maybe create a function that makes it into c and d-flat
+- make it easier to debug
+  - add logs
