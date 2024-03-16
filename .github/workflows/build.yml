@@ -92,3 +92,4 @@ jobs:
       with:
         name: full-score
         path: unicorns/builds/score/score.pdf
+        compression-level: 0
