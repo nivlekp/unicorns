@@ -17,7 +17,7 @@ def make_empty_score():
     """
     >>> from unicorns import library
     >>> library.make_empty_score()
-    Score('{ { { } } { } }', name='Score', simultaneous=True)
+    Score('{ { { } } { { } } }', name='Score', simultaneous=True)
     """
     piano_music_voice_0 = abjad.Voice(name="Piano.Music.0")
     piano_music_voice_1 = abjad.Voice(name="Piano.Music.1")
