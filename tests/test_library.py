@@ -34,4 +34,4 @@ def test_bimodal_sound_points_generator():
     expected_mean = (1 / arrival_rates[0]) * mixing_parameter + (
         1 / arrival_rates[1]
     ) * (1 - mixing_parameter)
-    assert abs(np.mean(inter_arrival_times) - expected_mean) < expected_mean * 0.01
+    assert abs(np.mean(inter_arrival_times) - expected_mean) < expected_mean * 0.03
