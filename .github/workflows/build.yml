@@ -87,7 +87,6 @@ jobs:
         export PANG_PATH=/tmp/pang
         make test-score
         make full-score
-    - name: Upload Full Score
       uses: actions/upload-artifact@v4
       with:
         name: full-score
