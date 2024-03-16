@@ -34,10 +34,14 @@ def make_empty_score():
 
 
 def make_empty_left_hand(score, reference_scope):
+    target_voice = "Piano.Music.1"
     last_leaf = abjad.get.leaf(score[reference_scope.voice_name], -1)
     number_of_measures = abjad.get.measure_number(last_leaf)
     string = " ".join(["s1" for _ in range(number_of_measures)])
-    score["Piano.Music.1"].extend(string)
+    score[target_voice].extend(string)
+    first_leaf = abjad.get.leaf(score[target_voice])
+    clef = abjad.Clef("bass")
+    abjad.attach(clef, first_leaf)
 
 
 def move_music_ily_from_segment_directory_to_build_directory(segment_name):

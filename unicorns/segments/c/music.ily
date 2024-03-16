@@ -301,6 +301,7 @@
         <<
             \context Voice = "Piano.Music.1"
             {
+                \clef "bass"
                 s1
                 s1
                 s1
