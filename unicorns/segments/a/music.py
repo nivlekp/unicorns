@@ -6,7 +6,9 @@ from unicorns import library
 
 
 def generate_first_sequence():
-    sieve = abjad.Pattern(indices=library.ALL_INTERVAL_TETRACHORD_0146, period=12)
+    sieve = abjad.Pattern(
+        indices=library.THIRD_MODE_OF_LIMITED_TRANSPOSITION, period=12
+    ).rotate(n=1)
     pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-6, high=35)
     sound_points_generator = library.BimodalSoundPointsGenerator(
         arrival_rates=(4, 0.3),
