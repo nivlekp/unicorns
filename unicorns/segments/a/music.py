@@ -5,6 +5,9 @@ from abjadext import nauert
 from unicorns import library
 
 
+TIME_SIGNATURE=(4, 4)
+
+
 def generate_first_sequence():
     sieve = abjad.Pattern(
         indices=library.THIRD_MODE_OF_LIMITED_TRANSPOSITION, period=12
@@ -41,7 +44,7 @@ def generate_second_sequence():
 
 def main():
     score = library.make_empty_score()
-    scope = pang.Scope(voice_name="Piano.Music")
+    scope = pang.Scope(voice_name="Piano.Music.0")
     sequence = generate_first_sequence()
     sequence.extend(generate_second_sequence())
     sequence.durations = [max(duration, 0.154) for duration in sequence.durations]
@@ -62,6 +65,7 @@ def main():
         grace_handler=grace_handler,
     )
     metadata = pang.build.section(score, scope, command)
+    library.make_empty_left_hand(score, scope)
     pang.build.persist(score, metadata)
     library.move_music_ily_from_segment_directory_to_build_directory("a")
 
