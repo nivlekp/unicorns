@@ -21,8 +21,12 @@ def make_empty_score():
     """
     piano_music_voice_0 = abjad.Voice(name="Piano.Music.0")
     piano_music_voice_1 = abjad.Voice(name="Piano.Music.1")
-    piano_music_treble_staff = abjad.Staff([piano_music_voice_0], name="Piano.Treble.Staff")
-    piano_music_bass_staff = abjad.Staff([piano_music_voice_1], name="Piano.Bass.Staff", simultaneous=True)
+    piano_music_treble_staff = abjad.Staff(
+        [piano_music_voice_0], name="Piano.Treble.Staff"
+    )
+    piano_music_bass_staff = abjad.Staff(
+        [piano_music_voice_1], name="Piano.Bass.Staff", simultaneous=True
+    )
     piano_music_staff = abjad.StaffGroup(lilypond_type="PianoStaff", name="Piano.Staff")
     piano_music_staff.extend([piano_music_treble_staff, piano_music_bass_staff])
     score = abjad.Score([piano_music_staff], name="Score")

@@ -5,9 +5,6 @@ from abjadext import nauert
 from unicorns import library
 
 
-TIME_SIGNATURE=(4, 4)
-
-
 def generate_first_sequence():
     sieve = abjad.Pattern(
         indices=library.THIRD_MODE_OF_LIMITED_TRANSPOSITION, period=12
