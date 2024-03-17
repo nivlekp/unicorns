@@ -15,8 +15,8 @@ THIRD_MODE_OF_LIMITED_TRANSPOSITION = (0, 2, 3, 4, 6, 7, 8, 10, 11)
 
 PIANO_MUSIC_VOICE_0_NAME = "Piano.Music.0"
 PIANO_MUSIC_VOICE_1_NAME = "Piano.Music.1"
-PIANO_TREBLE_STAFF_NAME = "Piano.Treble.Staff"
-PIANO_BASS_STAFF_NAME = "Piano.Bass.Staff"
+PIANO_TREBLE_STAFF_NAME = "Piano_Treble_Staff"
+PIANO_BASS_STAFF_NAME = "Piano_Bass_Staff"
 PIANO_STAFF_NAME = "Piano.Staff"
 SCORE_NAME = "Score"
 
@@ -51,6 +51,22 @@ def make_empty_left_hand(score, reference_scope):
     first_leaf = abjad.get.leaf(score[PIANO_MUSIC_VOICE_1_NAME])
     clef = abjad.Clef("bass")
     abjad.attach(clef, first_leaf)
+
+
+def make_voice_spanning_across_two_staff(score, scope):
+    current_staff_name = PIANO_TREBLE_STAFF_NAME
+    for logical_tie in abjad.iterate.logical_ties(score[scope.voice_name], pitched=True):
+        if current_staff_name == PIANO_TREBLE_STAFF_NAME:
+            if logical_tie.head.written_pitch < 0:
+                current_staff_name = PIANO_BASS_STAFF_NAME
+                staff_change = abjad.StaffChange(current_staff_name)
+                abjad.attach(staff_change, logical_tie.head)
+        else:
+            assert current_staff_name == PIANO_BASS_STAFF_NAME
+            if logical_tie.head.written_pitch > 0:
+                current_staff_name = PIANO_TREBLE_STAFF_NAME
+                staff_change = abjad.StaffChange(current_staff_name)
+                abjad.attach(staff_change, logical_tie.head)
 
 
 def move_music_ily_from_segment_directory_to_build_directory(segment_name):
