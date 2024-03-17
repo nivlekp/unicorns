@@ -35,7 +35,9 @@ def make_empty_score():
     piano_music_bass_staff = abjad.Staff(
         [piano_music_voice_1], name=PIANO_BASS_STAFF_NAME, simultaneous=True
     )
-    piano_music_staff = abjad.StaffGroup(lilypond_type="PianoStaff", name=PIANO_STAFF_NAME)
+    piano_music_staff = abjad.StaffGroup(
+        lilypond_type="PianoStaff", name=PIANO_STAFF_NAME
+    )
     piano_music_staff.extend([piano_music_treble_staff, piano_music_bass_staff])
     score = abjad.Score([piano_music_staff], name=SCORE_NAME)
     return score
