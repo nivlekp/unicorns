@@ -41,7 +41,7 @@ def generate_second_sequence():
 
 def main():
     score = library.make_empty_score()
-    scope = pang.Scope(voice_name="Piano.Music.0")
+    scope = pang.Scope(voice_name=PIANO_MUSIC_VOICE_0_NAME)
     sequence = generate_first_sequence()
     sequence.extend(generate_second_sequence())
     sequence.durations = [max(duration, 0.154) for duration in sequence.durations]

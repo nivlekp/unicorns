@@ -13,33 +13,40 @@ ALL_INTERVAL_TETRACHORD_0137 = (0, 1, 3, 7)
 THIRD_MODE_OF_LIMITED_TRANSPOSITION = (0, 2, 3, 4, 6, 7, 8, 10, 11)
 
 
+PIANO_MUSIC_VOICE_0_NAME = "Piano.Music.0"
+PIANO_MUSIC_VOICE_1_NAME = "Piano.Music.1"
+PIANO_TREBLE_STAFF_NAME = "Piano.Treble.Staff"
+PIANO_BASS_STAFF_NAME = "Piano.Bass.Staff"
+PIANO_STAFF_NAME = "Piano.Staff"
+SCORE_NAME = "Score"
+
+
 def make_empty_score():
     """
     >>> from unicorns import library
     >>> library.make_empty_score()
     Score('{ { { } } { { } } }', name='Score', simultaneous=True)
     """
-    piano_music_voice_0 = abjad.Voice(name="Piano.Music.0")
-    piano_music_voice_1 = abjad.Voice(name="Piano.Music.1")
+    piano_music_voice_0 = abjad.Voice(name=PIANO_MUSIC_VOICE_0_NAME)
+    piano_music_voice_1 = abjad.Voice(name=PIANO_MUSIC_VOICE_1_NAME)
     piano_music_treble_staff = abjad.Staff(
-        [piano_music_voice_0], name="Piano.Treble.Staff"
+        [piano_music_voice_0], name=PIANO_TREBLE_STAFF_NAME
     )
     piano_music_bass_staff = abjad.Staff(
-        [piano_music_voice_1], name="Piano.Bass.Staff", simultaneous=True
+        [piano_music_voice_1], name=PIANO_BASS_STAFF_NAME, simultaneous=True
     )
-    piano_music_staff = abjad.StaffGroup(lilypond_type="PianoStaff", name="Piano.Staff")
+    piano_music_staff = abjad.StaffGroup(lilypond_type="PianoStaff", name=PIANO_STAFF_NAME)
     piano_music_staff.extend([piano_music_treble_staff, piano_music_bass_staff])
-    score = abjad.Score([piano_music_staff], name="Score")
+    score = abjad.Score([piano_music_staff], name=SCORE_NAME)
     return score
 
 
 def make_empty_left_hand(score, reference_scope):
-    target_voice = "Piano.Music.1"
     last_leaf = abjad.get.leaf(score[reference_scope.voice_name], -1)
     number_of_measures = abjad.get.measure_number(last_leaf)
     string = " ".join(["s1" for _ in range(number_of_measures)])
-    score[target_voice].extend(string)
-    first_leaf = abjad.get.leaf(score[target_voice])
+    score[PIANO_MUSIC_VOICE_1_NAME].extend(string)
+    first_leaf = abjad.get.leaf(score[PIANO_MUSIC_VOICE_1_NAME])
     clef = abjad.Clef("bass")
     abjad.attach(clef, first_leaf)
 

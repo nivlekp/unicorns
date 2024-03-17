@@ -7,7 +7,7 @@ from unicorns import library
 
 def main():
     score = library.make_empty_score()
-    scope = pang.Scope(voice_name="Piano.Music.0")
+    scope = pang.Scope(voice_name=PIANO_MUSIC_VOICE_0_NAME)
     sieve = abjad.Pattern(indices=library.ALL_INTERVAL_TETRACHORD_0146, period=12)
     pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=35, high=42)
     sound_points_generator = pang.GRWSoundPointsGenerator(
