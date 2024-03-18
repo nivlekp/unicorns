@@ -9,7 +9,7 @@ def generate_first_sequence():
     sieve = abjad.Pattern(
         indices=library.THIRD_MODE_OF_LIMITED_TRANSPOSITION, period=12
     ).rotate(n=1)
-    pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-6, high=35)
+    pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-32, high=6)
     sound_points_generator = library.BimodalSoundPointsGenerator(
         arrival_rates=(4, 0.3),
         mixing_parameter=0.9,
