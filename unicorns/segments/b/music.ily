@@ -4,7 +4,7 @@
 <<
     \context PianoStaff = "Piano.Staff"
     <<
-        \context Staff = "Piano.Treble.Staff"
+        \context Staff = "Piano_Treble_Staff"
         {
             \context Voice = "Piano.Music.0"
             {
@@ -221,7 +221,7 @@
                 }
             }
         }
-        \context Staff = "Piano.Bass.Staff"
+        \context Staff = "Piano_Bass_Staff"
         <<
             \context Voice = "Piano.Music.1"
             {
