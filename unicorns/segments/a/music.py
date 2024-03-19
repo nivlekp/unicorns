@@ -9,7 +9,7 @@ def generate_first_sequence():
     sieve = abjad.Pattern(
         indices=library.THIRD_MODE_OF_LIMITED_TRANSPOSITION, period=12
     ).rotate(n=1)
-    pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-6, high=35)
+    pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-32, high=6)
     sound_points_generator = library.BimodalSoundPointsGenerator(
         arrival_rates=(4, 0.3),
         mixing_parameter=0.9,
@@ -41,7 +41,7 @@ def generate_second_sequence():
 
 def main():
     score = library.make_empty_score()
-    scope = pang.Scope(voice_name="Piano.Music.0")
+    scope = pang.Scope(voice_name=library.PIANO_MUSIC_VOICE_0_NAME)
     sequence = generate_first_sequence()
     sequence.extend(generate_second_sequence())
     sequence.durations = [max(duration, 0.154) for duration in sequence.durations]
@@ -63,6 +63,7 @@ def main():
     )
     metadata = pang.build.section(score, scope, command)
     library.make_empty_left_hand(score, scope)
+    library.make_voice_spanning_across_two_staff(score, scope)
     pang.build.persist(score, metadata)
     library.move_music_ily_from_segment_directory_to_build_directory("a")
 
