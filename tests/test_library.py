@@ -21,6 +21,13 @@ def test_converting_pitch_list_to_chord_set_can_generate_tetrachord():
     assert chord_set == {(0, 1, 2, 3)}
 
 
+def test_making_chord_from_stacked_intervals():
+    chord = library.make_chord_from_stacked_intervals(
+        library.ALL_INTERVAL_CHORD_INTERVALS, -30
+    )
+    assert chord == (-30, -20, -15, -7, 2, 13, 19, 20, 23, 27, 34, 36)
+
+
 def test_bimodal_sound_points_generator():
     arrival_rates = (5, 0.8)
     mixing_parameter = 0.9

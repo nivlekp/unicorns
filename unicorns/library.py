@@ -10,6 +10,7 @@ MAXIMUM_SPAN = 10
 
 ALL_INTERVAL_TETRACHORD_0146 = (0, 1, 4, 6)
 ALL_INTERVAL_TETRACHORD_0137 = (0, 1, 3, 7)
+ALL_INTERVAL_CHORD_INTERVALS = (10, 5, 8, 9, 11, 6, 1, 3, 4, 7, 2)
 THIRD_MODE_OF_LIMITED_TRANSPOSITION = (0, 2, 3, 4, 6, 7, 8, 10, 11)
 
 
@@ -94,6 +95,11 @@ def single_pitch_list_to_chord_set(
         chords.extend(list(combinations))
     chords = filter(filter_function, chords)
     return set(chords)
+
+
+def make_chord_from_stacked_intervals(intervals, start_pitch):
+    interval_list = [0] + list(intervals)
+    return tuple(np.cumsum(interval_list) + start_pitch)
 
 
 class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):

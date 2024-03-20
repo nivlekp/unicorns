@@ -9,3 +9,6 @@ __pycache__
 
 **/segments/*/music.pdf
 **/builds/*/*.pdf
+
+# directory where I store some lilypond examples that I reference to
+lilypond_examples

@@ -6,9 +6,9 @@ from unicorns import library
 
 
 def generate_first_sequence():
-    sieve = abjad.Pattern(indices=library.ALL_INTERVAL_TETRACHORD_0137, period=12)
-    sieve = sieve.rotate(n=2)
-    pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-6, high=35)
+    pitch_set = library.make_chord_from_stacked_intervals(
+        library.ALL_INTERVAL_CHORD_INTERVALS, -30
+    )
     chord_set = library.single_pitch_list_to_chord_set(pitch_set)
     sound_points_generator = pang.AtaxicSoundPointsGenerator(
         arrival_rate=1.0,
