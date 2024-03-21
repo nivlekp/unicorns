@@ -75,75 +75,75 @@
                 }
                 {
                     r8
-                    <f'' fs'' b''>16
-                    <fs' b'>16
+                    <bf, f>16
+                    <fs,, af,,>16
                     ~
-                    <fs' b'>16
+                    <fs,, af,,>16
                     r16
                     r16
-                    <fs a>16
+                    <ef, b,>16
                     ~
-                    <fs a>4
+                    <ef, b,>4
                     ~
                     \times 4/5
                     {
-                        <fs a>8.
-                        <a fs'>16
+                        <ef, b,>8.
+                        <bf, b,>16
                         r16
                     }
                 }
                 {
                     r4
-                    <a b fs'>4
+                    <af,, ef,>4
                     ~
-                    <a b fs'>8
+                    <af,, ef,>8
                     r8
                     \times 4/5
                     {
                         r8.
-                        <b f'>8
+                        <g, bf,>8
                         ~
                     }
                 }
                 {
-                    <b f'>2
-                    <fs'' b''>2
+                    <g, bf,>2
+                    <bf, b, f>2
                     ~
                 }
                 {
                     \times 4/5
                     {
-                        <fs'' b''>16
-                        <b f' fs'>8
+                        <bf, b, f>16
+                        <fs,, af,,>8
                         ~
-                        <b f' fs'>8
+                        <fs,, af,,>8
                     }
                     \times 4/5
                     {
-                        <fs' b'>16
-                        <f''' fs''' a'''>8
-                        <fs' a'>16
-                        <fs b>16
+                        <ef, bf, b,>16
+                        <g, bf,>8
+                        <ef, g, b,>16
+                        <bf, f>16
                         ~
                     }
-                    <fs b>2
+                    <bf, f>2
                 }
                 {
-                    <f'' a'' b''>8
-                    <fs' a'>8
+                    <bf, b, f>8
+                    <fs,, af,, ef,>8
                     ~
-                    <fs' a'>2
+                    <fs,, af,, ef,>2
                     \times 4/5
                     {
-                        <f'' fs'' b''>8
-                        <b f' fs'>16
+                        <e' cs''>8
+                        <g, bf, b,>16
                         ~
-                        <b f' fs'>8
+                        <g, bf, b,>8
                         ~
                     }
                 }
                 {
-                    <b f' fs'>2.
+                    <g, bf, b,>2.
                     \times 4/5
                     {
                         <ef'' fs''>16
