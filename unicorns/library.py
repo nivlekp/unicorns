@@ -85,8 +85,8 @@ def move_music_ily_from_segment_directory_to_build_directory(segment_name):
     shutil.copy(music_ily_path, target_path)
 
 
-def is_reachable_span(pitch_tuple) -> bool:
-    return max(pitch_tuple) - min(pitch_tuple) < MAXIMUM_SPAN
+def is_reachable_span(pitch_tuple, span=MAXIMUM_SPAN) -> bool:
+    return max(pitch_tuple) - min(pitch_tuple) < span
 
 
 def single_pitch_list_to_chord_set(
