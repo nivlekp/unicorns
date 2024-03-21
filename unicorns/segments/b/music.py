@@ -78,6 +78,9 @@ def main():
     )
     metadata = pang.build.section(score, scope, command)
     library.make_empty_left_hand(score, scope)
+    library.distribute_chords_across_two_voices(
+        score, scope, pang.Scope(voice_name=library.PIANO_MUSIC_VOICE_0_FOLLOWER_NAME)
+    )
     pang.build.persist(score, metadata)
     library.move_music_ily_from_segment_directory_to_build_directory("b")
 
