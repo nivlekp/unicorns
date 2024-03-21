@@ -45,7 +45,6 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
     \override Beam.details.damping-direction-penalty = #0
     \override Beam.details.round-to-zero-slope = #0
     \override Flag.stencil = #modern-straight-flag
-    \override Stem.length = #10
     \override TupletBracket.positions = #flat-brackets
     tupletFullLength = ##t
     \consists "Span_stem_engraver"
