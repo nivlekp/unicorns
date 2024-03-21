@@ -11,7 +11,9 @@ def test_converting_pitch_list_to_chord_set():
 
 def test_converting_pitch_list_to_chord_set_excludes_wide_span():
     pitch_list = [0, 1, 20, 21]
-    chord_set = library.single_pitch_list_to_chord_set(pitch_list)
+    chord_set = library.single_pitch_list_to_chord_set(
+        pitch_list, lambda x: library.is_reachable_span(x, 10)
+    )
     assert chord_set == {(0, 1), (20, 21)}
 
 
