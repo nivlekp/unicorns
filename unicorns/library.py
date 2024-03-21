@@ -133,9 +133,18 @@ def distribute_chords_across_two_voices(score, source_scope, target_scope):
                     abjad.mutate.replace(leaf, abjad.Skip(leaf))
                 else:
                     leaf.written_pitches = pitches
-                    cross_staff_indicator_opener = abjad.LilyPondLiteral(r"\voiceOne\crossStaff { ", site="before")
+                    cross_staff_indicator_opener = abjad.LilyPondLiteral(
+                        r"\voiceOne\crossStaff { ", site="before"
+                    )
                     abjad.attach(cross_staff_indicator_opener, leaf)
-                    cross_staff_indicator_closer = abjad.LilyPondLiteral(r"}", site="after")
+                    omit_indicator = abjad.LilyPondLiteral(
+                        r"\once\omit TupletNumber \once\omit TupletBracket",
+                        site="before",
+                    )
+                    abjad.attach(omit_indicator, leaf)
+                    cross_staff_indicator_closer = abjad.LilyPondLiteral(
+                        r"}", site="after"
+                    )
                     abjad.attach(cross_staff_indicator_closer, leaf)
             case _:
                 pass

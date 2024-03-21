@@ -307,29 +307,36 @@
                         s8
                     }
                     s8
+                    \once\omit TupletNumber \once\omit TupletBracket
                     \voiceOne\crossStaff { 
                     <f>8
                     ~
                     }
+                    \once\omit TupletNumber \once\omit TupletBracket
                     \voiceOne\crossStaff { 
                     <f>4
                     }
+                    \once\omit TupletNumber \once\omit TupletBracket
                     \voiceOne\crossStaff { 
                     <a, f>16
                     }
+                    \once\omit TupletNumber \once\omit TupletBracket
                     \voiceOne\crossStaff { 
                     <f>16
                     ~
                     }
+                    \once\omit TupletNumber \once\omit TupletBracket
                     \voiceOne\crossStaff { 
                     <f>16
                     }
+                    \once\omit TupletNumber \once\omit TupletBracket
                     \voiceOne\crossStaff { 
                     <f>16
                     ~
                     }
                 }
                 {
+                    \once\omit TupletNumber \once\omit TupletBracket
                     \voiceOne\crossStaff { 
                     <f>16
                     }
@@ -385,6 +392,7 @@
                 }
                 {
                     s2
+                    \once\omit TupletNumber \once\omit TupletBracket
                     \voiceOne\crossStaff { 
                     <bf, f>2
                     ~
@@ -393,6 +401,7 @@
                 {
                     \times 4/5
                     {
+                        \once\omit TupletNumber \once\omit TupletBracket
                         \voiceOne\crossStaff { 
                         <bf, f>16
                         }
@@ -409,6 +418,7 @@
                     s2
                 }
                 {
+                    \once\omit TupletNumber \once\omit TupletBracket
                     \voiceOne\crossStaff { 
                     <bf, f>8
                     }
@@ -425,6 +435,7 @@
                     s2.
                     \times 4/5
                     {
+                        \once\omit TupletNumber \once\omit TupletBracket
                         \voiceOne\crossStaff { 
                         <fs>16
                         }
@@ -438,10 +449,12 @@
                 {
                     s2.
                     s16
+                    \once\omit TupletNumber \once\omit TupletBracket
                     \voiceOne\crossStaff { 
                     <fs>16
                     ~
                     }
+                    \once\omit TupletNumber \once\omit TupletBracket
                     \voiceOne\crossStaff { 
                     <fs>16
                     }
