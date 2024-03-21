@@ -15,6 +15,7 @@ THIRD_MODE_OF_LIMITED_TRANSPOSITION = (0, 2, 3, 4, 6, 7, 8, 10, 11)
 
 
 PIANO_MUSIC_VOICE_0_NAME = "Piano.Music.0"
+PIANO_MUSIC_VOICE_0_FOLLOWER_NAME = "Piano.Music.Follower.0"
 PIANO_MUSIC_VOICE_1_NAME = "Piano.Music.1"
 PIANO_TREBLE_STAFF_NAME = "Piano_Treble_Staff"
 PIANO_BASS_STAFF_NAME = "Piano_Bass_Staff"
@@ -26,15 +27,18 @@ def make_empty_score():
     """
     >>> from unicorns import library
     >>> library.make_empty_score()
-    Score('{ { { } } { { } } }', name='Score', simultaneous=True)
+    Score('{ { { } } { { } { } } }', name='Score', simultaneous=True)
     """
     piano_music_voice_0 = abjad.Voice(name=PIANO_MUSIC_VOICE_0_NAME)
     piano_music_voice_1 = abjad.Voice(name=PIANO_MUSIC_VOICE_1_NAME)
+    piano_music_voice_0_follower = abjad.Voice(name=PIANO_MUSIC_VOICE_0_FOLLOWER_NAME)
     piano_music_treble_staff = abjad.Staff(
         [piano_music_voice_0], name=PIANO_TREBLE_STAFF_NAME
     )
     piano_music_bass_staff = abjad.Staff(
-        [piano_music_voice_1], name=PIANO_BASS_STAFF_NAME, simultaneous=True
+        [piano_music_voice_0_follower, piano_music_voice_1],
+        name=PIANO_BASS_STAFF_NAME,
+        simultaneous=True,
     )
     piano_music_staff = abjad.StaffGroup(
         lilypond_type="PianoStaff", name=PIANO_STAFF_NAME

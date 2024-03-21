@@ -514,6 +514,9 @@
         }
         \context Staff = "Piano_Bass_Staff"
         <<
+            \context Voice = "Piano.Music.Follower.0"
+            {
+            }
             \context Voice = "Piano.Music.1"
             {
                 \clef "bass"
