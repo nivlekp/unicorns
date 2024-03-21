@@ -98,6 +98,14 @@ def single_pitch_list_to_chord_set(
 
 
 def make_chord_from_stacked_intervals(intervals, start_pitch):
+    """
+    >>> from unicorns import library
+    >>> chord = library.make_chord_from_stacked_intervals(
+    ...     library.ALL_INTERVAL_CHORD_INTERVALS, -30
+    ... )
+    >>> abjad.Chord(chord, (1, 1))
+    Chord("<fs,, e, a, f d' cs'' g'' af'' b'' ef''' bf''' c''''>1")
+    """
     interval_list = [0] + list(intervals)
     return tuple(np.cumsum(interval_list) + start_pitch)
 
