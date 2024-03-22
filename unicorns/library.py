@@ -134,7 +134,7 @@ def distribute_chords_across_two_voices(score, source_scope, target_scope):
                 else:
                     leaf.written_pitches = pitches
                     cross_staff_indicator_opener = abjad.LilyPondLiteral(
-                        r"\voiceOne\crossStaff { ", site="before"
+                        r"\voiceOne \crossStaff", site="before"
                     )
                     abjad.attach(cross_staff_indicator_opener, leaf)
                     omit_indicator = abjad.LilyPondLiteral(
@@ -142,10 +142,6 @@ def distribute_chords_across_two_voices(score, source_scope, target_scope):
                         site="before",
                     )
                     abjad.attach(omit_indicator, leaf)
-                    cross_staff_indicator_closer = abjad.LilyPondLiteral(
-                        r"}", site="after"
-                    )
-                    abjad.attach(cross_staff_indicator_closer, leaf)
             case _:
                 pass
     for leaf in abjad.iterate.leaves(source):
