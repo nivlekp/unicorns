@@ -37,7 +37,6 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
     proportionalNotationDuration = #(ly:make-moment 1 24)
     \override StaffGrouper.staff-staff-spacing.padding = #8
     \override StaffGrouper.staff-staff-spacing.basic-distance = #8
-    \consists "Span_stem_engraver"
   }
   \context {
     \Staff
@@ -47,7 +46,6 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
     \override Flag.stencil = #modern-straight-flag
     \override TupletBracket.positions = #flat-brackets
     tupletFullLength = ##t
-    \consists "Span_stem_engraver"
   }
   \context {
     \PianoStaff
