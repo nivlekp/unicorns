@@ -114,6 +114,57 @@ def make_chord_from_stacked_intervals(intervals, start_pitch):
     return tuple(np.cumsum(interval_list) + start_pitch)
 
 
+def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
+    match leaf:
+        case abjad.Rest():
+            pass
+        case abjad.Chord():
+            pitches = [pitch for pitch in leaf.written_pitches if pitch >= 0]
+            if not pitches:
+                if current_staff_name != PIANO_BASS_STAFF_NAME:
+                    current_staff_name = PIANO_BASS_STAFF_NAME
+                    staff_change = abjad.StaffChange(current_staff_name)
+                    abjad.attach(staff_change, leaf)
+            else:
+                if current_staff_name != PIANO_TREBLE_STAFF_NAME:
+                    current_staff_name = PIANO_TREBLE_STAFF_NAME
+                    staff_change = abjad.StaffChange(current_staff_name)
+                    abjad.attach(staff_change, leaf)
+                abjad.override(leaf).Stem.direction = "#up"
+                leaf.written_pitches = pitches
+        case _:
+            raise TypeError(leaf)
+    return current_staff_name
+
+
+def _tidy_up_one_leaf_in_the_follower_voice(leaf):
+    match leaf:
+        case abjad.Rest():
+            abjad.mutate.replace(leaf, abjad.Skip(leaf))
+        case abjad.Chord():
+            pitches = tuple(pitch for pitch in leaf.written_pitches if pitch < 0)
+            if not pitches or pitches == leaf.written_pitches:
+                abjad.detach(abjad.Tie, leaf)
+                abjad.mutate.replace(leaf, abjad.Skip(leaf))
+            else:
+                leaf.written_pitches = pitches
+                cross_staff_indicator_opener = abjad.LilyPondLiteral(
+                    r"\voiceOne \crossStaff", site="before"
+                )
+                abjad.attach(cross_staff_indicator_opener, leaf)
+                omit_indicator = abjad.LilyPondLiteral(
+                    r"\once\omit TupletNumber \once\omit TupletBracket",
+                    site="before",
+                )
+                abjad.attach(omit_indicator, leaf)
+                tie = abjad.get.indicator(leaf, abjad.Tie)
+                if tie:
+                    abjad.detach(abjad.Tie, leaf)
+                    abjad.attach(abjad.Tie(), leaf, direction=abjad.DOWN)
+        case _:
+            raise TypeError(leaf)
+
+
 def distribute_chords_across_two_voices(score, source_scope, target_scope):
     source = score[source_scope.voice_name]
     target = score[target_scope.voice_name]
@@ -123,45 +174,11 @@ def distribute_chords_across_two_voices(score, source_scope, target_scope):
     auto_beam_off_indicator = abjad.LilyPondLiteral(r"\autoBeamOff", site="before")
     abjad.attach(auto_beam_off_indicator, target[0])
     for leaf in abjad.iterate.leaves(target):
-        match leaf:
-            case abjad.Rest():
-                abjad.mutate.replace(leaf, abjad.Skip(leaf))
-            case abjad.Chord():
-                pitches = tuple(pitch for pitch in leaf.written_pitches if pitch < 0)
-                if not pitches or pitches == leaf.written_pitches:
-                    abjad.detach(abjad.Tie, leaf)
-                    abjad.mutate.replace(leaf, abjad.Skip(leaf))
-                else:
-                    leaf.written_pitches = pitches
-                    cross_staff_indicator_opener = abjad.LilyPondLiteral(
-                        r"\voiceOne \crossStaff", site="before"
-                    )
-                    abjad.attach(cross_staff_indicator_opener, leaf)
-                    omit_indicator = abjad.LilyPondLiteral(
-                        r"\once\omit TupletNumber \once\omit TupletBracket",
-                        site="before",
-                    )
-                    abjad.attach(omit_indicator, leaf)
-            case _:
-                pass
+        _tidy_up_one_leaf_in_the_follower_voice(leaf)
     for leaf in abjad.iterate.leaves(source):
-        match leaf:
-            case abjad.Chord():
-                pitches = [pitch for pitch in leaf.written_pitches if pitch >= 0]
-                if not pitches:
-                    if current_staff_name != PIANO_BASS_STAFF_NAME:
-                        current_staff_name = PIANO_BASS_STAFF_NAME
-                        staff_change = abjad.StaffChange(current_staff_name)
-                        abjad.attach(staff_change, leaf)
-                else:
-                    if current_staff_name != PIANO_TREBLE_STAFF_NAME:
-                        current_staff_name = PIANO_TREBLE_STAFF_NAME
-                        staff_change = abjad.StaffChange(current_staff_name)
-                        abjad.attach(staff_change, leaf)
-                    abjad.override(leaf).Stem.direction = "#up"
-                    leaf.written_pitches = pitches
-            case _:
-                pass
+        current_staff_name = _tidy_up_one_leaf_in_the_leading_voice(
+            leaf, current_staff_name
+        )
 
 
 class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
