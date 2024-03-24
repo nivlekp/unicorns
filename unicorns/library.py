@@ -174,7 +174,7 @@ def _tidy_up_one_leaf_in_the_follower_voice(leaf):
                 )
                 abjad.attach(cross_staff_indicator_opener, leaf)
                 _maybe_omit_tuplet(leaf)
-                _maybe_adjust_tie_direction(leaf, abjad.Down)
+                _maybe_adjust_tie_direction(leaf, abjad.DOWN)
         case _:
             raise TypeError(leaf)
 
