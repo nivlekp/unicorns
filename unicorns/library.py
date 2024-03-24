@@ -114,6 +114,18 @@ def make_chord_from_stacked_intervals(intervals, start_pitch):
     return tuple(np.cumsum(interval_list) + start_pitch)
 
 
+def _maybe_omit_tuplet(leaf):
+    parentage = abjad.get.parentage(leaf)
+    if len(parentage) > 2 and any(isinstance(parent, abjad.Tuplet) for parent in parentage[2:]):
+        raise TypeError(parentage)
+    if isinstance(parentage[0], abjad.Tuplet):
+        omit_indicator = abjad.LilyPondLiteral(
+            r"\once\omit TupletNumber \once\omit TupletBracket",
+            site="before",
+        )
+        abjad.attach(omit_indicator, leaf)
+
+
 def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
     match leaf:
         case abjad.Rest():
@@ -152,11 +164,7 @@ def _tidy_up_one_leaf_in_the_follower_voice(leaf):
                     r"\voiceOne \crossStaff", site="before"
                 )
                 abjad.attach(cross_staff_indicator_opener, leaf)
-                omit_indicator = abjad.LilyPondLiteral(
-                    r"\once\omit TupletNumber \once\omit TupletBracket",
-                    site="before",
-                )
-                abjad.attach(omit_indicator, leaf)
+                _maybe_omit_tuplet(leaf)
                 tie = abjad.get.indicator(leaf, abjad.Tie)
                 if tie:
                     abjad.detach(abjad.Tie, leaf)
