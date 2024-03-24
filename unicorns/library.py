@@ -128,6 +128,13 @@ def _maybe_omit_tuplet(leaf):
         abjad.attach(omit_indicator, leaf)
 
 
+def _maybe_adjust_tie_direction(leaf, direction):
+    tie = abjad.get.indicator(leaf, abjad.Tie)
+    if tie:
+        abjad.detach(abjad.Tie, leaf)
+        abjad.attach(abjad.Tie(), leaf, direction=direction)
+
+
 def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
     match leaf:
         case abjad.Rest():
@@ -167,10 +174,7 @@ def _tidy_up_one_leaf_in_the_follower_voice(leaf):
                 )
                 abjad.attach(cross_staff_indicator_opener, leaf)
                 _maybe_omit_tuplet(leaf)
-                tie = abjad.get.indicator(leaf, abjad.Tie)
-                if tie:
-                    abjad.detach(abjad.Tie, leaf)
-                    abjad.attach(abjad.Tie(), leaf, direction=abjad.DOWN)
+                _maybe_adjust_tie_direction(leaf, abjad.Down)
         case _:
             raise TypeError(leaf)
 
