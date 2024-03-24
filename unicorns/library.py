@@ -116,7 +116,9 @@ def make_chord_from_stacked_intervals(intervals, start_pitch):
 
 def _maybe_omit_tuplet(leaf):
     parentage = abjad.get.parentage(leaf)
-    if len(parentage) > 2 and any(isinstance(parent, abjad.Tuplet) for parent in parentage[2:]):
+    if len(parentage) > 2 and any(
+        isinstance(parent, abjad.Tuplet) for parent in parentage[2:]
+    ):
         raise TypeError(parentage)
     if isinstance(parentage[0], abjad.Tuplet):
         omit_indicator = abjad.LilyPondLiteral(
