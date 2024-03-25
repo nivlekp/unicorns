@@ -307,24 +307,31 @@
                         s8
                     }
                     s8
-                    \voiceOne \crossStaff
+                    \voiceOne
+                    \crossStaff
                     <f>8
                     _ ~
-                    \voiceOne \crossStaff
+                    \voiceOne
+                    \crossStaff
                     <f>4
-                    \voiceOne \crossStaff
+                    \voiceOne
+                    \crossStaff
                     <a, f>16
-                    \voiceOne \crossStaff
+                    \voiceOne
+                    \crossStaff
                     <f>16
                     _ ~
-                    \voiceOne \crossStaff
+                    \voiceOne
+                    \crossStaff
                     <f>16
-                    \voiceOne \crossStaff
+                    \voiceOne
+                    \crossStaff
                     <f>16
                     _ ~
                 }
                 {
-                    \voiceOne \crossStaff
+                    \voiceOne
+                    \crossStaff
                     <f>16
                     s8.
                     \times 4/5
@@ -378,7 +385,8 @@
                 }
                 {
                     s2
-                    \voiceOne \crossStaff
+                    \voiceOne
+                    \crossStaff
                     <bf, f>2
                     _ ~
                 }
@@ -386,7 +394,8 @@
                     \times 4/5
                     {
                         \once\omit TupletNumber \once\omit TupletBracket
-                        \voiceOne \crossStaff
+                        \voiceOne
+                        \crossStaff
                         <bf, f>16
                         s8
                         s8
@@ -401,7 +410,8 @@
                     s2
                 }
                 {
-                    \voiceOne \crossStaff
+                    \voiceOne
+                    \crossStaff
                     <bf, f>8
                     s8
                     s2
@@ -417,7 +427,8 @@
                     \times 4/5
                     {
                         \once\omit TupletNumber \once\omit TupletBracket
-                        \voiceOne \crossStaff
+                        \voiceOne
+                        \crossStaff
                         <fs>16
                         s8
                         s8
@@ -429,10 +440,12 @@
                 {
                     s2.
                     s16
-                    \voiceOne \crossStaff
+                    \voiceOne
+                    \crossStaff
                     <fs>16
                     _ ~
-                    \voiceOne \crossStaff
+                    \voiceOne
+                    \crossStaff
                     <fs>16
                     s16
                 }

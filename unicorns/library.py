@@ -135,6 +135,18 @@ def _maybe_adjust_tie_direction(leaf, direction):
         abjad.attach(abjad.Tie(), leaf, direction=direction)
 
 
+def _make_leaf_cross_staff(leaf):
+    # TODO: attaching \voiceOne before \crossStaff is necessary for some reason
+    # for the leaf to actually cross the staff, but attaching \voiceOne this
+    # way seems to make abjad unable to get the effective voice number
+    # correctly. Should look into a way to attach \voiceOne using
+    # abjad.VoiceNumber(n=1) before \crossStaff
+    cross_staff_indicator = abjad.LilyPondLiteral(
+        [r"\voiceOne", r"\crossStaff"], site="before"
+    )
+    abjad.attach(cross_staff_indicator, leaf)
+
+
 def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
     match leaf:
         case abjad.Rest():
@@ -169,10 +181,7 @@ def _tidy_up_one_leaf_in_the_follower_voice(leaf):
                 abjad.mutate.replace(leaf, abjad.Skip(leaf))
             else:
                 leaf.written_pitches = pitches
-                cross_staff_indicator_opener = abjad.LilyPondLiteral(
-                    r"\voiceOne \crossStaff", site="before"
-                )
-                abjad.attach(cross_staff_indicator_opener, leaf)
+                _make_leaf_cross_staff(leaf)
                 _maybe_omit_tuplet(leaf)
                 _maybe_adjust_tie_direction(leaf, abjad.DOWN)
         case _:
