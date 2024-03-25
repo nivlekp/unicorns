@@ -14,7 +14,7 @@ def generate_first_sequence():
         arrival_rate=1.0,
         service_rate=1.5,
         pitch_set=list(chord_set),
-        seed=5154,
+        seed=515466867,
     )
     return pang.Sequence(
         sound_points_generator=sound_points_generator, sequence_duration=10
@@ -30,7 +30,7 @@ def generate_second_sequence():
         arrival_rate=0.8,
         service_rate=1.3,
         pitch_set=list(chord_set),
-        seed=515,
+        seed=487526842,
     )
     return pang.Sequence(
         sound_points_generator=sound_points_generator, sequence_duration=20
@@ -46,7 +46,7 @@ def generate_third_sequence():
         arrival_rate=0.5,
         service_rate=1.0,
         pitch_set=list(chord_set),
-        seed=6187,
+        seed=518757852,
     )
     return pang.Sequence(
         sound_points_generator=sound_points_generator, sequence_duration=20

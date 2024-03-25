@@ -114,20 +114,6 @@ def make_chord_from_stacked_intervals(intervals, start_pitch):
     return tuple(np.cumsum(interval_list) + start_pitch)
 
 
-def _maybe_omit_tuplet(leaf):
-    parentage = abjad.get.parentage(leaf)
-    if len(parentage) > 2 and any(
-        isinstance(parent, abjad.Tuplet) for parent in parentage[2:]
-    ):
-        raise TypeError(parentage)
-    if isinstance(parentage[1], abjad.Tuplet):
-        omit_indicator = abjad.LilyPondLiteral(
-            r"\once\omit TupletNumber \once\omit TupletBracket",
-            site="before",
-        )
-        abjad.attach(omit_indicator, leaf)
-
-
 def _maybe_adjust_tie_direction(leaf, direction):
     tie = abjad.get.indicator(leaf, abjad.Tie)
     if tie:
@@ -182,7 +168,6 @@ def _tidy_up_one_leaf_in_the_follower_voice(leaf):
             else:
                 leaf.written_pitches = pitches
                 _make_leaf_cross_staff(leaf)
-                _maybe_omit_tuplet(leaf)
                 _maybe_adjust_tie_direction(leaf, abjad.DOWN)
         case _:
             raise TypeError(leaf)
@@ -196,6 +181,11 @@ def distribute_chords_across_two_voices(score, source_scope, target_scope):
     current_staff_name = PIANO_TREBLE_STAFF_NAME
     auto_beam_off_indicator = abjad.LilyPondLiteral(r"\autoBeamOff", site="before")
     abjad.attach(auto_beam_off_indicator, target[0])
+    omit_indicator = abjad.LilyPondLiteral(
+        r"\omit TupletNumber \omit TupletBracket",
+        site="before",
+    )
+    abjad.attach(omit_indicator, target[0])
     for leaf in abjad.iterate.leaves(target):
         _tidy_up_one_leaf_in_the_follower_voice(leaf)
     for leaf in abjad.iterate.leaves(source):
