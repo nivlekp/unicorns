@@ -120,7 +120,7 @@ def _maybe_omit_tuplet(leaf):
         isinstance(parent, abjad.Tuplet) for parent in parentage[2:]
     ):
         raise TypeError(parentage)
-    if isinstance(parentage[0], abjad.Tuplet):
+    if isinstance(parentage[1], abjad.Tuplet):
         omit_indicator = abjad.LilyPondLiteral(
             r"\once\omit TupletNumber \once\omit TupletBracket",
             site="before",

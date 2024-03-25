@@ -385,6 +385,7 @@
                 {
                     \times 4/5
                     {
+                        \once\omit TupletNumber \once\omit TupletBracket
                         \voiceOne \crossStaff
                         <bf, f>16
                         s8
@@ -415,6 +416,7 @@
                     s2.
                     \times 4/5
                     {
+                        \once\omit TupletNumber \once\omit TupletBracket
                         \voiceOne \crossStaff
                         <fs>16
                         s8
