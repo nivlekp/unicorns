@@ -6,14 +6,16 @@ import abjad
 import numpy as np
 import pang
 
-MAXIMUM_SPAN = 10
+MAXIMUM_SPAN = 30
 
 ALL_INTERVAL_TETRACHORD_0146 = (0, 1, 4, 6)
 ALL_INTERVAL_TETRACHORD_0137 = (0, 1, 3, 7)
+ALL_INTERVAL_CHORD_INTERVALS = (10, 5, 8, 9, 11, 6, 1, 3, 4, 7, 2)
 THIRD_MODE_OF_LIMITED_TRANSPOSITION = (0, 2, 3, 4, 6, 7, 8, 10, 11)
 
 
 PIANO_MUSIC_VOICE_0_NAME = "Piano.Music.0"
+PIANO_MUSIC_VOICE_0_FOLLOWER_NAME = "Piano.Music.Follower.0"
 PIANO_MUSIC_VOICE_1_NAME = "Piano.Music.1"
 PIANO_TREBLE_STAFF_NAME = "Piano_Treble_Staff"
 PIANO_BASS_STAFF_NAME = "Piano_Bass_Staff"
@@ -25,15 +27,18 @@ def make_empty_score():
     """
     >>> from unicorns import library
     >>> library.make_empty_score()
-    Score('{ { { } } { { } } }', name='Score', simultaneous=True)
+    Score('{ { { } } { { } { } } }', name='Score', simultaneous=True)
     """
     piano_music_voice_0 = abjad.Voice(name=PIANO_MUSIC_VOICE_0_NAME)
     piano_music_voice_1 = abjad.Voice(name=PIANO_MUSIC_VOICE_1_NAME)
+    piano_music_voice_0_follower = abjad.Voice(name=PIANO_MUSIC_VOICE_0_FOLLOWER_NAME)
     piano_music_treble_staff = abjad.Staff(
         [piano_music_voice_0], name=PIANO_TREBLE_STAFF_NAME
     )
     piano_music_bass_staff = abjad.Staff(
-        [piano_music_voice_1], name=PIANO_BASS_STAFF_NAME, simultaneous=True
+        [piano_music_voice_0_follower, piano_music_voice_1],
+        name=PIANO_BASS_STAFF_NAME,
+        simultaneous=True,
     )
     piano_music_staff = abjad.StaffGroup(
         lilypond_type="PianoStaff", name=PIANO_STAFF_NAME
@@ -80,8 +85,8 @@ def move_music_ily_from_segment_directory_to_build_directory(segment_name):
     shutil.copy(music_ily_path, target_path)
 
 
-def is_reachable_span(pitch_tuple) -> bool:
-    return max(pitch_tuple) - min(pitch_tuple) < MAXIMUM_SPAN
+def is_reachable_span(pitch_tuple, span=MAXIMUM_SPAN) -> bool:
+    return max(pitch_tuple) - min(pitch_tuple) < span
 
 
 def single_pitch_list_to_chord_set(
@@ -94,6 +99,99 @@ def single_pitch_list_to_chord_set(
         chords.extend(list(combinations))
     chords = filter(filter_function, chords)
     return set(chords)
+
+
+def make_chord_from_stacked_intervals(intervals, start_pitch):
+    """
+    >>> from unicorns import library
+    >>> chord = library.make_chord_from_stacked_intervals(
+    ...     library.ALL_INTERVAL_CHORD_INTERVALS, -30
+    ... )
+    >>> abjad.Chord(chord, (1, 1))
+    Chord("<fs,, e, a, f d' cs'' g'' af'' b'' ef''' bf''' c''''>1")
+    """
+    interval_list = [0] + list(intervals)
+    return tuple(np.cumsum(interval_list) + start_pitch)
+
+
+def _maybe_adjust_tie_direction(leaf, direction):
+    tie = abjad.get.indicator(leaf, abjad.Tie)
+    if tie:
+        abjad.detach(abjad.Tie, leaf)
+        abjad.attach(abjad.Tie(), leaf, direction=direction)
+
+
+def _make_leaf_cross_staff(leaf):
+    # TODO: attaching \voiceOne before \crossStaff is necessary for some reason
+    # for the leaf to actually cross the staff, but attaching \voiceOne this
+    # way seems to make abjad unable to get the effective voice number
+    # correctly. Should look into a way to attach \voiceOne using
+    # abjad.VoiceNumber(n=1) before \crossStaff
+    cross_staff_indicator = abjad.LilyPondLiteral(
+        [r"\voiceOne", r"\crossStaff"], site="before"
+    )
+    abjad.attach(cross_staff_indicator, leaf)
+
+
+def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
+    match leaf:
+        case abjad.Rest():
+            pass
+        case abjad.Chord():
+            pitches = [pitch for pitch in leaf.written_pitches if pitch >= 0]
+            if not pitches:
+                if current_staff_name != PIANO_BASS_STAFF_NAME:
+                    current_staff_name = PIANO_BASS_STAFF_NAME
+                    staff_change = abjad.StaffChange(current_staff_name)
+                    abjad.attach(staff_change, leaf)
+            else:
+                if current_staff_name != PIANO_TREBLE_STAFF_NAME:
+                    current_staff_name = PIANO_TREBLE_STAFF_NAME
+                    staff_change = abjad.StaffChange(current_staff_name)
+                    abjad.attach(staff_change, leaf)
+                abjad.override(leaf).Stem.direction = "#up"
+                leaf.written_pitches = pitches
+        case _:
+            raise TypeError(leaf)
+    return current_staff_name
+
+
+def _tidy_up_one_leaf_in_the_follower_voice(leaf):
+    match leaf:
+        case abjad.Rest():
+            abjad.mutate.replace(leaf, abjad.Skip(leaf))
+        case abjad.Chord():
+            pitches = tuple(pitch for pitch in leaf.written_pitches if pitch < 0)
+            if not pitches or pitches == leaf.written_pitches:
+                abjad.detach(abjad.Tie, leaf)
+                abjad.mutate.replace(leaf, abjad.Skip(leaf))
+            else:
+                leaf.written_pitches = pitches
+                _make_leaf_cross_staff(leaf)
+                _maybe_adjust_tie_direction(leaf, abjad.DOWN)
+        case _:
+            raise TypeError(leaf)
+
+
+def distribute_chords_across_two_voices(score, source_scope, target_scope):
+    source = score[source_scope.voice_name]
+    target = score[target_scope.voice_name]
+    copy = abjad.mutate.copy(source)
+    target.extend(copy)
+    current_staff_name = PIANO_TREBLE_STAFF_NAME
+    auto_beam_off_indicator = abjad.LilyPondLiteral(r"\autoBeamOff", site="before")
+    abjad.attach(auto_beam_off_indicator, target[0])
+    omit_indicator = abjad.LilyPondLiteral(
+        r"\omit TupletNumber \omit TupletBracket",
+        site="before",
+    )
+    abjad.attach(omit_indicator, target[0])
+    for leaf in abjad.iterate.leaves(target):
+        _tidy_up_one_leaf_in_the_follower_voice(leaf)
+    for leaf in abjad.iterate.leaves(source):
+        current_staff_name = _tidy_up_one_leaf_in_the_leading_voice(
+            leaf, current_staff_name
+        )
 
 
 class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):

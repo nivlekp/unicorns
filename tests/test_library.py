@@ -11,7 +11,9 @@ def test_converting_pitch_list_to_chord_set():
 
 def test_converting_pitch_list_to_chord_set_excludes_wide_span():
     pitch_list = [0, 1, 20, 21]
-    chord_set = library.single_pitch_list_to_chord_set(pitch_list)
+    chord_set = library.single_pitch_list_to_chord_set(
+        pitch_list, lambda x: library.is_reachable_span(x, 10)
+    )
     assert chord_set == {(0, 1), (20, 21)}
 
 
@@ -19,6 +21,13 @@ def test_converting_pitch_list_to_chord_set_can_generate_tetrachord():
     pitch_list = [0, 1, 2, 3]
     chord_set = library.single_pitch_list_to_chord_set(pitch_list, numbers_of_notes=[4])
     assert chord_set == {(0, 1, 2, 3)}
+
+
+def test_making_chord_from_stacked_intervals():
+    chord = library.make_chord_from_stacked_intervals(
+        library.ALL_INTERVAL_CHORD_INTERVALS, -30
+    )
+    assert chord == (-30, -20, -15, -7, 2, 13, 19, 20, 23, 27, 34, 36)
 
 
 def test_bimodal_sound_points_generator():
