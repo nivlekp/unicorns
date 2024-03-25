@@ -114,6 +114,19 @@ def make_chord_from_stacked_intervals(intervals, start_pitch):
     return tuple(np.cumsum(interval_list) + start_pitch)
 
 
+def _modify_pitches_of_a_chord(leaf, pitches):
+    assert isinstance(leaf, abjad.Chord), leaf
+    assert pitches
+    if len(pitches) == 1:
+        new_leaf = abjad.Note(leaf)
+        new_leaf.written_pitch = pitches[0]
+        abjad.mutate.replace(leaf, new_leaf)
+        leaf = new_leaf
+    else:
+        leaf.written_pitches = pitches
+    return leaf
+
+
 def _maybe_adjust_tie_direction(leaf, direction):
     tie = abjad.get.indicator(leaf, abjad.Tie)
     if tie:
@@ -122,14 +135,14 @@ def _maybe_adjust_tie_direction(leaf, direction):
 
 
 def _make_leaf_cross_staff(leaf):
+    cross_staff_indicator = abjad.LilyPondLiteral(
+        [r"\voiceOne", r"\crossStaff"], site="before"
+    )
     # TODO: attaching \voiceOne before \crossStaff is necessary for some reason
     # for the leaf to actually cross the staff, but attaching \voiceOne this
     # way seems to make abjad unable to get the effective voice number
     # correctly. Should look into a way to attach \voiceOne using
     # abjad.VoiceNumber(n=1) before \crossStaff
-    cross_staff_indicator = abjad.LilyPondLiteral(
-        [r"\voiceOne", r"\crossStaff"], site="before"
-    )
     abjad.attach(cross_staff_indicator, leaf)
 
 
@@ -150,7 +163,7 @@ def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
                     staff_change = abjad.StaffChange(current_staff_name)
                     abjad.attach(staff_change, leaf)
                 abjad.override(leaf).Stem.direction = "#up"
-                leaf.written_pitches = pitches
+                _modify_pitches_of_a_chord(leaf, pitches)
         case _:
             raise TypeError(leaf)
     return current_staff_name
@@ -166,7 +179,7 @@ def _tidy_up_one_leaf_in_the_follower_voice(leaf):
                 abjad.detach(abjad.Tie, leaf)
                 abjad.mutate.replace(leaf, abjad.Skip(leaf))
             else:
-                leaf.written_pitches = pitches
+                leaf = _modify_pitches_of_a_chord(leaf, pitches)
                 _make_leaf_cross_staff(leaf)
                 _maybe_adjust_tie_direction(leaf, abjad.DOWN)
         case _:

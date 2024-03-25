@@ -92,16 +92,16 @@
                         \once \override Stem.direction = #up
                         <d' af''>8
                         \once \override Stem.direction = #up
-                        <d'>16
+                        d'16
                         ~
                         \once \override Stem.direction = #up
-                        <d'>8
+                        d'8
                         ~
                     }
                 }
                 {
                     \once \override Stem.direction = #up
-                    <d'>8.
+                    d'8.
                     \change Staff = Piano_Bass_Staff
                     <fs,, af,, bf,>16
                     ~
@@ -118,7 +118,7 @@
                 {
                     \change Staff = Piano_Treble_Staff
                     \once \override Stem.direction = #up
-                    <e'>16
+                    e'16
                     \change Staff = Piano_Bass_Staff
                     <af,, b, f>8.
                     ~
@@ -138,7 +138,7 @@
                         <fs,, g, b,>8
                         \change Staff = Piano_Treble_Staff
                         \once \override Stem.direction = #up
-                        <e'>16
+                        e'16
                         \change Staff = Piano_Bass_Staff
                         <fs,, ef,>8
                         ~
@@ -179,7 +179,7 @@
                         \once \override Stem.direction = #up
                         <e' a'' d'''>8.
                         \once \override Stem.direction = #up
-                        <e'>8
+                        e'8
                         ~
                     }
                 }
@@ -187,16 +187,16 @@
                     \times 4/5
                     {
                         \once \override Stem.direction = #up
-                        <e'>8
+                        e'8
                         \once \override Stem.direction = #up
-                        <cs''>16
+                        cs''16
                         r8
                     }
                     \times 4/5
                     {
                         r8.
                         \once \override Stem.direction = #up
-                        <e'>8
+                        e'8
                     }
                     \change Staff = Piano_Bass_Staff
                     <af,, g,>4
@@ -230,21 +230,21 @@
                         \once \override Stem.direction = #up
                         <ef'' e'''>8
                         \once \override Stem.direction = #up
-                        <bf''>4
+                        bf''4
                         ~
                     }
                     \once \override Stem.direction = #up
-                    <bf''>2
+                    bf''2
                     ~
                 }
                 {
                     \once \override Stem.direction = #up
-                    <bf''>2.
+                    bf''2.
                     ~
                     \times 2/3
                     {
                         \once \override Stem.direction = #up
-                        <bf''>4
+                        bf''4
                         \once \override Stem.direction = #up
                         <ef'' fs'' ef'''>8
                         ~
@@ -266,7 +266,7 @@
                     {
                         r4
                         \once \override Stem.direction = #up
-                        <bf''>8
+                        bf''8
                     }
                 }
                 {
@@ -348,13 +348,13 @@
                     s8.
                     \voiceOne
                     \crossStaff
-                    <f>16
+                    f16
                     _ ~
                     \times 4/5
                     {
                         \voiceOne
                         \crossStaff
-                        <f>8.
+                        f8.
                         s8
                     }
                     \times 4/5
@@ -371,18 +371,18 @@
                         s8
                         \voiceOne
                         \crossStaff
-                        <f>16
+                        f16
                         _ ~
                         \voiceOne
                         \crossStaff
-                        <f>8
+                        f8
                         _ ~
                     }
                 }
                 {
                     \voiceOne
                     \crossStaff
-                    <f>8.
+                    f8.
                     s16
                     \times 4/5
                     {
@@ -487,24 +487,24 @@
                         s8
                         \voiceOne
                         \crossStaff
-                        <fs>4
+                        fs4
                         _ ~
                     }
                     \voiceOne
                     \crossStaff
-                    <fs>2
+                    fs2
                     _ ~
                 }
                 {
                     \voiceOne
                     \crossStaff
-                    <fs>2.
+                    fs2.
                     _ ~
                     \times 2/3
                     {
                         \voiceOne
                         \crossStaff
-                        <fs>4
+                        fs4
                         s8
                     }
                 }
