@@ -31,9 +31,7 @@
                     }
                     \times 4/5
                     {
-                        \change Staff = Piano_Treble_Staff
                         c'16
-                        \change Staff = Piano_Bass_Staff
                         f16
                         r16
                         a,16
@@ -103,9 +101,7 @@
                     g16
                     af16
                     b,,16
-                    \change Staff = Piano_Treble_Staff
                     c'16
-                    \change Staff = Piano_Bass_Staff
                     e16
                     ~
                     e16

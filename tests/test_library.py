@@ -1,3 +1,4 @@
+import abjad
 import numpy as np
 
 from unicorns import library
@@ -28,6 +29,21 @@ def test_making_chord_from_stacked_intervals():
         library.ALL_INTERVAL_CHORD_INTERVALS, -30
     )
     assert chord == (-30, -20, -15, -7, 2, 13, 19, 20, 23, 27, 34, 36)
+
+
+def test_making_treble_voice_spanning_across_two_staff():
+    voice = abjad.Voice("c'4 b4 r4 c'4 cs'4")
+    library.make_voice_spanning_across_two_staff(voice)
+    staff_change_indicators = [
+        abjad.get.indicator(leaf, abjad.StaffChange) for leaf in voice
+    ]
+    assert staff_change_indicators == [
+        None,
+        abjad.StaffChange(library.PIANO_BASS_STAFF_NAME),
+        None,
+        None,
+        abjad.StaffChange(library.PIANO_TREBLE_STAFF_NAME),
+    ]
 
 
 def test_bimodal_sound_points_generator():
