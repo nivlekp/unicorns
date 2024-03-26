@@ -77,7 +77,9 @@ def main():
         grace_handler=grace_handler,
     )
     metadata = pang.build.section(score, scope, command)
-    library.make_empty_left_hand(score, scope)
+    library.fill_bass_voice_with_skips(
+        score[scope.voice_name], score[library.PIANO_MUSIC_VOICE_1_NAME]
+    )
     library.distribute_chords_across_two_voices(
         score, scope, pang.Scope(voice_name=library.PIANO_MUSIC_VOICE_0_FOLLOWER_NAME)
     )

@@ -62,7 +62,9 @@ def main():
         grace_handler=grace_handler,
     )
     metadata = pang.build.section(score, scope, command)
-    library.make_empty_left_hand(score, scope)
+    library.fill_bass_voice_with_skips(
+        score[scope.voice_name], score[library.PIANO_MUSIC_VOICE_1_NAME]
+    )
     library.make_voice_spanning_across_two_staff(score[scope.voice_name])
     pang.build.persist(score, metadata)
     library.move_music_ily_from_segment_directory_to_build_directory("a")

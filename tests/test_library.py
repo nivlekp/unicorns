@@ -24,6 +24,22 @@ def test_converting_pitch_list_to_chord_set_can_generate_tetrachord():
     assert chord_set == {(0, 1, 2, 3)}
 
 
+def test_filling_bass_voice_with_skips():
+    reference_voice = abjad.Voice("c'4 c'4 c'4 c'4 c'4")
+    target_voice = abjad.Voice()
+    library.fill_bass_voice_with_skips(reference_voice, target_voice)
+    assert abjad.lilypond(target_voice) == abjad.string.normalize(
+        r"""
+        \new Voice
+        {
+            \clef "bass"
+            s1
+            s1
+        }
+        """
+    )
+
+
 def test_making_chord_from_stacked_intervals():
     chord = library.make_chord_from_stacked_intervals(
         library.ALL_INTERVAL_CHORD_INTERVALS, -30
