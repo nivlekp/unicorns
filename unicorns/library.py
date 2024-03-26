@@ -58,11 +58,9 @@ def make_empty_left_hand(score, reference_scope):
     abjad.attach(clef, first_leaf)
 
 
-def make_voice_spanning_across_two_staff(score, scope):
+def make_voice_spanning_across_two_staff(voice):
     current_staff_name = PIANO_TREBLE_STAFF_NAME
-    for logical_tie in abjad.iterate.logical_ties(
-        score[scope.voice_name], pitched=True
-    ):
+    for logical_tie in abjad.iterate.logical_ties(voice, pitched=True):
         if current_staff_name == PIANO_TREBLE_STAFF_NAME:
             if logical_tie.head.written_pitch < 0:
                 current_staff_name = PIANO_BASS_STAFF_NAME
