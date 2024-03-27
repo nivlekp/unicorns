@@ -48,12 +48,12 @@ def make_empty_score():
     return score
 
 
-def make_empty_left_hand(score, reference_scope):
-    last_leaf = abjad.get.leaf(score[reference_scope.voice_name], -1)
+def fill_bass_voice_with_skips(reference_voice, target_voice):
+    last_leaf = abjad.get.leaf(reference_voice, -1)
     number_of_measures = abjad.get.measure_number(last_leaf)
     string = " ".join(["s1" for _ in range(number_of_measures)])
-    score[PIANO_MUSIC_VOICE_1_NAME].extend(string)
-    first_leaf = abjad.get.leaf(score[PIANO_MUSIC_VOICE_1_NAME])
+    target_voice.extend(string)
+    first_leaf = abjad.get.leaf(target_voice)
     clef = abjad.Clef("bass")
     abjad.attach(clef, first_leaf)
 
