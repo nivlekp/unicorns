@@ -5,6 +5,8 @@ Things to explore:
 - Lines with space in between
 - High notes and low notes
 - (Semi-)regular rhythm
+  - Truncated normal distribution might be the way to go
+  - Might need scipy for this
 - pitch generation with interval depended distribution
 - dynamic generation with interval depended distribution
 - dynamics
