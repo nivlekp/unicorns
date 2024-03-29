@@ -296,7 +296,8 @@ class SemiRegularSoundPointsGenerator(pang.SoundPointsGenerator):
         durations = self._rng.exponential(
             np.reciprocal(self._service_rate), number_of_notes
         )
-        pitches = self._rng.choice(self._pitch_set, number_of_notes).tolist()
+        pitches = np.array(self._pitch_set, dtype="O")
+        pitches = self._rng.choice(pitches, number_of_notes).tolist()
         return [
             pang.SoundPoint(i, d, p)
             for i, d, p in zip(arrival_instances, durations, pitches)

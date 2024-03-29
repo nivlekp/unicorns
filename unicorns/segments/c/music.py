@@ -5,21 +5,27 @@ from abjadext import nauert
 from unicorns import library
 
 
+def generate_first_sequence():
+    sieve = abjad.Pattern(indices=library.ALL_INTERVAL_TETRACHORD_0146, period=12)
+    sieve = sieve.rotate(n=5)
+    pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-6, high=35)
+    chord_set = library.single_pitch_list_to_chord_set(pitch_set)
+    sound_points_generator = library.SemiRegularSoundPointsGenerator(
+        arrival_rate=0.7,
+        arrival_standard_deviation=0.1,
+        service_rate=1.0,
+        pitch_set=list(chord_set),
+        seed=78365876487618376458,
+    )
+    return pang.Sequence(
+        sound_points_generator=sound_points_generator, sequence_duration=20
+    )
+
+
 def main():
     score = library.make_empty_score()
     scope = pang.Scope(voice_name=library.PIANO_MUSIC_VOICE_0_NAME)
-    sieve = abjad.Pattern(indices=library.ALL_INTERVAL_TETRACHORD_0146, period=12)
-    pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=35, high=42)
-    sound_points_generator = pang.GRWSoundPointsGenerator(
-        arrival_rate=0.7,
-        service_rate=1.5,
-        pitch_set=pitch_set,
-        standard_deviation=1,
-        seed=28394,
-    )
-    sequence = pang.Sequence(
-        sound_points_generator=sound_points_generator, sequence_duration=60
-    )
+    sequence = generate_first_sequence()
     sequence.durations = [max(duration, 0.154) for duration in sequence.durations]
     search_tree = nauert.UnweightedSearchTree(
         definition={
