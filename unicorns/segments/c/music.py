@@ -11,7 +11,7 @@ def generate_first_sequence():
     pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-6, high=35)
     chord_set = library.single_pitch_list_to_chord_set(pitch_set)
     sound_points_generator = library.SemiRegularSoundPointsGenerator(
-        arrival_rate=0.7,
+        arrival_rate=0.3,
         arrival_standard_deviation=0.05,
         service_rate=1.5,
         pitch_set=list(chord_set),
@@ -22,10 +22,29 @@ def generate_first_sequence():
     )
 
 
+def generate_second_sequence():
+    sieve = abjad.Pattern(
+        indices=library.THIRD_MODE_OF_LIMITED_TRANSPOSITION, period=12
+    ).rotate(n=1)
+    pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=12, high=36)
+    sound_points_generator = library.BimodalSoundPointsGenerator(
+        arrival_rates=(4, 0.3),
+        mixing_parameter=0.9,
+        service_rate=4,
+        pitch_set=pitch_set,
+        seed=79238759283758935827957284928,
+    )
+    return pang.Sequence(
+        sound_points_generator=sound_points_generator, sequence_duration=60
+    )
+
+
 def main():
     score = library.make_empty_score()
     scope = pang.Scope(voice_name=library.PIANO_MUSIC_VOICE_0_NAME)
     sequence = generate_first_sequence()
+    another_sequence = generate_second_sequence()
+    sequence.superpose(0, another_sequence)
     sequence.durations = [max(duration, 0.154) for duration in sequence.durations]
     search_tree = nauert.UnweightedSearchTree(
         definition={
