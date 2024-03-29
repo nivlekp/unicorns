@@ -12,13 +12,13 @@ def generate_first_sequence():
     chord_set = library.single_pitch_list_to_chord_set(pitch_set)
     sound_points_generator = library.SemiRegularSoundPointsGenerator(
         arrival_rate=0.7,
-        arrival_standard_deviation=0.1,
-        service_rate=1.0,
+        arrival_standard_deviation=0.05,
+        service_rate=1.5,
         pitch_set=list(chord_set),
         seed=78365876487618376458,
     )
     return pang.Sequence(
-        sound_points_generator=sound_points_generator, sequence_duration=20
+        sound_points_generator=sound_points_generator, sequence_duration=60
     )
 
 

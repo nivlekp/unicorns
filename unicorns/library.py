@@ -317,7 +317,10 @@ class SemiRegularSoundPointsGenerator(pang.SoundPointsGenerator):
             0, self._arrival_standard_deviation, scheduled_arrival_instances.size
         )
         arrival_instances = scheduled_arrival_instances + deviations
+        arrival_instances = np.insert(arrival_instances, 0, first_arrival_instance)
         arrival_instances.sort()
+        if np.any(arrival_instances < 0):
+            raise ValueError("One of the arrival instances is negative.")
         return arrival_instances[arrival_instances < sequence_duration]
 
 
