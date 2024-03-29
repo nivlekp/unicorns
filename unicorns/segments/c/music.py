@@ -30,7 +30,7 @@ def generate_second_sequence():
     sound_points_generator = library.BimodalSoundPointsGenerator(
         arrival_rates=(4, 0.3),
         mixing_parameter=0.9,
-        service_rate=4,
+        service_rate=3,
         pitch_set=pitch_set,
         seed=79238759283758935827957284928,
     )
