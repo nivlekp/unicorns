@@ -271,6 +271,55 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
         return self._rng.random() * mode
 
 
+class SemiRegularSoundPointsGenerator(pang.SoundPointsGenerator):
+    """
+    Generates Sound Points with a semi-regular arrival instances
+    """
+
+    def __init__(
+        self,
+        arrival_rate,
+        arrival_standard_deviation,
+        service_rate,
+        pitch_set,
+        seed,
+    ):
+        self._arrival_rate = arrival_rate
+        self._arrival_standard_deviation = arrival_standard_deviation
+        self._service_rate = service_rate
+        self._pitch_set = pitch_set
+        self._rng = np.random.default_rng(seed)
+
+    def __call__(self, sequence_duration):
+        arrival_instances = self._generate_arrival_instances(sequence_duration)
+        number_of_notes = len(arrival_instances)
+        durations = self._rng.exponential(
+            np.reciprocal(self._service_rate), number_of_notes
+        )
+        pitches = self._rng.choice(self._pitch_set, number_of_notes).tolist()
+        return [
+            pang.SoundPoint(i, d, p)
+            for i, d, p in zip(arrival_instances, durations, pitches)
+        ]
+
+    def _generate_arrival_instances(self, sequence_duration):
+        average_inter_arrival_duration = np.reciprocal(self._arrival_rate)
+        first_arrival_instance = self._rng.random() * average_inter_arrival_duration
+        inter_arrival_durations = (
+            np.zeros(round(np.ceil(sequence_duration * self._arrival_rate)))
+            + average_inter_arrival_duration
+        )
+        scheduled_arrival_instances = (
+            np.cumsum(inter_arrival_durations) + first_arrival_instance
+        )
+        deviations = self._rng.normal(
+            0, self._arrival_standard_deviation, scheduled_arrival_instances.size
+        )
+        arrival_instances = scheduled_arrival_instances + deviations
+        arrival_instances.sort()
+        return arrival_instances[arrival_instances < sequence_duration]
+
+
 class TruncatedNormalSoundPointsGenerator(pang.SoundPointsGenerator):
     """
     Generates Sound Points with an arrival rate that has a truncated normal
