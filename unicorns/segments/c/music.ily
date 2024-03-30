@@ -12,6 +12,7 @@
                     \tempo 4=78
                     \time 4/4
                     r2.
+                    \once \override Stem.direction = #up
                     <a' a'' b''>8
                     r16
                     a'''16
@@ -52,11 +53,13 @@
                     }
                     af'''16
                     g'''16
-                    <fs b''>8
+                    \once \override Stem.direction = #up
+                    b''8
                     ~
                 }
                 {
-                    <fs b''>4
+                    \once \override Stem.direction = #up
+                    b''4
                     \times 2/3
                     {
                         e'''8
@@ -77,15 +80,19 @@
                     {
                         e'''8
                         a'''16
+                        \once \override Stem.direction = #up
                         <a' fs''>8
                         ~
                     }
                     \times 4/5
                     {
+                        \once \override Stem.direction = #up
                         <a' fs''>16
-                        <fs f' fs''>8
+                        \once \override Stem.direction = #up
+                        <f' fs''>8
                         ~
-                        <fs f' fs''>8
+                        \once \override Stem.direction = #up
+                        <f' fs''>8
                     }
                     \times 2/3
                     {
@@ -123,7 +130,8 @@
                         a''8
                     }
                     af''16
-                    <b a' fs''>16
+                    \once \override Stem.direction = #up
+                    <a' fs''>16
                     g''16
                     b'''16
                     ~
@@ -168,7 +176,8 @@
                 }
                 {
                     f''16
-                    <a fs' fs''>16
+                    \once \override Stem.direction = #up
+                    <fs' fs''>16
                     af''16
                     af'''16
                     \times 4/5
@@ -200,17 +209,24 @@
                     \times 4/5
                     {
                         af''8
+                        \once \override Stem.direction = #up
                         <f' a' a''>16
                         ~
+                        \once \override Stem.direction = #up
                         <f' a' a''>8
                         ~
                     }
+                    \once \override Stem.direction = #up
                     <f' a' a''>16
+                    \once \override Stem.direction = #up
                     <b' f'' a'''>8.
                     ~
+                    \once \override Stem.direction = #up
                     <b' f'' a'''>8
+                    \once \override Stem.direction = #up
                     <b'' fs''' a'''>8
                     ~
+                    \once \override Stem.direction = #up
                     <b'' fs''' a'''>8
                     g''8
                 }
@@ -232,8 +248,10 @@
                     \times 4/5
                     {
                         g'''8
+                        \once \override Stem.direction = #up
                         <b' b'' fs'''>16
                         ~
+                        \once \override Stem.direction = #up
                         <b' b'' fs'''>8
                     }
                     a''16
@@ -253,8 +271,10 @@
                     {
                         r16
                         af'''16
+                        \once \override Stem.direction = #up
                         <a'' fs''' a'''>16
                         ~
+                        \once \override Stem.direction = #up
                         <a'' fs''' a'''>16
                         af'''16
                         ~
@@ -277,6 +297,7 @@
                         b'''16
                     }
                     r8.
+                    \once \override Stem.direction = #up
                     <f'' fs''>16
                     r4
                 }
@@ -289,6 +310,7 @@
                     r8
                     r8.
                     af'''16
+                    \change Staff = Piano_Bass_Staff
                     <fs a b>4
                     ~
                 }
@@ -300,6 +322,7 @@
                         <fs a b>8.
                         ~
                         <fs a b>16
+                        \change Staff = Piano_Treble_Staff
                         g'''16
                     }
                     b''8
@@ -307,8 +330,10 @@
                 }
                 {
                     cs'''16
+                    \once \override Stem.direction = #up
                     <a' fs'' b''>16
                     ~
+                    \once \override Stem.direction = #up
                     <a' fs'' b''>16
                     ef''16
                     r16
@@ -327,6 +352,7 @@
                     \times 4/5
                     {
                         af'''16
+                        \once \override Stem.direction = #up
                         <b' fs''' a'''>16
                         e''16
                         ~
@@ -373,13 +399,16 @@
                         af''8.
                         ~
                         af''16
+                        \once \override Stem.direction = #up
                         <f'' a'' f'''>16
                         ~
                     }
                     \times 4/5
                     {
+                        \once \override Stem.direction = #up
                         <f'' a'' f'''>8.
                         ~
+                        \once \override Stem.direction = #up
                         <f'' a'' f'''>16
                         cs'''16
                         ~
@@ -413,10 +442,12 @@
                     g'''4
                     ~
                     g'''8
+                    \once \override Stem.direction = #up
                     <a'' b'' fs'''>8
                     ~
                     \times 4/5
                     {
+                        \once \override Stem.direction = #up
                         <a'' b'' fs'''>8
                         e'''16
                         b'''16
@@ -444,12 +475,14 @@
                         ef''16
                         a'''16
                         e''16
-                        <a fs' f''>8
+                        \once \override Stem.direction = #up
+                        <fs' f''>8
                         ~
                     }
                     \times 4/5
                     {
-                        <a fs' f''>8.
+                        \once \override Stem.direction = #up
+                        <fs' f''>8.
                         b''8
                         ~
                     }
@@ -474,6 +507,426 @@
         <<
             \context Voice = "Piano.Music.Follower.0"
             {
+                \autoBeamOff
+                \omit TupletNumber \omit TupletBracket
+                {
+                    \tempo 4=78
+                    \time 4/4
+                    s2.
+                    s8
+                    s16
+                    s16
+                }
+                {
+                    \times 4/5
+                    {
+                        s16
+                        s8
+                        s8
+                    }
+                    s4
+                    s4
+                    \times 4/5
+                    {
+                        s8.
+                        s16
+                        s16
+                    }
+                }
+                {
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s8
+                    }
+                    s4
+                    \times 4/5
+                    {
+                        s8.
+                        s8
+                    }
+                    s16
+                    s16
+                    \voiceOne
+                    \crossStaff
+                    fs8
+                    _ ~
+                }
+                {
+                    \voiceOne
+                    \crossStaff
+                    fs4
+                    \times 2/3
+                    {
+                        s8
+                        s8
+                        s8
+                    }
+                    \times 2/3
+                    {
+                        s4
+                        s8
+                    }
+                    s8
+                    s8
+                }
+                {
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s8
+                    }
+                    \times 4/5
+                    {
+                        s16
+                        \voiceOne
+                        \crossStaff
+                        fs8
+                        _ ~
+                        \voiceOne
+                        \crossStaff
+                        fs8
+                    }
+                    \times 2/3
+                    {
+                        s4
+                        s8
+                    }
+                    \times 4/5
+                    {
+                        s8.
+                        s16
+                        s16
+                    }
+                }
+                {
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s8
+                    }
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s16
+                        s16
+                    }
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s8
+                    }
+                    s16
+                    \voiceOne
+                    \crossStaff
+                    b16
+                    s16
+                    s16
+                }
+                {
+                    s4
+                    s8
+                    s16
+                    s16
+                    s8
+                    s8
+                    s4
+                }
+                {
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s16
+                        s16
+                    }
+                    \times 4/5
+                    {
+                        s16
+                        s16
+                        s16
+                        s16
+                        s16
+                    }
+                    s16
+                    s16
+                    s16
+                    s16
+                    s16
+                    s8.
+                }
+                {
+                    s16
+                    \voiceOne
+                    \crossStaff
+                    a16
+                    s16
+                    s16
+                    \times 4/5
+                    {
+                        s16
+                        s8
+                        s16
+                        s16
+                    }
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s8
+                    }
+                    \times 4/5
+                    {
+                        s16
+                        s16
+                        s16
+                        s16
+                        s16
+                    }
+                }
+                {
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s8
+                    }
+                    s16
+                    s8.
+                    s8
+                    s8
+                    s8
+                    s8
+                }
+                {
+                    \times 4/5
+                    {
+                        s16
+                        s8
+                        s16
+                        s16
+                    }
+                    \times 4/5
+                    {
+                        s8.
+                        s8
+                    }
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s8
+                    }
+                    s16
+                    s16
+                    s8
+                }
+                {
+                    \times 4/5
+                    {
+                        s8.
+                        s16
+                        s16
+                    }
+                    s16
+                    s8.
+                    \times 4/5
+                    {
+                        s16
+                        s16
+                        s16
+                        s16
+                        s16
+                    }
+                    s16
+                    s8.
+                }
+                {
+                    \times 2/3
+                    {
+                        s8
+                        s4
+                    }
+                    \times 4/5
+                    {
+                        s16
+                        s8
+                        s16
+                        s16
+                    }
+                    s8.
+                    s16
+                    s4
+                }
+                {
+                    s16
+                    s8.
+                    s16
+                    s16
+                    s8
+                    s8.
+                    s16
+                    s4
+                }
+                {
+                    s2
+                    \times 4/5
+                    {
+                        s8.
+                        s16
+                        s16
+                    }
+                    s8
+                    s8
+                }
+                {
+                    s16
+                    s16
+                    s16
+                    s16
+                    s16
+                    s16
+                    s8
+                    \times 4/5
+                    {
+                        s8.
+                        s16
+                        s16
+                    }
+                    s4
+                }
+                {
+                    s4
+                    \times 4/5
+                    {
+                        s16
+                        s16
+                        s16
+                        s8
+                    }
+                    \times 4/5
+                    {
+                        s8.
+                        s16
+                        s16
+                    }
+                    s4
+                }
+                {
+                    \times 4/5
+                    {
+                        s16
+                        s8
+                        s8
+                    }
+                    s16
+                    s16
+                    s8
+                    s16
+                    s16
+                    s16
+                    s16
+                    s8
+                    s8
+                }
+                {
+                    s4
+                    \times 4/5
+                    {
+                        s8.
+                        s16
+                        s16
+                    }
+                    \times 4/5
+                    {
+                        s8.
+                        s16
+                        s16
+                    }
+                    s4
+                }
+                {
+                    s8.
+                    s16
+                    \times 4/5
+                    {
+                        s16
+                        s16
+                        s16
+                        s16
+                        s16
+                    }
+                    s4
+                    \times 4/5
+                    {
+                        s16
+                        s16
+                        s16
+                        s16
+                        s16
+                    }
+                }
+                {
+                    s4
+                    s8
+                    s8
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s16
+                        s16
+                    }
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s8
+                    }
+                }
+                {
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s8
+                    }
+                    \times 4/5
+                    {
+                        s16
+                        s16
+                        s16
+                        \voiceOne
+                        \crossStaff
+                        a8
+                        _ ~
+                    }
+                    \times 4/5
+                    {
+                        \voiceOne
+                        \crossStaff
+                        a8.
+                        s8
+                    }
+                    s8
+                    s8
+                }
+                {
+                    s16
+                    s8.
+                    \times 4/5
+                    {
+                        s16
+                        s8
+                        s8
+                    }
+                    s2
+                }
             }
             \context Voice = "Piano.Music.1"
             {

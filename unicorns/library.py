@@ -148,6 +148,15 @@ def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
     match leaf:
         case abjad.Rest():
             pass
+        case abjad.Note():
+            if leaf.written_pitch > 0 and current_staff_name != PIANO_TREBLE_STAFF_NAME:
+                current_staff_name = PIANO_TREBLE_STAFF_NAME
+                staff_change = abjad.StaffChange(current_staff_name)
+                abjad.attach(staff_change, leaf)
+            elif leaf.written_pitch < 0 and current_staff_name != PIANO_BASS_STAFF_NAME:
+                current_staff_name = PIANO_BASS_STAFF_NAME
+                staff_change = abjad.StaffChange(current_staff_name)
+                abjad.attach(staff_change, leaf)
         case abjad.Chord():
             pitches = [pitch for pitch in leaf.written_pitches if pitch >= 0]
             if not pitches:
@@ -170,6 +179,9 @@ def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
 def _tidy_up_one_leaf_in_the_follower_voice(leaf):
     match leaf:
         case abjad.Rest():
+            abjad.mutate.replace(leaf, abjad.Skip(leaf))
+        case abjad.Note():
+            abjad.detach(abjad.Tie, leaf)
             abjad.mutate.replace(leaf, abjad.Skip(leaf))
         case abjad.Chord():
             pitches = tuple(pitch for pitch in leaf.written_pitches if pitch < 0)
