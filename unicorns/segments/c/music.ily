@@ -12,7 +12,6 @@
                     \tempo 4=78
                     \time 4/4
                     r2.
-                    \once \override Stem.direction = #up
                     <a' a'' b''>8
                     r16
                     a'''16
@@ -80,13 +79,11 @@
                     {
                         e'''8
                         a'''16
-                        \once \override Stem.direction = #up
                         <a' fs''>8
                         ~
                     }
                     \times 4/5
                     {
-                        \once \override Stem.direction = #up
                         <a' fs''>16
                         \once \override Stem.direction = #up
                         <f' fs''>8
@@ -209,24 +206,17 @@
                     \times 4/5
                     {
                         af''8
-                        \once \override Stem.direction = #up
                         <f' a' a''>16
                         ~
-                        \once \override Stem.direction = #up
                         <f' a' a''>8
                         ~
                     }
-                    \once \override Stem.direction = #up
                     <f' a' a''>16
-                    \once \override Stem.direction = #up
                     <b' f'' a'''>8.
                     ~
-                    \once \override Stem.direction = #up
                     <b' f'' a'''>8
-                    \once \override Stem.direction = #up
                     <b'' fs''' a'''>8
                     ~
-                    \once \override Stem.direction = #up
                     <b'' fs''' a'''>8
                     g''8
                 }
@@ -248,10 +238,8 @@
                     \times 4/5
                     {
                         g'''8
-                        \once \override Stem.direction = #up
                         <b' b'' fs'''>16
                         ~
-                        \once \override Stem.direction = #up
                         <b' b'' fs'''>8
                     }
                     a''16
@@ -271,10 +259,8 @@
                     {
                         r16
                         af'''16
-                        \once \override Stem.direction = #up
                         <a'' fs''' a'''>16
                         ~
-                        \once \override Stem.direction = #up
                         <a'' fs''' a'''>16
                         af'''16
                         ~
@@ -297,7 +283,6 @@
                         b'''16
                     }
                     r8.
-                    \once \override Stem.direction = #up
                     <f'' fs''>16
                     r4
                 }
@@ -330,10 +315,8 @@
                 }
                 {
                     cs'''16
-                    \once \override Stem.direction = #up
                     <a' fs'' b''>16
                     ~
-                    \once \override Stem.direction = #up
                     <a' fs'' b''>16
                     ef''16
                     r16
@@ -352,7 +335,6 @@
                     \times 4/5
                     {
                         af'''16
-                        \once \override Stem.direction = #up
                         <b' fs''' a'''>16
                         e''16
                         ~
@@ -399,16 +381,13 @@
                         af''8.
                         ~
                         af''16
-                        \once \override Stem.direction = #up
                         <f'' a'' f'''>16
                         ~
                     }
                     \times 4/5
                     {
-                        \once \override Stem.direction = #up
                         <f'' a'' f'''>8.
                         ~
-                        \once \override Stem.direction = #up
                         <f'' a'' f'''>16
                         cs'''16
                         ~
@@ -442,12 +421,10 @@
                     g'''4
                     ~
                     g'''8
-                    \once \override Stem.direction = #up
                     <a'' b'' fs'''>8
                     ~
                     \times 4/5
                     {
-                        \once \override Stem.direction = #up
                         <a'' b'' fs'''>8
                         e'''16
                         b'''16

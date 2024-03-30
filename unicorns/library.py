@@ -169,8 +169,10 @@ def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
                     current_staff_name = PIANO_TREBLE_STAFF_NAME
                     staff_change = abjad.StaffChange(current_staff_name)
                     abjad.attach(staff_change, leaf)
-                abjad.override(leaf).Stem.direction = "#up"
-                _modify_pitches_of_a_chord(leaf, pitches)
+                if len(pitches) != len(leaf.written_pitches):
+                    # some pitches are being distributed to the bass staff
+                    abjad.override(leaf).Stem.direction = "#up"
+                    _modify_pitches_of_a_chord(leaf, pitches)
         case _:
             raise TypeError(leaf)
     return current_staff_name
