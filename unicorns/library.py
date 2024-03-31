@@ -148,6 +148,15 @@ def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
     match leaf:
         case abjad.Rest():
             pass
+        case abjad.Note():
+            if leaf.written_pitch > 0 and current_staff_name != PIANO_TREBLE_STAFF_NAME:
+                current_staff_name = PIANO_TREBLE_STAFF_NAME
+                staff_change = abjad.StaffChange(current_staff_name)
+                abjad.attach(staff_change, leaf)
+            elif leaf.written_pitch < 0 and current_staff_name != PIANO_BASS_STAFF_NAME:
+                current_staff_name = PIANO_BASS_STAFF_NAME
+                staff_change = abjad.StaffChange(current_staff_name)
+                abjad.attach(staff_change, leaf)
         case abjad.Chord():
             pitches = [pitch for pitch in leaf.written_pitches if pitch >= 0]
             if not pitches:
@@ -160,8 +169,10 @@ def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
                     current_staff_name = PIANO_TREBLE_STAFF_NAME
                     staff_change = abjad.StaffChange(current_staff_name)
                     abjad.attach(staff_change, leaf)
-                abjad.override(leaf).Stem.direction = "#up"
-                _modify_pitches_of_a_chord(leaf, pitches)
+                if len(pitches) != len(leaf.written_pitches):
+                    # some pitches are being distributed to the bass staff
+                    abjad.override(leaf).Stem.direction = "#up"
+                    _modify_pitches_of_a_chord(leaf, pitches)
         case _:
             raise TypeError(leaf)
     return current_staff_name
@@ -170,6 +181,9 @@ def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
 def _tidy_up_one_leaf_in_the_follower_voice(leaf):
     match leaf:
         case abjad.Rest():
+            abjad.mutate.replace(leaf, abjad.Skip(leaf))
+        case abjad.Note():
+            abjad.detach(abjad.Tie, leaf)
             abjad.mutate.replace(leaf, abjad.Skip(leaf))
         case abjad.Chord():
             pitches = tuple(pitch for pitch in leaf.written_pitches if pitch < 0)
@@ -269,3 +283,135 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
         distribution = np.array([self._mixing_parameter, 1 - self._mixing_parameter])
         mode = self._rng.choice(modes, p=distribution)
         return self._rng.random() * mode
+
+
+class SemiRegularSoundPointsGenerator(pang.SoundPointsGenerator):
+    """
+    Generates Sound Points with a semi-regular arrival instances
+    """
+
+    def __init__(
+        self,
+        arrival_rate,
+        arrival_standard_deviation,
+        service_rate,
+        pitch_set,
+        seed,
+    ):
+        self._arrival_rate = arrival_rate
+        self._arrival_standard_deviation = arrival_standard_deviation
+        self._service_rate = service_rate
+        self._pitch_set = pitch_set
+        self._rng = np.random.default_rng(seed)
+
+    def __call__(self, sequence_duration):
+        arrival_instances = self._generate_arrival_instances(sequence_duration)
+        number_of_notes = len(arrival_instances)
+        durations = self._rng.exponential(
+            np.reciprocal(self._service_rate), number_of_notes
+        )
+        pitches = np.array(self._pitch_set, dtype="O")
+        pitches = self._rng.choice(pitches, number_of_notes).tolist()
+        return [
+            pang.SoundPoint(i, d, p)
+            for i, d, p in zip(arrival_instances, durations, pitches)
+        ]
+
+    def _generate_arrival_instances(self, sequence_duration):
+        average_inter_arrival_duration = np.reciprocal(self._arrival_rate)
+        first_arrival_instance = self._rng.random() * average_inter_arrival_duration
+        inter_arrival_durations = (
+            np.zeros(round(np.ceil(sequence_duration * self._arrival_rate)))
+            + average_inter_arrival_duration
+        )
+        scheduled_arrival_instances = (
+            np.cumsum(inter_arrival_durations) + first_arrival_instance
+        )
+        deviations = self._rng.normal(
+            0, self._arrival_standard_deviation, scheduled_arrival_instances.size
+        )
+        arrival_instances = scheduled_arrival_instances + deviations
+        arrival_instances = np.insert(arrival_instances, 0, first_arrival_instance)
+        arrival_instances.sort()
+        if np.any(arrival_instances < 0):
+            raise ValueError("One of the arrival instances is negative.")
+        return arrival_instances[arrival_instances < sequence_duration]
+
+
+class TruncatedNormalSoundPointsGenerator(pang.SoundPointsGenerator):
+    """
+    Generates Sound Points with an arrival rate that has a truncated normal
+    distribution.
+    """
+
+    def __init__(
+        self,
+        arrival_rate,
+        arrival_standard_deviation,
+        lower_deviation_bound,
+        upper_deviation_bound,
+        service_rate,
+        pitch_set,
+        seed,
+    ):
+        self._arrival_rate = arrival_rate
+        self._arrival_standard_deviation = arrival_standard_deviation
+        self._lower_deviation_bound = lower_deviation_bound
+        self._upper_deviation_bound = upper_deviation_bound
+        self._service_rate = service_rate
+        self._pitch_set = pitch_set
+        self._rng = np.random.default_rng(seed)
+
+    def __call__(self, sequence_duration):
+        arrival_instances = self._generate_arrival_instances(sequence_duration)
+        number_of_notes = len(arrival_instances)
+        durations = self._rng.exponential(
+            np.reciprocal(self._service_rate), number_of_notes
+        )
+        pitches = self._rng.choice(self._pitch_set, number_of_notes).tolist()
+        return [
+            pang.SoundPoint(i, d, p)
+            for i, d, p in zip(arrival_instances, durations, pitches)
+        ]
+
+    def _generate_arrival_instances(self, sequence_duration):
+        average_inter_arrival_duration = np.reciprocal(self._arrival_rate)
+        first_arrival_instance = self._rng.random() * average_inter_arrival_duration
+        inter_arrival_lower_bound = (
+            average_inter_arrival_duration + self._lower_deviation_bound
+        )
+        inter_arrival_upper_bound = (
+            average_inter_arrival_duration + self._upper_deviation_bound
+        )
+        estimated_number_of_instances = round(
+            sequence_duration / average_inter_arrival_duration
+        )
+        array_length = self._get_length_of_array_to_be_generated(
+            estimated_number_of_instances
+        )
+        inter_arrival_durations = self._rng.normal(
+            average_inter_arrival_duration,
+            self._arrival_standard_deviation,
+            array_length,
+        )
+        inter_arrival_durations = inter_arrival_durations[
+            (inter_arrival_durations > inter_arrival_lower_bound)
+            & (inter_arrival_durations < inter_arrival_upper_bound)
+        ]
+        arrival_instances = np.cumsum(inter_arrival_durations) + first_arrival_instance
+        return arrival_instances[arrival_instances < sequence_duration]
+
+    def _get_length_of_array_to_be_generated(self, estimated_number_of_instances):
+        integral_lower_bound = (
+            self._lower_deviation_bound / self._arrival_standard_deviation
+        )
+        integral_upper_bound = (
+            self._upper_deviation_bound / self._arrival_standard_deviation
+        )
+        x = np.linspace(integral_lower_bound, integral_upper_bound, num=100)
+        y = np.exp(-(x**2) / 2)
+        portion_of_samples_in_bound = np.trapz(y, x) / np.sqrt(2 * np.pi)
+        estimated_length_of_array = (
+            estimated_number_of_instances / portion_of_samples_in_bound
+        )
+        return round(estimated_length_of_array * 2)

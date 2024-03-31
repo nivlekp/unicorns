@@ -12,23 +12,17 @@
                     \tempo 4=78
                     \time 4/4
                     r16
-                    \once \override Stem.direction = #up
                     <cs'' b''>8.
                     ~
-                    \once \override Stem.direction = #up
                     <cs'' b''>4
                     \times 4/5
                     {
-                        \once \override Stem.direction = #up
                         <g'' af''>8.
                         ~
-                        \once \override Stem.direction = #up
                         <g'' af''>16
-                        \once \override Stem.direction = #up
                         <b'' ef'''>16
                         ~
                     }
-                    \once \override Stem.direction = #up
                     <b'' ef'''>8
                     r8
                 }
@@ -44,21 +38,16 @@
                     {
                         r16
                         \change Staff = Piano_Treble_Staff
-                        \once \override Stem.direction = #up
                         <d' g'' af''>8
                         ~
-                        \once \override Stem.direction = #up
                         <d' g'' af''>16
-                        \once \override Stem.direction = #up
                         <g'' ef'''>16
                         ~
                     }
                 }
                 {
-                    \once \override Stem.direction = #up
                     <g'' ef'''>4
                     ~
-                    \once \override Stem.direction = #up
                     <g'' ef'''>8.
                     \once \override Stem.direction = #up
                     <cs'' g''>16
@@ -67,29 +56,23 @@
                     {
                         \once \override Stem.direction = #up
                         <cs'' g''>8.
-                        \once \override Stem.direction = #up
                         <af'' c''''>8
                         ~
                     }
                     \times 4/5
                     {
-                        \once \override Stem.direction = #up
                         <af'' c''''>8.
                         ~
-                        \once \override Stem.direction = #up
                         <af'' c''''>16
-                        \once \override Stem.direction = #up
                         <d' af''>16
                         ~
                     }
                 }
                 {
-                    \once \override Stem.direction = #up
                     <d' af''>2.
                     ~
                     \times 4/5
                     {
-                        \once \override Stem.direction = #up
                         <d' af''>8
                         \once \override Stem.direction = #up
                         d'16
@@ -169,14 +152,11 @@
                 {
                     r8
                     \change Staff = Piano_Treble_Staff
-                    \once \override Stem.direction = #up
                     <e' cs''>8
                     ~
-                    \once \override Stem.direction = #up
                     <e' cs''>2
                     \times 4/5
                     {
-                        \once \override Stem.direction = #up
                         <e' a'' d'''>8.
                         \once \override Stem.direction = #up
                         e'8
@@ -210,24 +190,19 @@
                 }
                 {
                     \change Staff = Piano_Treble_Staff
-                    \once \override Stem.direction = #up
                     <bf'' ef'''>16
                     r16
                     r16
-                    \once \override Stem.direction = #up
                     <ef'' e'''>16
                     ~
-                    \once \override Stem.direction = #up
                     <ef'' e'''>2.
                     ~
                 }
                 {
-                    \once \override Stem.direction = #up
                     <ef'' e'''>4
                     ~
                     \times 2/3
                     {
-                        \once \override Stem.direction = #up
                         <ef'' e'''>8
                         \once \override Stem.direction = #up
                         bf''4
@@ -245,7 +220,6 @@
                     {
                         \once \override Stem.direction = #up
                         bf''4
-                        \once \override Stem.direction = #up
                         <ef'' fs'' ef'''>8
                         ~
                     }
@@ -253,13 +227,10 @@
                 {
                     \times 2/3
                     {
-                        \once \override Stem.direction = #up
                         <ef'' fs'' ef'''>8
-                        \once \override Stem.direction = #up
                         <bf' e'''>4
                         ~
                     }
-                    \once \override Stem.direction = #up
                     <bf' e'''>4
                     r4
                     \times 2/3
@@ -270,18 +241,14 @@
                     }
                 }
                 {
-                    \once \override Stem.direction = #up
                     <ef'' bf'' ef'''>1
                     ~
                 }
                 {
-                    \once \override Stem.direction = #up
                     <ef'' bf'' ef'''>8.
-                    \once \override Stem.direction = #up
                     <e' fs' bf''>16
                     \times 2/3
                     {
-                        \once \override Stem.direction = #up
                         <bf' bf'' ef'''>8
                         r4
                     }
@@ -291,16 +258,13 @@
                     \times 2/3
                     {
                         r8
-                        \once \override Stem.direction = #up
                         <e' ef'' bf''>4
                         ~
                     }
-                    \once \override Stem.direction = #up
                     <e' ef'' bf''>2.
                     ~
                 }
                 {
-                    \once \override Stem.direction = #up
                     <e' ef'' bf''>8
                     r8
                     r2.
