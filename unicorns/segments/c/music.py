@@ -8,8 +8,10 @@ from unicorns import library
 def generate_first_sequence():
     sieve = abjad.Pattern(indices=library.ALL_INTERVAL_TETRACHORD_0146, period=12)
     sieve = sieve.rotate(n=5)
-    pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-6, high=35)
-    chord_set = library.single_pitch_list_to_chord_set(pitch_set)
+    pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-36, high=0)
+    chord_set = library.single_pitch_list_to_chord_set(
+        pitch_set, lambda x: library.is_reachable_span(x, span=14)
+    )
     sound_points_generator = library.SemiRegularSoundPointsGenerator(
         arrival_rate=0.3,
         arrival_standard_deviation=0.05,
@@ -28,8 +30,8 @@ def generate_second_sequence():
     ).rotate(n=1)
     pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=12, high=36)
     sound_points_generator = library.BimodalSoundPointsGenerator(
-        arrival_rates=(4, 0.3),
-        mixing_parameter=0.9,
+        arrival_rates=(4, 0.2),
+        mixing_parameter=0.7,
         service_rate=3,
         pitch_set=pitch_set,
         seed=79238759283758935827957284928,
