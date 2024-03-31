@@ -5,13 +5,32 @@ from abjadext import nauert
 from unicorns import library
 
 
-def generate_first_sequence():
-    sieve = abjad.Pattern(indices=library.ALL_INTERVAL_TETRACHORD_0146, period=12)
-    sieve = sieve.rotate(n=5)
+def generate_chord_set(indices, rotation):
+    sieve = abjad.Pattern(indices=indices, period=12)
+    sieve = sieve.rotate(n=rotation)
     pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-36, high=0)
-    chord_set = library.single_pitch_list_to_chord_set(
-        pitch_set, lambda x: library.is_reachable_span(x, span=14)
+    return library.single_pitch_list_to_chord_set(
+        pitch_set,
+        lambda x: library.is_reachable_span(x, span=14),
+        numbers_of_notes=[3, 4],
     )
+
+
+def generate_some_chords():
+    indices_and_rotations = [
+        (library.ALL_INTERVAL_TETRACHORD_0146, 5),
+        (library.ALL_INTERVAL_TETRACHORD_0137, 3),
+        (library.ALL_INTERVAL_TETRACHORD_0146, 9),
+        (library.ALL_INTERVAL_TETRACHORD_0137, 7),
+    ]
+    chord_set = set()
+    for indice, rotation in indices_and_rotations:
+        chord_set = chord_set | generate_chord_set(indice, rotation)
+    return chord_set
+
+
+def generate_first_sequence():
+    chord_set = generate_some_chords()
     sound_points_generator = library.SemiRegularSoundPointsGenerator(
         arrival_rate=0.3,
         arrival_standard_deviation=0.05,
