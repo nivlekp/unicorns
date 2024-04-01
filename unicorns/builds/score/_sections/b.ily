@@ -271,6 +271,9 @@
                 }
             }
         }
+        \context Dynamics = "Dynamics"
+        {
+        }
         \context Staff = "Piano_Bass_Staff"
         <<
             \context Voice = "Piano.Music.Follower.0"
