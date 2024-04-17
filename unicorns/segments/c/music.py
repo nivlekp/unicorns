@@ -53,6 +53,7 @@ def generate_second_sequence():
         mixing_parameter=0.7,
         service_rate=3,
         pitch_set=pitch_set,
+        average_intensity=1,
         seed=79238759283758935827957284928,
     )
     return pang.Sequence(
