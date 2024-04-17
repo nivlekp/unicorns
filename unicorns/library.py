@@ -3,7 +3,6 @@ import pathlib
 import shutil
 
 import abjad
-from abjadext import nauert
 import numpy as np
 import pang
 
