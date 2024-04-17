@@ -3,6 +3,7 @@ import pathlib
 import shutil
 
 import abjad
+from abjadext import nauert
 import numpy as np
 import pang
 
@@ -222,6 +223,29 @@ def distribute_chords_across_two_voices(score, source_scope, target_scope):
         )
 
 
+def _generate_intensities(average_intensity, number_of_notes):
+    return [average_intensity for _ in range(number_of_notes)]
+
+
+def _do_dynamics_for_one_logical_tie(logical_tie, previous_intensity):
+    leaf = abjad.get.leaf(logical_tie, 0)
+    attachments = abjad.get.annotation(leaf, "q_event_attachments")
+    (current_intensity,) = attachments
+    if current_intensity != previous_intensity:
+        dynamic_name = abjad.Dynamic.dynamic_ordinal_to_dynamic_name(current_intensity)
+        dynamic = abjad.Dynamic(dynamic_name)
+        abjad.attach(dynamic, leaf)
+    return current_intensity
+
+
+def do_dynamics(voice):
+    current_intensity = None
+    for logical_tie in abjad.iterate.logical_ties(voice, pitched=True):
+        current_intensity = _do_dynamics_for_one_logical_tie(
+            logical_tie, current_intensity
+        )
+
+
 class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
     """
     Generates Sound Points with an arrival rates that has a bimodal
@@ -234,6 +258,7 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
         mixing_parameter,
         service_rate,
         pitch_set,
+        average_intensity,
         seed,
     ):
         self._arrival_rates = arrival_rates
@@ -241,6 +266,7 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
         self._mixing_parameter = mixing_parameter
         self._service_rate = service_rate
         self._pitch_set = pitch_set
+        self._average_intensity = average_intensity
         self._rng = np.random.default_rng(seed)
 
     def __call__(self, sequence_duration):
@@ -253,9 +279,12 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
         number_of_notes = len(arrival_instances)
         durations = self._generate_durations(number_of_notes)
         pitches = self._generate_pitches(number_of_notes)
+        intensities = _generate_intensities(self._average_intensity, number_of_notes)
         return [
-            pang.SoundPoint(i, d, p)
-            for i, d, p in zip(arrival_instances, durations, pitches)
+            pang.SoundPoint(instance, duration, pitch, [intensity])
+            for instance, duration, pitch, intensity in zip(
+                arrival_instances, durations, pitches, intensities
+            )
         ]
 
     def _generate_arrival_instances(self, sequence_duration):

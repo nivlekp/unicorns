@@ -15,6 +15,7 @@ def generate_first_sequence():
         mixing_parameter=0.9,
         service_rate=4,
         pitch_set=pitch_set,
+        average_intensity=2,
         seed=689977866565684684723645872638573628756265,
     )
     return pang.Sequence(
@@ -32,6 +33,7 @@ def generate_second_sequence():
         mixing_parameter=0.75,
         service_rate=3,
         pitch_set=pitch_set,
+        average_intensity=1,
         seed=26387683768276348573264596,
     )
     return pang.Sequence(
@@ -66,6 +68,7 @@ def main():
         score[scope.voice_name], score[library.PIANO_MUSIC_VOICE_1_NAME]
     )
     library.make_voice_spanning_across_two_staff(score[scope.voice_name])
+    library.do_dynamics(score[scope.voice_name])
     pang.build.persist(score, metadata)
     library.move_music_ily_from_segment_directory_to_build_directory("a")
 

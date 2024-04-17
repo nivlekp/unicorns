@@ -15,6 +15,7 @@
                         \tempo 4=78
                         \time 4/4
                         e16
+                        \f
                         r8
                         ef,16
                         cs16
@@ -366,6 +367,7 @@
                     r8
                     \change Staff = Piano_Treble_Staff
                     af''16
+                    \mf
                     r16
                     \times 4/5
                     {
