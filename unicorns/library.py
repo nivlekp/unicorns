@@ -20,6 +20,7 @@ PIANO_MUSIC_VOICE_1_NAME = "Piano.Music.1"
 PIANO_TREBLE_STAFF_NAME = "Piano_Treble_Staff"
 PIANO_BASS_STAFF_NAME = "Piano_Bass_Staff"
 PIANO_STAFF_NAME = "Piano.Staff"
+DYNAMIC_CONTEXT_NAME = "Dynamics"
 SCORE_NAME = "Score"
 
 
@@ -40,7 +41,7 @@ def make_empty_score():
         name=PIANO_BASS_STAFF_NAME,
         simultaneous=True,
     )
-    dynamics_staff = abjad.Context(lilypond_type="Dynamics", name="Dynamics")
+    dynamics_staff = abjad.Context(lilypond_type="Dynamics", name=DYNAMIC_CONTEXT_NAME)
     piano_music_staff = abjad.StaffGroup(
         lilypond_type="PianoStaff", name=PIANO_STAFF_NAME
     )
@@ -237,12 +238,17 @@ def _do_dynamics_for_one_logical_tie(logical_tie, previous_intensity):
     return current_intensity
 
 
-def do_dynamics(voice):
+def do_dynamics(reference_voice, dynamic_context):
     current_intensity = None
-    for logical_tie in abjad.iterate.logical_ties(voice, pitched=True):
+    copied_voice = abjad.mutate.copy(reference_voice)
+    dynamic_context.extend(copied_voice)
+    for logical_tie in abjad.iterate.logical_ties(dynamic_context, pitched=True):
         current_intensity = _do_dynamics_for_one_logical_tie(
             logical_tie, current_intensity
         )
+    for leaf in abjad.iterate.leaves(dynamic_context):
+        skip = abjad.Skip(leaf)
+        abjad.mutate.replace(leaf, skip)
 
 
 class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
