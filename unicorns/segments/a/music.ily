@@ -4,6 +4,465 @@
 <<
     \context PianoStaff = "Piano.Staff"
     <<
+        \context Dynamics = "Dynamics"
+        \with
+        {
+            alignAboveContext = Piano_Treble_Staff
+        }
+        {
+            {
+                \times 4/5
+                {
+                    \tempo 4=78
+                    \time 4/4
+                    s16
+                    \f
+                    s8
+                    s16
+                    s16
+                    ~
+                }
+                s8
+                s8
+                \times 4/5
+                {
+                    s8
+                    s16
+                    ~
+                    s8
+                }
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    s16
+                    s16
+                    ~
+                }
+            }
+            {
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    s16
+                    s16
+                }
+                s8.
+                s16
+                ~
+                s8.
+                s16
+                ~
+                \times 4/5
+                {
+                    s8
+                    s16
+                    s16
+                    s16
+                }
+            }
+            {
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    s16
+                    s16
+                    ~
+                }
+                s16
+                s16
+                s16
+                s16
+                s2
+            }
+            {
+                \times 2/3
+                {
+                    s8
+                    s4
+                }
+                \times 2/3
+                {
+                    s8
+                    s8
+                    s8
+                    ~
+                }
+                s16
+                s16
+                s16
+                s16
+                s16
+                s16
+                ~
+                s16
+                s16
+            }
+            {
+                s1
+            }
+            {
+                s1
+            }
+            {
+                s1
+            }
+            {
+                s1
+            }
+            {
+                s1
+            }
+            {
+                \times 4/5
+                {
+                    s16
+                    s8
+                    s8
+                }
+                s8.
+                s16
+                \times 2/3
+                {
+                    s8
+                    s4
+                    ~
+                }
+                s16
+                s16
+                s16
+                s16
+            }
+            {
+                s8.
+                s16
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    ~
+                    s16
+                    s16
+                }
+                s8.
+                s16
+                \times 4/5
+                {
+                    s16
+                    s8
+                    s8
+                }
+            }
+            {
+                s1
+            }
+            {
+                s16
+                s16
+                s8
+                ~
+                \times 4/5
+                {
+                    s16
+                    s8
+                    ~
+                    s8
+                }
+                s4
+                s16
+                s16
+                s16
+                s16
+                ~
+            }
+            {
+                \times 4/5
+                {
+                    s8
+                    s16
+                    ~
+                    s16
+                    s16
+                }
+                s8.
+                s16
+                \times 4/5
+                {
+                    s8
+                    s16
+                    s8
+                }
+                \times 2/3
+                {
+                    s4
+                    s8
+                    ~
+                }
+            }
+            {
+                \times 4/5
+                {
+                    s16
+                    s8
+                    ~
+                    s16
+                    s16
+                }
+                s16
+                s8.
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    ~
+                    s8
+                }
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    s8
+                }
+            }
+            {
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    s8
+                    ~
+                }
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    s8
+                }
+                \times 4/5
+                {
+                    s16
+                    s8
+                    s16
+                    s16
+                }
+                \times 4/5
+                {
+                    s8
+                    s16
+                    s16
+                    s16
+                    ~
+                }
+            }
+            {
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    ~
+                    s8
+                    ~
+                }
+                \times 2/3
+                {
+                    s4
+                    s8
+                }
+                s2
+            }
+            {
+                s2.
+                \times 4/5
+                {
+                    s8.
+                    s16
+                    s16
+                }
+            }
+            {
+                s16
+                s16
+                s16
+                s16
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    s16
+                    s16
+                }
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    s8
+                }
+                s4
+            }
+            {
+                s16
+                s16
+                ~
+                s16
+                s16
+                s16
+                s16
+                s16
+                s16
+                \times 4/5
+                {
+                    s8
+                    s16
+                    s8
+                }
+                s4
+            }
+            {
+                s8
+                s16
+                \mf
+                s16
+                \times 4/5
+                {
+                    s8
+                    s16
+                    s16
+                    s16
+                    ~
+                }
+                s4
+                s16
+                s8.
+                ~
+            }
+            {
+                s8.
+                s16
+                s16
+                s16
+                s16
+                s16
+                s2
+            }
+            {
+                s1
+            }
+            {
+                s4
+                s16
+                s8.
+                ~
+                \times 4/5
+                {
+                    s8
+                    s16
+                    s16
+                    s16
+                    ~
+                }
+                \times 4/5
+                {
+                    s8
+                    s16
+                    s8
+                }
+            }
+            {
+                \times 4/5
+                {
+                    s8.
+                    s8
+                    ~
+                }
+                \times 2/3
+                {
+                    s8
+                    s4
+                }
+                s4
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    s8
+                }
+            }
+            {
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    s16
+                    s16
+                    ~
+                }
+                \times 4/5
+                {
+                    s8
+                    s16
+                    s16
+                    s16
+                }
+                s8
+                s16
+                s16
+                \times 4/5
+                {
+                    s8
+                    s16
+                    s16
+                    s16
+                }
+            }
+            {
+                s8
+                s8
+                s2.
+            }
+            {
+                s1
+            }
+            {
+                s2.
+                s16
+                s16
+                s8
+                ~
+            }
+            {
+                s2
+                ~
+                s16
+                s8.
+                s8.
+                s16
+            }
+            {
+                \times 4/5
+                {
+                    s8.
+                    ~
+                    s16
+                    s16
+                }
+                s2.
+            }
+        }
         \context Staff = "Piano_Treble_Staff"
         {
             \context Voice = "Piano.Music.0"
@@ -506,461 +965,6 @@
                     }
                     r2.
                 }
-            }
-        }
-        \context Dynamics = "Dynamics"
-        {
-            {
-                \times 4/5
-                {
-                    \tempo 4=78
-                    \time 4/4
-                    s16
-                    \f
-                    s8
-                    s16
-                    s16
-                    ~
-                }
-                s8
-                s8
-                \times 4/5
-                {
-                    s8
-                    s16
-                    ~
-                    s8
-                }
-                \times 4/5
-                {
-                    s16
-                    s16
-                    s16
-                    s16
-                    s16
-                    ~
-                }
-            }
-            {
-                \times 4/5
-                {
-                    s16
-                    s16
-                    s16
-                    s16
-                    s16
-                }
-                s8.
-                s16
-                ~
-                s8.
-                s16
-                ~
-                \times 4/5
-                {
-                    s8
-                    s16
-                    s16
-                    s16
-                }
-            }
-            {
-                \times 4/5
-                {
-                    s16
-                    s16
-                    s16
-                    s16
-                    s16
-                    ~
-                }
-                s16
-                s16
-                s16
-                s16
-                s2
-            }
-            {
-                \times 2/3
-                {
-                    s8
-                    s4
-                }
-                \times 2/3
-                {
-                    s8
-                    s8
-                    s8
-                    ~
-                }
-                s16
-                s16
-                s16
-                s16
-                s16
-                s16
-                ~
-                s16
-                s16
-            }
-            {
-                s1
-            }
-            {
-                s1
-            }
-            {
-                s1
-            }
-            {
-                s1
-            }
-            {
-                s1
-            }
-            {
-                \times 4/5
-                {
-                    s16
-                    s8
-                    s8
-                }
-                s8.
-                s16
-                \times 2/3
-                {
-                    s8
-                    s4
-                    ~
-                }
-                s16
-                s16
-                s16
-                s16
-            }
-            {
-                s8.
-                s16
-                \times 4/5
-                {
-                    s16
-                    s16
-                    s16
-                    ~
-                    s16
-                    s16
-                }
-                s8.
-                s16
-                \times 4/5
-                {
-                    s16
-                    s8
-                    s8
-                }
-            }
-            {
-                s1
-            }
-            {
-                s16
-                s16
-                s8
-                ~
-                \times 4/5
-                {
-                    s16
-                    s8
-                    ~
-                    s8
-                }
-                s4
-                s16
-                s16
-                s16
-                s16
-                ~
-            }
-            {
-                \times 4/5
-                {
-                    s8
-                    s16
-                    ~
-                    s16
-                    s16
-                }
-                s8.
-                s16
-                \times 4/5
-                {
-                    s8
-                    s16
-                    s8
-                }
-                \times 2/3
-                {
-                    s4
-                    s8
-                    ~
-                }
-            }
-            {
-                \times 4/5
-                {
-                    s16
-                    s8
-                    ~
-                    s16
-                    s16
-                }
-                s16
-                s8.
-                \times 4/5
-                {
-                    s16
-                    s16
-                    s16
-                    ~
-                    s8
-                }
-                \times 4/5
-                {
-                    s16
-                    s16
-                    s16
-                    s8
-                }
-            }
-            {
-                \times 4/5
-                {
-                    s16
-                    s16
-                    s16
-                    s8
-                    ~
-                }
-                \times 4/5
-                {
-                    s16
-                    s16
-                    s16
-                    s8
-                }
-                \times 4/5
-                {
-                    s16
-                    s8
-                    s16
-                    s16
-                }
-                \times 4/5
-                {
-                    s8
-                    s16
-                    s16
-                    s16
-                    ~
-                }
-            }
-            {
-                \times 4/5
-                {
-                    s16
-                    s16
-                    s16
-                    ~
-                    s8
-                    ~
-                }
-                \times 2/3
-                {
-                    s4
-                    s8
-                }
-                s2
-            }
-            {
-                s2.
-                \times 4/5
-                {
-                    s8.
-                    s16
-                    s16
-                }
-            }
-            {
-                s16
-                s16
-                s16
-                s16
-                \times 4/5
-                {
-                    s16
-                    s16
-                    s16
-                    s16
-                    s16
-                }
-                \times 4/5
-                {
-                    s16
-                    s16
-                    s16
-                    s8
-                }
-                s4
-            }
-            {
-                s16
-                s16
-                ~
-                s16
-                s16
-                s16
-                s16
-                s16
-                s16
-                \times 4/5
-                {
-                    s8
-                    s16
-                    s8
-                }
-                s4
-            }
-            {
-                s8
-                s16
-                \mf
-                s16
-                \times 4/5
-                {
-                    s8
-                    s16
-                    s16
-                    s16
-                    ~
-                }
-                s4
-                s16
-                s8.
-                ~
-            }
-            {
-                s8.
-                s16
-                s16
-                s16
-                s16
-                s16
-                s2
-            }
-            {
-                s1
-            }
-            {
-                s4
-                s16
-                s8.
-                ~
-                \times 4/5
-                {
-                    s8
-                    s16
-                    s16
-                    s16
-                    ~
-                }
-                \times 4/5
-                {
-                    s8
-                    s16
-                    s8
-                }
-            }
-            {
-                \times 4/5
-                {
-                    s8.
-                    s8
-                    ~
-                }
-                \times 2/3
-                {
-                    s8
-                    s4
-                }
-                s4
-                \times 4/5
-                {
-                    s16
-                    s16
-                    s16
-                    s8
-                }
-            }
-            {
-                \times 4/5
-                {
-                    s16
-                    s16
-                    s16
-                    s16
-                    s16
-                    ~
-                }
-                \times 4/5
-                {
-                    s8
-                    s16
-                    s16
-                    s16
-                }
-                s8
-                s16
-                s16
-                \times 4/5
-                {
-                    s8
-                    s16
-                    s16
-                    s16
-                }
-            }
-            {
-                s8
-                s8
-                s2.
-            }
-            {
-                s1
-            }
-            {
-                s2.
-                s16
-                s16
-                s8
-                ~
-            }
-            {
-                s2
-                ~
-                s16
-                s8.
-                s8.
-                s16
-            }
-            {
-                \times 4/5
-                {
-                    s8.
-                    ~
-                    s16
-                    s16
-                }
-                s2.
             }
         }
         \context Staff = "Piano_Bass_Staff"

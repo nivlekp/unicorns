@@ -28,7 +28,7 @@ def make_empty_score():
     """
     >>> from unicorns import library
     >>> library.make_empty_score()
-    Score('{ { { } } { } { { } { } } }', name='Score', simultaneous=True)
+    Score('{ { } { { } } { { } { } } }', name='Score', simultaneous=True)
     """
     piano_music_voice_0 = abjad.Voice(name=PIANO_MUSIC_VOICE_0_NAME)
     piano_music_voice_1 = abjad.Voice(name=PIANO_MUSIC_VOICE_1_NAME)
@@ -42,11 +42,12 @@ def make_empty_score():
         simultaneous=True,
     )
     dynamics_staff = abjad.Context(lilypond_type="Dynamics", name=DYNAMIC_CONTEXT_NAME)
+    abjad.setting(dynamics_staff).align_above_context = PIANO_TREBLE_STAFF_NAME
     piano_music_staff = abjad.StaffGroup(
         lilypond_type="PianoStaff", name=PIANO_STAFF_NAME
     )
     piano_music_staff.extend(
-        [piano_music_treble_staff, dynamics_staff, piano_music_bass_staff]
+        [dynamics_staff, piano_music_treble_staff, piano_music_bass_staff]
     )
     score = abjad.Score([piano_music_staff], name=SCORE_NAME)
     return score
@@ -333,12 +334,14 @@ class SemiRegularSoundPointsGenerator(pang.SoundPointsGenerator):
         arrival_standard_deviation,
         service_rate,
         pitch_set,
+        average_intensity,
         seed,
     ):
         self._arrival_rate = arrival_rate
         self._arrival_standard_deviation = arrival_standard_deviation
         self._service_rate = service_rate
         self._pitch_set = pitch_set
+        self._average_intensity = average_intensity
         self._rng = np.random.default_rng(seed)
 
     def __call__(self, sequence_duration):
@@ -349,9 +352,12 @@ class SemiRegularSoundPointsGenerator(pang.SoundPointsGenerator):
         )
         pitches = np.array(self._pitch_set, dtype="O")
         pitches = self._rng.choice(pitches, number_of_notes).tolist()
+        intensities = _generate_intensities(self._average_intensity, number_of_notes)
         return [
-            pang.SoundPoint(i, d, p)
-            for i, d, p in zip(arrival_instances, durations, pitches)
+            pang.SoundPoint(instance, duration, pitch, [intensity])
+            for instance, duration, pitch, intensity in zip(
+                arrival_instances, durations, pitches, intensities
+            )
         ]
 
     def _generate_arrival_instances(self, sequence_duration):

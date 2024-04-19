@@ -4,6 +4,13 @@
 <<
     \context PianoStaff = "Piano.Staff"
     <<
+        \context Dynamics = "Dynamics"
+        \with
+        {
+            alignAboveContext = Piano_Treble_Staff
+        }
+        {
+        }
         \context Staff = "Piano_Treble_Staff"
         {
             \context Voice = "Piano.Music.0"
@@ -270,9 +277,6 @@
                     r2.
                 }
             }
-        }
-        \context Dynamics = "Dynamics"
-        {
         }
         \context Staff = "Piano_Bass_Staff"
         <<

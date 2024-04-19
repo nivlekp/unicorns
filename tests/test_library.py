@@ -85,6 +85,7 @@ def test_semi_regular_sound_points_generator():
         arrival_standard_deviation=0.1,
         service_rate=1.0,
         pitch_set=(0, (0, 1), 4, 6),
+        average_intensity=1,
         seed=None,
     )
     sequence_duration = 10000
