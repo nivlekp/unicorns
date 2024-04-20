@@ -24,6 +24,60 @@ def test_converting_pitch_list_to_chord_set_can_generate_tetrachord():
     assert chord_set == {(0, 1, 2, 3)}
 
 
+def test_do_dynamics():
+    reference_voice = abjad.Voice(r"c'4 \times 2/3 { c'8 c'8 c'8 ~ } c'4 c'4 c'4")
+    for index, logical_tie in enumerate(
+        abjad.iterate.logical_ties(reference_voice, pitched=True)
+    ):
+        leaf = abjad.get.leaf(logical_tie, 0)
+        if index in (0, 2, 3, 4):
+            abjad.annotate(leaf, "q_event_attachments", (1,))
+        else:
+            abjad.annotate(leaf, "q_event_attachments", (2,))
+    dynamic_context = abjad.Context(lilypond_type="Dynamics")
+    library.do_dynamics(reference_voice, dynamic_context)
+    assert abjad.lilypond(reference_voice) == abjad.string.normalize(
+        r"""
+        \new Voice
+        {
+            c'4
+            \times 2/3
+            {
+                c'8
+                c'8
+                c'8
+                ~
+            }
+            c'4
+            c'4
+            c'4
+        }
+        """
+    )
+    assert abjad.lilypond(dynamic_context) == abjad.string.normalize(
+        r"""
+        \new Dynamics
+        {
+            s4
+            \mf
+            \times 2/3
+            {
+                s8
+                \f
+                s8
+                \mf
+                s8
+                ~
+            }
+            s4
+            s4
+            s4
+            \f
+        }
+        """
+    )
+
+
 def test_filling_bass_voice_with_skips():
     reference_voice = abjad.Voice("c'4 c'4 c'4 c'4 c'4")
     target_voice = abjad.Voice()
