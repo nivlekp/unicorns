@@ -10,11 +10,12 @@ def generate_first_sequence():
         library.ALL_INTERVAL_CHORD_INTERVALS, -30
     )
     chord_set = library.single_pitch_list_to_chord_set(pitch_set)
-    sound_points_generator = pang.AtaxicSoundPointsGenerator(
+    sound_points_generator = library.AtaxicSoundPointsGenerator(
         arrival_rate=1.0,
         service_rate=1.5,
         pitch_set=list(chord_set),
-        seed=515466867,
+        average_intensity=3,
+        seed=78973485515466867,
     )
     return pang.Sequence(
         sound_points_generator=sound_points_generator, sequence_duration=10
@@ -26,11 +27,12 @@ def generate_second_sequence():
         reversed(library.ALL_INTERVAL_CHORD_INTERVALS), -30
     )
     chord_set = library.single_pitch_list_to_chord_set(pitch_set)
-    sound_points_generator = pang.AtaxicSoundPointsGenerator(
+    sound_points_generator = library.AtaxicSoundPointsGenerator(
         arrival_rate=0.8,
         service_rate=1.3,
         pitch_set=list(chord_set),
-        seed=487526842,
+        average_intensity=2,
+        seed=4875268348975942,
     )
     return pang.Sequence(
         sound_points_generator=sound_points_generator, sequence_duration=20

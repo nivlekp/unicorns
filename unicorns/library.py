@@ -252,6 +252,39 @@ def do_dynamics(reference_voice, dynamic_context):
         abjad.mutate.replace(leaf, skip)
 
 
+class AtaxicSoundPointsGenerator(pang.SoundPointsGenerator):
+    """
+    Generates Sound Points. You know the drill.
+    """
+
+    def __init__(
+        self,
+        arrival_rate,
+        service_rate,
+        pitch_set,
+        average_intensity,
+        seed,
+    ):
+        self._arrival_rate = arrival_rate
+        self._service_rate = service_rate
+        self._pitch_set = np.array(pitch_set, dtype="O")
+        self._average_intensity = average_intensity
+        self._rng = np.random.default_rng(seed)
+
+    def __call__(self, sequence_duration):
+        number_of_notes = round(sequence_duration * self._arrival_rate)
+        arrival_instances = self._rng.uniform(0.0, sequence_duration, number_of_notes)
+        durations = self._rng.exponential(1 / self._service_rate, number_of_notes)
+        pitches = self._rng.choice(self._pitch_set, number_of_notes).tolist()
+        intensities = _generate_intensities(self._average_intensity, number_of_notes)
+        return [
+            pang.SoundPoint(instance, duration, pitch, [intensity])
+            for instance, duration, pitch, intensity in zip(
+                arrival_instances, durations, pitches, intensities
+            )
+        ]
+
+
 class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
     """
     Generates Sound Points with an arrival rates that has a bimodal
