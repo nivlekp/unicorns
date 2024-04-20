@@ -15,6 +15,7 @@ def generate_first_sequence():
         mixing_parameter=0.9,
         service_rate=4,
         pitch_set=pitch_set,
+        average_intensity=2,
         seed=689977866565684684723645872638573628756265,
     )
     return pang.Sequence(
@@ -32,6 +33,7 @@ def generate_second_sequence():
         mixing_parameter=0.75,
         service_rate=3,
         pitch_set=pitch_set,
+        average_intensity=1,
         seed=26387683768276348573264596,
     )
     return pang.Sequence(
@@ -62,6 +64,7 @@ def main():
         grace_handler=grace_handler,
     )
     metadata = pang.build.section(score, scope, command)
+    library.do_dynamics(score[scope.voice_name], score[library.DYNAMIC_CONTEXT_NAME])
     library.fill_bass_voice_with_skips(
         score[scope.voice_name], score[library.PIANO_MUSIC_VOICE_1_NAME]
     )

@@ -15,7 +15,7 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
              (dir (ly:grob-property grob 'direction))
              (y (if (= UP dir)
                     (max (car pos) (cdr pos))
-                    (min (car pos) (cdr pos)))))
+                    (max -20 (min (car pos) (cdr pos))))))
        (cons y y))))
 
 \header {

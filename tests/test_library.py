@@ -24,6 +24,60 @@ def test_converting_pitch_list_to_chord_set_can_generate_tetrachord():
     assert chord_set == {(0, 1, 2, 3)}
 
 
+def test_do_dynamics():
+    reference_voice = abjad.Voice(r"c'4 \times 2/3 { c'8 c'8 c'8 ~ } c'4 c'4 c'4")
+    for index, logical_tie in enumerate(
+        abjad.iterate.logical_ties(reference_voice, pitched=True)
+    ):
+        leaf = abjad.get.leaf(logical_tie, 0)
+        if index in (0, 2, 3, 4):
+            abjad.annotate(leaf, "q_event_attachments", (1,))
+        else:
+            abjad.annotate(leaf, "q_event_attachments", (2,))
+    dynamic_context = abjad.Context(lilypond_type="Dynamics")
+    library.do_dynamics(reference_voice, dynamic_context)
+    assert abjad.lilypond(reference_voice) == abjad.string.normalize(
+        r"""
+        \new Voice
+        {
+            c'4
+            \times 2/3
+            {
+                c'8
+                c'8
+                c'8
+                ~
+            }
+            c'4
+            c'4
+            c'4
+        }
+        """
+    )
+    assert abjad.lilypond(dynamic_context) == abjad.string.normalize(
+        r"""
+        \new Dynamics
+        {
+            s4
+            \mf
+            \times 2/3
+            {
+                s8
+                \f
+                s8
+                \mf
+                s8
+                ~
+            }
+            s4
+            s4
+            s4
+            \f
+        }
+        """
+    )
+
+
 def test_filling_bass_voice_with_skips():
     reference_voice = abjad.Voice("c'4 c'4 c'4 c'4 c'4")
     target_voice = abjad.Voice()
@@ -62,16 +116,29 @@ def test_making_treble_voice_spanning_across_two_staff():
     ]
 
 
-def test_bimodal_sound_points_generator():
-    arrival_rates = (5, 0.8)
-    mixing_parameter = 0.9
-    sound_points_generator = library.BimodalSoundPointsGenerator(
-        arrival_rates, mixing_parameter, 5, (0, 1, 4, 6), None
+def test_ataxic_sound_points_generator():
+    arrival_rate = 1.0
+    sound_points_generator = library.AtaxicSoundPointsGenerator(
+        arrival_rate, 1.0, (0, 1, 4, 6), 1, None
     )
     sound_points = sound_points_generator(10000)
     arrival_instances = np.array([sound_point.instance for sound_point in sound_points])
     inter_arrival_times = np.diff(arrival_instances)
-    assert all(inter_arrival_times) > 0
+    assert all(inter_arrival_times > 0)
+    expected_mean = 1 / arrival_rate
+    assert abs(np.mean(inter_arrival_times) - expected_mean) < expected_mean * 0.03
+
+
+def test_bimodal_sound_points_generator():
+    arrival_rates = (5, 0.8)
+    mixing_parameter = 0.9
+    sound_points_generator = library.BimodalSoundPointsGenerator(
+        arrival_rates, mixing_parameter, 5, (0, 1, 4, 6), 1, None
+    )
+    sound_points = sound_points_generator(10000)
+    arrival_instances = np.array([sound_point.instance for sound_point in sound_points])
+    inter_arrival_times = np.diff(arrival_instances)
+    assert all(inter_arrival_times > 0)
     expected_mean = (1 / arrival_rates[0]) * mixing_parameter + (
         1 / arrival_rates[1]
     ) * (1 - mixing_parameter)
@@ -85,6 +152,7 @@ def test_semi_regular_sound_points_generator():
         arrival_standard_deviation=0.1,
         service_rate=1.0,
         pitch_set=(0, (0, 1), 4, 6),
+        average_intensity=1,
         seed=None,
     )
     sequence_duration = 10000
@@ -94,7 +162,7 @@ def test_semi_regular_sound_points_generator():
     assert arrival_instances.size > arrival_rate * sequence_duration - 2
     assert arrival_instances[-1] < sequence_duration
     inter_arrival_times = np.diff(arrival_instances)
-    assert all(inter_arrival_times) > 0
+    assert all(inter_arrival_times > 0)
 
 
 def test_truncated_normal_sound_points_generator():
@@ -118,4 +186,4 @@ def test_truncated_normal_sound_points_generator():
         > sequence_duration - 1 / arrival_rate + lower_deviation_bound
     )
     inter_arrival_times = np.diff(arrival_instances)
-    assert all(inter_arrival_times) > 0
+    assert all(inter_arrival_times > 0)

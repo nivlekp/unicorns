@@ -4,6 +4,361 @@
 <<
     \context PianoStaff = "Piano.Staff"
     <<
+        \context Dynamics = "Dynamics"
+        \with
+        {
+            alignAboveContext = Piano_Treble_Staff
+        }
+        {
+            {
+                \tempo 4=78
+                \time 4/4
+                s2.
+                \times 4/5
+                {
+                    s8.
+                    \f
+                    s8
+                }
+            }
+            {
+                s4
+                \times 4/5
+                {
+                    s8.
+                    s8
+                    \mp
+                    ~
+                }
+                s4
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    \f
+                    ~
+                    s8
+                    ~
+                }
+            }
+            {
+                s4
+                \times 4/5
+                {
+                    s8.
+                    \mp
+                    ~
+                    s16
+                    s16
+                }
+                \times 4/5
+                {
+                    s8.
+                    s16
+                    s16
+                    ~
+                }
+                \times 4/5
+                {
+                    s8
+                    s16
+                    ~
+                    s8
+                    ~
+                }
+            }
+            {
+                s8
+                s16
+                s16
+                \times 4/5
+                {
+                    s8
+                    s16
+                    \f
+                    ~
+                    s16
+                    s16
+                }
+                \times 4/5
+                {
+                    s8.
+                    s16
+                    s16
+                    \mp
+                    ~
+                }
+                s4
+            }
+            {
+                \times 4/5
+                {
+                    s16
+                    s8
+                    ~
+                    s8
+                    ~
+                }
+                s8
+                s16
+                s16
+                ~
+                \times 2/3
+                {
+                    s8
+                    s4
+                }
+                s8.
+                \f
+                s16
+                \mp
+            }
+            {
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    \f
+                    s8
+                }
+                s2.
+            }
+            {
+                \times 4/5
+                {
+                    s8.
+                    s16
+                    s16
+                }
+                s2.
+            }
+            {
+                \times 4/5
+                {
+                    s8.
+                    s16
+                    s16
+                    \mp
+                    ~
+                }
+                s4
+                ~
+                \times 4/5
+                {
+                    s8
+                    s16
+                    \f
+                    ~
+                    s8
+                    ~
+                }
+                \times 2/3
+                {
+                    s8
+                    s4
+                    \mp
+                }
+            }
+            {
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    ~
+                    s16
+                    s16
+                }
+                \times 2/3
+                {
+                    s8
+                    s4
+                    \f
+                    ~
+                }
+                \times 4/5
+                {
+                    s8.
+                    s8
+                }
+                s4
+            }
+            {
+                s4
+                \times 4/5
+                {
+                    s8.
+                    s8
+                    ~
+                }
+                \times 4/5
+                {
+                    s8.
+                    s8
+                    \mp
+                }
+                s4
+                ~
+            }
+            {
+                s8
+                s16
+                s16
+                ~
+                \times 4/5
+                {
+                    s8
+                    s16
+                    s8
+                }
+                \times 4/5
+                {
+                    s8.
+                    \f
+                    s8
+                }
+                s4
+            }
+            {
+                s2
+                \times 4/5
+                {
+                    s8
+                    s16
+                    ~
+                    s16
+                    s16
+                }
+                s4
+            }
+            {
+                s2
+                s8.
+                s16
+                s16
+                s16
+                \mp
+                s8
+            }
+            {
+                s2.
+                s4
+                \f
+                ~
+            }
+            {
+                s2
+                ~
+                s8.
+                s16
+                \mp
+                ~
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    s16
+                    s16
+                    ~
+                }
+            }
+            {
+                \times 2/3
+                {
+                    s4
+                    s8
+                    ~
+                }
+                s8
+                s16
+                s16
+                ~
+                s2
+            }
+            {
+                s8
+                s8
+                \f
+                s16
+                \mp
+                s16
+                s16
+                \f
+                s16
+                \mp
+                s8.
+                s16
+                s4
+            }
+            {
+                s4
+                \f
+                s2
+                \times 4/5
+                {
+                    s8.
+                    s8
+                    \mp
+                }
+            }
+            {
+                \times 2/3
+                {
+                    s8
+                    s4
+                }
+                \times 4/5
+                {
+                    s16
+                    s16
+                    s16
+                    \f
+                    ~
+                    s8
+                    ~
+                }
+                s16
+                s16
+                \mp
+                s8
+                \times 2/3
+                {
+                    s8
+                    s8
+                    s8
+                    ~
+                }
+            }
+            {
+                s8
+                s16
+                s16
+                \f
+                ~
+                s8.
+                s16
+                \times 2/3
+                {
+                    s4
+                    s8
+                    \mp
+                    ~
+                }
+                s4
+                ~
+            }
+            {
+                \times 2/3
+                {
+                    s8
+                    s4
+                }
+                s2.
+            }
+        }
         \context Staff = "Piano_Treble_Staff"
         {
             \context Voice = "Piano.Music.0"
