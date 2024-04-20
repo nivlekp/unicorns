@@ -273,7 +273,9 @@ class AtaxicSoundPointsGenerator(pang.SoundPointsGenerator):
 
     def __call__(self, sequence_duration):
         number_of_notes = round(sequence_duration * self._arrival_rate)
-        arrival_instances = self._rng.uniform(0.0, sequence_duration, number_of_notes)
+        arrival_instances = sorted(
+            self._rng.uniform(0.0, sequence_duration, number_of_notes)
+        )
         durations = self._rng.exponential(1 / self._service_rate, number_of_notes)
         pitches = self._rng.choice(self._pitch_set, number_of_notes).tolist()
         intensities = _generate_intensities(self._average_intensity, number_of_notes)

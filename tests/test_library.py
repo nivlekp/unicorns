@@ -62,6 +62,19 @@ def test_making_treble_voice_spanning_across_two_staff():
     ]
 
 
+def test_ataxic_sound_points_generator():
+    arrival_rate = 1.0
+    sound_points_generator = library.AtaxicSoundPointsGenerator(
+        arrival_rate, 1.0, (0, 1, 4, 6), 1, None
+    )
+    sound_points = sound_points_generator(10000)
+    arrival_instances = np.array([sound_point.instance for sound_point in sound_points])
+    inter_arrival_times = np.diff(arrival_instances)
+    assert all(inter_arrival_times > 0)
+    expected_mean = 1 / arrival_rate
+    assert abs(np.mean(inter_arrival_times) - expected_mean) < expected_mean * 0.03
+
+
 def test_bimodal_sound_points_generator():
     arrival_rates = (5, 0.8)
     mixing_parameter = 0.9
@@ -71,7 +84,7 @@ def test_bimodal_sound_points_generator():
     sound_points = sound_points_generator(10000)
     arrival_instances = np.array([sound_point.instance for sound_point in sound_points])
     inter_arrival_times = np.diff(arrival_instances)
-    assert all(inter_arrival_times) > 0
+    assert all(inter_arrival_times > 0)
     expected_mean = (1 / arrival_rates[0]) * mixing_parameter + (
         1 / arrival_rates[1]
     ) * (1 - mixing_parameter)
@@ -95,7 +108,7 @@ def test_semi_regular_sound_points_generator():
     assert arrival_instances.size > arrival_rate * sequence_duration - 2
     assert arrival_instances[-1] < sequence_duration
     inter_arrival_times = np.diff(arrival_instances)
-    assert all(inter_arrival_times) > 0
+    assert all(inter_arrival_times > 0)
 
 
 def test_truncated_normal_sound_points_generator():
@@ -119,4 +132,4 @@ def test_truncated_normal_sound_points_generator():
         > sequence_duration - 1 / arrival_rate + lower_deviation_bound
     )
     inter_arrival_times = np.diff(arrival_instances)
-    assert all(inter_arrival_times) > 0
+    assert all(inter_arrival_times > 0)
