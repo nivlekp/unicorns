@@ -10,6 +10,222 @@
             alignAboveContext = Piano_Treble_Staff
         }
         {
+            {
+                \tempo 4=78
+                \time 4/4
+                s4
+                s8.
+                \ff
+                s16
+                s2
+            }
+            {
+                s1
+            }
+            {
+                \times 2/3
+                {
+                    s4
+                    s8
+                    ~
+                }
+                s16
+                s8.
+                ~
+                s4
+                ~
+                \times 4/5
+                {
+                    s8.
+                    s8
+                    ~
+                }
+            }
+            {
+                \times 2/3
+                {
+                    s8
+                    s4
+                    ~
+                }
+                \times 4/5
+                {
+                    s8.
+                    ~
+                    s16
+                    s16
+                }
+                s16
+                s16
+                s8
+                \times 4/5
+                {
+                    s16
+                    s8
+                    s8
+                }
+            }
+            {
+                s1
+            }
+            {
+                s1
+            }
+            {
+                s1
+            }
+            {
+                s2.
+                s4
+                \f
+                ~
+            }
+            {
+                s8
+                s8
+                ~
+                s8
+                s8
+                ~
+                s2
+                ~
+            }
+            {
+                \times 4/5
+                {
+                    s16
+                    s8
+                    s8
+                }
+                s4
+                \times 4/5
+                {
+                    s16
+                    s8
+                    ~
+                    s16
+                    s16
+                    ~
+                }
+                s4
+                ~
+            }
+            {
+                \times 4/5
+                {
+                    s8
+                    s16
+                    ~
+                    s16
+                    s16
+                }
+                \times 2/3
+                {
+                    s8
+                    s4
+                    ~
+                }
+                s8
+                s8
+                ~
+                s16
+                s8.
+                ~
+            }
+            {
+                s2.
+                ~
+                \times 4/5
+                {
+                    s8
+                    s16
+                    s8
+                    ~
+                }
+            }
+            {
+                s2
+                s8.
+                s16
+                ~
+                \times 4/5
+                {
+                    s8.
+                    ~
+                    s16
+                    s16
+                    ~
+                }
+            }
+            {
+                s2
+                ~
+                s8.
+                s16
+                s4
+            }
+            {
+                s4
+                \times 4/5
+                {
+                    s8.
+                    s8
+                    \mf
+                    ~
+                }
+                s4
+                \times 4/5
+                {
+                    s8.
+                    ~
+                    s16
+                    s16
+                    ~
+                }
+            }
+            {
+                s2.
+                s4
+                ~
+            }
+            {
+                s16
+                s16
+                s16
+                s16
+                ~
+                s4
+                s4
+                ~
+                \times 4/5
+                {
+                    s16
+                    s8
+                    ~
+                    s16
+                    s16
+                    ~
+                }
+            }
+            {
+                s2
+                ~
+                \times 4/5
+                {
+                    s8
+                    s16
+                    ~
+                    s16
+                    s16
+                    ~
+                }
+                \times 4/5
+                {
+                    s8
+                    s16
+                    s8
+                }
+            }
         }
         \context Staff = "Piano_Treble_Staff"
         {
@@ -184,73 +400,74 @@
                     <g, bf, b,>2
                     ~
                     <g, bf, b,>8.
-                    \change Staff = Piano_Treble_Staff
-                    <bf'' ef'''>16
-                    <ef'' e'''>4
-                    ~
+                    r16
+                    r4
                 }
                 {
-                    <ef'' e'''>2.
-                    ~
-                    <ef'' e'''>8
-                    \once \override Stem.direction = #up
-                    bf''8
-                    ~
-                }
-                {
-                    \once \override Stem.direction = #up
-                    bf''1
-                    ~
-                }
-                {
-                    \once \override Stem.direction = #up
-                    bf''4
-                    ~
+                    r4
+                    \times 4/5
+                    {
+                        r8.
+                        \change Staff = Piano_Treble_Staff
+                        <fs' ef'' ef'''>8
+                        ~
+                    }
+                    <fs' ef'' ef'''>4
                     \times 4/5
                     {
                         \once \override Stem.direction = #up
-                        bf''8.
+                        e'8.
                         ~
                         \once \override Stem.direction = #up
-                        bf''16
-                        <ef'' fs'' ef'''>16
+                        e'16
+                        <bf' ef'' e''>16
                         ~
                     }
-                    <ef'' fs'' ef'''>8
-                    <bf' e'''>8
-                    ~
-                    <bf' e'''>4
+                }
+                {
+                    <bf' ef'' e''>2.
+                    \once \override Stem.direction = #up
+                    <fs'' bf''>4
                     ~
                 }
                 {
-                    \times 4/5
-                    {
-                        <bf' e'''>16
-                        \once \override Stem.direction = #up
-                        bf''8
-                        <ef'' bf'' ef'''>8
-                        ~
-                    }
-                    <ef'' bf'' ef'''>2.
+                    \once \override Stem.direction = #up
+                    <fs'' bf''>16
+                    r16
+                    r16
+                    <bf' bf'' bf'''>16
                     ~
-                }
-                {
-                    <ef'' bf'' ef'''>4
+                    <bf' bf'' bf'''>4
+                    <e' bf' fs''>4
                     ~
                     \times 4/5
                     {
-                        <ef'' bf'' ef'''>16
-                        <e' fs' bf''>8
-                        <bf' bf'' ef'''>16
-                        <e' ef'' bf''>16
+                        <e' bf' fs''>16
+                        <ef'' bf'' fs'''>8
+                        ~
+                        <ef'' bf'' fs'''>16
+                        <bf'' bf'''>16
                         ~
                     }
-                    <e' ef'' bf''>2
-                    ~
                 }
                 {
-                    <e' ef'' bf''>2
-                    r2
+                    <bf'' bf'''>2
+                    ~
+                    \times 4/5
+                    {
+                        <bf'' bf'''>8
+                        <bf' ef'' e''>16
+                        ~
+                        <bf' ef'' e''>16
+                        <bf' e'' ef'''>16
+                        ~
+                    }
+                    \times 4/5
+                    {
+                        <bf' e'' ef'''>8
+                        r16
+                        r8
+                    }
                 }
             }
         }
@@ -420,24 +637,13 @@
                     s4
                 }
                 {
-                    s2.
-                    s8
-                    \voiceOne
-                    \crossStaff
-                    fs8
-                    _ ~
-                }
-                {
-                    \voiceOne
-                    \crossStaff
-                    fs1
-                    _ ~
-                }
-                {
-                    \voiceOne
-                    \crossStaff
-                    fs4
-                    _ ~
+                    s4
+                    \times 4/5
+                    {
+                        s8.
+                        s8
+                    }
+                    s4
                     \times 4/5
                     {
                         \voiceOne
@@ -449,22 +655,22 @@
                         fs16
                         s16
                     }
-                    s8
-                    s8
-                    s4
                 }
                 {
-                    \times 4/5
-                    {
-                        s16
-                        \voiceOne
-                        \crossStaff
-                        <fs bf>8
-                        s8
-                    }
                     s2.
+                    \voiceOne
+                    \crossStaff
+                    bf4
+                    _ ~
                 }
                 {
+                    \voiceOne
+                    \crossStaff
+                    bf16
+                    s16
+                    s16
+                    s16
+                    s4
                     s4
                     \times 4/5
                     {
@@ -473,18 +679,27 @@
                         s16
                         s16
                     }
-                    s2
                 }
                 {
                     s2
-                    s2
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s16
+                        s16
+                    }
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s8
+                    }
                 }
             }
             \context Voice = "Piano.Music.1"
             {
                 \clef "bass"
-                s1
-                s1
                 s1
                 s1
                 s1
