@@ -252,6 +252,18 @@ def do_dynamics(reference_voice, dynamic_context):
         abjad.mutate.replace(leaf, skip)
 
 
+def attach_fine_bar_line(voice):
+    bar_line = abjad.BarLine("|.")
+    last_leaf = abjad.get.leaf(voice, -1)
+    abjad.attach(bar_line, last_leaf)
+
+
+def attach_end_note(voice):
+    lilypond_literal = abjad.LilyPondLiteral(r"\end-note", site="after")
+    last_leaf = abjad.get.leaf(voice, -1)
+    abjad.attach(lilypond_literal, last_leaf)
+
+
 class AtaxicSoundPointsGenerator(pang.SoundPointsGenerator):
     """
     Generates Sound Points. You know the drill.

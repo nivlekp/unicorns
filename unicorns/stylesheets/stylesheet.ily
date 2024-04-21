@@ -85,3 +85,17 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
     }
   }
 }
+
+end-note = {
+    \once \override Score.RehearsalMark.direction = #down
+    \once \override Score.RehearsalMark.padding = 4
+    \mark \markup {
+        \fontsize #-2
+        \column {
+          \line {"On Gadigal Land,"}
+          \line {"Boonwurrung Country,"}
+          \line {"Osaka, and Naoshima"}
+          \line {"(November 2023 - April 2024)."}
+      }
+    }
+}

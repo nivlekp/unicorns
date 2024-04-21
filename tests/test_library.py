@@ -4,6 +4,22 @@ import numpy as np
 from unicorns import library
 
 
+def test_attaching_fine_bar_line():
+    voice = abjad.Voice("c'4 c'4 c'4 c'4")
+    library.attach_fine_bar_line(voice)
+    last_leaf = abjad.get.leaf(voice, -1)
+    bar_line = abjad.get.indicator(last_leaf, abjad.BarLine)
+    assert bar_line.abbreviation == "|."
+
+
+def test_attaching_end_note():
+    voice = abjad.Voice("c'4 c'4 c'4 c'4")
+    library.attach_end_note(voice)
+    last_leaf = abjad.get.leaf(voice, -1)
+    end_note = abjad.get.indicator(last_leaf, abjad.LilyPondLiteral)
+    assert end_note.argument == r"\end-note"
+
+
 def test_converting_pitch_list_to_chord_set():
     pitch_list = [0, 1, 2]
     chord_set = library.single_pitch_list_to_chord_set(pitch_list)
