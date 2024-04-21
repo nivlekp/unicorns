@@ -94,6 +94,7 @@ def main():
         score, scope, pang.Scope(voice_name=library.PIANO_MUSIC_VOICE_0_FOLLOWER_NAME)
     )
     library.attach_fine_bar_line(score[library.PIANO_MUSIC_VOICE_0_NAME])
+    library.attach_end_note(score[library.PIANO_MUSIC_VOICE_0_NAME])
     pang.build.persist(score, metadata)
     library.move_music_ily_from_segment_directory_to_build_directory("c")
 
