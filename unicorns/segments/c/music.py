@@ -93,6 +93,9 @@ def main():
     library.distribute_chords_across_two_voices(
         score, scope, pang.Scope(voice_name=library.PIANO_MUSIC_VOICE_0_FOLLOWER_NAME)
     )
+    bar_line = abjad.BarLine("|.")
+    last_leaf = abjad.get.leaf(score[library.PIANO_MUSIC_VOICE_0_NAME], -1)
+    abjad.attach(bar_line, last_leaf)
     pang.build.persist(score, metadata)
     library.move_music_ily_from_segment_directory_to_build_directory("c")
 
