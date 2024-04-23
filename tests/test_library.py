@@ -133,7 +133,7 @@ def test_making_treble_voice_spanning_across_two_staff():
 
 
 def test_rewriting_enharmonics():
-    voice = abjad.Voice("c'4 <ef' e'>4 c'4 c'4")
+    voice = abjad.Voice("c'4 <ef' e'>4 <c' cs''>4 c'4")
     library.rewrite_enharmonics(voice)
     assert abjad.lilypond(voice) == abjad.string.normalize(
         r"""
@@ -141,7 +141,7 @@ def test_rewriting_enharmonics():
         {
             c'4
             <ds' e'>4
-            c'4
+            <c' cs''>4
             c'4
         }
         """

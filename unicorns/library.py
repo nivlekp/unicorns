@@ -266,7 +266,7 @@ def attach_end_note(voice):
 
 
 def _compute_number_of_clashed_notes(pitches):
-    base_pitches = [pitch.name[0] for pitch in pitches]
+    base_pitches = [pitch.name[0] + str(pitch.octave.number) for pitch in pitches]
     return collections.Counter(base_pitches).total() - len(set(base_pitches))
 
 
