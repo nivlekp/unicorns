@@ -270,7 +270,7 @@ def _compute_number_of_clashed_notes(pitches):
     return collections.Counter(base_pitches).total() - len(set(base_pitches))
 
 
-def _generates_possible_enharmonics(pitch):
+def _generate_possible_enharmonics(pitch):
     match pitch.accidental.name:
         case "natural":
             return (pitch,)
@@ -289,7 +289,7 @@ def _rewrite_enharmonics_of_a_chord(chord):
         return
     else:
         possible_enharmonics_of_all_pitches = [
-            _generates_possible_enharmonics(pitch) for pitch in pitches
+            _generate_possible_enharmonics(pitch) for pitch in pitches
         ]
         potential_spellings_of_chord = itertools.product(
             *possible_enharmonics_of_all_pitches
