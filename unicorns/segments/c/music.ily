@@ -463,7 +463,7 @@
                         cs''4
                     }
                     \change Staff = Piano_Bass_Staff
-                    <fs,, a,, f, fs,>8.
+                    <fs,, a,, f, gf,>8.
                     \change Staff = Piano_Treble_Staff
                     e''16
                 }
@@ -473,7 +473,7 @@
                         ef''16
                         r16
                         \change Staff = Piano_Bass_Staff
-                        <ef e fs>16
+                        <ds e fs>16
                         r8
                     }
                     r2.
@@ -528,12 +528,12 @@
                     {
                         r8
                         \change Staff = Piano_Bass_Staff
-                        <ef, e, e>4
+                        <ds, e, e>4
                         ~
                     }
                     \times 4/5
                     {
-                        <ef, e, e>8.
+                        <ds, e, e>8.
                         r8
                     }
                     r4
@@ -639,7 +639,7 @@
                     ef'''16
                     cs''16
                     \change Staff = Piano_Bass_Staff
-                    <f, fs, b,>16
+                    <f, gf, b,>16
                     \change Staff = Piano_Treble_Staff
                     b'''16
                     r8.

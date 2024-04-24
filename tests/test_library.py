@@ -132,6 +132,22 @@ def test_making_treble_voice_spanning_across_two_staff():
     ]
 
 
+def test_rewriting_enharmonics():
+    voice = abjad.Voice("c'4 <ef' e'>4 <c' cs''>4 <c' cs' d' ds'>4")
+    library.rewrite_enharmonics(voice)
+    assert abjad.lilypond(voice) == abjad.string.normalize(
+        r"""
+        \new Voice
+        {
+            c'4
+            <ds' e'>4
+            <c' cs''>4
+            <c' cs' d' ef'>4
+        }
+        """
+    )
+
+
 def test_ataxic_sound_points_generator():
     arrival_rate = 1.0
     sound_points_generator = library.AtaxicSoundPointsGenerator(

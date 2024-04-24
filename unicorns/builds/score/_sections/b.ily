@@ -401,7 +401,7 @@
                     \times 2/3
                     {
                         <af,, bf, f>8
-                        <ef, bf, b,>4
+                        <ef, as, b,>4
                     }
                     <fs,, bf,>4
                     ~
@@ -498,14 +498,14 @@
                     \times 2/3
                     {
                         <g, bf,>4
-                        <g, bf, b,>8
+                        <g, as, b,>8
                         ~
                     }
                 }
                 {
-                    <g, bf, b,>2
+                    <g, as, b,>2
                     ~
-                    <g, bf, b,>8
+                    <g, as, b,>8
                     r8
                     \times 2/3
                     {
@@ -525,12 +525,12 @@
                     \times 2/3
                     {
                         r8
-                        <bf' ef'' e''>4
+                        <bf' ds'' e''>4
                         ~
                     }
-                    <bf' ef'' e''>2
+                    <bf' ds'' e''>2
                     ~
-                    <bf' ef'' e''>8
+                    <bf' ds'' e''>8
                     \once \override Stem.direction = #up
                     <fs'' bf''>8
                     ~
@@ -597,10 +597,10 @@
                         <bf'' bf'''>8.
                         ~
                         <bf'' bf'''>16
-                        <bf' ef'' e''>16
+                        <bf' ds'' e''>16
                         ~
                     }
-                    <bf' ef'' e''>16
+                    <bf' ds'' e''>16
                     r8.
                 }
                 {
@@ -803,11 +803,11 @@
                     <bf, f>8.
                     \voiceOne
                     \crossStaff
-                    <bf, b,>16
+                    <as, b,>16
                     _ ~
                     \voiceOne
                     \crossStaff
-                    <bf, b,>8
+                    <as, b,>8
                     s8
                     \times 2/3
                     {

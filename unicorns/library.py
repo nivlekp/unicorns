@@ -1,3 +1,4 @@
+import collections
 import itertools
 import pathlib
 import shutil
@@ -262,6 +263,51 @@ def attach_end_note(voice):
     lilypond_literal = abjad.LilyPondLiteral(r"\end-note", site="after")
     last_leaf = abjad.get.leaf(voice, -1)
     abjad.attach(lilypond_literal, last_leaf)
+
+
+def _compute_number_of_clashed_notes(pitches):
+    base_pitches = [pitch.name[0] + str(pitch.octave.number) for pitch in pitches]
+    return collections.Counter(base_pitches).total() - len(set(base_pitches))
+
+
+def _generate_possible_enharmonics(pitch):
+    match pitch.accidental.name:
+        case "natural":
+            return (pitch,)
+        case "sharp":
+            return (pitch, pitch.respell(accidental="flats"))
+        case "flat":
+            return (pitch, pitch.respell(accidental="sharps"))
+        case _:
+            raise NotImplementedError(pitch.accidental)
+
+
+def _rewrite_enharmonics_of_a_chord(chord):
+    pitches = sorted(chord.written_pitches)
+    number_of_clashed_notes = _compute_number_of_clashed_notes(pitches)
+    if number_of_clashed_notes == 0:
+        return
+    else:
+        possible_enharmonics_of_all_pitches = [
+            _generate_possible_enharmonics(pitch) for pitch in pitches
+        ]
+        potential_spellings_of_chord = itertools.product(
+            *possible_enharmonics_of_all_pitches
+        )
+        chord.written_pitches = min(
+            potential_spellings_of_chord, key=_compute_number_of_clashed_notes
+        )
+
+
+def rewrite_enharmonics(voice):
+    for leaf in abjad.iterate.leaves(voice, pitched=True):
+        match leaf:
+            case abjad.Note():
+                pass
+            case abjad.Chord():
+                _rewrite_enharmonics_of_a_chord(leaf)
+            case _:
+                raise TypeError(leaf)
 
 
 class AtaxicSoundPointsGenerator(pang.SoundPointsGenerator):
