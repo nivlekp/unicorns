@@ -285,9 +285,7 @@ def _generate_possible_enharmonics(pitch):
 def _rewrite_enharmonics_of_a_chord(chord):
     pitches = sorted(chord.written_pitches)
     number_of_clashed_notes = _compute_number_of_clashed_notes(pitches)
-    if number_of_clashed_notes == 0:
-        return
-    else:
+    if number_of_clashed_notes != 0:
         possible_enharmonics_of_all_pitches = [
             _generate_possible_enharmonics(pitch) for pitch in pitches
         ]
