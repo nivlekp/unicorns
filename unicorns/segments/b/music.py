@@ -77,9 +77,7 @@ def main():
         abjad.Duration(1, 2), fractions.Fraction(58.5), decimal=True
     )
     q_schema = nauert.MeasurewiseQSchema(
-        search_tree=search_tree,
-        tempo=tempo,
-        time_signature=(3, 2)
+        search_tree=search_tree, tempo=tempo, time_signature=(3, 2)
     )
     grace_handler = nauert.DiscardingGraceHandler()
     command = pang.QuantizeSequenceCommand(
