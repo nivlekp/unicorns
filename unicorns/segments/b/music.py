@@ -1,3 +1,5 @@
+import fractions
+
 import abjad
 import pang
 from abjadext import nauert
@@ -65,13 +67,19 @@ def main():
     sequence.durations = [max(duration, 0.154) for duration in sequence.durations]
     search_tree = nauert.UnweightedSearchTree(
         definition={
-            2: {2: None},
-            3: None,
+            2: {2: None, 3: None},
+            3: {2: None},
             5: None,
+            7: None,
         }
     )
+    tempo = abjad.MetronomeMark(
+        abjad.Duration(1, 2), fractions.Fraction(58.5), decimal=True
+    )
     q_schema = nauert.MeasurewiseQSchema(
-        search_tree=search_tree, tempo=(abjad.Duration(1, 4), 78), time_signature=(4, 4)
+        search_tree=search_tree,
+        tempo=tempo,
+        time_signature=(3, 2)
     )
     grace_handler = nauert.DiscardingGraceHandler()
     command = pang.QuantizeSequenceCommand(
