@@ -53,6 +53,7 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
   \context {
     \PianoStaff
     \consists "Span_stem_engraver"
+    \numericTimeSignature
   }
   \context {
     \Dynamics
