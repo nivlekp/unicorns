@@ -79,7 +79,7 @@ def main():
         }
     )
     tempo = abjad.MetronomeMark(
-        abjad.Duration(1, 4), fractions.Fraction(87.75), decimal=True
+        abjad.Duration(1, 4), fractions.Fraction(97.5), decimal=True
     )
     q_schema = nauert.MeasurewiseQSchema(
         search_tree=search_tree, tempo=tempo, time_signature=(4, 4)
@@ -101,6 +101,14 @@ def main():
     )
     library.attach_fine_bar_line(score[library.PIANO_MUSIC_VOICE_0_NAME])
     library.attach_end_note(score[library.PIANO_MUSIC_VOICE_0_NAME])
+    metric_modulation = abjad.MetricModulation(
+        left_rhythm=abjad.Tuplet((2, 3), "c4"), right_rhythm=abjad.Tuplet((4, 5), "c8")
+    )
+    abjad.attach(
+        metric_modulation,
+        abjad.get.leaf(score[scope.voice_name], 0),
+        direction=abjad.UP,
+    )
     pang.build.persist(score, metadata)
     library.move_music_ily_from_segment_directory_to_build_directory("c")
 
