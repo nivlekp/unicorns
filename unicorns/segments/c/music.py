@@ -1,3 +1,5 @@
+import fractions
+
 import abjad
 import pang
 from abjadext import nauert
@@ -76,8 +78,11 @@ def main():
             5: None,
         }
     )
+    tempo = abjad.MetronomeMark(
+        abjad.Duration(1, 4), fractions.Fraction(87.75), decimal=True
+    )
     q_schema = nauert.MeasurewiseQSchema(
-        search_tree=search_tree, tempo=(abjad.Duration(1, 4), 78), time_signature=(4, 4)
+        search_tree=search_tree, tempo=tempo, time_signature=(4, 4)
     )
     grace_handler = nauert.DiscardingGraceHandler()
     command = pang.QuantizeSequenceCommand(
