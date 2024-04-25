@@ -325,6 +325,7 @@
                     \tempo \markup \abjad-metronome-mark-markup #1 #0 #1 #"58.5"
                     \time 3/2
                     r8
+                    ^ \markup \abjad-metric-modulation-tuplet-lhs #3 #0 #2 #3 #3 #0 #'(1 . 1)
                     \once \override Stem.direction = #up
                     <d' cs''>8
                     ~

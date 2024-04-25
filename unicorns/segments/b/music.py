@@ -94,6 +94,14 @@ def main():
     library.distribute_chords_across_two_voices(
         score, scope, pang.Scope(voice_name=library.PIANO_MUSIC_VOICE_0_FOLLOWER_NAME)
     )
+    metric_modulation = abjad.MetricModulation(
+        left_rhythm=abjad.Tuplet((2, 3), "c8"), right_rhythm=abjad.Note("c8")
+    )
+    abjad.attach(
+        metric_modulation,
+        abjad.get.leaf(score[scope.voice_name], 0),
+        direction=abjad.UP,
+    )
     pang.build.persist(score, metadata)
     library.move_music_ily_from_segment_directory_to_build_directory("b")
 
