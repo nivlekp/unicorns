@@ -94,11 +94,27 @@ def main():
     library.distribute_chords_across_two_voices(
         score, scope, pang.Scope(voice_name=library.PIANO_MUSIC_VOICE_0_FOLLOWER_NAME)
     )
-    metric_modulation = abjad.MetricModulation(
-        left_rhythm=abjad.Tuplet((2, 3), "c8"), right_rhythm=abjad.Note("c8")
+    # metric_modulation = abjad.MetricModulation(
+    #     left_rhythm=abjad.Tuplet((2, 3), "c8"), right_rhythm=abjad.Note("c8")
+    # )
+    string = abjad.string.normalize(
+        r"""
+        \markup {
+            \hspace #-10
+            \combine
+            \override #'(thickness . 1.3)
+            \raise #1 \draw-line #'(2 . 0) \raise #1 \arrow-head #X #LEFT ##f
+            \rhythm { \times 2/3 { r8 r8 8 } } = \rhythm { { 8 } }
+            \override #'(thickness . 1.3)
+            \raise #1 \draw-line #'(2 . 0)
+            \hspace #-1.5
+            \raise #1 \arrow-head #X #RIGHT ##f
+        }
+        """
     )
+    markup = abjad.Markup(string)
     abjad.attach(
-        metric_modulation,
+        markup,
         abjad.get.leaf(score[scope.voice_name], 0),
         direction=abjad.UP,
     )

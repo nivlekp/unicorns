@@ -60,6 +60,11 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
     \override VerticalAxisGroup.nonstaff-relatedstaff-spacing.basic-distance = #10
     \override DynamicText #'extra-offset = #'(1 . 0)
   }
+  \context {
+    \StandaloneRhythmVoice
+    \override Rest.transparent = ##t
+    \override TupletBracket.bracket-visibility = ##t
+  }
 }
 
 \paper {
