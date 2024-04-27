@@ -12,4 +12,6 @@
             \include "_sections/c.ily"
         }
     >>
+    \layout { }
+    \midi { }
 }
