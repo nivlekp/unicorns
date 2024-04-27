@@ -8,6 +8,7 @@ __pycache__
 *.log
 
 **/segments/*/music.pdf
+**/segments/*/music.midi
 **/builds/*/*.pdf
 
 # directory where I store some lilypond examples that I reference to
