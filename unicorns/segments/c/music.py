@@ -101,11 +101,11 @@ def main():
     )
     library.attach_fine_bar_line(score[library.PIANO_MUSIC_VOICE_0_NAME])
     library.attach_end_note(score[library.PIANO_MUSIC_VOICE_0_NAME])
-    metric_modulation = abjad.MetricModulation(
-        left_rhythm=abjad.Tuplet((2, 3), "c4"), right_rhythm=abjad.Tuplet((4, 5), "c8")
+    metric_modulation_markup = library.make_metric_modulation_markup(
+        r"{ \times 4/5 { r8 r8 r8 r8 8 } }", r"{ \times 2/3 { 8 r8 r8 } }"
     )
     abjad.attach(
-        metric_modulation,
+        metric_modulation_markup,
         abjad.get.leaf(score[scope.voice_name], 0),
         direction=abjad.UP,
     )

@@ -94,11 +94,11 @@ def main():
     library.distribute_chords_across_two_voices(
         score, scope, pang.Scope(voice_name=library.PIANO_MUSIC_VOICE_0_FOLLOWER_NAME)
     )
-    markup = library.make_metric_modulation_markup(
+    metric_modulation_markup = library.make_metric_modulation_markup(
         r"{ \times 2/3 { r8 r8 8 } }", "{ { 8 } }"
     )
     abjad.attach(
-        markup,
+        metric_modulation_markup,
         abjad.get.leaf(score[scope.voice_name], 0),
         direction=abjad.UP,
     )
