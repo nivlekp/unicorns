@@ -1,8 +1,6 @@
 \version "2.24.3"
 \language "english"
 \include "abjad-metronome-marks.ily"
-\include "abjad-metric-modulations.ily"
-\include "abjad-make-music-functions.ily"
 
 #(set-default-paper-size "a4landscape")
 #(set-global-staff-size 16)
