@@ -27,7 +27,25 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
     (interpret-markup layout props
     #{
     \markup {
-        \combine \raise #1 \draw-line #'(2 . 0) \raise #1 \arrow-head #X #LEFT ##f
+        \concat {
+          \raise #1 \arrow-head #X #LEFT ##t
+          \raise #1 \draw-line #'(2 . 0)
+        }
+    }
+    #}
+    )
+)
+
+#(define-markup-command
+    (tszkiu-right-arrow layout props)
+    ()
+    (interpret-markup layout props
+    #{
+    \markup {
+        \concat {
+          \raise #1 \draw-line #'(2 . 0)
+          \raise #1 \arrow-head #X #RIGHT ##t
+        }
     }
     #}
     )
