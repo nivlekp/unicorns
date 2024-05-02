@@ -21,6 +21,18 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
                     (max -20 (min (car pos) (cdr pos))))))
        (cons y y))))
 
+#(define-markup-command
+    (tszkiu-left-arrow layout props)
+    ()
+    (interpret-markup layout props
+    #{
+    \markup {
+        \combine \raise #1 \draw-line #'(2 . 0) \raise #1 \arrow-head #X #LEFT ##f
+    }
+    #}
+    )
+)
+
 \header {
   composer = \markup {
     "Tsz Kiu Pang"
