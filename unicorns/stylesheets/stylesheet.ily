@@ -51,6 +51,23 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
     )
 )
 
+#(define-markup-command
+    (tszkiu-metric-modulation layout props left-rhythm right-rhythm)
+    (ly:music? ly:music?)
+    (interpret-markup layout props
+    #{
+    \markup {
+        \hspace #-10
+        \line {
+            \tszkiu-left-arrow
+            \rhythm { #left-rhythm } = \rhythm { #right-rhythm }
+            \tszkiu-right-arrow
+        }
+    }
+    #}
+    )
+)
+
 \header {
   composer = \markup {
     "Tsz Kiu Pang"

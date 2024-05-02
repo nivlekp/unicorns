@@ -308,6 +308,15 @@ def rewrite_enharmonics(voice):
                 raise TypeError(leaf)
 
 
+def make_metric_modulation_markup(left_rhythm_string, right_rhythm_string):
+    string = abjad.string.normalize(
+        rf"""
+        \markup \tszkiu-metric-modulation {left_rhythm_string} {right_rhythm_string}
+        """
+    )
+    return abjad.Markup(string)
+
+
 class AtaxicSoundPointsGenerator(pang.SoundPointsGenerator):
     """
     Generates Sound Points. You know the drill.

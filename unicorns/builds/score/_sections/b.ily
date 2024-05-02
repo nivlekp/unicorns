@@ -325,17 +325,7 @@
                     \tempo \markup \abjad-metronome-mark-markup #1 #0 #1 #"58.5"
                     \time 3/2
                     r8
-                    ^ \markup {
-                        \hspace #-10
-                        \combine
-                        \override #'(thickness . 1.3)
-                        \raise #1 \draw-line #'(2 . 0) \raise #1 \arrow-head #X #LEFT ##f
-                        \rhythm { \times 2/3 { r8 r8 8 } } = \rhythm { { 8 } }
-                        \override #'(thickness . 1.3)
-                        \raise #1 \draw-line #'(2 . 0)
-                        \hspace #-1.5
-                        \raise #1 \arrow-head #X #RIGHT ##f
-                    }
+                    ^ \markup \tszkiu-metric-modulation { \times 2/3 { r8 r8 8 } } { { 8 } }
                     \once \override Stem.direction = #up
                     <d' cs''>8
                     ~
