@@ -1,3 +1,5 @@
+import fractions
+
 import abjad
 import pang
 from abjadext import nauert
@@ -76,8 +78,11 @@ def main():
             5: None,
         }
     )
+    tempo = abjad.MetronomeMark(
+        abjad.Duration(1, 4), fractions.Fraction(97.5), decimal=True
+    )
     q_schema = nauert.MeasurewiseQSchema(
-        search_tree=search_tree, tempo=(abjad.Duration(1, 4), 78), time_signature=(4, 4)
+        search_tree=search_tree, tempo=tempo, time_signature=(4, 4)
     )
     grace_handler = nauert.DiscardingGraceHandler()
     command = pang.QuantizeSequenceCommand(
@@ -96,6 +101,14 @@ def main():
     )
     library.attach_fine_bar_line(score[library.PIANO_MUSIC_VOICE_0_NAME])
     library.attach_end_note(score[library.PIANO_MUSIC_VOICE_0_NAME])
+    metric_modulation_markup = library.make_metric_modulation_markup(
+        r"{ \times 4/5 { r8 r8 r8 r8 8 } }", r"{ \times 2/3 { 8 r8 r8 } }"
+    )
+    abjad.attach(
+        metric_modulation_markup,
+        abjad.get.leaf(score[scope.voice_name], 0),
+        direction=abjad.UP,
+    )
     pang.build.persist(score, metadata)
     library.move_music_ily_from_segment_directory_to_build_directory("c")
 

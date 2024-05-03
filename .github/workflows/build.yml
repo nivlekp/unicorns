@@ -60,6 +60,10 @@ jobs:
         pip --version
         pytest --version
         lilypond --version
+    - name: Import Abjad stylesheets
+      run: |
+        export PANG_PATH=/tmp/pang
+        make import-abjad-ily
     - name: Install LuaLaTeX
       run: |
         sudo apt update

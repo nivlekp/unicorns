@@ -1,5 +1,6 @@
 \version "2.24.3"
 \language "english"
+\include "abjad_contrib/abjad.ily"
 
 #(set-default-paper-size "a4landscape")
 #(set-global-staff-size 16)
@@ -17,6 +18,53 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
                     (max (car pos) (cdr pos))
                     (max -20 (min (car pos) (cdr pos))))))
        (cons y y))))
+
+#(define-markup-command
+    (tszkiu-left-arrow layout props)
+    ()
+    (interpret-markup layout props
+    #{
+    \markup {
+        \concat {
+          \raise #1 \arrow-head #X #LEFT ##t
+          \raise #1 \draw-line #'(2 . 0)
+        }
+    }
+    #}
+    )
+)
+
+#(define-markup-command
+    (tszkiu-right-arrow layout props)
+    ()
+    (interpret-markup layout props
+    #{
+    \markup {
+        \concat {
+          \raise #1 \draw-line #'(2 . 0)
+          \raise #1 \arrow-head #X #RIGHT ##t
+        }
+    }
+    #}
+    )
+)
+
+#(define-markup-command
+    (tszkiu-metric-modulation layout props left-rhythm right-rhythm)
+    (ly:music? ly:music?)
+    (interpret-markup layout props
+    #{
+    \markup {
+        \hspace #-10
+        \line {
+            \tszkiu-left-arrow
+            \rhythm { #left-rhythm } = \rhythm { #right-rhythm }
+            \tszkiu-right-arrow
+        }
+    }
+    #}
+    )
+)
 
 \header {
   composer = \markup {
@@ -50,11 +98,17 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
   \context {
     \PianoStaff
     \consists "Span_stem_engraver"
+    \numericTimeSignature
   }
   \context {
     \Dynamics
     \override VerticalAxisGroup.nonstaff-relatedstaff-spacing.basic-distance = #10
     \override DynamicText #'extra-offset = #'(1 . 0)
+  }
+  \context {
+    \StandaloneRhythmVoice
+    \override Rest.transparent = ##t
+    \override TupletBracket.bracket-visibility = ##t
   }
 }
 

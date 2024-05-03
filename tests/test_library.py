@@ -148,6 +148,19 @@ def test_rewriting_enharmonics():
     )
 
 
+def test_making_metric_modulation_markup():
+    left_rhythm_string = r"{ \times 2/3 { r8 r8 8 } }"
+    right_rhythm_string = r"{ { 8 } }"
+    markup = library.make_metric_modulation_markup(
+        left_rhythm_string, right_rhythm_string
+    )
+    assert markup.string == abjad.string.normalize(
+        r"""
+        \markup \tszkiu-metric-modulation { \times 2/3 { r8 r8 8 } } { { 8 } }
+        """
+    )
+
+
 def test_ataxic_sound_points_generator():
     arrival_rate = 1.0
     sound_points_generator = library.AtaxicSoundPointsGenerator(

@@ -13,7 +13,7 @@
             {
                 \times 4/5
                 {
-                    \tempo 4=78
+                    \tempo \markup \abjad-metronome-mark-markup #2 #0 #1 #"78"
                     \time 4/4
                     s16
                     \f
@@ -471,7 +471,7 @@
                     \times 4/5
                     {
                         \change Staff = Piano_Bass_Staff
-                        \tempo 4=78
+                        \tempo \markup \abjad-metronome-mark-markup #2 #0 #1 #"78"
                         \time 4/4
                         e16
                         r8
