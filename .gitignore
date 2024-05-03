@@ -13,3 +13,6 @@ __pycache__
 
 # directory where I store some lilypond examples that I reference to
 lilypond_examples
+
+# stylesheets from abjad (which will get imported using a script)
+**/stylesheets/abjad_contrib

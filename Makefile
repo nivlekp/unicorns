@@ -82,6 +82,9 @@ test:
 	make isort-check
 	make pytest
 
+import-abjad-ily:
+	@python ${PANG_PATH}/scripts/import_abjad_ily.py
+
 sections:
 	@python ${PANG_PATH}/scripts/make_sections.py --sections $(sections)
 
