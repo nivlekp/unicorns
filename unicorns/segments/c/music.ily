@@ -24,8 +24,12 @@
                 }
             }
             {
-                s8
-                s8
+                \times 4/5
+                {
+                    s8
+                    s16
+                    s8
+                }
                 s2
                 s4
                 \mp
@@ -44,50 +48,49 @@
                     \f
                     ~
                 }
-                s4
-                ~
+                s8.
+                s16
+                \times 4/5
+                {
+                    s16
+                    s8
+                    \mp
+                    ~
+                    s8
+                    ~
+                }
+            }
+            {
+                \times 4/5
+                {
+                    s16
+                    s8
+                    s8
+                    ~
+                }
                 \times 2/3
                 {
                     s8
                     s4
-                    \mp
-                    ~
-                }
-            }
-            {
-                \times 2/3
-                {
-                    s8
-                    s8
-                    s8
-                    ~
-                }
-                s8
-                s8
-                \times 4/5
-                {
-                    s8.
-                    ~
-                    s16
-                    s16
-                    ~
-                }
-                s4
-                ~
-            }
-            {
-                \times 4/5
-                {
-                    s16
-                    s8
-                    ~
-                    s16
-                    s16
                 }
                 s8.
                 s16
-                \f
                 ~
+                s4
+            }
+            {
+                \times 4/5
+                {
+                    s8.
+                    s8
+                }
+                \times 4/5
+                {
+                    s8.
+                    s8
+                    \f
+                    ~
+                }
                 s16
                 s16
                 s8
@@ -125,23 +128,20 @@
                 }
             }
             {
-                \times 4/5
+                \times 2/3
                 {
-                    s8.
-                    ~
-                    s16
-                    s16
+                    s4
+                    s8
                     \mp
                     ~
                 }
                 \times 4/5
                 {
+                    s16
                     s8
                     s16
-                    ~
-                    s16
-                    s16
                     \f
+                    s16
                 }
                 s2
             }
@@ -171,187 +171,179 @@
                     \f
                     ~
                 }
-                s4
-                \times 4/5
-                {
-                    s8.
-                    \mp
-                    ~
-                    s16
-                    s16
-                    ~
-                }
-            }
-            {
-                s16
-                s16
-                s8
-                ~
-                \times 2/3
-                {
-                    s8
-                    s8
-                    s8
-                    \f
-                    ~
-                }
-                s4
-                ~
-                \times 4/5
-                {
-                    s16
-                    s8
-                    s8
-                }
-            }
-            {
-                s2.
-                s4
-                ~
-            }
-            {
-                s16
+                s8.
                 s16
                 \mp
                 ~
-                s16
-                s16
-                ~
-                s4
-                ~
                 \times 4/5
                 {
                     s8.
                     s8
                 }
+            }
+            {
+                \times 2/3
+                {
+                    s8
+                    s4
+                }
+                \times 2/3
+                {
+                    s4
+                    s8
+                    \f
+                    ~
+                }
                 \times 4/5
                 {
                     s8.
                     ~
                     s16
                     s16
+                }
+                s4
+            }
+            {
+                s2.
+                s4
+            }
+            {
+                \times 4/5
+                {
+                    s8.
+                    \mp
+                    s8
                     ~
+                }
+                s4
+                ~
+                \times 2/3
+                {
+                    s8
+                    s8
+                    s8
+                    ~
+                }
+                \times 2/3
+                {
+                    s4
+                    s8
                 }
             }
             {
-                s16
-                s16
+                s8
                 s8
                 \f
                 ~
-                s16
+                \times 4/5
+                {
+                    s16
+                    s8
+                    s8
+                }
+                s2
+            }
+            {
+                s2
+                \times 4/5
+                {
+                    s8.
+                    s8
+                }
+                s4
+            }
+            {
+                s2.
+                \times 4/5
+                {
+                    s8
+                    s16
+                    ~
+                    s16
+                    s16
+                }
+            }
+            {
+                \times 4/5
+                {
+                    s8.
+                    \mp
+                    s8
+                    ~
+                }
+                \times 4/5
+                {
+                    s16
+                    s8
+                    s8
+                }
+                s2
+            }
+            {
+                \times 2/3
+                {
+                    s4
+                    s8
+                    \f
+                    ~
+                }
+                s2
+                ~
                 s8.
-                s2
+                s16
+                \mp
+                ~
             }
             {
-                s2
+                s8
+                s8
                 \times 4/5
                 {
-                    s8.
                     s8
+                    s16
+                    ~
+                    s16
+                    s16
+                    ~
                 }
+                s4
                 s4
             }
             {
-                s2.
-                \times 4/5
-                {
-                    s8
-                    s16
-                    s8
-                }
-            }
-            {
-                \times 4/5
-                {
-                    s8.
-                    \mp
-                    s8
-                    ~
-                }
-                \times 4/5
-                {
-                    s16
-                    s8
-                    s8
-                }
-                s2
-            }
-            {
                 \times 2/3
                 {
-                    s4
                     s8
-                    \f
+                    s4
                     ~
                 }
-                s2.
-                ~
-            }
-            {
                 s4
                 ~
-                \times 4/5
+                \times 2/3
                 {
-                    s8
-                    s16
-                    \mp
-                    ~
+                    s4
                     s8
                     ~
                 }
-                \times 4/5
-                {
-                    s16
-                    s8
-                    s8
-                }
                 s8
                 s8
-                ~
+                \f
             }
             {
                 \times 4/5
                 {
                     s8.
-                    s8
-                    ~
-                }
-                \times 2/3
-                {
-                    s4
-                    s8
-                }
-                s2
-                ~
-            }
-            {
-                \times 2/3
-                {
-                    s8
-                    s4
-                    ~
-                }
-                \times 4/5
-                {
-                    s16
-                    s8
-                    \f
-                    s8
                     \mp
-                    ~
+                    s8
                 }
+                s8
+                \f
+                s16
+                \mp
+                s16
+                s4
                 \times 4/5
                 {
-                    s16
                     s8
-                    s8
-                    \f
-                }
-                \times 4/5
-                {
-                    s8
-                    \mp
                     s16
                     ~
                     s16
@@ -362,13 +354,7 @@
                 s4
                 s4
                 \f
-                ~
-                \times 2/3
-                {
-                    s8
-                    s4
-                }
-                s4
+                s2
             }
             {
                 s4
@@ -401,40 +387,55 @@
                 s16
                 \f
                 ~
-                s8.
-                s16
-                \mp
-                ~
-                s16
-                s8.
                 \times 4/5
                 {
                     s8.
+                    s8
+                    \mp
+                }
+                s8.
+                s16
+                ~
+                \times 4/5
+                {
+                    s8
+                    s16
+                    ~
                     s8
                     ~
                 }
             }
             {
-                s16
-                s8.
-                ~
-                s16
-                s8.
+                \times 4/5
+                {
+                    s16
+                    s8
+                    ~
+                    s8
+                }
+                s4
                 \f
                 ~
-                \times 2/3
+                \times 4/5
                 {
-                    s4
-                    s8
+                    s16
+                    s16
+                    s16
                     \mp
+                    ~
+                    s8
                     ~
                 }
                 s4
                 ~
             }
             {
-                s8
-                s8
+                \times 4/5
+                {
+                    s16
+                    s8
+                    s8
+                }
                 s2.
             }
         }
@@ -457,8 +458,12 @@
                     }
                 }
                 {
-                    <af,, bf,, d, g,>8
-                    r8
+                    \times 4/5
+                    {
+                        <af,, bf,, d, g,>8
+                        r16
+                        r8
+                    }
                     r2
                     \change Staff = Piano_Treble_Staff
                     g'''4
@@ -477,50 +482,49 @@
                         <fs,, b,, f,>4
                         ~
                     }
-                    <fs,, b,, f,>4
-                    ~
-                    \times 2/3
+                    <fs,, b,, f,>8.
+                    r16
+                    \times 4/5
                     {
-                        <fs,, b,, f,>8
+                        r16
                         \change Staff = Piano_Treble_Staff
-                        a'''4
+                        a'''8
+                        ~
+                        a'''8
                         ~
                     }
                 }
                 {
-                    \times 2/3
+                    \times 4/5
                     {
-                        a'''8
+                        a'''16
                         a'''8
                         ef''8
                         ~
                     }
-                    ef''8
-                    e''8
-                    \times 4/5
+                    \times 2/3
                     {
-                        cs'''8.
-                        ~
-                        cs'''16
-                        c''16
-                        ~
+                        ef''8
+                        e''4
                     }
-                    c''4
+                    cs'''8.
+                    c''16
                     ~
+                    c''4
                 }
                 {
                     \times 4/5
                     {
-                        c''16
-                        c''8
-                        ~
-                        c''16
-                        af''16
+                        c''8.
+                        af''8
                     }
-                    g''8.
-                    \change Staff = Piano_Bass_Staff
-                    <a, bf, cs a>16
-                    ~
+                    \times 4/5
+                    {
+                        g''8.
+                        \change Staff = Piano_Bass_Staff
+                        <a, bf, cs a>8
+                        ~
+                    }
                     <a, bf, cs a>16
                     r16
                     \change Staff = Piano_Treble_Staff
@@ -558,23 +562,20 @@
                     }
                 }
                 {
-                    \times 4/5
+                    \times 2/3
                     {
-                        <fs,, a,, f, gf,>8.
-                        ~
-                        <fs,, a,, f, gf,>16
+                        <fs,, a,, f, gf,>4
                         \change Staff = Piano_Treble_Staff
-                        e''16
+                        e''8
                         ~
                     }
                     \times 4/5
                     {
-                        e''8
-                        ef''16
-                        ~
-                        ef''16
+                        e''16
+                        ef''8
                         \change Staff = Piano_Bass_Staff
                         <ds e fs>16
+                        r16
                     }
                     r2
                 }
@@ -604,76 +605,76 @@
                         <af, bf, g>16
                         ~
                     }
-                    <af, bf, g>4
+                    <af, bf, g>8.
+                    \change Staff = Piano_Treble_Staff
+                    af''16
+                    ~
                     \times 4/5
                     {
-                        \change Staff = Piano_Treble_Staff
                         af''8.
-                        ~
-                        af''16
-                        b'''16
-                        ~
+                        b'''8
                     }
                 }
                 {
-                    b'''16
-                    c'''16
-                    f''8
-                    ~
                     \times 2/3
                     {
-                        f''8
-                        r8
+                        c'''8
+                        f''4
+                    }
+                    \times 2/3
+                    {
+                        r4
                         \change Staff = Piano_Bass_Staff
                         <ds, e, e>8
                         ~
                     }
-                    <ds, e, e>4
-                    ~
                     \times 4/5
                     {
+                        <ds, e, e>8.
+                        ~
                         <ds, e, e>16
-                        r8
-                        r8
+                        r16
                     }
+                    r4
                 }
                 {
                     r2.
                     <a, bf, ef a>4
-                    ~
                 }
                 {
-                    <a, bf, ef a>16
-                    \change Staff = Piano_Treble_Staff
-                    g'''16
-                    ~
-                    g'''16
-                    c''16
-                    ~
+                    \times 4/5
+                    {
+                        \change Staff = Piano_Treble_Staff
+                        g'''8.
+                        c''8
+                        ~
+                    }
                     c''4
                     ~
-                    \times 4/5
+                    \times 2/3
                     {
-                        c''8.
+                        c''8
                         e'''8
+                        cs'''8
+                        ~
                     }
-                    \times 4/5
+                    \times 2/3
                     {
-                        cs'''8.
-                        ~
-                        cs'''16
-                        c'''16
-                        ~
+                        cs'''4
+                        c'''8
                     }
                 }
                 {
-                    c'''16
-                    r16
+                    r8
                     \change Staff = Piano_Bass_Staff
                     <d,, g,, af,, bf,,>8
                     ~
-                    <d,, g,, af,, bf,,>16
-                    r8.
+                    \times 4/5
+                    {
+                        <d,, g,, af,, bf,,>16
+                        r8
+                        r8
+                    }
                     r2
                 }
                 {
@@ -691,7 +692,9 @@
                     {
                         r8
                         <af, bf, af>16
-                        r8
+                        ~
+                        <af, bf, af>16
+                        r16
                     }
                 }
                 {
@@ -718,73 +721,63 @@
                         <f,, b,, fs,>8
                         ~
                     }
-                    <f,, b,, fs,>2.
+                    <f,, b,, fs,>2
+                    ~
+                    <f,, b,, fs,>8.
+                    \change Staff = Piano_Treble_Staff
+                    a''16
                     ~
                 }
                 {
-                    <f,, b,, fs,>4
-                    ~
+                    a''8
+                    af''8
                     \times 4/5
                     {
-                        <f,, b,, fs,>8
-                        \change Staff = Piano_Treble_Staff
-                        a''16
+                        af''8
+                        e''16
                         ~
-                        a''8
+                        e''16
+                        e'''16
                         ~
                     }
-                    \times 4/5
-                    {
-                        a''16
-                        af''8
-                        af''8
-                    }
-                    e''8
-                    e'''8
-                    ~
+                    e'''4
+                    c'''4
                 }
                 {
-                    \times 4/5
-                    {
-                        e'''8.
-                        c'''8
-                        ~
-                    }
                     \times 2/3
                     {
-                        c'''4
                         c''8
+                        ef''4
+                        ~
                     }
-                    ef''2
+                    ef''4
                     ~
-                }
-                {
                     \times 2/3
                     {
-                        ef''8
-                        af'''4
+                        ef''4
+                        af'''8
                         ~
                     }
+                    af'''8
+                    \change Staff = Piano_Bass_Staff
+                    <bf, d af bf>8
+                }
+                {
                     \times 4/5
                     {
-                        af'''16
-                        \change Staff = Piano_Bass_Staff
-                        <bf, d af bf>8
                         \change Staff = Piano_Treble_Staff
-                        ef'''8
-                        ~
-                    }
-                    \times 4/5
-                    {
-                        ef'''16
+                        ef'''8.
                         cs''8
-                        \change Staff = Piano_Bass_Staff
-                        <f, gf, b,>8
                     }
+                    \change Staff = Piano_Bass_Staff
+                    <f, gf, b,>8
+                    \change Staff = Piano_Treble_Staff
+                    b'''16
+                    r16
+                    r4
                     \times 4/5
                     {
-                        \change Staff = Piano_Treble_Staff
-                        b'''8
+                        r8
                         c'''16
                         ~
                         c'''16
@@ -795,13 +788,7 @@
                     r4
                     \change Staff = Piano_Bass_Staff
                     <cs ef a bf>4
-                    ~
-                    \times 2/3
-                    {
-                        <cs ef a bf>8
-                        r4
-                    }
-                    r4
+                    r2
                 }
                 {
                     r4
@@ -834,31 +821,42 @@
                     \change Staff = Piano_Bass_Staff
                     <e,, fs,, e,>16
                     ~
-                    <e,, fs,, e,>8.
-                    \change Staff = Piano_Treble_Staff
-                    g'''16
-                    ~
-                    g'''16
-                    g'''8.
                     \times 4/5
                     {
-                        e'''8.
+                        <e,, fs,, e,>8.
+                        \change Staff = Piano_Treble_Staff
+                        g'''8
+                    }
+                    g'''8.
+                    e'''16
+                    ~
+                    \times 4/5
+                    {
+                        e'''8
+                        cs'''16
+                        ~
                         cs'''8
                         ~
                     }
                 }
                 {
-                    cs'''16
-                    af'''8.
-                    ~
-                    af'''16
-                    \change Staff = Piano_Bass_Staff
-                    <af,, bf,, d, af,>8.
-                    ~
-                    \times 2/3
+                    \times 4/5
                     {
-                        <af,, bf,, d, af,>4
+                        cs'''16
+                        af'''8
+                        ~
+                        af'''8
+                    }
+                    \change Staff = Piano_Bass_Staff
+                    <af,, bf,, d, af,>4
+                    ~
+                    \times 4/5
+                    {
+                        <af,, bf,, d, af,>16
+                        r16
                         \change Staff = Piano_Treble_Staff
+                        ef'''16
+                        ~
                         ef'''8
                         ~
                     }
@@ -866,8 +864,12 @@
                     ~
                 }
                 {
-                    ef'''8
-                    r8
+                    \times 4/5
+                    {
+                        ef'''16
+                        r8
+                        r8
+                    }
                     r2.
                     \bar "|."
                     \end-note
@@ -892,8 +894,12 @@
                     }
                 }
                 {
-                    s8
-                    s8
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s8
+                    }
                     s2
                     s4
                 }
@@ -908,78 +914,79 @@
                         s8
                         s4
                     }
-                    s4
+                    s8.
+                    s16
+                    \times 4/5
+                    {
+                        s16
+                        s8
+                        s8
+                    }
+                }
+                {
+                    \times 4/5
+                    {
+                        s16
+                        s8
+                        s8
+                    }
                     \times 2/3
                     {
                         s8
                         s4
                     }
+                    s8.
+                    s16
+                    s4
+                }
+                {
+                    \times 4/5
+                    {
+                        s8.
+                        s8
+                    }
+                    \times 4/5
+                    {
+                        s8.
+                        s8
+                    }
+                    s16
+                    s16
+                    s8
+                    \times 4/5
+                    {
+                        s8.
+                        s16
+                        s16
+                    }
+                }
+                {
+                    \times 4/5
+                    {
+                        s16
+                        s8
+                        s8
+                    }
+                    s8.
+                    s16
+                    s4
+                    \times 4/5
+                    {
+                        s8.
+                        s16
+                        s16
+                    }
                 }
                 {
                     \times 2/3
                     {
-                        s8
-                        s8
+                        s4
                         s8
                     }
-                    s8
-                    s8
-                    \times 4/5
-                    {
-                        s8.
-                        s16
-                        s16
-                    }
-                    s4
-                }
-                {
                     \times 4/5
                     {
                         s16
                         s8
-                        s16
-                        s16
-                    }
-                    s8.
-                    s16
-                    s16
-                    s16
-                    s8
-                    \times 4/5
-                    {
-                        s8.
-                        s16
-                        s16
-                    }
-                }
-                {
-                    \times 4/5
-                    {
-                        s16
-                        s8
-                        s8
-                    }
-                    s8.
-                    s16
-                    s4
-                    \times 4/5
-                    {
-                        s8.
-                        s16
-                        s16
-                    }
-                }
-                {
-                    \times 4/5
-                    {
-                        s8.
-                        s16
-                        s16
-                    }
-                    \times 4/5
-                    {
-                        s8
-                        s16
                         s16
                         s16
                     }
@@ -1006,60 +1013,65 @@
                         s16
                         s16
                     }
-                    s4
+                    s8.
+                    s16
+                    \times 4/5
+                    {
+                        s8.
+                        s8
+                    }
+                }
+                {
+                    \times 2/3
+                    {
+                        s8
+                        s4
+                    }
+                    \times 2/3
+                    {
+                        s4
+                        s8
+                    }
                     \times 4/5
                     {
                         s8.
                         s16
                         s16
                     }
-                }
-                {
-                    s16
-                    s16
-                    s8
-                    \times 2/3
-                    {
-                        s8
-                        s8
-                        s8
-                    }
                     s4
-                    \times 4/5
-                    {
-                        s16
-                        s8
-                        s8
-                    }
                 }
                 {
                     s2.
                     s4
                 }
                 {
-                    s16
-                    s16
-                    s16
-                    s16
-                    s4
                     \times 4/5
                     {
                         s8.
                         s8
                     }
-                    \times 4/5
+                    s4
+                    \times 2/3
                     {
-                        s8.
-                        s16
-                        s16
+                        s8
+                        s8
+                        s8
+                    }
+                    \times 2/3
+                    {
+                        s4
+                        s8
                     }
                 }
                 {
-                    s16
-                    s16
                     s8
-                    s16
-                    s8.
+                    s8
+                    \times 4/5
+                    {
+                        s16
+                        s8
+                        s8
+                    }
                     s2
                 }
                 {
@@ -1077,7 +1089,8 @@
                     {
                         s8
                         s16
-                        s8
+                        s16
+                        s16
                     }
                 }
                 {
@@ -1100,20 +1113,33 @@
                         s4
                         s8
                     }
-                    s2.
+                    s2
+                    s8.
+                    s16
                 }
                 {
-                    s4
+                    s8
+                    s8
                     \times 4/5
                     {
                         s8
                         s16
-                        s8
+                        s16
+                        s16
                     }
-                    \times 4/5
+                    s4
+                    s4
+                }
+                {
+                    \times 2/3
                     {
-                        s16
                         s8
+                        s4
+                    }
+                    s4
+                    \times 2/3
+                    {
+                        s4
                         s8
                     }
                     s8
@@ -1125,50 +1151,24 @@
                         s8.
                         s8
                     }
-                    \times 2/3
+                    s8
+                    s16
+                    s16
+                    s4
+                    \times 4/5
                     {
-                        s4
                         s8
+                        s16
+                        s16
+                        s16
                     }
+                }
+                {
+                    s4
+                    s4
                     s2
                 }
                 {
-                    \times 2/3
-                    {
-                        s8
-                        s4
-                    }
-                    \times 4/5
-                    {
-                        s16
-                        s8
-                        s8
-                    }
-                    \times 4/5
-                    {
-                        s16
-                        s8
-                        s8
-                    }
-                    \times 4/5
-                    {
-                        s8
-                        s16
-                        s16
-                        s16
-                    }
-                }
-                {
-                    s4
-                    s4
-                    \times 2/3
-                    {
-                        s8
-                        s4
-                    }
-                    s4
-                }
-                {
                     s4
                     s8
                     s8
@@ -1191,31 +1191,44 @@
                     s16
                     s16
                     s16
-                    s8.
-                    s16
-                    s16
-                    s8.
                     \times 4/5
                     {
                         s8.
                         s8
                     }
+                    s8.
+                    s16
+                    \times 4/5
+                    {
+                        s8
+                        s16
+                        s8
+                    }
                 }
                 {
-                    s16
-                    s8.
-                    s16
-                    s8.
-                    \times 2/3
+                    \times 4/5
                     {
-                        s4
+                        s16
+                        s8
+                        s8
+                    }
+                    s4
+                    \times 4/5
+                    {
+                        s16
+                        s16
+                        s16
                         s8
                     }
                     s4
                 }
                 {
-                    s8
-                    s8
+                    \times 4/5
+                    {
+                        s16
+                        s8
+                        s8
+                    }
                     s2.
                 }
             }

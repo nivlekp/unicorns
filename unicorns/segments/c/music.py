@@ -36,7 +36,8 @@ def generate_first_sequence():
     sound_points_generator = library.SemiRegularSoundPointsGenerator(
         arrival_rate=0.3,
         arrival_standard_deviation=0.05,
-        service_rate=1.5,
+        service_time_minimum=0.15,
+        service_rate_lambda=2.5,
         pitch_set=list(chord_set),
         average_intensity=2,
         seed=78365876487618376458,
@@ -71,7 +72,6 @@ def main():
     sequence = generate_first_sequence()
     another_sequence = generate_second_sequence()
     sequence.superpose(0, another_sequence)
-    sequence.durations = [max(duration, 0.154) for duration in sequence.durations]
     search_tree = nauert.UnweightedSearchTree(
         definition={
             2: {2: None},

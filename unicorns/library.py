@@ -437,14 +437,16 @@ class SemiRegularSoundPointsGenerator(pang.SoundPointsGenerator):
         self,
         arrival_rate,
         arrival_standard_deviation,
-        service_rate,
+        service_time_minimum,
+        service_rate_lambda,
         pitch_set,
         average_intensity,
         seed,
     ):
         self._arrival_rate = arrival_rate
         self._arrival_standard_deviation = arrival_standard_deviation
-        self._service_rate = service_rate
+        self._service_time_minimum = service_time_minimum
+        self._service_rate_lambda = service_rate_lambda
         self._pitch_set = pitch_set
         self._average_intensity = average_intensity
         self._rng = np.random.default_rng(seed)
@@ -453,8 +455,8 @@ class SemiRegularSoundPointsGenerator(pang.SoundPointsGenerator):
         arrival_instances = self._generate_arrival_instances(sequence_duration)
         number_of_notes = len(arrival_instances)
         durations = self._rng.exponential(
-            np.reciprocal(self._service_rate), number_of_notes
-        )
+            np.reciprocal(self._service_rate_lambda), number_of_notes
+        ) + self._service_time_minimum
         pitches = np.array(self._pitch_set, dtype="O")
         pitches = self._rng.choice(pitches, number_of_notes).tolist()
         intensities = _generate_intensities(self._average_intensity, number_of_notes)

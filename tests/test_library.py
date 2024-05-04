@@ -195,7 +195,8 @@ def test_semi_regular_sound_points_generator():
     sound_points_generator = library.SemiRegularSoundPointsGenerator(
         arrival_rate=arrival_rate,
         arrival_standard_deviation=0.1,
-        service_rate=1.0,
+        service_time_minimum=0.1,
+        service_rate_lambda=1.0,
         pitch_set=(0, (0, 1), 4, 6),
         average_intensity=1,
         seed=None,
