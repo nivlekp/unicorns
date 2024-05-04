@@ -362,7 +362,8 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
         self,
         arrival_rates,
         mixing_parameter,
-        service_rate,
+        service_time_minimum,
+        service_rate_lambda,
         pitch_set,
         average_intensity,
         seed,
@@ -370,7 +371,8 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
         self._arrival_rates = arrival_rates
         assert mixing_parameter >= 0 and mixing_parameter <= 1
         self._mixing_parameter = mixing_parameter
-        self._service_rate = service_rate
+        self._service_time_minimum = service_time_minimum
+        self._service_rate_lambda = service_rate_lambda
         self._pitch_set = pitch_set
         self._average_intensity = average_intensity
         self._rng = np.random.default_rng(seed)
@@ -411,7 +413,10 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
         return arrival_instances
 
     def _generate_durations(self, number_of_notes):
-        return self._rng.exponential(1 / self._service_rate, number_of_notes)
+        return (
+            self._rng.exponential(1 / self._service_rate_lambda, number_of_notes)
+            + self._service_time_minimum
+        )
 
     def _generate_pitches(self, number_of_notes):
         return self._rng.choice(self._pitch_set, number_of_notes).tolist()
