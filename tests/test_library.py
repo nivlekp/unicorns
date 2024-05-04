@@ -178,7 +178,7 @@ def test_bimodal_sound_points_generator():
     arrival_rates = (5, 0.8)
     mixing_parameter = 0.9
     sound_points_generator = library.BimodalSoundPointsGenerator(
-        arrival_rates, mixing_parameter, 5, (0, 1, 4, 6), 0.2, 1, None
+        arrival_rates, mixing_parameter, 0.2, 5, (0, 1, 4, 6), 1, None
     )
     sound_points = sound_points_generator(10000)
     arrival_instances = np.array([sound_point.instance for sound_point in sound_points])
