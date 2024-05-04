@@ -15,7 +15,7 @@ def generate_first_sequence():
     sound_points_generator = library.BimodalSoundPointsGenerator(
         arrival_rates=(4.0, 1.0),
         mixing_parameter=0.7,
-        service_time_minimum=0.18,
+        service_time_minimum=0.15,
         service_rate_lambda=4,
         pitch_set=pitch_set,
         average_intensity=2,
@@ -34,7 +34,7 @@ def generate_second_sequence():
     sound_points_generator = library.BimodalSoundPointsGenerator(
         arrival_rates=(6.0, 2.0),
         mixing_parameter=0.5,
-        service_time_minimum=0.17,
+        service_time_minimum=0.15,
         service_rate_lambda=8,
         pitch_set=pitch_set,
         average_intensity=1,
@@ -53,7 +53,7 @@ def generate_third_sequence():
     sound_points_generator = library.BimodalSoundPointsGenerator(
         arrival_rates=(3, 0.5),
         mixing_parameter=0.75,
-        service_time_minimum=0.18,
+        service_time_minimum=0.15,
         service_rate_lambda=5,
         pitch_set=pitch_set,
         average_intensity=-1,
