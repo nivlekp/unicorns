@@ -22,7 +22,7 @@ def generate_first_sequence():
         seed=6899778665656846847236458726385,
     )
     return pang.Sequence(
-        sound_points_generator=sound_points_generator, sequence_duration=60
+        sound_points_generator=sound_points_generator, sequence_duration=30
     )
 
 
@@ -33,8 +33,8 @@ def generate_second_sequence():
     pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-32, high=35)
     sound_points_generator = library.BimodalSoundPointsGenerator(
         arrival_rates=(6.0, 2.0),
-        mixing_parameter=0.5,
-        service_time_minimum=0.15,
+        mixing_parameter=0.7,
+        service_time_minimum=0.13,
         service_rate_lambda=8,
         pitch_set=pitch_set,
         average_intensity=1,
@@ -57,7 +57,7 @@ def generate_third_sequence():
         service_rate_lambda=5,
         pitch_set=pitch_set,
         average_intensity=-1,
-        seed=26387683768276348573264596,
+        seed=263876837682763489573264596,
     )
     return pang.Sequence(
         sound_points_generator=sound_points_generator, sequence_duration=30
@@ -72,8 +72,8 @@ def main():
     sequence.extend(generate_third_sequence())
     search_tree = nauert.UnweightedSearchTree(
         definition={
-            2: {2: None},
-            3: None,
+            2: {2: None, 3: None},
+            3: {2: None},
             5: None,
         }
     )
