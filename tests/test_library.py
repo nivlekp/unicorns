@@ -164,7 +164,7 @@ def test_making_metric_modulation_markup():
 def test_ataxic_sound_points_generator():
     arrival_rate = 1.0
     sound_points_generator = library.AtaxicSoundPointsGenerator(
-        arrival_rate, 1.0, (0, 1, 4, 6), 1, None
+        arrival_rate, 0.15, 1.0, (0, 1, 4, 6), 1, None
     )
     sound_points = sound_points_generator(10000)
     arrival_instances = np.array([sound_point.instance for sound_point in sound_points])
@@ -178,7 +178,7 @@ def test_bimodal_sound_points_generator():
     arrival_rates = (5, 0.8)
     mixing_parameter = 0.9
     sound_points_generator = library.BimodalSoundPointsGenerator(
-        arrival_rates, mixing_parameter, 5, (0, 1, 4, 6), 1, None
+        arrival_rates, mixing_parameter, 0.2, 5, (0, 1, 4, 6), 1, None
     )
     sound_points = sound_points_generator(10000)
     arrival_instances = np.array([sound_point.instance for sound_point in sound_points])
@@ -195,7 +195,8 @@ def test_semi_regular_sound_points_generator():
     sound_points_generator = library.SemiRegularSoundPointsGenerator(
         arrival_rate=arrival_rate,
         arrival_standard_deviation=0.1,
-        service_rate=1.0,
+        service_time_minimum=0.1,
+        service_rate_lambda=1.0,
         pitch_set=(0, (0, 1), 4, 6),
         average_intensity=1,
         seed=None,

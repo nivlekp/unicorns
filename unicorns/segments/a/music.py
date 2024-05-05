@@ -13,19 +13,39 @@ def generate_first_sequence():
     ).rotate(n=1)
     pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-32, high=6)
     sound_points_generator = library.BimodalSoundPointsGenerator(
-        arrival_rates=(4, 0.3),
-        mixing_parameter=0.9,
-        service_rate=4,
+        arrival_rates=(4.0, 1.0),
+        mixing_parameter=0.7,
+        service_time_minimum=0.15,
+        service_rate_lambda=4,
         pitch_set=pitch_set,
         average_intensity=2,
-        seed=689977866565684684723645872638573628756265,
+        seed=6899778665656846847236458726385,
     )
     return pang.Sequence(
-        sound_points_generator=sound_points_generator, sequence_duration=60
+        sound_points_generator=sound_points_generator, sequence_duration=30
     )
 
 
 def generate_second_sequence():
+    sieve = abjad.Pattern(
+        indices=library.THIRD_MODE_OF_LIMITED_TRANSPOSITION, period=12
+    )
+    pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-32, high=35)
+    sound_points_generator = library.BimodalSoundPointsGenerator(
+        arrival_rates=(6.0, 2.0),
+        mixing_parameter=0.7,
+        service_time_minimum=0.13,
+        service_rate_lambda=8,
+        pitch_set=pitch_set,
+        average_intensity=1,
+        seed=597298749825948752984735893760,
+    )
+    return pang.Sequence(
+        sound_points_generator=sound_points_generator, sequence_duration=30
+    )
+
+
+def generate_third_sequence():
     sieve = abjad.Pattern(
         indices=library.THIRD_MODE_OF_LIMITED_TRANSPOSITION, period=12
     ).rotate(n=2)
@@ -33,10 +53,11 @@ def generate_second_sequence():
     sound_points_generator = library.BimodalSoundPointsGenerator(
         arrival_rates=(3, 0.5),
         mixing_parameter=0.75,
-        service_rate=3,
+        service_time_minimum=0.15,
+        service_rate_lambda=5,
         pitch_set=pitch_set,
-        average_intensity=1,
-        seed=26387683768276348573264596,
+        average_intensity=-1,
+        seed=263876837682763489573264596,
     )
     return pang.Sequence(
         sound_points_generator=sound_points_generator, sequence_duration=30
@@ -48,11 +69,11 @@ def main():
     scope = pang.Scope(voice_name=library.PIANO_MUSIC_VOICE_0_NAME)
     sequence = generate_first_sequence()
     sequence.extend(generate_second_sequence())
-    sequence.durations = [max(duration, 0.154) for duration in sequence.durations]
+    sequence.extend(generate_third_sequence())
     search_tree = nauert.UnweightedSearchTree(
         definition={
-            2: {2: None},
-            3: None,
+            2: {2: None, 3: None},
+            3: {2: None},
             5: None,
         }
     )

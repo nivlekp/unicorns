@@ -14,13 +14,14 @@ def generate_first_sequence():
     chord_set = library.single_pitch_list_to_chord_set(pitch_set)
     sound_points_generator = library.AtaxicSoundPointsGenerator(
         arrival_rate=1.0,
-        service_rate=1.5,
+        service_time_minimum=0.15,
+        service_rate_lambda=2.5,
         pitch_set=list(chord_set),
         average_intensity=3,
         seed=78973485515466867,
     )
     return pang.Sequence(
-        sound_points_generator=sound_points_generator, sequence_duration=10
+        sound_points_generator=sound_points_generator, sequence_duration=20
     )
 
 
@@ -30,8 +31,9 @@ def generate_second_sequence():
     )
     chord_set = library.single_pitch_list_to_chord_set(pitch_set)
     sound_points_generator = library.AtaxicSoundPointsGenerator(
-        arrival_rate=0.8,
-        service_rate=1.3,
+        arrival_rate=1.5,
+        service_time_minimum=0.15,
+        service_rate_lambda=3.0,
         pitch_set=list(chord_set),
         average_intensity=2,
         seed=4875268348975942,
@@ -47,8 +49,9 @@ def generate_third_sequence():
     pitch_set = pang.gen_pitches_from_sieve(sieve=sieve, origin=0, low=-6, high=35)
     chord_set = library.single_pitch_list_to_chord_set(pitch_set)
     sound_points_generator = library.AtaxicSoundPointsGenerator(
-        arrival_rate=0.5,
-        service_rate=1.0,
+        arrival_rate=1.0,
+        service_time_minimum=0.19,
+        service_rate_lambda=6.0,
         pitch_set=list(chord_set),
         average_intensity=1,
         seed=518757859238742,
@@ -64,7 +67,6 @@ def main():
     sequence = generate_first_sequence()
     sequence.extend(generate_second_sequence())
     sequence.extend(generate_third_sequence())
-    sequence.durations = [max(duration, 0.154) for duration in sequence.durations]
     search_tree = nauert.UnweightedSearchTree(
         definition={
             2: {2: None, 3: None},

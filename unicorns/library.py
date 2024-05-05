@@ -325,13 +325,15 @@ class AtaxicSoundPointsGenerator(pang.SoundPointsGenerator):
     def __init__(
         self,
         arrival_rate,
-        service_rate,
+        service_time_minimum,
+        service_rate_lambda,
         pitch_set,
         average_intensity,
         seed,
     ):
         self._arrival_rate = arrival_rate
-        self._service_rate = service_rate
+        self._service_time_minimum = service_time_minimum
+        self._service_rate_lambda = service_rate_lambda
         self._pitch_set = np.array(pitch_set, dtype="O")
         self._average_intensity = average_intensity
         self._rng = np.random.default_rng(seed)
@@ -341,7 +343,10 @@ class AtaxicSoundPointsGenerator(pang.SoundPointsGenerator):
         arrival_instances = sorted(
             self._rng.uniform(0.0, sequence_duration, number_of_notes)
         )
-        durations = self._rng.exponential(1 / self._service_rate, number_of_notes)
+        durations = (
+            self._rng.exponential(1 / self._service_rate_lambda, number_of_notes)
+            + self._service_time_minimum
+        )
         pitches = self._rng.choice(self._pitch_set, number_of_notes).tolist()
         intensities = _generate_intensities(self._average_intensity, number_of_notes)
         return [
@@ -362,7 +367,8 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
         self,
         arrival_rates,
         mixing_parameter,
-        service_rate,
+        service_time_minimum,
+        service_rate_lambda,
         pitch_set,
         average_intensity,
         seed,
@@ -370,7 +376,8 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
         self._arrival_rates = arrival_rates
         assert mixing_parameter >= 0 and mixing_parameter <= 1
         self._mixing_parameter = mixing_parameter
-        self._service_rate = service_rate
+        self._service_time_minimum = service_time_minimum
+        self._service_rate_lambda = service_rate_lambda
         self._pitch_set = pitch_set
         self._average_intensity = average_intensity
         self._rng = np.random.default_rng(seed)
@@ -411,7 +418,10 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
         return arrival_instances
 
     def _generate_durations(self, number_of_notes):
-        return self._rng.exponential(1 / self._service_rate, number_of_notes)
+        return (
+            self._rng.exponential(1 / self._service_rate_lambda, number_of_notes)
+            + self._service_time_minimum
+        )
 
     def _generate_pitches(self, number_of_notes):
         return self._rng.choice(self._pitch_set, number_of_notes).tolist()
@@ -432,14 +442,16 @@ class SemiRegularSoundPointsGenerator(pang.SoundPointsGenerator):
         self,
         arrival_rate,
         arrival_standard_deviation,
-        service_rate,
+        service_time_minimum,
+        service_rate_lambda,
         pitch_set,
         average_intensity,
         seed,
     ):
         self._arrival_rate = arrival_rate
         self._arrival_standard_deviation = arrival_standard_deviation
-        self._service_rate = service_rate
+        self._service_time_minimum = service_time_minimum
+        self._service_rate_lambda = service_rate_lambda
         self._pitch_set = pitch_set
         self._average_intensity = average_intensity
         self._rng = np.random.default_rng(seed)
@@ -447,8 +459,11 @@ class SemiRegularSoundPointsGenerator(pang.SoundPointsGenerator):
     def __call__(self, sequence_duration):
         arrival_instances = self._generate_arrival_instances(sequence_duration)
         number_of_notes = len(arrival_instances)
-        durations = self._rng.exponential(
-            np.reciprocal(self._service_rate), number_of_notes
+        durations = (
+            self._rng.exponential(
+                np.reciprocal(self._service_rate_lambda), number_of_notes
+            )
+            + self._service_time_minimum
         )
         pitches = np.array(self._pitch_set, dtype="O")
         pitches = self._rng.choice(pitches, number_of_notes).tolist()
