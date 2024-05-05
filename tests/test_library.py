@@ -164,7 +164,7 @@ def test_making_metric_modulation_markup():
 def test_ataxic_sound_points_generator():
     arrival_rate = 1.0
     sound_points_generator = library.AtaxicSoundPointsGenerator(
-        arrival_rate, 1.0, (0, 1, 4, 6), 1, None
+        arrival_rate, 0.15, 1.0, (0, 1, 4, 6), 1, None
     )
     sound_points = sound_points_generator(10000)
     arrival_instances = np.array([sound_point.instance for sound_point in sound_points])

@@ -325,13 +325,15 @@ class AtaxicSoundPointsGenerator(pang.SoundPointsGenerator):
     def __init__(
         self,
         arrival_rate,
-        service_rate,
+        service_time_minimum,
+        service_rate_lambda,
         pitch_set,
         average_intensity,
         seed,
     ):
         self._arrival_rate = arrival_rate
-        self._service_rate = service_rate
+        self._service_time_minimum = service_time_minimum
+        self._service_rate_lambda = service_rate_lambda
         self._pitch_set = np.array(pitch_set, dtype="O")
         self._average_intensity = average_intensity
         self._rng = np.random.default_rng(seed)
@@ -341,7 +343,10 @@ class AtaxicSoundPointsGenerator(pang.SoundPointsGenerator):
         arrival_instances = sorted(
             self._rng.uniform(0.0, sequence_duration, number_of_notes)
         )
-        durations = self._rng.exponential(1 / self._service_rate, number_of_notes)
+        durations = (
+            self._rng.exponential(1 / self._service_rate_lambda, number_of_notes)
+            + self._service_time_minimum
+        )
         pitches = self._rng.choice(self._pitch_set, number_of_notes).tolist()
         intensities = _generate_intensities(self._average_intensity, number_of_notes)
         return [
