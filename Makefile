@@ -96,6 +96,7 @@ score_directory = unicorns/builds/score
 full-score:
 	@python ${PANG_PATH}/scripts/make_score.py
 	@lualatex --output-directory=${score_directory} ${score_directory}/front-cover.tex
+	@lualatex --output-directory=${score_directory} ${score_directory}/preface.tex
 	@lualatex --output-directory=${score_directory} ${score_directory}/back-cover.tex
 	@lualatex --output-directory=${score_directory} ${score_directory}/score.tex
 
