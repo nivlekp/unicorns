@@ -6,6 +6,7 @@ __pycache__
 # latex stuff
 *.aux
 *.log
+*.out
 
 **/segments/*/music.pdf
 **/builds/*/*.pdf
