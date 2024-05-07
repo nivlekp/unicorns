@@ -71,7 +71,7 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
     "Tsz Kiu Pang"
   }
   tagline = ##f
-  title = "unicorns"
+  title = "The Last Unicorns"
   instrument = "for piano"
 }
 
@@ -103,7 +103,6 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
   \context {
     \Dynamics
     \override VerticalAxisGroup.nonstaff-relatedstaff-spacing.basic-distance = #10
-    \override DynamicText #'extra-offset = #'(1 . 0)
   }
   \context {
     \StandaloneRhythmVoice
@@ -125,17 +124,29 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
 
   oddFooterMarkup = \markup \fill-line {
     \concat {
-      "--"
+      "The Last Unicorns"
+      "  "
+      \char ##x2014
+      "  "
       \fromproperty #'page:page-number-string
-      "--"
+      "  "
+      \char ##x2014
+      "  "
+      "Pang"
     }
   }
 
   evenFooterMarkup = \markup \fill-line {
     \concat {
-      "--"
+      "The Last Unicorns"
+      "  "
+      \char ##x2014
+      "  "
       \fromproperty #'page:page-number-string
-      "--"
+      "  "
+      \char ##x2014
+      "  "
+      "Pang"
     }
   }
 }
