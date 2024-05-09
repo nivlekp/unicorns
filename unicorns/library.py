@@ -204,22 +204,20 @@ def _tidy_up_one_leaf_in_the_follower_voice(leaf):
             raise TypeError(leaf)
 
 
-def distribute_chords_across_two_voices(score, source_scope, target_scope):
-    source = score[source_scope.voice_name]
-    target = score[target_scope.voice_name]
-    copy = abjad.mutate.copy(source)
-    target.extend(copy)
+def distribute_chords_across_two_voices(source_voice, target_voice):
+    copy = abjad.mutate.copy(source_voice)
+    target_voice.extend(copy)
     current_staff_name = PIANO_TREBLE_STAFF_NAME
     auto_beam_off_indicator = abjad.LilyPondLiteral(r"\autoBeamOff", site="before")
-    abjad.attach(auto_beam_off_indicator, target[0])
+    abjad.attach(auto_beam_off_indicator, target_voice[0])
     omit_indicator = abjad.LilyPondLiteral(
         r"\omit TupletNumber \omit TupletBracket",
         site="before",
     )
-    abjad.attach(omit_indicator, target[0])
-    for leaf in abjad.iterate.leaves(target):
+    abjad.attach(omit_indicator, target_voice[0])
+    for leaf in abjad.iterate.leaves(target_voice):
         _tidy_up_one_leaf_in_the_follower_voice(leaf)
-    for leaf in abjad.iterate.leaves(source):
+    for leaf in abjad.iterate.leaves(source_voice):
         current_staff_name = _tidy_up_one_leaf_in_the_leading_voice(
             leaf, current_staff_name
         )
