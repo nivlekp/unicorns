@@ -118,7 +118,7 @@ def test_making_chord_from_stacked_intervals():
 
 
 def test_distributing_chords_across_two_voices():
-    source_voice = abjad.Voice("<c' e' g'>4 <c' g'>4 <c' g'>4 <c' g'>4")
+    source_voice = abjad.Voice("<c' e' g'>4 <e g'>4 <b g'>4 <e b>4")
     target_voice = abjad.Voice()
     library.distribute_chords_across_two_voices(source_voice, target_voice)
     assert abjad.lilypond(source_voice) == abjad.string.normalize(
@@ -126,9 +126,11 @@ def test_distributing_chords_across_two_voices():
         \new Voice
         {
             <c' e' g'>4
-            <c' g'>4
-            <c' g'>4
-            <c' g'>4
+            \once \override Stem.direction = #up
+            g'4
+            <b g'>4
+            \change Staff = Piano_Bass_Staff
+            <e b>4
         }
         """
     )
@@ -139,7 +141,9 @@ def test_distributing_chords_across_two_voices():
             \autoBeamOff
             \omit TupletNumber \omit TupletBracket
             s4
-            s4
+            \voiceOne
+            \crossStaff
+            e4
             s4
             s4
         }

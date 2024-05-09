@@ -150,6 +150,20 @@ def _make_leaf_cross_staff(leaf):
     abjad.attach(cross_staff_indicator, leaf)
 
 
+def _split_chord(chord):
+    written_pitches = chord.written_pitches
+    treble_note_exists = any(pitch > 7 for pitch in written_pitches)
+    bass_note_exists = any(pitch < -7 for pitch in written_pitches)
+    if treble_note_exists and bass_note_exists:
+        treble_pitches = tuple(pitch for pitch in written_pitches if pitch >= 0)
+        bass_pitches = tuple(pitch for pitch in written_pitches if pitch < 0)
+        return treble_pitches, bass_pitches
+    if treble_note_exists:  # and not bass_note_exists
+        return written_pitches, tuple()
+    # bass_note_exists and not treble_note_exists
+    return tuple(), written_pitches
+
+
 def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
     match leaf:
         case abjad.Rest():
@@ -164,7 +178,7 @@ def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
                 staff_change = abjad.StaffChange(current_staff_name)
                 abjad.attach(staff_change, leaf)
         case abjad.Chord():
-            pitches = [pitch for pitch in leaf.written_pitches if pitch >= 0]
+            pitches, _ = _split_chord(leaf)
             if not pitches:
                 if current_staff_name != PIANO_BASS_STAFF_NAME:
                     current_staff_name = PIANO_BASS_STAFF_NAME
@@ -192,7 +206,7 @@ def _tidy_up_one_leaf_in_the_follower_voice(leaf):
             abjad.detach(abjad.Tie, leaf)
             abjad.mutate.replace(leaf, abjad.Skip(leaf))
         case abjad.Chord():
-            pitches = tuple(pitch for pitch in leaf.written_pitches if pitch < 0)
+            _, pitches = _split_chord(leaf)
             if not pitches or pitches == leaf.written_pitches:
                 abjad.detach(abjad.Tie, leaf)
                 abjad.mutate.replace(leaf, abjad.Skip(leaf))
