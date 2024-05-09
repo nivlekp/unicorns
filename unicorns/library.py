@@ -158,10 +158,9 @@ def _split_chord(chord):
         treble_pitches = tuple(pitch for pitch in written_pitches if pitch >= 0)
         bass_pitches = tuple(pitch for pitch in written_pitches if pitch < 0)
         return treble_pitches, bass_pitches
-    if treble_note_exists:  # and not bass_note_exists
-        return written_pitches, tuple()
-    # bass_note_exists and not treble_note_exists
-    return tuple(), written_pitches
+    if bass_note_exists:  # and not treble_note_exists
+        return tuple(), written_pitches
+    return written_pitches, tuple()
 
 
 def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
