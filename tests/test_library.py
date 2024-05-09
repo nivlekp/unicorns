@@ -117,6 +117,36 @@ def test_making_chord_from_stacked_intervals():
     assert chord == (-30, -20, -15, -7, 2, 13, 19, 20, 23, 27, 34, 36)
 
 
+def test_distributing_chords_across_two_voices():
+    source_voice = abjad.Voice("<c' e' g'>4 <c' g'>4 <c' g'>4 <c' g'>4")
+    target_voice = abjad.Voice()
+    library.distribute_chords_across_two_voices(source_voice, target_voice)
+    assert abjad.lilypond(source_voice) == abjad.string.normalize(
+        r"""
+        \new Voice
+        {
+            <c' e' g'>4
+            <c' g'>4
+            <c' g'>4
+            <c' g'>4
+        }
+        """
+    )
+    assert abjad.lilypond(target_voice) == abjad.string.normalize(
+        r"""
+        \new Voice
+        {
+            \autoBeamOff
+            \omit TupletNumber \omit TupletBracket
+            s4
+            s4
+            s4
+            s4
+        }
+        """
+    )
+
+
 def test_making_treble_voice_spanning_across_two_staff():
     voice = abjad.Voice("c'4 b4 r4 c'4 cs'4")
     library.make_voice_spanning_across_two_staff(voice)
