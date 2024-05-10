@@ -229,7 +229,7 @@ def _tidy_up_one_leaf_in_the_follower_voice(leaf):
             raise TypeError(leaf)
 
 
-def distribute_chords_across_two_voices(source_voice, target_voice):
+def split_voice_into_two_voices(source_voice, target_voice):
     copy = abjad.mutate.copy(source_voice)
     target_voice.extend(copy)
     current_staff_name = PIANO_TREBLE_STAFF_NAME

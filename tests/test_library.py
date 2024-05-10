@@ -117,10 +117,10 @@ def test_making_chord_from_stacked_intervals():
     assert chord == (-30, -20, -15, -7, 2, 13, 19, 20, 23, 27, 34, 36)
 
 
-def test_distributing_chords_across_two_voices():
+def test_splitting_voice_into_two_voices():
     source_voice = abjad.Voice("<c' e'>4 <e g'>4 <b g'>4 <e b>4")
     target_voice = abjad.Voice()
-    library.distribute_chords_across_two_voices(source_voice, target_voice)
+    library.split_voice_into_two_voices(source_voice, target_voice)
     assert abjad.lilypond(source_voice) == abjad.string.normalize(
         r"""
         \new Voice
