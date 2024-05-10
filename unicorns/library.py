@@ -174,11 +174,17 @@ def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
         case abjad.Rest():
             pass
         case abjad.Note():
-            if leaf.written_pitch > 0 and current_staff_name != PIANO_TREBLE_STAFF_NAME:
+            if (
+                leaf.written_pitch > abjad.NamedPitch("c'")
+                and current_staff_name != PIANO_TREBLE_STAFF_NAME
+            ):
                 current_staff_name = PIANO_TREBLE_STAFF_NAME
                 staff_change = abjad.StaffChange(current_staff_name)
                 abjad.attach(staff_change, leaf)
-            elif leaf.written_pitch < 0 and current_staff_name != PIANO_BASS_STAFF_NAME:
+            elif (
+                leaf.written_pitch < abjad.NamedPitch("c'")
+                and current_staff_name != PIANO_BASS_STAFF_NAME
+            ):
                 current_staff_name = PIANO_BASS_STAFF_NAME
                 staff_change = abjad.StaffChange(current_staff_name)
                 abjad.attach(staff_change, leaf)
