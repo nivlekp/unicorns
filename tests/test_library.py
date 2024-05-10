@@ -118,7 +118,7 @@ def test_making_chord_from_stacked_intervals():
 
 
 def test_splitting_voice_into_two_voices():
-    source_voice = abjad.Voice("<c' e'>4 <e g'>4 <b g'>4 <e b>4")
+    source_voice = abjad.Voice("<c' e'>4 <e a'>4 <b g'>4 <e b>4")
     target_voice = abjad.Voice()
     library.split_voice_into_two_voices(source_voice, target_voice)
     assert abjad.lilypond(source_voice) == abjad.string.normalize(
@@ -127,7 +127,7 @@ def test_splitting_voice_into_two_voices():
         {
             <c' e'>4
             \once \override Stem.direction = #up
-            g'4
+            a'4
             <b g'>4
             \change Staff = Piano_Bass_Staff
             <e b>4
@@ -153,7 +153,7 @@ def test_splitting_voice_into_two_voices():
 
 def test_making_treble_voice_spanning_across_two_staff():
     voice = abjad.Voice("c'4 b4 r4 c'4 cs'4")
-    library.make_voice_spanning_across_two_staff(voice)
+    library.split_voice_into_two_voices(voice, abjad.Voice())
     staff_change_indicators = [
         abjad.get.indicator(leaf, abjad.StaffChange) for leaf in voice
     ]
