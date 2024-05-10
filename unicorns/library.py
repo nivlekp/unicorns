@@ -8,6 +8,8 @@ import numpy as np
 import pang
 
 MAXIMUM_SPAN = 30
+BASS_CLEF_HIGHEST_PITCH = 7
+TREBLE_CLEF_LOWEST_PITCH = -7
 
 ALL_INTERVAL_TETRACHORD_0146 = (0, 1, 4, 6)
 ALL_INTERVAL_TETRACHORD_0137 = (0, 1, 3, 7)
@@ -152,8 +154,12 @@ def _make_leaf_cross_staff(leaf):
 
 def _split_chord(chord):
     written_pitches = chord.written_pitches
-    treble_note_exists = any(pitch > 7 for pitch in written_pitches)
-    bass_note_exists = any(pitch < -7 for pitch in written_pitches)
+    treble_note_exists = any(
+        pitch > BASS_CLEF_HIGHEST_PITCH for pitch in written_pitches
+    )
+    bass_note_exists = any(
+        pitch < TREBLE_CLEF_LOWEST_PITCH for pitch in written_pitches
+    )
     if treble_note_exists and bass_note_exists:
         treble_pitches = tuple(pitch for pitch in written_pitches if pitch >= 0)
         bass_pitches = tuple(pitch for pitch in written_pitches if pitch < 0)
