@@ -204,7 +204,7 @@ def _replace_all_leaves_with_skips(logical_tie):
 
 def _make_chord_into_a_partial_chord_in_treble_staff(logical_tie, pitches):
     for leaf in abjad.iterate.leaves(logical_tie):
-        abjad.override(leaf).Stem.direction = "#up"
+        abjad.override(leaf).Stem.direction = abjad.UP
         _modify_pitches_of_a_chord(leaf, pitches)
 
 
