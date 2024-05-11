@@ -10,6 +10,7 @@ import pang
 MAXIMUM_SPAN = 30
 BASS_CLEF_HIGHEST_PITCH = abjad.NamedPitch("g'")
 TREBLE_CLEF_LOWEST_PITCH = abjad.NamedPitch("f")
+MIDDLE_C = abjad.NamedPitch("c'")
 
 ALL_INTERVAL_TETRACHORD_0146 = (0, 1, 4, 6)
 ALL_INTERVAL_TETRACHORD_0137 = (0, 1, 3, 7)
@@ -145,8 +146,8 @@ def _split_chord(chord):
         pitch < TREBLE_CLEF_LOWEST_PITCH for pitch in written_pitches
     )
     if treble_note_exists and bass_note_exists:
-        treble_pitches = tuple(pitch for pitch in written_pitches if pitch >= 0)
-        bass_pitches = tuple(pitch for pitch in written_pitches if pitch < 0)
+        treble_pitches = tuple(pitch for pitch in written_pitches if pitch >= MIDDLE_C)
+        bass_pitches = tuple(pitch for pitch in written_pitches if pitch < MIDDLE_C)
         return treble_pitches, bass_pitches
     if bass_note_exists:  # and not treble_note_exists
         return tuple(), written_pitches
@@ -159,14 +160,14 @@ def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
             pass
         case abjad.Note():
             if (
-                leaf.written_pitch > abjad.NamedPitch("c'")
+                leaf.written_pitch > MIDDLE_C
                 and current_staff_name != PIANO_TREBLE_STAFF_NAME
             ):
                 current_staff_name = PIANO_TREBLE_STAFF_NAME
                 staff_change = abjad.StaffChange(current_staff_name)
                 abjad.attach(staff_change, leaf)
             elif (
-                leaf.written_pitch < abjad.NamedPitch("c'")
+                leaf.written_pitch < MIDDLE_C
                 and current_staff_name != PIANO_BASS_STAFF_NAME
             ):
                 current_staff_name = PIANO_BASS_STAFF_NAME
