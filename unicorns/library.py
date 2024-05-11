@@ -154,64 +154,83 @@ def _split_chord(chord):
     return written_pitches, tuple()
 
 
-def _tidy_up_one_leaf_in_the_leading_voice(leaf, current_staff_name):
-    match leaf:
+def _tidy_up_one_logical_tie_in_the_leading_voice(logical_tie, current_staff_name):
+    head = logical_tie.head
+    match head:
         case abjad.Rest():
             pass
         case abjad.Note():
             if (
-                leaf.written_pitch > MIDDLE_C
+                head.written_pitch > MIDDLE_C
                 and current_staff_name != PIANO_TREBLE_STAFF_NAME
             ):
                 current_staff_name = PIANO_TREBLE_STAFF_NAME
                 staff_change = abjad.StaffChange(current_staff_name)
-                abjad.attach(staff_change, leaf)
+                abjad.attach(staff_change, head)
             elif (
-                leaf.written_pitch < MIDDLE_C
+                head.written_pitch < MIDDLE_C
                 and current_staff_name != PIANO_BASS_STAFF_NAME
             ):
                 current_staff_name = PIANO_BASS_STAFF_NAME
                 staff_change = abjad.StaffChange(current_staff_name)
-                abjad.attach(staff_change, leaf)
+                abjad.attach(staff_change, head)
         case abjad.Chord():
-            pitches, _ = _split_chord(leaf)
+            pitches, _ = _split_chord(head)
             if not pitches:
                 if current_staff_name != PIANO_BASS_STAFF_NAME:
                     current_staff_name = PIANO_BASS_STAFF_NAME
                     staff_change = abjad.StaffChange(current_staff_name)
-                    abjad.attach(staff_change, leaf)
+                    abjad.attach(staff_change, head)
             else:
                 if current_staff_name != PIANO_TREBLE_STAFF_NAME:
                     current_staff_name = PIANO_TREBLE_STAFF_NAME
                     staff_change = abjad.StaffChange(current_staff_name)
-                    abjad.attach(staff_change, leaf)
-                if len(pitches) != len(leaf.written_pitches):
+                    abjad.attach(staff_change, head)
+                if len(pitches) != len(head.written_pitches):
                     # some pitches are being distributed to the bass staff
-                    abjad.override(leaf).Stem.direction = "#up"
-                    _modify_pitches_of_a_chord(leaf, pitches)
+                    _make_chord_into_a_partial_chord_in_treble_staff(
+                        logical_tie, pitches
+                    )
         case _:
-            raise TypeError(leaf)
+            raise TypeError(head)
     return current_staff_name
 
 
-def _tidy_up_one_leaf_in_the_follower_voice(leaf):
-    match leaf:
+def _replace_all_leaves_with_skips(logical_tie):
+    for leaf in abjad.iterate.leaves(logical_tie):
+        abjad.detach(abjad.Tie, leaf)
+        abjad.mutate.replace(leaf, abjad.Skip(leaf))
+
+
+def _make_chord_into_a_partial_chord_in_treble_staff(logical_tie, pitches):
+    for leaf in abjad.iterate.leaves(logical_tie):
+        abjad.override(leaf).Stem.direction = "#up"
+        _modify_pitches_of_a_chord(leaf, pitches)
+
+
+def _make_chord_into_a_partial_chord_in_bass_staff(logical_tie, pitches):
+    for leaf in abjad.iterate.leaves(logical_tie):
+        leaf = _modify_pitches_of_a_chord(leaf, pitches)
+        _make_leaf_cross_staff(leaf)
+        _maybe_adjust_tie_direction(leaf, abjad.DOWN)
+
+
+def _tidy_up_one_logical_tie_in_the_follower_voice(logical_tie):
+    head = logical_tie.head
+    match head:
         case abjad.Rest():
-            abjad.mutate.replace(leaf, abjad.Skip(leaf))
+            assert len(logical_tie) == 1, logical_tie
+            abjad.mutate.replace(head, abjad.Skip(head))
         case abjad.Note():
-            abjad.detach(abjad.Tie, leaf)
-            abjad.mutate.replace(leaf, abjad.Skip(leaf))
+            _replace_all_leaves_with_skips(logical_tie)
         case abjad.Chord():
-            _, pitches = _split_chord(leaf)
-            if not pitches or pitches == leaf.written_pitches:
-                abjad.detach(abjad.Tie, leaf)
-                abjad.mutate.replace(leaf, abjad.Skip(leaf))
+            _, pitches = _split_chord(head)
+            if not pitches or pitches == head.written_pitches:
+                _replace_all_leaves_with_skips(logical_tie)
             else:
-                leaf = _modify_pitches_of_a_chord(leaf, pitches)
-                _make_leaf_cross_staff(leaf)
-                _maybe_adjust_tie_direction(leaf, abjad.DOWN)
+                _make_chord_into_a_partial_chord_in_bass_staff(logical_tie, pitches)
         case _:
-            raise TypeError(leaf)
+            raise TypeError(head)
 
 
 def split_voice_into_two_voices(source_voice, target_voice):
@@ -225,11 +244,16 @@ def split_voice_into_two_voices(source_voice, target_voice):
         site="before",
     )
     abjad.attach(omit_indicator, target_voice[0])
-    for leaf in abjad.iterate.leaves(target_voice):
-        _tidy_up_one_leaf_in_the_follower_voice(leaf)
-    for leaf in abjad.iterate.leaves(source_voice):
-        current_staff_name = _tidy_up_one_leaf_in_the_leading_voice(
-            leaf, current_staff_name
+    # instead of using a generator / iterator as it is, make it into a tuple to frozen the
+    # logical ties first, because we are mutating the logical ties during the process
+    logical_ties = tuple(
+        logical_tie for logical_tie in abjad.iterate.logical_ties(target_voice)
+    )
+    for logical_tie in logical_ties:
+        _tidy_up_one_logical_tie_in_the_follower_voice(logical_tie)
+    for logical_tie in abjad.iterate.logical_ties(source_voice):
+        current_staff_name = _tidy_up_one_logical_tie_in_the_leading_voice(
+            logical_tie, current_staff_name
         )
 
 
