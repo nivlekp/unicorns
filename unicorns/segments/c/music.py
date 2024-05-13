@@ -97,8 +97,8 @@ def main():
     library.fill_bass_voice_with_skips(
         score[scope.voice_name], score[library.PIANO_MUSIC_VOICE_1_NAME]
     )
-    library.distribute_chords_across_two_voices(
-        score, scope, pang.Scope(voice_name=library.PIANO_MUSIC_VOICE_0_FOLLOWER_NAME)
+    library.split_voice_into_two_voices(
+        score[scope.voice_name], score[library.PIANO_MUSIC_VOICE_0_FOLLOWER_NAME]
     )
     library.attach_fine_bar_line(score[library.PIANO_MUSIC_VOICE_0_NAME])
     library.attach_end_note(score[library.PIANO_MUSIC_VOICE_0_NAME])

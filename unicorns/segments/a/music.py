@@ -94,7 +94,7 @@ def main():
     library.fill_bass_voice_with_skips(
         score[scope.voice_name], score[library.PIANO_MUSIC_VOICE_1_NAME]
     )
-    library.make_voice_spanning_across_two_staff(score[scope.voice_name])
+    library.split_voice_into_two_voices(score[scope.voice_name], abjad.Voice())
     pang.build.persist(score, metadata)
     library.move_music_ily_from_segment_directory_to_build_directory("a")
 

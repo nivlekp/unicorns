@@ -93,8 +93,8 @@ def main():
     library.fill_bass_voice_with_skips(
         score[scope.voice_name], score[library.PIANO_MUSIC_VOICE_1_NAME]
     )
-    library.distribute_chords_across_two_voices(
-        score, scope, pang.Scope(voice_name=library.PIANO_MUSIC_VOICE_0_FOLLOWER_NAME)
+    library.split_voice_into_two_voices(
+        score[scope.voice_name], score[library.PIANO_MUSIC_VOICE_0_FOLLOWER_NAME]
     )
     metric_modulation_markup = library.make_metric_modulation_markup(
         r"{ \times 2/3 { r8 r8 8 } }", "{ { 8 } }"
