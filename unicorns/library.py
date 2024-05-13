@@ -1,3 +1,4 @@
+import enum
 import collections
 import itertools
 import pathlib
@@ -11,6 +12,7 @@ MAXIMUM_SPAN = 30
 BASS_CLEF_HIGHEST_PITCH = abjad.NamedPitch("g'")
 TREBLE_CLEF_LOWEST_PITCH = abjad.NamedPitch("f")
 MIDDLE_C = abjad.NamedPitch("c'")
+LEAF_LOCATION = enum.Enum("Location", ["TREBLE", "BASS", "EITHER_OR_BOTH"])
 
 ALL_INTERVAL_TETRACHORD_0146 = (0, 1, 4, 6)
 ALL_INTERVAL_TETRACHORD_0137 = (0, 1, 3, 7)
@@ -154,22 +156,57 @@ def _split_chord(chord):
     return written_pitches, tuple()
 
 
-def _tidy_up_one_logical_tie_in_the_leading_voice(logical_tie, current_staff_name):
+def _get_pitched_leaf_location(leaf):
+    match leaf:
+        case abjad.Chord():
+            treble_notes, bass_notes = _split_chord(leaf)
+            if treble_notes and bass_notes:
+                return LEAF_LOCATION.EITHER_OR_BOTH
+            if treble_notes:
+                return LEAF_LOCATION.TREBLE
+            return LEAF_LOCATION.BASS
+        case abjad.Note():
+            if leaf.written_pitch > BASS_CLEF_HIGHEST_PITCH:
+                return LEAF_LOCATION.TREBLE
+            if leaf.written_pitch < TREBLE_CLEF_LOWEST_PITCH:
+                return LEAF_LOCATION.BASS
+            return LEAF_LOCATION.EITHER_OR_BOTH
+        case _:
+            raise TypeError(head)
+
+
+def _tidy_up_one_logical_tie_in_the_leading_voice(
+    logical_tie,
+    current_staff_name,
+    next_pitched_logical_tie,
+):
     head = logical_tie.head
     match head:
         case abjad.Rest():
             pass
         case abjad.Note():
+            current_leaf_location = _get_pitched_leaf_location(head)
+            next_leaf_location = (
+                None
+                if next_pitched_logical_tie is None
+                else _get_pitched_leaf_location(next_pitched_logical_tie.head)
+            )
             if (
-                head.written_pitch > MIDDLE_C
-                and current_staff_name != PIANO_TREBLE_STAFF_NAME
+                current_leaf_location == LEAF_LOCATION.TREBLE
+                and current_staff_name == PIANO_BASS_STAFF_NAME
+                or head.written_pitch > MIDDLE_C
+                and next_leaf_location == LEAF_LOCATION.TREBLE
+                and current_staff_name == PIANO_BASS_STAFF_NAME
             ):
                 current_staff_name = PIANO_TREBLE_STAFF_NAME
                 staff_change = abjad.StaffChange(current_staff_name)
                 abjad.attach(staff_change, head)
             elif (
-                head.written_pitch < MIDDLE_C
-                and current_staff_name != PIANO_BASS_STAFF_NAME
+                current_leaf_location == LEAF_LOCATION.BASS
+                and current_staff_name == PIANO_TREBLE_STAFF_NAME
+                or head.written_pitch < MIDDLE_C
+                and next_leaf_location == LEAF_LOCATION.BASS
+                and current_staff_name == PIANO_TREBLE_STAFF_NAME
             ):
                 current_staff_name = PIANO_BASS_STAFF_NAME
                 staff_change = abjad.StaffChange(current_staff_name)
@@ -233,6 +270,12 @@ def _tidy_up_one_logical_tie_in_the_follower_voice(logical_tie):
             raise TypeError(head)
 
 
+def _get_next_pitched_logical_tie(logical_ties):
+    return next(
+        (logical_tie for logical_tie in logical_ties if logical_tie.is_pitched), None
+    )
+
+
 def split_voice_into_two_voices(source_voice, target_voice):
     copy = abjad.mutate.copy(source_voice)
     target_voice.extend(copy)
@@ -251,9 +294,19 @@ def split_voice_into_two_voices(source_voice, target_voice):
     )
     for logical_tie in logical_ties:
         _tidy_up_one_logical_tie_in_the_follower_voice(logical_tie)
-    for logical_tie in abjad.iterate.logical_ties(source_voice):
+    logical_ties = tuple(
+        logical_tie for logical_tie in abjad.iterate.logical_ties(source_voice)
+    )
+    for index, logical_tie in enumerate(logical_ties):
+        next_pitched_logical_tie = (
+            None
+            if index == len(logical_ties) - 1
+            else _get_next_pitched_logical_tie(logical_ties[index + 1 :])
+        )
         current_staff_name = _tidy_up_one_logical_tie_in_the_leading_voice(
-            logical_tie, current_staff_name
+            logical_tie,
+            current_staff_name,
+            next_pitched_logical_tie,
         )
 
 
