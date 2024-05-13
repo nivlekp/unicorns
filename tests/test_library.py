@@ -117,8 +117,8 @@ def test_making_chord_from_stacked_intervals():
     assert chord == (-30, -20, -15, -7, 2, 13, 19, 20, 23, 27, 34, 36)
 
 
-def test_splitting_voice_into_two_voices():
-    source_voice = abjad.Voice("<c' e'>4 <e a'>4 <b g'>4 <e b>4")
+def test_splitting_voice_into_two_staves():
+    source_voice = abjad.Voice("<c' e'>4 <e a'>4 <b g'>4 b4 <e b>4")
     target_voice = abjad.Voice()
     library.split_voice_into_two_voices(source_voice, target_voice)
     assert abjad.lilypond(source_voice) == abjad.string.normalize(
@@ -130,6 +130,7 @@ def test_splitting_voice_into_two_voices():
             a'4
             <b g'>4
             \change Staff = Piano_Bass_Staff
+            b4
             <e b>4
         }
         """
@@ -146,23 +147,33 @@ def test_splitting_voice_into_two_voices():
             e4
             s4
             s4
+            s4
         }
         """
     )
 
 
-def test_making_treble_voice_spanning_across_two_staff():
+def test_splitting_single_note_voice_across_two_staves_near_middle_c():
     voice = abjad.Voice("c'4 b4 r4 c'4 cs'4")
     library.split_voice_into_two_voices(voice, abjad.Voice())
     staff_change_indicators = [
         abjad.get.indicator(leaf, abjad.StaffChange) for leaf in voice
     ]
+    assert all(indicator is None for indicator in staff_change_indicators)
+
+
+def test_splitting_single_note_voice_across_two_staves():
+    voice = abjad.Voice("c4 e4 d'4 d'4 a'4")
+    library.split_voice_into_two_voices(voice, abjad.Voice())
+    staff_change_indicators = [
+        abjad.get.indicator(leaf, abjad.StaffChange) for leaf in voice
+    ]
     assert staff_change_indicators == [
-        None,
         abjad.StaffChange(library.PIANO_BASS_STAFF_NAME),
         None,
         None,
         abjad.StaffChange(library.PIANO_TREBLE_STAFF_NAME),
+        None,
     ]
 
 

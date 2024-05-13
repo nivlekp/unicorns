@@ -1,5 +1,5 @@
-import enum
 import collections
+import enum
 import itertools
 import pathlib
 import shutil
@@ -172,13 +172,14 @@ def _get_pitched_leaf_location(leaf):
                 return LEAF_LOCATION.BASS
             return LEAF_LOCATION.EITHER_OR_BOTH
         case _:
-            raise TypeError(head)
+            raise TypeError(leaf)
 
 
 def _tidy_up_one_logical_tie_in_the_leading_voice(
     logical_tie,
     current_staff_name,
     next_pitched_logical_tie,
+    is_first_pitched_leaf,
 ):
     head = logical_tie.head
     match head:
@@ -197,6 +198,10 @@ def _tidy_up_one_logical_tie_in_the_leading_voice(
                 or head.written_pitch > MIDDLE_C
                 and next_leaf_location == LEAF_LOCATION.TREBLE
                 and current_staff_name == PIANO_BASS_STAFF_NAME
+                or is_first_pitched_leaf
+                and current_leaf_location == LEAF_LOCATION.EITHER_OR_BOTH
+                and next_leaf_location == LEAF_LOCATION.TREBLE
+                and current_staff_name == PIANO_BASS_STAFF_NAME
             ):
                 current_staff_name = PIANO_TREBLE_STAFF_NAME
                 staff_change = abjad.StaffChange(current_staff_name)
@@ -205,6 +210,10 @@ def _tidy_up_one_logical_tie_in_the_leading_voice(
                 current_leaf_location == LEAF_LOCATION.BASS
                 and current_staff_name == PIANO_TREBLE_STAFF_NAME
                 or head.written_pitch < MIDDLE_C
+                and next_leaf_location == LEAF_LOCATION.BASS
+                and current_staff_name == PIANO_TREBLE_STAFF_NAME
+                or is_first_pitched_leaf
+                and current_leaf_location == LEAF_LOCATION.EITHER_OR_BOTH
                 and next_leaf_location == LEAF_LOCATION.BASS
                 and current_staff_name == PIANO_TREBLE_STAFF_NAME
             ):
@@ -297,6 +306,7 @@ def split_voice_into_two_voices(source_voice, target_voice):
     logical_ties = tuple(
         logical_tie for logical_tie in abjad.iterate.logical_ties(source_voice)
     )
+    is_first_pitched_leaf = True
     for index, logical_tie in enumerate(logical_ties):
         next_pitched_logical_tie = (
             None
@@ -307,7 +317,10 @@ def split_voice_into_two_voices(source_voice, target_voice):
             logical_tie,
             current_staff_name,
             next_pitched_logical_tie,
+            is_first_pitched_leaf,
         )
+        if logical_tie.is_pitched:
+            is_first_pitched_leaf = False
 
 
 def _generate_intensities(average_intensity, number_of_notes):
