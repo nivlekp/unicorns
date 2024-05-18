@@ -5,20 +5,6 @@
 #(set-default-paper-size "a4landscape")
 #(set-global-staff-size 16)
 
-%{
-The flat-brackets code is adapted from David Nalesnik on the LilyPond mailing
-list:
-http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a158452
-%}
-#(define flat-brackets
-   (lambda (grob)
-     (let* ((pos (ly:tuplet-bracket::calc-positions grob))
-             (dir (ly:grob-property grob 'direction))
-             (y (if (= UP dir)
-                    (max (car pos) (cdr pos))
-                    (max -20 (min (car pos) (cdr pos))))))
-       (cons y y))))
-
 #(define-markup-command
     (tszkiu-left-arrow layout props)
     ()
@@ -92,7 +78,7 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
     %\override Beam.details.damping-direction-penalty = #0
     %\override Beam.details.round-to-zero-slope = #0
     \override Flag.stencil = #modern-straight-flag
-    \override TupletBracket.positions = #flat-brackets
+    \override TupletBracket.max-slope-factor = #0
     tupletFullLength = ##t
   }
   \context {

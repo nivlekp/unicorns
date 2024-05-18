@@ -1,4 +1,4 @@
-\version "2.24.3"
+\version "2.25.16"
 \language "english"
 \context Score = "Score"
 <<
