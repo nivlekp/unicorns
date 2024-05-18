@@ -34,7 +34,7 @@ def make_empty_score():
     """
     >>> from unicorns import library
     >>> library.make_empty_score()
-    Score('{ { } { { } } { { } { } } }', name='Score', simultaneous=True)
+    Score('{ { { } } { { } { } } { } }', name='Score', simultaneous=True)
     """
     piano_music_voice_0 = abjad.Voice(name=PIANO_MUSIC_VOICE_0_NAME)
     piano_music_voice_1 = abjad.Voice(name=PIANO_MUSIC_VOICE_1_NAME)
@@ -53,7 +53,7 @@ def make_empty_score():
         lilypond_type="PianoStaff", name=PIANO_STAFF_NAME
     )
     piano_music_staff.extend(
-        [dynamics_staff, piano_music_treble_staff, piano_music_bass_staff]
+        [piano_music_treble_staff, piano_music_bass_staff, dynamics_staff]
     )
     score = abjad.Score([piano_music_staff], name=SCORE_NAME)
     return score
@@ -413,6 +413,34 @@ def make_metric_modulation_markup(left_rhythm_string, right_rhythm_string):
         """
     )
     return abjad.Markup(string)
+
+
+def _compute_pitched_leaf_position(leaf):
+    staff = abjad.get.effective_staff(leaf)
+    written_pitch = leaf.written_pitch
+    neutral_pitch = abjad.NamedPitch(
+        written_pitch.name[0], octave=written_pitch.octave.number
+    )
+    if staff.name == PIANO_TREBLE_STAFF_NAME:
+        return neutral_pitch.number
+    # TODO: compute this properly
+    return neutral_pitch.number - 20
+
+
+def _adjust_tuplet_bracket(tuplet):
+    first_leaf = abjad.get.leaf(tuplet)
+    positions = [
+        _compute_pitched_leaf_position(leaf)
+        for leaf in abjad.iterate.leaves(tuplet, pitched=True)
+    ]
+    abjad.override(first_leaf).TupletBracket.positions = (
+        f"#(flat-brackets '{max(positions)} '{min(positions)})"
+    )
+
+
+def adjust_tuplet_brackets(voice):
+    for tuplet in abjad.iterate.components(voice, abjad.Tuplet):
+        _adjust_tuplet_bracket(tuplet)
 
 
 class AtaxicSoundPointsGenerator(pang.SoundPointsGenerator):

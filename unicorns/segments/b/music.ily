@@ -4,381 +4,6 @@
 <<
     \context PianoStaff = "Piano.Staff"
     <<
-        \context Dynamics = "Dynamics"
-        \with
-        {
-            alignAboveContext = Piano_Treble_Staff
-        }
-        {
-            {
-                \tempo \markup \abjad-metronome-mark-markup #1 #0 #1 #"58.5"
-                \time 3/2
-                s4
-                \times 2/3
-                {
-                    s4
-                    \ff
-                    s8
-                }
-                \times 4/5
-                {
-                    s8
-                    s4
-                    s8
-                    s8
-                    ~
-                }
-                \times 4/5
-                {
-                    s4.
-                    ~
-                    s8
-                    s8
-                }
-            }
-            {
-                \times 4/7
-                {
-                    s4.
-                    s8
-                    s8
-                    ~
-                    s8
-                    s8
-                    ~
-                }
-                s8
-                s4.
-                \times 4/7
-                {
-                    s4.
-                    s4
-                    s8
-                    s8
-                }
-            }
-            {
-                \times 2/3
-                {
-                    s8
-                    s4
-                }
-                s8
-                s8
-                ~
-                \times 4/7
-                {
-                    s4.
-                    ~
-                    s4
-                    ~
-                    s8
-                    s8
-                }
-                \times 2/3
-                {
-                    s4
-                    s4
-                    s4
-                }
-            }
-            {
-                s1
-                \times 2/3
-                {
-                    s4
-                    s8
-                    s8
-                    s4
-                }
-            }
-            {
-                s4
-                s4
-                \times 4/5
-                {
-                    s8
-                    s4
-                    s4
-                }
-                \times 4/5
-                {
-                    s8
-                    s4
-                    s4
-                }
-            }
-            {
-                \times 4/7
-                {
-                    s4.
-                    s8
-                    s8
-                    ~
-                    s4
-                }
-                s2
-                \times 4/7
-                {
-                    s4.
-                    ~
-                    s8
-                    s8
-                    s4
-                }
-            }
-            {
-                s4
-                s4
-                ~
-                s2
-                ~
-                \times 2/3
-                {
-                    s4
-                    s8
-                    s8
-                    \f
-                    ~
-                    s4
-                }
-            }
-            {
-                s2
-                ~
-                \times 4/7
-                {
-                    s8
-                    s4
-                    s4
-                    ~
-                    s8
-                    s8
-                    ~
-                }
-                \times 2/3
-                {
-                    s8
-                    s4
-                    ~
-                }
-                s8
-                s8
-                ~
-            }
-            {
-                \times 2/3
-                {
-                    s4
-                    s2
-                }
-                s2
-                \times 4/7
-                {
-                    s4.
-                    s8
-                    s8
-                    ~
-                    s4
-                }
-            }
-            {
-                s8
-                s8
-                ~
-                \times 2/3
-                {
-                    s4
-                    s8
-                }
-                \times 4/5
-                {
-                    s4
-                    s8
-                    s4
-                }
-                \times 4/7
-                {
-                    s4.
-                    s2
-                }
-            }
-            {
-                s8
-                s8
-                \times 2/3
-                {
-                    s8
-                    s8
-                    s8
-                }
-                s2
-                s2
-                ~
-            }
-            {
-                \times 4/7
-                {
-                    s4.
-                    s4
-                    ~
-                    s8
-                    s8
-                    ~
-                }
-                \times 4/5
-                {
-                    s8
-                    s4
-                    s4
-                }
-                \times 4/7
-                {
-                    s4
-                    s8
-                    s2
-                }
-            }
-            {
-                \times 4/7
-                {
-                    s4.
-                    s4
-                    ~
-                    s8
-                    s8
-                    ~
-                }
-                \times 4/5
-                {
-                    s4.
-                    s4
-                    ~
-                }
-                \times 2/3
-                {
-                    s8
-                    s8
-                    s8
-                    ~
-                }
-                s8
-                s8
-                ~
-            }
-            {
-                s8
-                s8
-                \times 2/3
-                {
-                    s8
-                    s8
-                    s8
-                }
-                s2
-                \times 4/7
-                {
-                    s4.
-                    s4
-                    \mf
-                    s4
-                }
-            }
-            {
-                s1
-                s4
-                s4
-            }
-            {
-                \times 4/7
-                {
-                    s4
-                    s8
-                    ~
-                    s4
-                    ~
-                    s8
-                    s8
-                    ~
-                }
-                \times 4/7
-                {
-                    s4.
-                    ~
-                    s4
-                    s4
-                }
-                s2
-            }
-            {
-                \times 2/3
-                {
-                    s4
-                    s8
-                    ~
-                }
-                s8
-                s8
-                ~
-                \times 4/7
-                {
-                    s8
-                    s4
-                    s2
-                }
-                s2
-            }
-            {
-                \times 4/5
-                {
-                    s4.
-                    s8
-                    s8
-                }
-                s8
-                s8
-                s4
-                s8
-                s8
-                \times 2/3
-                {
-                    s4
-                    s8
-                }
-            }
-            {
-                s2
-                \times 2/3
-                {
-                    s8
-                    s8
-                    ~
-                    s8
-                    s8
-                    s4
-                }
-                \times 4/5
-                {
-                    s4.
-                    s4
-                }
-            }
-            {
-                s2
-                s4
-                \times 2/3
-                {
-                    s8
-                    s8
-                    s8
-                }
-                s8
-                s8
-                ~
-                s8
-                s8
-            }
-        }
         \context Staff = "Piano_Treble_Staff"
         {
             \context Voice = "Piano.Music.0"
@@ -1143,5 +768,380 @@
                 s1
             }
         >>
+        \context Dynamics = "Dynamics"
+        \with
+        {
+            alignAboveContext = Piano_Treble_Staff
+        }
+        {
+            {
+                \tempo \markup \abjad-metronome-mark-markup #1 #0 #1 #"58.5"
+                \time 3/2
+                s4
+                \times 2/3
+                {
+                    s4
+                    \ff
+                    s8
+                }
+                \times 4/5
+                {
+                    s8
+                    s4
+                    s8
+                    s8
+                    ~
+                }
+                \times 4/5
+                {
+                    s4.
+                    ~
+                    s8
+                    s8
+                }
+            }
+            {
+                \times 4/7
+                {
+                    s4.
+                    s8
+                    s8
+                    ~
+                    s8
+                    s8
+                    ~
+                }
+                s8
+                s4.
+                \times 4/7
+                {
+                    s4.
+                    s4
+                    s8
+                    s8
+                }
+            }
+            {
+                \times 2/3
+                {
+                    s8
+                    s4
+                }
+                s8
+                s8
+                ~
+                \times 4/7
+                {
+                    s4.
+                    ~
+                    s4
+                    ~
+                    s8
+                    s8
+                }
+                \times 2/3
+                {
+                    s4
+                    s4
+                    s4
+                }
+            }
+            {
+                s1
+                \times 2/3
+                {
+                    s4
+                    s8
+                    s8
+                    s4
+                }
+            }
+            {
+                s4
+                s4
+                \times 4/5
+                {
+                    s8
+                    s4
+                    s4
+                }
+                \times 4/5
+                {
+                    s8
+                    s4
+                    s4
+                }
+            }
+            {
+                \times 4/7
+                {
+                    s4.
+                    s8
+                    s8
+                    ~
+                    s4
+                }
+                s2
+                \times 4/7
+                {
+                    s4.
+                    ~
+                    s8
+                    s8
+                    s4
+                }
+            }
+            {
+                s4
+                s4
+                ~
+                s2
+                ~
+                \times 2/3
+                {
+                    s4
+                    s8
+                    s8
+                    \f
+                    ~
+                    s4
+                }
+            }
+            {
+                s2
+                ~
+                \times 4/7
+                {
+                    s8
+                    s4
+                    s4
+                    ~
+                    s8
+                    s8
+                    ~
+                }
+                \times 2/3
+                {
+                    s8
+                    s4
+                    ~
+                }
+                s8
+                s8
+                ~
+            }
+            {
+                \times 2/3
+                {
+                    s4
+                    s2
+                }
+                s2
+                \times 4/7
+                {
+                    s4.
+                    s8
+                    s8
+                    ~
+                    s4
+                }
+            }
+            {
+                s8
+                s8
+                ~
+                \times 2/3
+                {
+                    s4
+                    s8
+                }
+                \times 4/5
+                {
+                    s4
+                    s8
+                    s4
+                }
+                \times 4/7
+                {
+                    s4.
+                    s2
+                }
+            }
+            {
+                s8
+                s8
+                \times 2/3
+                {
+                    s8
+                    s8
+                    s8
+                }
+                s2
+                s2
+                ~
+            }
+            {
+                \times 4/7
+                {
+                    s4.
+                    s4
+                    ~
+                    s8
+                    s8
+                    ~
+                }
+                \times 4/5
+                {
+                    s8
+                    s4
+                    s4
+                }
+                \times 4/7
+                {
+                    s4
+                    s8
+                    s2
+                }
+            }
+            {
+                \times 4/7
+                {
+                    s4.
+                    s4
+                    ~
+                    s8
+                    s8
+                    ~
+                }
+                \times 4/5
+                {
+                    s4.
+                    s4
+                    ~
+                }
+                \times 2/3
+                {
+                    s8
+                    s8
+                    s8
+                    ~
+                }
+                s8
+                s8
+                ~
+            }
+            {
+                s8
+                s8
+                \times 2/3
+                {
+                    s8
+                    s8
+                    s8
+                }
+                s2
+                \times 4/7
+                {
+                    s4.
+                    s4
+                    \mf
+                    s4
+                }
+            }
+            {
+                s1
+                s4
+                s4
+            }
+            {
+                \times 4/7
+                {
+                    s4
+                    s8
+                    ~
+                    s4
+                    ~
+                    s8
+                    s8
+                    ~
+                }
+                \times 4/7
+                {
+                    s4.
+                    ~
+                    s4
+                    s4
+                }
+                s2
+            }
+            {
+                \times 2/3
+                {
+                    s4
+                    s8
+                    ~
+                }
+                s8
+                s8
+                ~
+                \times 4/7
+                {
+                    s8
+                    s4
+                    s2
+                }
+                s2
+            }
+            {
+                \times 4/5
+                {
+                    s4.
+                    s8
+                    s8
+                }
+                s8
+                s8
+                s4
+                s8
+                s8
+                \times 2/3
+                {
+                    s4
+                    s8
+                }
+            }
+            {
+                s2
+                \times 2/3
+                {
+                    s8
+                    s8
+                    ~
+                    s8
+                    s8
+                    s4
+                }
+                \times 4/5
+                {
+                    s4.
+                    s4
+                }
+            }
+            {
+                s2
+                s4
+                \times 2/3
+                {
+                    s8
+                    s8
+                    s8
+                }
+                s8
+                s8
+                ~
+                s8
+                s8
+            }
+        }
     >>
 >>
