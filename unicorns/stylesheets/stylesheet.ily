@@ -74,7 +74,7 @@
   }
   \context {
     \Staff
-    %\override Beam.damping = #+inf.0
+    \override Beam.damping = #+inf.0
     %\override Beam.details.damping-direction-penalty = #0
     %\override Beam.details.round-to-zero-slope = #0
     \override Flag.stencil = #modern-straight-flag
