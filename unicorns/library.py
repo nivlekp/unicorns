@@ -415,9 +415,27 @@ def make_metric_modulation_markup(left_rhythm_string, right_rhythm_string):
     return abjad.Markup(string)
 
 
+def _compute_pitched_leaf_position(leaf):
+    staff = abjad.get.effective_staff(leaf)
+    written_pitch = leaf.written_pitch
+    neutral_pitch = abjad.NamedPitch(
+        written_pitch.name[0], octave=written_pitch.octave.number
+    )
+    if staff.name == PIANO_TREBLE_STAFF_NAME:
+        return neutral_pitch.number
+    # TODO: compute this properly
+    return neutral_pitch.number - 20
+
+
 def _adjust_tuplet_bracket(tuplet):
     first_leaf = abjad.get.leaf(tuplet)
-    abjad.override(first_leaf).TupletBracket.positions = "#flat-brackets"
+    positions = [
+        _compute_pitched_leaf_position(leaf)
+        for leaf in abjad.iterate.leaves(tuplet, pitched=True)
+    ]
+    abjad.override(first_leaf).TupletBracket.positions = (
+        f"#(flat-brackets '{max(positions)} '{min(positions)})"
+    )
 
 
 def adjust_tuplet_brackets(voice):

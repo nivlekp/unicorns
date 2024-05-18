@@ -10,13 +10,13 @@ The flat-brackets code is adapted from David Nalesnik on the LilyPond mailing
 list:
 http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a158452
 %}
-#(define flat-brackets
+#(define (flat-brackets maximum-position minimum-position)
    (lambda (grob)
      (let* ((pos (ly:tuplet-bracket::calc-positions grob))
              (dir (ly:grob-property grob 'direction))
              (y (if (= UP dir)
-                    (max (car pos) (cdr pos))
-                    (max -20 (min (car pos) (cdr pos))))))
+                    (min maximum-position (max (car pos) (cdr pos)))
+                    (max minimum-position (min (car pos) (cdr pos))))))
        (cons y y))))
 
 #(define-markup-command
