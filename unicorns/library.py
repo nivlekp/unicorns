@@ -34,7 +34,7 @@ def make_empty_score():
     """
     >>> from unicorns import library
     >>> library.make_empty_score()
-    Score('{ { } { { } } { { } { } } }', name='Score', simultaneous=True)
+    Score('{ { { } } { { } { } } { } }', name='Score', simultaneous=True)
     """
     piano_music_voice_0 = abjad.Voice(name=PIANO_MUSIC_VOICE_0_NAME)
     piano_music_voice_1 = abjad.Voice(name=PIANO_MUSIC_VOICE_1_NAME)
@@ -53,7 +53,7 @@ def make_empty_score():
         lilypond_type="PianoStaff", name=PIANO_STAFF_NAME
     )
     piano_music_staff.extend(
-        [dynamics_staff, piano_music_treble_staff, piano_music_bass_staff]
+        [piano_music_treble_staff, piano_music_bass_staff, dynamics_staff]
     )
     score = abjad.Score([piano_music_staff], name=SCORE_NAME)
     return score
