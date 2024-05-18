@@ -415,6 +415,16 @@ def make_metric_modulation_markup(left_rhythm_string, right_rhythm_string):
     return abjad.Markup(string)
 
 
+def _adjust_tuplet_bracket(tuplet):
+    first_leaf = abjad.get.leaf(tuplet)
+    abjad.override(first_leaf).TupletBracket.positions = "#flat-brackets"
+
+
+def adjust_tuplet_brackets(voice):
+    for tuplet in abjad.iterate.components(voice, abjad.Tuplet):
+        _adjust_tuplet_bracket(tuplet)
+
+
 class AtaxicSoundPointsGenerator(pang.SoundPointsGenerator):
     """
     Generates Sound Points. You know the drill.

@@ -13,6 +13,7 @@
                     {
                         \tempo \markup \abjad-metronome-mark-markup #2 #0 #1 #"78"
                         \time 4/4
+                        \once \override TupletBracket.positions = #flat-brackets
                         r8
                         \change Staff = Piano_Bass_Staff
                         b,4
@@ -20,18 +21,21 @@
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         b,8
                         cs4
                         ~
                     }
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         cs8.
                         g,,16
                         f16
                     }
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         a8
                         r16
                         r8
@@ -40,6 +44,7 @@
                 {
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r4
                         r16
                         e,,16
@@ -47,12 +52,14 @@
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         e,,16
                         r16
                         r4
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r4
                         g8
                         ~
@@ -69,6 +76,7 @@
                     g,,8.
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         e'8
                         b16
                         b,,16
@@ -81,6 +89,7 @@
                 {
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r16
                         a,,8
                         r8
@@ -88,6 +97,7 @@
                     r4
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r8
                         ef'8
                         r8
@@ -96,6 +106,7 @@
                     cs16
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r16
                         g,8
                         ~
@@ -106,11 +117,13 @@
                     af8.
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         b,,4
                         ef'8
                     }
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         af16
                         af16
                         af,16
@@ -121,6 +134,7 @@
                     }
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         af16
                         b16
                         a,,16
@@ -136,6 +150,7 @@
                     a16
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r8
                         e8
                         ~
@@ -144,6 +159,7 @@
                     }
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         f8.
                         ~
                         f16
@@ -152,6 +168,7 @@
                     }
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         b,,16
                         r8
                         e,8
@@ -161,6 +178,7 @@
                 {
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         e,16
                         r16
                         r8
@@ -169,12 +187,14 @@
                     r4
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r8
                         e'8
                         b8
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r16
                         af16
                         ~
@@ -190,6 +210,7 @@
                     ~
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         f,8.
                         c8
                         ~
@@ -203,6 +224,7 @@
                     ~
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         g,4
                         ~
                         g,16
@@ -214,6 +236,7 @@
                     r4
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r8
                         b,16
                         g,,8
@@ -225,6 +248,7 @@
                 {
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         af16
                         f16
                         ~
@@ -236,6 +260,7 @@
                     }
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         fs'16
                         bf'8
                         \change Staff = Piano_Bass_Staff
@@ -243,6 +268,7 @@
                     }
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         b,,16
                         \change Staff = Piano_Treble_Staff
                         af''8
@@ -251,6 +277,7 @@
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         g,,16
                         \change Staff = Piano_Treble_Staff
                         ef'16
@@ -265,6 +292,7 @@
                     b,,16
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         ef8
                         bf,16
                         ~
@@ -274,6 +302,7 @@
                     ~
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         e,16
                         bf16
                         \change Staff = Piano_Treble_Staff
@@ -282,6 +311,7 @@
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         b''16
                         \change Staff = Piano_Bass_Staff
                         fs,8
@@ -293,6 +323,7 @@
                     \times 2/3
                     {
                         \change Staff = Piano_Treble_Staff
+                        \once \override TupletBracket.positions = #flat-brackets
                         ef''16
                         e'''16
                         ~
@@ -304,6 +335,7 @@
                     \times 2/3
                     {
                         \change Staff = Piano_Bass_Staff
+                        \once \override TupletBracket.positions = #flat-brackets
                         b16
                         g,16
                         \change Staff = Piano_Treble_Staff
@@ -319,12 +351,14 @@
                     ~
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         ef''16
                         ef'16
                         r16
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         b''8
                         \change Staff = Piano_Bass_Staff
                         b,16
@@ -338,6 +372,7 @@
                     r2
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r8
                         r16
                         \change Staff = Piano_Treble_Staff
@@ -348,6 +383,7 @@
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         b16
                         e'16
                         ~
@@ -362,6 +398,7 @@
                     ~
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         c'16
                         \change Staff = Piano_Treble_Staff
                         af''16
@@ -376,6 +413,7 @@
                     fs'16
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         ef''8
                         \change Staff = Piano_Bass_Staff
                         ef,16
@@ -385,6 +423,7 @@
                     r16
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r16
                         \change Staff = Piano_Treble_Staff
                         c'''8
@@ -393,6 +432,7 @@
                 {
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r8.
                         r16
                         ef'''16
@@ -400,12 +440,14 @@
                     \times 2/3
                     {
                         \change Staff = Piano_Bass_Staff
+                        \once \override TupletBracket.positions = #flat-brackets
                         c,4
                         bf,,8
                         ~
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         bf,,16
                         \change Staff = Piano_Treble_Staff
                         af'''16
@@ -414,6 +456,7 @@
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         b16
                         c'16
                         ~
@@ -428,6 +471,7 @@
                 {
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         b16
                         e,8
                         ~
@@ -438,6 +482,7 @@
                     \times 2/3
                     {
                         \change Staff = Piano_Bass_Staff
+                        \once \override TupletBracket.positions = #flat-brackets
                         d8
                         ~
                         d16
@@ -457,6 +502,7 @@
                     ~
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         c'16
                         d'8
                     }
@@ -465,6 +511,7 @@
                     \times 4/5
                     {
                         \change Staff = Piano_Bass_Staff
+                        \once \override TupletBracket.positions = #flat-brackets
                         d,16
                         \change Staff = Piano_Treble_Staff
                         c'''8
@@ -472,12 +519,14 @@
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         e''4
                         \change Staff = Piano_Bass_Staff
                         g,,8
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         b,16
                         \change Staff = Piano_Treble_Staff
                         c''16
@@ -491,6 +540,7 @@
                     }
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         e8
                         e,,16
                         ef,16
@@ -502,6 +552,7 @@
                 {
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         e'16
                         bf''16
                         \change Staff = Piano_Bass_Staff
@@ -514,6 +565,7 @@
                     \times 4/5
                     {
                         \change Staff = Piano_Treble_Staff
+                        \once \override TupletBracket.positions = #flat-brackets
                         c'''16
                         g'16
                         r16
@@ -521,6 +573,7 @@
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r16
                         c'16
                         r16
@@ -529,6 +582,7 @@
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r16
                         g'16
                         r4
@@ -540,11 +594,13 @@
                     \times 2/3
                     {
                         \change Staff = Piano_Bass_Staff
+                        \once \override TupletBracket.positions = #flat-brackets
                         af,16
                         r8
                     }
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         b8
                         r16
                         g,,8
@@ -552,6 +608,7 @@
                     \times 4/5
                     {
                         \change Staff = Piano_Treble_Staff
+                        \once \override TupletBracket.positions = #flat-brackets
                         bf''8.
                         \change Staff = Piano_Bass_Staff
                         e,,8
@@ -568,6 +625,7 @@
                     r4
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r8
                         a16
                         ~
@@ -577,6 +635,7 @@
                     ~
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         bf''8
                         fs'''8
                         cs'''8
@@ -588,6 +647,7 @@
                     r2
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         f'8
                         fs'''8
                         r8
@@ -600,6 +660,7 @@
                     ~
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         f''4
                         r16
                         d'16
@@ -607,6 +668,7 @@
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         d'8
                         r4
                     }
@@ -616,6 +678,7 @@
                     r2.
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r8.
                         e''8
                     }
@@ -623,6 +686,7 @@
                 {
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         fs8
                         d'''8
                         r8
@@ -642,6 +706,7 @@
                 {
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r16
                         f'''16
                         ~
@@ -654,6 +719,7 @@
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         af8
                         f'8
                         af''16
@@ -662,6 +728,7 @@
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         d'''16
                         a16
                         cs''16
@@ -673,6 +740,7 @@
                 {
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         cs'''8
                         r4
                     }
@@ -683,11 +751,13 @@
                 {
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r8.
                         fs''8
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         r16
                         cs''8
                         ~
@@ -697,6 +767,7 @@
                     ~
                     \times 4/5
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         fs'16
                         bf16
                         fs16
@@ -706,6 +777,7 @@
                     }
                     \times 2/3
                     {
+                        \once \override TupletBracket.positions = #flat-brackets
                         fs16
                         a''16
                         ~
