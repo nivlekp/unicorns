@@ -5,20 +5,17 @@
 #(set-default-paper-size "a4landscape")
 #(set-global-staff-size 16)
 
-#(define show-x-positions
+%{
+function copied from MS via the lilypond mailing list at
+https://www.mail-archive.com/lilypond-user@gnu.org/msg72640.html
+%}
+#(define shorten-tuplet-bracket-at-end-of-staff
    (lambda (grob)
-     (let* ((pos (ly:tuplet-bracket::calc-x-positions grob))
-            (x1 (car pos))
-            (x2 (cdr pos))
-            (new-x2 (if (> x2 13.8)
-                        (- x2 0.4)
-                        x2)))
-            (newline)
-            (display x1)
-            (newline)
-            (display x2)
-            (newline)
-            (cons x1 new-x2))))
+     (let* ((right (ly:spanner-bound grob RIGHT))
+            (bd (ly:item-break-dir right))
+            (xshift (if (= bd -1) -0.5 0.0)))
+       (coord-translate (ly:tuplet-bracket::calc-x-positions grob)
+                        `(0 . ,xshift)))))
 
 
 #(define-markup-command
@@ -96,7 +93,8 @@
     \override Flag.stencil = #modern-straight-flag
     \override TupletBracket.max-slope-factor = #0
     \override TupletBracket.span-all-note-heads = ##t
-    \override TupletBracket.X-positions = #show-x-positions
+    \override TupletBracket.padding = 1.7
+    \override TupletBracket.X-positions = #shorten-tuplet-bracket-at-end-of-staff
     tupletFullLength = ##t
   }
   \context {
