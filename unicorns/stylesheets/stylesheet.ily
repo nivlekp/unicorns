@@ -5,6 +5,22 @@
 #(set-default-paper-size "a4landscape")
 #(set-global-staff-size 16)
 
+#(define show-x-positions
+   (lambda (grob)
+     (let* ((pos (ly:tuplet-bracket::calc-x-positions grob))
+            (x1 (car pos))
+            (x2 (cdr pos))
+            (new-x2 (if (> x2 13.8)
+                        (- x2 0.4)
+                        x2)))
+            (newline)
+            (display x1)
+            (newline)
+            (display x2)
+            (newline)
+            (cons x1 new-x2))))
+
+
 #(define-markup-command
     (tszkiu-left-arrow layout props)
     ()
@@ -79,6 +95,8 @@
     %\override Beam.details.round-to-zero-slope = #0
     \override Flag.stencil = #modern-straight-flag
     \override TupletBracket.max-slope-factor = #0
+    \override TupletBracket.span-all-note-heads = ##t
+    \override TupletBracket.X-positions = #show-x-positions
     tupletFullLength = ##t
   }
   \context {
