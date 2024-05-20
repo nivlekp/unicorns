@@ -415,6 +415,40 @@ def make_metric_modulation_markup(left_rhythm_string, right_rhythm_string):
     return abjad.Markup(string)
 
 
+def adjust_tuplet_bracket_direction(voice):
+    # TODO: this is a hack for section a. Find a way to avoid tuplet bracket collision
+    # with staff lines. Also, maybe write a test for this method
+    for tuplet in abjad.iterate.components(voice, abjad.Tuplet):
+        notes = tuple(
+            leaf
+            for leaf in abjad.iterate.leaves(tuplet, pitched=True)
+            if not isinstance(leaf, abjad.Chord)
+        )
+        locations = [_get_pitched_leaf_location(note) for note in notes]
+        if not locations:
+            continue
+        treble_note_exists = any(
+            location == LEAF_LOCATION.TREBLE for location in locations
+        )
+        bass_note_exists = any(location == LEAF_LOCATION.BASS for location in locations)
+        if treble_note_exists and bass_note_exists:
+            continue
+        if treble_note_exists:
+            if any(
+                abjad.get.effective_staff(note).name == PIANO_BASS_STAFF_NAME
+                and _get_pitched_leaf_location(note) == LEAF_LOCATION.EITHER_OR_BOTH
+                for note in notes
+            ):
+                abjad.override(tuplet).TupletBracket.direction = abjad.UP
+        if bass_note_exists:
+            if any(
+                abjad.get.effective_staff(note).name == PIANO_TREBLE_STAFF_NAME
+                and _get_pitched_leaf_location(note) == LEAF_LOCATION.EITHER_OR_BOTH
+                for note in notes
+            ):
+                abjad.override(tuplet).TupletBracket.direction = abjad.DOWN
+
+
 class AtaxicSoundPointsGenerator(pang.SoundPointsGenerator):
     """
     Generates Sound Points. You know the drill.

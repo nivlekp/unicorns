@@ -1,4 +1,4 @@
-\version "2.24.3"
+\version "2.25.16"
 \language "english"
 \include "abjad_contrib/abjad.ily"
 
@@ -6,18 +6,17 @@
 #(set-global-staff-size 16)
 
 %{
-The flat-brackets code is adapted from David Nalesnik on the LilyPond mailing
-list:
-http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a158452
+function copied from MS via the lilypond mailing list at
+https://www.mail-archive.com/lilypond-user@gnu.org/msg72640.html
 %}
-#(define flat-brackets
+#(define shorten-tuplet-bracket-at-end-of-staff
    (lambda (grob)
-     (let* ((pos (ly:tuplet-bracket::calc-positions grob))
-             (dir (ly:grob-property grob 'direction))
-             (y (if (= UP dir)
-                    (max (car pos) (cdr pos))
-                    (max -20 (min (car pos) (cdr pos))))))
-       (cons y y))))
+     (let* ((right (ly:spanner-bound grob RIGHT))
+            (bd (ly:item-break-dir right))
+            (xshift (if (= bd -1) -0.5 0.0)))
+       (coord-translate (ly:tuplet-bracket::calc-x-positions grob)
+                        `(0 . ,xshift)))))
+
 
 #(define-markup-command
     (tszkiu-left-arrow layout props)
@@ -88,11 +87,12 @@ http://lilypond.1069038.n5.nabble.com/Horizontal-TupletBrackets-td158413.html#a1
   }
   \context {
     \Staff
-    %\override Beam.damping = #+inf.0
-    %\override Beam.details.damping-direction-penalty = #0
-    %\override Beam.details.round-to-zero-slope = #0
+    \override Beam.damping = #+inf.0
     \override Flag.stencil = #modern-straight-flag
-    \override TupletBracket.positions = #flat-brackets
+    \override TupletBracket.max-slope-factor = #0
+    \override TupletBracket.span-all-note-heads = ##t
+    \override TupletBracket.padding = 1.7
+    \override TupletBracket.X-positions = #shorten-tuplet-bracket-at-end-of-staff
     tupletFullLength = ##t
   }
   \context {

@@ -1,4 +1,4 @@
-\version "2.24.3"
+\version "2.25.16"
 \language "english"
 \context Score = "Score"
 <<
@@ -892,6 +892,7 @@
                     ~
                 }
                 {
+                    \override TupletBracket.direction = #down
                     \times 2/3
                     {
                         af16
@@ -903,6 +904,7 @@
                         fs'8
                         ~
                     }
+                    \revert TupletBracket.direction
                     \times 4/5
                     {
                         fs'16
@@ -1015,6 +1017,7 @@
                         b16
                         ~
                     }
+                    \override TupletBracket.direction = #down
                     \times 2/3
                     {
                         b16
@@ -1025,10 +1028,12 @@
                         \change Staff = Piano_Bass_Staff
                         c,8
                     }
+                    \revert TupletBracket.direction
                 }
                 {
                     c'8
                     ~
+                    \override TupletBracket.direction = #up
                     \times 2/3
                     {
                         c'16
@@ -1037,6 +1042,7 @@
                         ef'''16
                         ~
                     }
+                    \revert TupletBracket.direction
                     ef'''8.
                     \change Staff = Piano_Bass_Staff
                     e16
@@ -1081,6 +1087,7 @@
                         b4
                         ~
                     }
+                    \override TupletBracket.direction = #up
                     \times 2/3
                     {
                         b16
@@ -1093,6 +1100,7 @@
                         b16
                         ~
                     }
+                    \revert TupletBracket.direction
                 }
                 {
                     \times 2/3
@@ -1158,6 +1166,7 @@
                         e16
                         ~
                     }
+                    \override TupletBracket.direction = #down
                     \times 4/5
                     {
                         e8
@@ -1167,6 +1176,7 @@
                         e'16
                         ~
                     }
+                    \revert TupletBracket.direction
                 }
                 {
                     \times 2/3
