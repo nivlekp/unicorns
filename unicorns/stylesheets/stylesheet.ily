@@ -88,8 +88,6 @@ https://www.mail-archive.com/lilypond-user@gnu.org/msg72640.html
   \context {
     \Staff
     \override Beam.damping = #+inf.0
-    %\override Beam.details.damping-direction-penalty = #0
-    %\override Beam.details.round-to-zero-slope = #0
     \override Flag.stencil = #modern-straight-flag
     \override TupletBracket.max-slope-factor = #0
     \override TupletBracket.span-all-note-heads = ##t
