@@ -9,6 +9,7 @@
             \context Voice = "Piano.Music.0"
             {
                 {
+                    \change Staff = Rests_Staff
                     \tempo \markup \abjad-metronome-mark-markup #2 #0 #1 #"97.5"
                     \time 4/4
                     r2.
@@ -26,6 +27,7 @@
                     \times 4/5
                     {
                         <af,, bf,, d, g,>8
+                        \change Staff = Rests_Staff
                         r16
                         r8
                     }
@@ -42,12 +44,14 @@
                     }
                     \times 2/3
                     {
+                        \change Staff = Rests_Staff
                         r8
                         \change Staff = Piano_Bass_Staff
                         <fs,, b,, f,>4
                         ~
                     }
                     <fs,, b,, f,>8.
+                    \change Staff = Rests_Staff
                     r16
                     \times 4/5
                     {
@@ -91,6 +95,7 @@
                         ~
                     }
                     <a, bf, cs a>16
+                    \change Staff = Rests_Staff
                     r16
                     \change Staff = Piano_Treble_Staff
                     cs'''8
@@ -140,6 +145,7 @@
                         ef''8
                         \change Staff = Piano_Bass_Staff
                         <ds e fs>16
+                        \change Staff = Rests_Staff
                         r16
                     }
                     r2
@@ -150,8 +156,10 @@
                     {
                         r8.
                         r16
+                        \change Staff = Piano_Bass_Staff
                         <bf,, ef, a, bf,>16
                     }
+                    \change Staff = Rests_Staff
                     r4
                 }
                 {
@@ -188,6 +196,7 @@
                     }
                     \times 2/3
                     {
+                        \change Staff = Rests_Staff
                         r4
                         \change Staff = Piano_Bass_Staff
                         <ds, e, e>8
@@ -198,12 +207,14 @@
                         <ds, e, e>8.
                         ~
                         <ds, e, e>16
+                        \change Staff = Rests_Staff
                         r16
                     }
                     r4
                 }
                 {
                     r2.
+                    \change Staff = Piano_Bass_Staff
                     <a, bf, ef a>4
                 }
                 {
@@ -230,6 +241,7 @@
                     }
                 }
                 {
+                    \change Staff = Rests_Staff
                     r8
                     \change Staff = Piano_Bass_Staff
                     <d,, g,, af,, bf,,>8
@@ -237,6 +249,7 @@
                     \times 4/5
                     {
                         <d,, g,, af,, bf,,>16
+                        \change Staff = Rests_Staff
                         r8
                         r8
                     }
@@ -246,7 +259,9 @@
                     r2
                     \times 4/5
                     {
+                        \change Staff = Piano_Bass_Staff
                         <ef,, fs,, bf,,>8.
+                        \change Staff = Rests_Staff
                         r8
                     }
                     r4
@@ -256,9 +271,11 @@
                     \times 4/5
                     {
                         r8
+                        \change Staff = Piano_Bass_Staff
                         <af, bf, af>16
                         ~
                         <af, bf, af>16
+                        \change Staff = Rests_Staff
                         r16
                     }
                 }
@@ -274,6 +291,7 @@
                     {
                         f''16
                         f'''8
+                        \change Staff = Rests_Staff
                         r8
                     }
                     r2
@@ -338,14 +356,17 @@
                     <f, gf, b,>8
                     \change Staff = Piano_Treble_Staff
                     b'''16
+                    \change Staff = Rests_Staff
                     r16
                     r4
                     \times 4/5
                     {
                         r8
+                        \change Staff = Piano_Treble_Staff
                         c'''16
                         ~
                         c'''16
+                        \change Staff = Rests_Staff
                         r16
                     }
                 }
@@ -353,6 +374,7 @@
                     r4
                     \change Staff = Piano_Bass_Staff
                     <cs ef a bf>4
+                    \change Staff = Rests_Staff
                     r2
                 }
                 {
@@ -418,6 +440,7 @@
                     \times 4/5
                     {
                         <af,, bf,, d, af,>16
+                        \change Staff = Rests_Staff
                         r16
                         \change Staff = Piano_Treble_Staff
                         ef'''16
@@ -432,6 +455,7 @@
                     \times 4/5
                     {
                         ef'''16
+                        \change Staff = Rests_Staff
                         r8
                         r8
                     }
@@ -439,6 +463,46 @@
                     \bar "|."
                     \end-note
                 }
+            }
+        }
+        \context Staff = "Rests_Staff"
+        \with
+        {
+            \override Clef.stencil = ##f
+            \override StaffSymbol.stencil = ##f
+            \override TimeSignature.stencil = ##f
+            alignAboveContext = Piano_Bass_Staff
+        }
+        {
+            \context Voice = "Rests"
+            {
+                \clef "bass"
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
+                s1
             }
         }
         \context Staff = "Piano_Bass_Staff"

@@ -94,8 +94,11 @@ def main():
     metadata = pang.build.section(score, scope, command)
     library.do_dynamics(score[scope.voice_name], score[library.DYNAMIC_CONTEXT_NAME])
     library.rewrite_enharmonics(score[scope.voice_name])
-    library.fill_bass_voice_with_skips(
+    library.fill_voice_with_skips(
         score[scope.voice_name], score[library.PIANO_MUSIC_VOICE_1_NAME]
+    )
+    library.fill_voice_with_skips(
+        score[scope.voice_name], score[library.RESTS_VOICE_NAME]
     )
     library.split_voice_into_two_voices(
         score[scope.voice_name], score[library.PIANO_MUSIC_VOICE_0_FOLLOWER_NAME]

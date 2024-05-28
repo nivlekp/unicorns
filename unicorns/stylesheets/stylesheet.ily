@@ -82,8 +82,8 @@ https://www.mail-archive.com/lilypond-user@gnu.org/msg72640.html
     \Score
     \override SpacingSpanner.uniform-stretching = ##t
     proportionalNotationDuration = #(ly:make-moment 1 24)
-    \override StaffGrouper.staff-staff-spacing.padding = #8
-    \override StaffGrouper.staff-staff-spacing.basic-distance = #8
+    \override StaffGrouper.staff-staff-spacing.padding = #4
+    \override StaffGrouper.staff-staff-spacing.basic-distance = #4
   }
   \context {
     \Staff
