@@ -11,13 +11,8 @@
                 {
                     \times 2/3
                     {
-                        #(make-music
-                          'TempoChangeEvent
-                          'metronome-count
-                          78
-                          'tempo-unit
-                          (ly:make-duration 2))
                         \time 4/4
+                        \tszkiu-metronome-mark #78 #2
                         \set Score.tempoWholesPerMinute = #(ly:make-moment (* 78 1/4))
                         r8
                         \change Staff = Piano_Bass_Staff
@@ -780,13 +775,8 @@
             {
                 \times 2/3
                 {
-                    #(make-music
-                      'TempoChangeEvent
-                      'metronome-count
-                      78
-                      'tempo-unit
-                      (ly:make-duration 2))
                     \time 4/4
+                    \tszkiu-metronome-mark #78 #2
                     \set Score.tempoWholesPerMinute = #(ly:make-moment (* 78 1/4))
                     s8
                     s4

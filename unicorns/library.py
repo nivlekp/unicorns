@@ -464,16 +464,7 @@ def _fix_tempo(leaf):
         else float(metronome_mark.units_per_minute)
     )
     duration_exponent = metronome_mark.reference_duration.exponent
-    string = abjad.string.normalize(
-        f"""
-        #(make-music
-          'TempoChangeEvent
-          'metronome-count
-          {units_per_minute_number}
-          'tempo-unit
-          (ly:make-duration {duration_exponent}))
-        """
-    )
+    string = rf"\tszkiu-metronome-mark #{units_per_minute_number} #{duration_exponent}"
     lilypond_literal = abjad.LilyPondLiteral(string)
     abjad.attach(lilypond_literal, leaf)
     units_per_minute_string = str(metronome_mark.units_per_minute)

@@ -16,6 +16,16 @@ https://www.mail-archive.com/lilypond-user@gnu.org/msg72640.html
        (coord-translate (ly:tuplet-bracket::calc-x-positions grob)
                         `(0 . ,xshift)))))
 
+tszkiu-metronome-mark =
+#(define-music-function
+   (units-per-minute duration-exponent)
+   (number? number?)
+   (make-music
+     'TempoChangeEvent
+     'metronome-count
+     units-per-minute
+     'tempo-unit
+     (ly:make-duration duration-exponent)))
 
 #(define-markup-command
     (tszkiu-left-arrow layout props)

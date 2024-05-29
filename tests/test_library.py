@@ -226,27 +226,9 @@ def test_fixing_tempi():
     assert abjad.get.effective(last_leaf, abjad.MetronomeMark).hide
 
     first_indicator = abjad.get.indicator(first_leaf, abjad.LilyPondLiteral)
-    assert first_indicator.argument == abjad.string.normalize(
-        """
-        #(make-music
-          'TempoChangeEvent
-          'metronome-count
-          90
-          'tempo-unit
-          (ly:make-duration 2))
-        """
-    )
+    assert first_indicator.argument == r"\tszkiu-metronome-mark #90 #2"
     last_indicator = abjad.get.indicator(last_leaf, abjad.LilyPondLiteral)
-    assert last_indicator.argument == abjad.string.normalize(
-        """
-        #(make-music
-          'TempoChangeEvent
-          'metronome-count
-          58.5
-          'tempo-unit
-          (ly:make-duration 1))
-        """
-    )
+    assert last_indicator.argument == r"\tszkiu-metronome-mark #58.5 #1"
 
     assert (
         abjad.setting(first_leaf).Score.tempoWholesPerMinute
