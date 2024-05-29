@@ -1,6 +1,5 @@
 \version "2.25.16"
 \language "english"
-\include "abjad_contrib/abjad.ily"
 
 #(set-default-paper-size "a4landscape")
 #(set-global-staff-size 16)
