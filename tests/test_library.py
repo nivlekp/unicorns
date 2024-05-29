@@ -1,3 +1,5 @@
+import fractions
+
 import abjad
 import numpy as np
 
@@ -203,6 +205,38 @@ def test_making_metric_modulation_markup():
         r"""
         \markup \tszkiu-metric-modulation { \times 2/3 { r8 r8 8 } } { { 8 } }
         """
+    )
+
+
+def test_fixing_tempi():
+    voice = abjad.Voice("c'4 c'4 c'4 c'4")
+    first_leaf = abjad.get.leaf(voice, 0)
+    last_leaf = abjad.get.leaf(voice, -1)
+    first_metronome_mark = abjad.MetronomeMark(abjad.Duration(1, 4), 90)
+    abjad.attach(first_metronome_mark, first_leaf)
+    last_metronome_mark = abjad.MetronomeMark(
+        abjad.Duration(1, 2), fractions.Fraction(58.5)
+    )
+    abjad.attach(last_metronome_mark, last_leaf)
+    library.fix_tempi(voice)
+
+    assert abjad.get.effective(first_leaf, abjad.MetronomeMark) == first_metronome_mark
+    assert abjad.get.effective(last_leaf, abjad.MetronomeMark) == last_metronome_mark
+    assert abjad.get.effective(first_leaf, abjad.MetronomeMark).hide
+    assert abjad.get.effective(last_leaf, abjad.MetronomeMark).hide
+
+    first_indicator = abjad.get.indicator(first_leaf, abjad.LilyPondLiteral)
+    assert first_indicator.argument == r"\tszkiu-metronome-mark #90 #2"
+    last_indicator = abjad.get.indicator(last_leaf, abjad.LilyPondLiteral)
+    assert last_indicator.argument == r"\tszkiu-metronome-mark #58.5 #1"
+
+    assert (
+        abjad.setting(first_leaf).Score.tempoWholesPerMinute
+        == "#(ly:make-moment (* 90 1/4))"
+    )
+    assert (
+        abjad.setting(last_leaf).Score.tempoWholesPerMinute
+        == "#(ly:make-moment (* 117/2 1/2))"
     )
 
 

@@ -90,6 +90,7 @@ def main():
         grace_handler=grace_handler,
     )
     metadata = pang.build.section(score, scope, command)
+    library.fix_tempi(score[scope.voice_name])
     library.do_dynamics(score[scope.voice_name], score[library.DYNAMIC_CONTEXT_NAME])
     library.fill_bass_voice_with_skips(
         score[scope.voice_name], score[library.PIANO_MUSIC_VOICE_1_NAME]

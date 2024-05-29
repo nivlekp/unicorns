@@ -449,6 +449,37 @@ def adjust_tuplet_bracket_direction(voice):
                 abjad.override(tuplet).TupletBracket.direction = abjad.DOWN
 
 
+def _fix_tempo(leaf):
+    (metronome_mark,) = abjad.detach(abjad.MetronomeMark, leaf)
+    metronome_mark = abjad.MetronomeMark(
+        reference_duration=metronome_mark.reference_duration,
+        units_per_minute=metronome_mark.units_per_minute,
+        decimal=metronome_mark.decimal,
+        hide=True,
+    )
+    abjad.attach(metronome_mark, leaf)
+    units_per_minute_number = (
+        int(metronome_mark.units_per_minute)
+        if metronome_mark.units_per_minute.is_integer()
+        else float(metronome_mark.units_per_minute)
+    )
+    duration_exponent = metronome_mark.reference_duration.exponent
+    string = rf"\tszkiu-metronome-mark #{units_per_minute_number} #{duration_exponent}"
+    lilypond_literal = abjad.LilyPondLiteral(string)
+    abjad.attach(lilypond_literal, leaf)
+    units_per_minute_string = str(metronome_mark.units_per_minute)
+    duration_string = str(metronome_mark.reference_duration)
+    abjad.setting(leaf).Score.tempoWholesPerMinute = (
+        f"#(ly:make-moment (* {units_per_minute_string} {duration_string}))"
+    )
+
+
+def fix_tempi(voice):
+    for leaf in abjad.iterate.leaves(voice):
+        if abjad.get.has_indicator(leaf, abjad.MetronomeMark):
+            _fix_tempo(leaf)
+
+
 class AtaxicSoundPointsGenerator(pang.SoundPointsGenerator):
     """
     Generates Sound Points. You know the drill.

@@ -9,8 +9,9 @@
             \context Voice = "Piano.Music.0"
             {
                 {
-                    \tempo \markup \abjad-metronome-mark-markup #2 #0 #1 #"97.5"
                     \time 4/4
+                    \tszkiu-metronome-mark #97.5 #2
+                    \set Score.tempoWholesPerMinute = #(ly:make-moment (* 195/2 1/4))
                     r2.
                     ^ \markup \tszkiu-metric-modulation { \times 4/5 { r8 r8 r8 r8 8 } } { \times 2/3 { 8 r8 r8 } }
                     \times 4/5
@@ -448,8 +449,9 @@
                 \autoBeamOff
                 \omit TupletNumber \omit TupletBracket
                 {
-                    \tempo \markup \abjad-metronome-mark-markup #2 #0 #1 #"97.5"
                     \time 4/4
+                    \tszkiu-metronome-mark #97.5 #2
+                    \set Score.tempoWholesPerMinute = #(ly:make-moment (* 195/2 1/4))
                     s2.
                     \times 4/5
                     {
@@ -835,8 +837,9 @@
         }
         {
             {
-                \tempo \markup \abjad-metronome-mark-markup #2 #0 #1 #"97.5"
                 \time 4/4
+                \tszkiu-metronome-mark #97.5 #2
+                \set Score.tempoWholesPerMinute = #(ly:make-moment (* 195/2 1/4))
                 s2.
                 \times 4/5
                 {

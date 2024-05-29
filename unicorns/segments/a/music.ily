@@ -11,8 +11,9 @@
                 {
                     \times 2/3
                     {
-                        \tempo \markup \abjad-metronome-mark-markup #2 #0 #1 #"78"
                         \time 4/4
+                        \tszkiu-metronome-mark #78 #2
+                        \set Score.tempoWholesPerMinute = #(ly:make-moment (* 78 1/4))
                         r8
                         \change Staff = Piano_Bass_Staff
                         b,4
@@ -774,8 +775,9 @@
             {
                 \times 2/3
                 {
-                    \tempo \markup \abjad-metronome-mark-markup #2 #0 #1 #"78"
                     \time 4/4
+                    \tszkiu-metronome-mark #78 #2
+                    \set Score.tempoWholesPerMinute = #(ly:make-moment (* 78 1/4))
                     s8
                     s4
                     \f
