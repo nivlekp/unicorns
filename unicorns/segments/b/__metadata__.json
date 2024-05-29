@@ -1,1 +1,11 @@
-{"last_metronome_mark": {"reference_duration": "1/2", "units_per_minute": 58.5}, "last_time_signature": "3/2", "empty_beatspan": "1/8", "discarded_q_events_count": 4, "discarded_pitched_q_events_count": 0}
+{
+    "duration": 61.53846153846154,
+    "last_metronome_mark": {
+        "reference_duration": "1/2",
+        "units_per_minute": 58.5
+    },
+    "last_time_signature": "3/2",
+    "empty_beatspan": "1/8",
+    "discarded_q_events_count": 4,
+    "discarded_pitched_q_events_count": 0
+}
