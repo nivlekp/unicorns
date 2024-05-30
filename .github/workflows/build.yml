@@ -20,6 +20,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        submodules: "true"
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
@@ -42,16 +44,13 @@ jobs:
     - name: Install Abjad
       run: |
         # install without development dependencies
-        git clone https://github.com/Abjad/abjad.git /tmp/abjad
-        pip install /tmp/abjad
+        pip install ./abjad
     - name: Install Nauert
       run: |
-        git clone https://github.com/Abjad/abjad-ext-nauert.git /tmp/abjad-ext-nauert
-        pip install /tmp/abjad-ext-nauert
+        pip install ./abjad-ext-nauert
     - name: Install Pang
       run: |
-        git clone https://github.com/nivlekp/pang.git /tmp/pang
-        pip install /tmp/pang
+        pip install ./pang
     - name: Install dependencies
       run: |
         export PATH=/tmp/lilypond-${LILYPOND_VERSION}/bin:/home/runner/bin:$PATH
@@ -71,9 +70,9 @@ jobs:
     - name: Checks and Tests
       run: |
         export PATH=/tmp/lilypond-${LILYPOND_VERSION}/bin:/home/runner/bin:$PATH
-        export MYPYPATH=$MYPYPATH:/tmp/abjad
-        export MYPYPATH=$MYPYPATH:/tmp/abjad-ext-nauert
-        export MYPYPATH=$MYPYPATH:/tmp/pang
+        export MYPYPATH=$MYPYPATH:./abjad
+        export MYPYPATH=$MYPYPATH:./abjad-ext-nauert
+        export MYPYPATH=$MYPYPATH:./pang
         make black-check
         make flake8
         make isort-check
@@ -81,12 +80,12 @@ jobs:
     - name: Test Segments
       run: |
         export PATH=/tmp/lilypond-${LILYPOND_VERSION}/bin:/home/runner/bin:$PATH
-        export PANG_PATH=/tmp/pang
+        export PANG_PATH=./pang
         make test-sections
     - name: Test Score
       run: |
         export PATH=/tmp/lilypond-${LILYPOND_VERSION}/bin:/home/runner/bin:$PATH
-        export PANG_PATH=/tmp/pang
+        export PANG_PATH=./pang
         make test-score
         make full-score
     - name: Upload Full Score

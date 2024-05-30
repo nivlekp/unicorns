@@ -1,0 +1,9 @@
+[submodule "abjad"]
+	path = abjad
+	url = https://github.com/Abjad/abjad
+[submodule "abjad-ext-nauert"]
+	path = abjad-ext-nauert
+	url = https://github.com/Abjad/abjad-ext-nauert
+[submodule "pang"]
+	path = pang
+	url = https://github.com/nivlekp/pang

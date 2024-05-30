@@ -65,7 +65,7 @@ mypy:
 project = unicorns
 
 pytest:
-	pytest .
+	pytest
 
 reformat:
 	make black-reformat
