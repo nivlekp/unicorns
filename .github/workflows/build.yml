@@ -48,17 +48,21 @@ jobs:
     - name: Install Abjad
       run: |
         # install without development dependencies
-        git clone https://github.com/Abjad/abjad.git /tmp/abjad
-        cd /tmp/abjad
+        git clone https://github.com/Abjad/abjad.git ${ABJAD_PATH}
+        cd ${ABJAD_PATH}
         git checkout ${ABJAD_COMMIT}
-        pip install /tmp/abjad
+        pip install ${ABJAD_PATH}
     - name: Install Nauert
       run: |
         git clone https://github.com/Abjad/abjad-ext-nauert.git ${NAUERT_PATH}
+        cd ${NAUERT_PATH}
+        git checkout ${NAUERT_COMMIT}
         pip install ${NAUERT_PATH}
     - name: Install Pang
       run: |
         git clone https://github.com/nivlekp/pang.git ${PANG_PATH}
+        cd ${PANG_PATH}
+        git checkout ${PANG_COMMIT}
         pip install ${PANG_PATH}
     - name: Install dependencies
       run: |
