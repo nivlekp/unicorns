@@ -15,6 +15,7 @@ dependencies = [
     "abjad",
     "abjad-ext-nauert",
     "pang",
+    "numpy >= 1.26.0, < 2.0"
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
