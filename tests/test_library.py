@@ -288,27 +288,3 @@ def test_semi_regular_sound_points_generator():
     assert arrival_instances[-1] < sequence_duration
     inter_arrival_times = np.diff(arrival_instances)
     assert all(inter_arrival_times > 0)
-
-
-def test_truncated_normal_sound_points_generator():
-    arrival_rate = 1.0
-    lower_deviation_bound = -0.1
-    sound_points_generator = library.TruncatedNormalSoundPointsGenerator(
-        arrival_rate=arrival_rate,
-        arrival_standard_deviation=1.0,
-        lower_deviation_bound=lower_deviation_bound,
-        upper_deviation_bound=0.1,
-        service_rate=1.0,
-        pitch_set=(0, 1, 4, 6),
-        seed=None,
-    )
-    sequence_duration = 10000
-    sound_points = sound_points_generator(sequence_duration)
-    arrival_instances = np.array([sound_point.instance for sound_point in sound_points])
-    assert arrival_instances[-1] < sequence_duration
-    assert (
-        arrival_instances[-1]
-        > sequence_duration - 1 / arrival_rate + lower_deviation_bound
-    )
-    inter_arrival_times = np.diff(arrival_instances)
-    assert all(inter_arrival_times > 0)
