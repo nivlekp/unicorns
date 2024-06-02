@@ -169,7 +169,7 @@ end-note = {
           \line {"On Gadigal Land,"}
           \line {"Boonwurrung Country,"}
           \line {"Osaka, and Naoshima"}
-          \line {"(November 2023 - April 2024)."}
+          \line {"(November 2023 - June 2024)."}
       }
     }
 }
