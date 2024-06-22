@@ -43,7 +43,7 @@ def test_converting_pitch_list_to_chord_set_can_generate_tetrachord():
 
 
 def test_do_dynamics():
-    reference_voice = abjad.Voice(r"c'4 \times 2/3 { c'8 c'8 c'8 ~ } c'4 c'4 c'4")
+    reference_voice = abjad.Voice(r"c'4 \tuplet 3/2 { c'8 c'8 c'8 ~ } c'4 c'4 c'4")
     for index, logical_tie in enumerate(
         abjad.iterate.logical_ties(reference_voice, pitched=True)
     ):
@@ -59,7 +59,7 @@ def test_do_dynamics():
         \new Voice
         {
             c'4
-            \times 2/3
+            \tuplet 3/2
             {
                 c'8
                 c'8
@@ -78,7 +78,7 @@ def test_do_dynamics():
         {
             s4
             \mf
-            \times 2/3
+            \tuplet 3/2
             {
                 s8
                 \f
@@ -196,14 +196,14 @@ def test_rewriting_enharmonics():
 
 
 def test_making_metric_modulation_markup():
-    left_rhythm_string = r"{ \times 2/3 { r8 r8 8 } }"
+    left_rhythm_string = r"{ \tuplet 3/2 { r8 r8 8 } }"
     right_rhythm_string = r"{ { 8 } }"
     markup = library.make_metric_modulation_markup(
         left_rhythm_string, right_rhythm_string
     )
     assert markup.string == abjad.string.normalize(
         r"""
-        \markup \tszkiu-metric-modulation { \times 2/3 { r8 r8 8 } } { { 8 } }
+        \markup \tszkiu-metric-modulation { \tuplet 3/2 { r8 r8 8 } } { { 8 } }
         """
     )
 

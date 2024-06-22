@@ -98,7 +98,7 @@ def main():
         score[scope.voice_name], score[library.PIANO_MUSIC_VOICE_0_FOLLOWER_NAME]
     )
     metric_modulation_markup = library.make_metric_modulation_markup(
-        r"{ \times 2/3 { r8 r8 8 } }", "{ { 8 } }"
+        r"{ \tuplet 3/2 { r8 r8 8 } }", "{ { 8 } }"
     )
     abjad.attach(
         metric_modulation_markup,
