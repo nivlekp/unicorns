@@ -65,12 +65,12 @@ jobs:
     - name: Test Segments
       run: |
         export PATH=/tmp/lilypond-${LILYPOND_VERSION}/bin:/home/runner/bin:$PATH
-        export PANG_PATH=$(pip show pang | sed -n 's/^Location: //p')
+        export PANG_PATH=$(pip show pang | sed -n 's/^Location: //p')/pang
         make test-sections
     - name: Test Score
       run: |
         export PATH=/tmp/lilypond-${LILYPOND_VERSION}/bin:/home/runner/bin:$PATH
-        export PANG_PATH=$(pip show pang | sed -n 's/^Location: //p')
+        export PANG_PATH=$(pip show pang | sed -n 's/^Location: //p')/pang
         make test-score
         make full-score
     - name: Upload Full Score
