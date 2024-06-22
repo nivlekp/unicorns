@@ -9,7 +9,7 @@
             \context Voice = "Piano.Music.0"
             {
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         \time 4/4
                         \tszkiu-metronome-mark #78 #2
@@ -19,19 +19,19 @@
                         b,4
                         ~
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         b,8
                         cs4
                         ~
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         cs8.
                         g,,16
                         f16
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         a8
                         r16
@@ -39,20 +39,20 @@
                     }
                 }
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r4
                         r16
                         e,,16
                         ~
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         e,,16
                         r16
                         r4
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r4
                         g8
@@ -68,7 +68,7 @@
                     af8
                     r16
                     g,,8.
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         e'8
                         b16
@@ -80,14 +80,14 @@
                     r8.
                 }
                 {
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         r16
                         a,,8
                         r8
                     }
                     r4
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r8
                         ef'8
@@ -95,7 +95,7 @@
                     }
                     r16
                     cs16
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r16
                         g,8
@@ -105,12 +105,12 @@
                 {
                     g,16
                     af8.
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         b,,4
                         ef'8
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         af16
                         af16
@@ -120,7 +120,7 @@
                         af16
                         ~
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         af16
                         b16
@@ -135,7 +135,7 @@
                     r16
                     r16
                     a16
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r8
                         e8
@@ -143,7 +143,7 @@
                         e16
                         a16
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         f8.
                         ~
@@ -151,7 +151,7 @@
                         b,,16
                         ~
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         b,,16
                         r8
@@ -160,7 +160,7 @@
                     }
                 }
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         e,16
                         r16
@@ -168,13 +168,13 @@
                         ef,8
                     }
                     r4
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r8
                         e'8
                         b8
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r16
                         af16
@@ -189,7 +189,7 @@
                     r8
                     f,8
                     ~
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         f,8.
                         c8
@@ -202,7 +202,7 @@
                     a,,8
                     g,8
                     ~
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         g,4
                         ~
@@ -213,7 +213,7 @@
                 }
                 {
                     r4
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         r8
                         b,16
@@ -225,7 +225,7 @@
                 }
                 {
                     \override TupletBracket.direction = #down
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         af16
                         f16
@@ -237,14 +237,14 @@
                         ~
                     }
                     \revert TupletBracket.direction
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         fs'16
                         bf'8
                         \change Staff = Piano_Bass_Staff
                         d,8
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         b,,16
                         \change Staff = Piano_Treble_Staff
@@ -252,7 +252,7 @@
                         \change Staff = Piano_Bass_Staff
                         ef,8
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         g,,16
                         \change Staff = Piano_Treble_Staff
@@ -266,7 +266,7 @@
                     \change Staff = Piano_Bass_Staff
                     e,16
                     b,,16
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         ef8
                         bf,16
@@ -275,7 +275,7 @@
                     bf,16
                     e,16
                     ~
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         e,16
                         bf16
@@ -283,7 +283,7 @@
                         b''16
                         ~
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         b''16
                         \change Staff = Piano_Bass_Staff
@@ -293,7 +293,7 @@
                     bf''16
                     \change Staff = Piano_Bass_Staff
                     c16
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         \change Staff = Piano_Treble_Staff
                         ef''16
@@ -304,7 +304,7 @@
                     }
                 }
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         \change Staff = Piano_Bass_Staff
                         b16
@@ -320,13 +320,13 @@
                     \change Staff = Piano_Treble_Staff
                     ef''8
                     ~
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         ef''16
                         ef'16
                         r16
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         b''8
                         \change Staff = Piano_Bass_Staff
@@ -339,7 +339,7 @@
                 }
                 {
                     r2
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r8
                         r16
@@ -350,7 +350,7 @@
                         ~
                     }
                     \override TupletBracket.direction = #down
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         b16
                         e'16
@@ -366,7 +366,7 @@
                     c'8
                     ~
                     \override TupletBracket.direction = #up
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         c'16
                         \change Staff = Piano_Treble_Staff
@@ -381,7 +381,7 @@
                     af,16
                     \change Staff = Piano_Treble_Staff
                     fs'16
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         ef''8
                         \change Staff = Piano_Bass_Staff
@@ -390,7 +390,7 @@
                     }
                     ef,16
                     r16
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r16
                         \change Staff = Piano_Treble_Staff
@@ -398,20 +398,20 @@
                     }
                 }
                 {
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         r8.
                         r16
                         ef'''16
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         \change Staff = Piano_Bass_Staff
                         c,4
                         bf,,8
                         ~
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         bf,,16
                         \change Staff = Piano_Treble_Staff
@@ -420,7 +420,7 @@
                         ~
                     }
                     \override TupletBracket.direction = #up
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         b16
                         c'16
@@ -435,7 +435,7 @@
                     \revert TupletBracket.direction
                 }
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         b16
                         e,8
@@ -444,7 +444,7 @@
                     e,16
                     \change Staff = Piano_Treble_Staff
                     ef'''16
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         \change Staff = Piano_Bass_Staff
                         d8
@@ -464,14 +464,14 @@
                     d'''16
                     c'16
                     ~
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         c'16
                         d'8
                     }
                 }
                 {
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         \change Staff = Piano_Bass_Staff
                         d,16
@@ -479,13 +479,13 @@
                         c'''8
                         af'''8
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         e''4
                         \change Staff = Piano_Bass_Staff
                         g,,8
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         b,16
                         \change Staff = Piano_Treble_Staff
@@ -499,7 +499,7 @@
                         ~
                     }
                     \override TupletBracket.direction = #down
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         e8
                         e,,16
@@ -511,7 +511,7 @@
                     \revert TupletBracket.direction
                 }
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         e'16
                         bf''16
@@ -522,7 +522,7 @@
                         \change Staff = Piano_Bass_Staff
                         af,16
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         \change Staff = Piano_Treble_Staff
                         c'''16
@@ -530,7 +530,7 @@
                         r16
                         fs8
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r16
                         c'16
@@ -538,7 +538,7 @@
                         d''16
                         r8
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r16
                         g'16
@@ -548,19 +548,19 @@
                 {
                     r16
                     d'16
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         \change Staff = Piano_Bass_Staff
                         af,16
                         r8
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         b8
                         r16
                         g,,8
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         \change Staff = Piano_Treble_Staff
                         bf''8.
@@ -577,7 +577,7 @@
                 }
                 {
                     r4
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r8
                         a16
@@ -586,7 +586,7 @@
                     a16
                     bf''16
                     ~
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         bf''8
                         fs'''8
@@ -597,7 +597,7 @@
                 }
                 {
                     r2
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         f'8
                         fs'''8
@@ -609,14 +609,14 @@
                     af8.
                     f''16
                     ~
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         f''4
                         r16
                         d'16
                         ~
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         d'8
                         r4
@@ -625,14 +625,14 @@
                 }
                 {
                     r2.
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         r8.
                         e''8
                     }
                 }
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         fs8
                         d'''8
@@ -651,7 +651,7 @@
                     r2
                 }
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r16
                         f'''16
@@ -663,7 +663,7 @@
                         af16
                         ~
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         af8
                         f'8
@@ -671,7 +671,7 @@
                         d'''16
                         ~
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         d'''16
                         a16
@@ -682,7 +682,7 @@
                     r4
                 }
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         cs'''8
                         r4
@@ -692,12 +692,12 @@
                     bf16
                 }
                 {
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         r8.
                         fs''8
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r16
                         cs''8
@@ -706,7 +706,7 @@
                     cs''16
                     fs'16
                     ~
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         fs'16
                         bf16
@@ -715,7 +715,7 @@
                         fs8
                         ~
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         fs16
                         a''16
@@ -773,7 +773,7 @@
         }
         {
             {
-                \times 2/3
+                \tuplet 3/2
                 {
                     \time 4/4
                     \tszkiu-metronome-mark #78 #2
@@ -783,19 +783,19 @@
                     \f
                     ~
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s4
                     ~
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8.
                     s16
                     s16
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8
                     s16
@@ -803,20 +803,20 @@
                 }
             }
             {
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     s16
                     s16
                     ~
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
                     s4
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     s8
@@ -832,7 +832,7 @@
                 s8
                 s16
                 s8.
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8
                     s16
@@ -844,14 +844,14 @@
                 s8.
             }
             {
-                \times 4/5
+                \tuplet 5/4
                 {
                     s16
                     s8
                     s8
                 }
                 s4
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s8
@@ -859,7 +859,7 @@
                 }
                 s16
                 s16
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s8
@@ -869,12 +869,12 @@
             {
                 s16
                 s8.
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     s8
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s16
                     s16
@@ -884,7 +884,7 @@
                     s16
                     ~
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s16
                     s16
@@ -899,7 +899,7 @@
                 s16
                 s16
                 s16
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s8
@@ -907,7 +907,7 @@
                     s16
                     s16
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8.
                     ~
@@ -915,7 +915,7 @@
                     s16
                     ~
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s16
                     s8
@@ -924,7 +924,7 @@
                 }
             }
             {
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -932,13 +932,13 @@
                     s8
                 }
                 s4
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s8
                     s8
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -953,7 +953,7 @@
                 s8
                 s8
                 ~
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8.
                     s8
@@ -966,7 +966,7 @@
                 s8
                 s8
                 ~
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     ~
@@ -977,7 +977,7 @@
             }
             {
                 s4
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8
                     s16
@@ -988,7 +988,7 @@
                 ~
             }
             {
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -999,19 +999,19 @@
                     \mf
                     ~
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s16
                     s8
                     s8
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s16
                     s8
                     s8
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -1023,7 +1023,7 @@
             {
                 s16
                 s16
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s16
@@ -1032,21 +1032,21 @@
                 s16
                 s16
                 ~
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
                     s16
                     ~
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s8
                 }
                 s16
                 s16
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -1056,7 +1056,7 @@
                 }
             }
             {
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -1068,13 +1068,13 @@
                 }
                 s8
                 ~
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
                     s16
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s16
@@ -1086,7 +1086,7 @@
             }
             {
                 s2
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s16
@@ -1095,7 +1095,7 @@
                     s16
                     ~
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -1108,7 +1108,7 @@
             {
                 s8
                 ~
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -1119,7 +1119,7 @@
                 s16
                 s16
                 s16
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s16
@@ -1127,33 +1127,33 @@
                 }
                 s16
                 s16
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s8
                 }
             }
             {
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8.
                     s16
                     s16
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     s8
                     ~
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
                     s4
                     ~
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -1166,7 +1166,7 @@
                 }
             }
             {
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s8
@@ -1174,7 +1174,7 @@
                 }
                 s16
                 s16
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     ~
@@ -1190,25 +1190,25 @@
                 s16
                 s16
                 ~
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s8
                 }
             }
             {
-                \times 4/5
+                \tuplet 5/4
                 {
                     s16
                     s8
                     s8
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     s8
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -1219,7 +1219,7 @@
                     s16
                     ~
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8
                     s16
@@ -1229,7 +1229,7 @@
                 }
             }
             {
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -1237,14 +1237,14 @@
                     s16
                     s16
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s16
                     s16
                     s16
                     s8
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -1252,7 +1252,7 @@
                     s16
                     s8
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -1262,18 +1262,18 @@
             {
                 s16
                 s16
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s8
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8
                     s16
                     s8
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8.
                     s8
@@ -1288,7 +1288,7 @@
             }
             {
                 s4
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s16
@@ -1297,7 +1297,7 @@
                 s16
                 s16
                 ~
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s8
@@ -1308,7 +1308,7 @@
             }
             {
                 s2
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s8
@@ -1320,14 +1320,14 @@
                 s8.
                 s16
                 ~
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     s16
                     s16
                     ~
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s4
@@ -1336,14 +1336,14 @@
             }
             {
                 s2.
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8.
                     s8
                 }
             }
             {
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s8
@@ -1362,7 +1362,7 @@
                 s2
             }
             {
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -1374,7 +1374,7 @@
                     s16
                     ~
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s8
@@ -1382,7 +1382,7 @@
                     s16
                     ~
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16
@@ -1393,7 +1393,7 @@
                 s4
             }
             {
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s4
@@ -1403,12 +1403,12 @@
                 s16
             }
             {
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8.
                     s8
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s8
@@ -1417,7 +1417,7 @@
                 s16
                 s16
                 ~
-                \times 4/5
+                \tuplet 5/4
                 {
                     s16
                     s16
@@ -1426,7 +1426,7 @@
                     s8
                     ~
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s16
                     s16

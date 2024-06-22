@@ -9,12 +9,6 @@ on:
 
 env:
   LILYPOND_VERSION: 2.25.16
-  ABJAD_COMMIT: fbcf8473bca0c4b008cd694fc30f0f62561d1e55
-  NAUERT_COMMIT: 174145292b9418bd2fc78e442552eb8961d0810d
-  PANG_COMMIT: e0f14587783dae33840ed48b934c89d61cad7fe1
-  ABJAD_PATH: /tmp/abjad
-  NAUERT_PATH: /tmp/abjad-ext-nauert
-  PANG_PATH: /tmp/pang
 
 jobs:
   build:
@@ -45,25 +39,6 @@ jobs:
     - name: Log environment variable(s)
       run: |
         echo $PATH
-    - name: Install Abjad
-      run: |
-        # install without development dependencies
-        git clone https://github.com/Abjad/abjad.git ${ABJAD_PATH}
-        cd ${ABJAD_PATH}
-        git checkout ${ABJAD_COMMIT}
-        pip install ${ABJAD_PATH}
-    - name: Install Nauert
-      run: |
-        git clone https://github.com/Abjad/abjad-ext-nauert.git ${NAUERT_PATH}
-        cd ${NAUERT_PATH}
-        git checkout ${NAUERT_COMMIT}
-        pip install ${NAUERT_PATH}
-    - name: Install Pang
-      run: |
-        git clone https://github.com/nivlekp/pang.git ${PANG_PATH}
-        cd ${PANG_PATH}
-        git checkout ${PANG_COMMIT}
-        pip install ${PANG_PATH}
     - name: Install dependencies
       run: |
         export PATH=/tmp/lilypond-${LILYPOND_VERSION}/bin:/home/runner/bin:$PATH
