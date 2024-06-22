@@ -58,9 +58,6 @@ jobs:
     - name: Checks and Tests
       run: |
         export PATH=/tmp/lilypond-${LILYPOND_VERSION}/bin:/home/runner/bin:$PATH
-        export MYPYPATH=$MYPYPATH:${ABJAD_PATH}
-        export MYPYPATH=$MYPYPATH:${NAUERT_PATH}
-        export MYPYPATH=$MYPYPATH:${PANG_PATH}
         make black-check
         make flake8
         make isort-check
@@ -68,12 +65,12 @@ jobs:
     - name: Test Segments
       run: |
         export PATH=/tmp/lilypond-${LILYPOND_VERSION}/bin:/home/runner/bin:$PATH
-        export PANG_PATH=${PANG_PATH}
+        export PANG_PATH=$(pip show pang | sed -n 's/^Location: //p')
         make test-sections
     - name: Test Score
       run: |
         export PATH=/tmp/lilypond-${LILYPOND_VERSION}/bin:/home/runner/bin:$PATH
-        export PANG_PATH=${PANG_PATH}
+        export PANG_PATH=$(pip show pang | sed -n 's/^Location: //p')
         make test-score
         make full-score
     - name: Upload Full Score
