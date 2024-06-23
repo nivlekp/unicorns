@@ -13,7 +13,7 @@
                     \tszkiu-metronome-mark #58.5 #1
                     \set Score.tempoWholesPerMinute = #(ly:make-moment (* 117/2 1/2))
                     r4
-                    ^ \markup \tszkiu-metric-modulation { \times 2/3 { r8 r8 8 } } { { 8 } }
+                    ^ \markup \tszkiu-metric-modulation { \tuplet 3/2 { r8 r8 8 } } { { 8 } }
                     \tuplet 3/2
                     {
                         <cs'' af''>4
