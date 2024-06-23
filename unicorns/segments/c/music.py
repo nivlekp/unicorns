@@ -104,7 +104,7 @@ def main():
     library.attach_fine_bar_line(score[library.PIANO_MUSIC_VOICE_0_NAME])
     library.attach_end_note(score[library.PIANO_MUSIC_VOICE_0_NAME])
     metric_modulation_markup = library.make_metric_modulation_markup(
-        r"{ \times 4/5 { r8 r8 r8 r8 8 } }", r"{ \times 2/3 { 8 r8 r8 } }"
+        r"{ \tuplet 5/4 { r8 r8 r8 r8 8 } }", r"{ \tuplet 3/2 { 8 r8 r8 } }"
     )
     abjad.attach(
         metric_modulation_markup,

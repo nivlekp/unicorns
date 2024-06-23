@@ -13,13 +13,13 @@
                     \tszkiu-metronome-mark #58.5 #1
                     \set Score.tempoWholesPerMinute = #(ly:make-moment (* 117/2 1/2))
                     r4
-                    ^ \markup \tszkiu-metric-modulation { \times 2/3 { r8 r8 8 } } { { 8 } }
-                    \times 2/3
+                    ^ \markup \tszkiu-metric-modulation { \tuplet 3/2 { r8 r8 8 } } { { 8 } }
+                    \tuplet 3/2
                     {
                         <cs'' af''>4
                         r8
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         r8
                         <cs'' b'' bf'''>4
@@ -28,7 +28,7 @@
                         <fs,, e, a,>8
                         ~
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         <fs,, e, a,>4.
                         ~
@@ -38,7 +38,7 @@
                     }
                 }
                 {
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         <g'' b''>4.
                         r8
@@ -50,7 +50,7 @@
                     }
                     <d' cs''>8
                     r4.
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         r4.
                         r4
@@ -59,7 +59,7 @@
                     }
                 }
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r8
                         <d' g'' af''>4
@@ -67,7 +67,7 @@
                     r8
                     <cs'' af'' c''''>8
                     ~
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         <cs'' af'' c''''>4.
                         ~
@@ -76,7 +76,7 @@
                         <cs'' af'' c''''>8
                         r8
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r4
                         <f cs''>4
@@ -85,7 +85,7 @@
                 }
                 {
                     r1
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r4
                         <cs'' c''''>8
@@ -96,14 +96,14 @@
                 {
                     <g'' ef''' bf'''>4
                     r4
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         \change Staff = Piano_Bass_Staff
                         <e, a, d'>8
                         r4
                         r4
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         r8
                         \change Staff = Piano_Treble_Staff
@@ -112,7 +112,7 @@
                     }
                 }
                 {
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         r4.
                         r8
@@ -121,7 +121,7 @@
                         <g'' bf'''>4
                     }
                     r2
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         <ef''' bf''' c''''>4.
                         ~
@@ -136,7 +136,7 @@
                     ~
                     <af'' bf'''>2
                     ~
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         <af'' bf'''>4
                         <b'' ef''' c''''>8
@@ -150,7 +150,7 @@
                     \change Staff = Piano_Treble_Staff
                     <e' a'' d'''>2
                     ~
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         <e' a'' d'''>8
                         \change Staff = Piano_Bass_Staff
@@ -161,7 +161,7 @@
                         <g, bf, f>8
                         ~
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         <g, bf, f>8
                         <af,, ef, g,>4
@@ -174,7 +174,7 @@
                     ~
                 }
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         \once \override Stem.direction = #up
                         <e' cs''>4
@@ -182,7 +182,7 @@
                         <b, f>2
                     }
                     r2
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         r4.
                         r8
@@ -197,19 +197,19 @@
                     \once \override Stem.direction = #up
                     cs''8
                     ~
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         \once \override Stem.direction = #up
                         cs''4
                         r8
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         r4
                         <e' d'''>8
                         r4
                     }
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         r4.
                         \change Staff = Piano_Bass_Staff
@@ -219,7 +219,7 @@
                 {
                     <fs,, ef, f>8
                     r8
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r8
                         <fs,, f>8
@@ -230,7 +230,7 @@
                     ~
                 }
                 {
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         <g, b, e'>4.
                         <ef, bf, e'>4
@@ -239,13 +239,13 @@
                         <fs,, af,, g,>8
                         ~
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         <fs,, af,, g,>8
                         <b, f e'>4
                         <as, b,>4
                     }
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         r4
                         <fs,, g, f>8
@@ -254,7 +254,7 @@
                     }
                 }
                 {
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         r4.
                         \change Staff = Piano_Bass_Staff
@@ -264,13 +264,13 @@
                         <bf, f e'>8
                         ~
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         <bf, f e'>4.
                         <fs,, as, b,>4
                         ~
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         <fs,, as, b,>8
                         <ef, g, e'>8
@@ -286,14 +286,14 @@
                     <e' cs'' a''>8
                     \change Staff = Piano_Bass_Staff
                     <af,, ef, bf,>8
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r8
                         <fs,, f>8
                         r8
                     }
                     r2
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         r4.
                         \change Staff = Piano_Treble_Staff
@@ -307,7 +307,7 @@
                     r4
                 }
                 {
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         <fs''' bf'''>4
                         <bf' fs''' bf'''>8
@@ -318,7 +318,7 @@
                         <bf bf' fs''>8
                         ~
                     }
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         <bf bf' fs''>4.
                         ~
@@ -328,7 +328,7 @@
                     r2
                 }
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         <bf' e''>4
                         <e' ds''' e'''>8
@@ -337,7 +337,7 @@
                     <e' ds''' e'''>8
                     <fs' bf''>8
                     ~
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         <fs' bf''>8
                         r4
@@ -346,7 +346,7 @@
                     r2
                 }
                 {
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         r4.
                         <fs'' bf'''>8
@@ -357,7 +357,7 @@
                     r4
                     r8
                     <fs' fs'''>8
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r4
                         <ds'' e'' fs'''>8
@@ -365,7 +365,7 @@
                 }
                 {
                     r2
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         <bf' fs'''>8
                         <fs e'' bf''>8
@@ -374,7 +374,7 @@
                         r8
                         r4
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         r4.
                         <ef' bf' ef'''>4
@@ -383,7 +383,7 @@
                 {
                     r2
                     r4
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         r8
                         <fs bf bf'>8
@@ -408,19 +408,19 @@
                     \tszkiu-metronome-mark #58.5 #1
                     \set Score.tempoWholesPerMinute = #(ly:make-moment (* 117/2 1/2))
                     s4
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         s4
                         s8
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         s8
                         s4
                         s8
                         s8
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         s4.
                         s8
@@ -428,7 +428,7 @@
                     }
                 }
                 {
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s4.
                         s8
@@ -438,7 +438,7 @@
                     }
                     s8
                     s4.
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s4.
                         s4
@@ -447,21 +447,21 @@
                     }
                 }
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         s8
                         s4
                     }
                     s8
                     s8
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s4.
                         s4
                         s8
                         s8
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         s4
                         s4
@@ -470,7 +470,7 @@
                 }
                 {
                     s1
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         s4
                         s8
@@ -481,13 +481,13 @@
                 {
                     s4
                     s4
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         s8
                         s4
                         s4
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         s8
                         s4
@@ -495,7 +495,7 @@
                     }
                 }
                 {
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s4.
                         s8
@@ -503,7 +503,7 @@
                         s4
                     }
                     s2
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s4.
                         s8
@@ -515,7 +515,7 @@
                     s4
                     s4
                     s2
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         s4
                         s8
@@ -525,7 +525,7 @@
                 }
                 {
                     s2
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s8
                         s4
@@ -533,7 +533,7 @@
                         s8
                         s8
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         s8
                         s4
@@ -545,7 +545,7 @@
                     _ ~
                 }
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         \voiceOne
                         \crossStaff
@@ -553,7 +553,7 @@
                         s2
                     }
                     s2
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s4.
                         s8
@@ -567,20 +567,20 @@
                     \crossStaff
                     <b, f>8
                     _ ~
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         \voiceOne
                         \crossStaff
                         <b, f>4
                         s8
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         s4
                         s8
                         s4
                     }
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s4.
                         s2
@@ -589,7 +589,7 @@
                 {
                     s8
                     s8
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         s8
                         s8
@@ -599,20 +599,20 @@
                     s2
                 }
                 {
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s4.
                         s4
                         s8
                         s8
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         s8
                         s4
                         s4
                     }
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s4
                         s8
@@ -620,19 +620,19 @@
                     }
                 }
                 {
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s4.
                         s4
                         s8
                         s8
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         s4.
                         s4
                     }
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         s8
                         s8
@@ -644,14 +644,14 @@
                 {
                     s8
                     s8
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         s8
                         s8
                         s8
                     }
                     s2
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s4.
                         s4
@@ -664,7 +664,7 @@
                     s4
                 }
                 {
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s4
                         s8
@@ -672,7 +672,7 @@
                         s8
                         s8
                     }
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s4.
                         s4
@@ -681,14 +681,14 @@
                     s2
                 }
                 {
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         s4
                         s8
                     }
                     s8
                     s8
-                    \times 4/7
+                    \tuplet 7/4
                     {
                         s8
                         s4
@@ -697,7 +697,7 @@
                     s2
                 }
                 {
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         s4.
                         s8
@@ -708,7 +708,7 @@
                     s4
                     s8
                     s8
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         s4
                         s8
@@ -716,7 +716,7 @@
                 }
                 {
                     s2
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         s8
                         s8
@@ -724,7 +724,7 @@
                         s8
                         s4
                     }
-                    \times 4/5
+                    \tuplet 5/4
                     {
                         s4.
                         s4
@@ -733,7 +733,7 @@
                 {
                     s2
                     s4
-                    \times 2/3
+                    \tuplet 3/2
                     {
                         s8
                         s8
@@ -781,13 +781,13 @@
                 \tszkiu-metronome-mark #58.5 #1
                 \set Score.tempoWholesPerMinute = #(ly:make-moment (* 117/2 1/2))
                 s4
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     \ff
                     s8
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8
                     s4
@@ -795,7 +795,7 @@
                     s8
                     ~
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s4.
                     ~
@@ -804,7 +804,7 @@
                 }
             }
             {
-                \times 4/7
+                \tuplet 7/4
                 {
                     s4.
                     s8
@@ -816,7 +816,7 @@
                 }
                 s8
                 s4.
-                \times 4/7
+                \tuplet 7/4
                 {
                     s4.
                     s4
@@ -825,7 +825,7 @@
                 }
             }
             {
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s4
@@ -833,7 +833,7 @@
                 s8
                 s8
                 ~
-                \times 4/7
+                \tuplet 7/4
                 {
                     s4.
                     ~
@@ -842,7 +842,7 @@
                     s8
                     s8
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     s4
@@ -851,7 +851,7 @@
             }
             {
                 s1
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     s8
@@ -862,13 +862,13 @@
             {
                 s4
                 s4
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8
                     s4
                     s4
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8
                     s4
@@ -876,7 +876,7 @@
                 }
             }
             {
-                \times 4/7
+                \tuplet 7/4
                 {
                     s4.
                     s8
@@ -885,7 +885,7 @@
                     s4
                 }
                 s2
-                \times 4/7
+                \tuplet 7/4
                 {
                     s4.
                     ~
@@ -900,7 +900,7 @@
                 ~
                 s2
                 ~
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     s8
@@ -913,7 +913,7 @@
             {
                 s2
                 ~
-                \times 4/7
+                \tuplet 7/4
                 {
                     s8
                     s4
@@ -923,7 +923,7 @@
                     s8
                     ~
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s4
@@ -934,13 +934,13 @@
                 ~
             }
             {
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     s2
                 }
                 s2
-                \times 4/7
+                \tuplet 7/4
                 {
                     s4.
                     s8
@@ -953,18 +953,18 @@
                 s8
                 s8
                 ~
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     s8
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s4
                     s8
                     s4
                 }
-                \times 4/7
+                \tuplet 7/4
                 {
                     s4.
                     s2
@@ -973,7 +973,7 @@
             {
                 s8
                 s8
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s8
@@ -984,7 +984,7 @@
                 ~
             }
             {
-                \times 4/7
+                \tuplet 7/4
                 {
                     s4.
                     s4
@@ -993,13 +993,13 @@
                     s8
                     ~
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s8
                     s4
                     s4
                 }
-                \times 4/7
+                \tuplet 7/4
                 {
                     s4
                     s8
@@ -1007,7 +1007,7 @@
                 }
             }
             {
-                \times 4/7
+                \tuplet 7/4
                 {
                     s4.
                     s4
@@ -1016,13 +1016,13 @@
                     s8
                     ~
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s4.
                     s4
                     ~
                 }
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s8
@@ -1036,14 +1036,14 @@
             {
                 s8
                 s8
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s8
                     s8
                 }
                 s2
-                \times 4/7
+                \tuplet 7/4
                 {
                     s4.
                     s4
@@ -1057,7 +1057,7 @@
                 s4
             }
             {
-                \times 4/7
+                \tuplet 7/4
                 {
                     s4
                     s8
@@ -1068,7 +1068,7 @@
                     s8
                     ~
                 }
-                \times 4/7
+                \tuplet 7/4
                 {
                     s4.
                     ~
@@ -1078,7 +1078,7 @@
                 s2
             }
             {
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     s8
@@ -1087,7 +1087,7 @@
                 s8
                 s8
                 ~
-                \times 4/7
+                \tuplet 7/4
                 {
                     s8
                     s4
@@ -1096,7 +1096,7 @@
                 s2
             }
             {
-                \times 4/5
+                \tuplet 5/4
                 {
                     s4.
                     s8
@@ -1107,7 +1107,7 @@
                 s4
                 s8
                 s8
-                \times 2/3
+                \tuplet 3/2
                 {
                     s4
                     s8
@@ -1115,7 +1115,7 @@
             }
             {
                 s2
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s8
@@ -1124,7 +1124,7 @@
                     s8
                     s4
                 }
-                \times 4/5
+                \tuplet 5/4
                 {
                     s4.
                     s4
@@ -1133,7 +1133,7 @@
             {
                 s2
                 s4
-                \times 2/3
+                \tuplet 3/2
                 {
                     s8
                     s8
