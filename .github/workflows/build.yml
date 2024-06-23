@@ -9,6 +9,8 @@ on:
 
 env:
   LILYPOND_VERSION: 2.25.16
+  PANG_COMMIT: 7ed67fd12f79f3da9d99f68687a7e7a70309c92
+  PANG_PATH: /tmp/pang
 
 jobs:
   build:
@@ -39,6 +41,12 @@ jobs:
     - name: Log environment variable(s)
       run: |
         echo $PATH
+    - name: Install Pang
+      run: |
+        git clone https://github.com/nivlekp/pang.git ${PANG_PATH}
+        cd ${PANG_PATH}
+        git checkout ${PANG_COMMIT}
+        pip install ${PANG_PATH}
     - name: Install dependencies
       run: |
         export PATH=/tmp/lilypond-${LILYPOND_VERSION}/bin:/home/runner/bin:$PATH
@@ -65,12 +73,12 @@ jobs:
     - name: Test Segments
       run: |
         export PATH=/tmp/lilypond-${LILYPOND_VERSION}/bin:/home/runner/bin:$PATH
-        export PANG_PATH=$(pip show pang | sed -n 's/^Location: //p')/pang
+        export PANG_PATH=${PANG_PATH}
         make test-sections
     - name: Test Score
       run: |
         export PATH=/tmp/lilypond-${LILYPOND_VERSION}/bin:/home/runner/bin:$PATH
-        export PANG_PATH=$(pip show pang | sed -n 's/^Location: //p')/pang
+        export PANG_PATH=${PANG_PATH}
         make test-score
         make full-score
     - name: Upload Full Score
