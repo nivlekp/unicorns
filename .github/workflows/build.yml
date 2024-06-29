@@ -9,7 +9,7 @@ on:
 
 env:
   LILYPOND_VERSION: 2.25.16
-  PANG_COMMIT: a22c7ac86b2d4b80968508a6f65d9ae14c78537f
+  PANG_COMMIT: 6076b0c53d0c2e7a837936ce096e0bc3dfaa06e3
   PANG_PATH: /tmp/pang
 
 jobs:
