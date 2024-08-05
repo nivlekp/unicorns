@@ -7,9 +7,9 @@ allow-direct-references = true
 
 [project]
 name = "unicorns"
-version = "24.6b3"
+version = "24.8b0"
 authors = [
-    { name="Tsz Kiu Pang", email="osamupang@gmail.com" },
+    { name="Tsz Kiu Pang" },
 ]
 description = "The Last Unicorns, for solo piano"
 readme = "README.md"

@@ -578,7 +578,9 @@ class BimodalSoundPointsGenerator(pang.SoundPointsGenerator):
             )
             last_arrival_instance += time_since_last_arrival
             arrival_instances.append(last_arrival_instance)
-        return arrival_instances
+        # Return the whole list but the last because it happens after the
+        # sequence ends
+        return arrival_instances[:-1]
 
     def _generate_durations(self, number_of_notes):
         return (

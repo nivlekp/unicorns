@@ -32,14 +32,14 @@
                     }
                     r2
                     \change Staff = Piano_Treble_Staff
-                    g'''4
+                    b'''4
                     ~
                 }
                 {
                     \tuplet 5/4
                     {
-                        g'''8.
-                        c'''8
+                        b'''8.
+                        b''8
                     }
                     \tuplet 3/2
                     {
@@ -54,39 +54,39 @@
                     {
                         r16
                         \change Staff = Piano_Treble_Staff
-                        a'''8
+                        g'''8
                         ~
-                        a'''8
+                        g'''8
                         ~
                     }
                 }
                 {
                     \tuplet 5/4
                     {
-                        a'''16
+                        g'''16
+                        c'''8
                         a'''8
-                        ef''8
                         ~
                     }
                     \tuplet 3/2
                     {
-                        ef''8
-                        e''4
+                        a'''8
+                        a'''4
                     }
-                    cs'''8.
-                    c''16
+                    ef''8.
+                    e''16
                     ~
-                    c''4
+                    e''4
                 }
                 {
                     \tuplet 5/4
                     {
-                        c''8.
-                        af''8
+                        cs'''8.
+                        c''8
                     }
                     \tuplet 5/4
                     {
-                        g''8.
+                        c''8.
                         \change Staff = Piano_Bass_Staff
                         <a, bf, cs a>8
                         ~
@@ -94,34 +94,34 @@
                     <a, bf, cs a>16
                     r16
                     \change Staff = Piano_Treble_Staff
-                    cs'''8
+                    af''8
                     ~
                     \tuplet 5/4
                     {
-                        cs'''8.
+                        af''8.
                         ~
-                        cs'''16
                         af''16
+                        g''16
                         ~
                     }
                 }
                 {
                     \tuplet 5/4
                     {
-                        af''16
-                        e'''8
+                        g''16
+                        cs'''8
                         ~
-                        e'''8
+                        cs'''8
                         ~
                     }
-                    e'''8.
-                    a''16
-                    f''4
+                    cs'''8.
+                    af''16
+                    e'''4
                     \tuplet 5/4
                     {
-                        cs''8.
+                        a''8.
                         ~
-                        cs''16
+                        a''16
                         \change Staff = Piano_Bass_Staff
                         <fs,, a,, f, gf,>16
                         ~
@@ -132,13 +132,13 @@
                     {
                         <fs,, a,, f, gf,>4
                         \change Staff = Piano_Treble_Staff
-                        e''8
+                        f''8
                         ~
                     }
                     \tuplet 5/4
                     {
-                        e''16
-                        ef''8
+                        f''16
+                        cs''8
                         \change Staff = Piano_Bass_Staff
                         <ds e fs>16
                         r16
@@ -160,32 +160,32 @@
                 }
                 {
                     \change Staff = Piano_Treble_Staff
-                    e'''4
+                    e''4
                     ~
                     \tuplet 5/4
                     {
-                        e'''8.
+                        e''8.
                         ~
-                        e'''16
+                        e''16
                         \change Staff = Piano_Bass_Staff
                         <af, bf, g>16
                         ~
                     }
                     <af, bf, g>8.
                     \change Staff = Piano_Treble_Staff
-                    af''16
+                    ef''16
                     ~
                     \tuplet 5/4
                     {
-                        af''8.
-                        b'''8
+                        ef''8.
+                        e'''8
                     }
                 }
                 {
                     \tuplet 3/2
                     {
-                        c'''8
-                        f''4
+                        af''8
+                        b'''4
                     }
                     \tuplet 3/2
                     {
@@ -211,23 +211,23 @@
                     \tuplet 5/4
                     {
                         \change Staff = Piano_Treble_Staff
-                        g'''8.
-                        c''8
+                        c'''8.
+                        f''8
                         ~
                     }
-                    c''4
+                    f''4
                     ~
                     \tuplet 3/2
                     {
+                        f''8
+                        g'''8
                         c''8
-                        e'''8
-                        cs'''8
                         ~
                     }
                     \tuplet 3/2
                     {
-                        cs'''4
-                        c'''8
+                        c''4
+                        e'''8
                     }
                 }
                 {
@@ -267,13 +267,13 @@
                     \tuplet 5/4
                     {
                         \change Staff = Piano_Treble_Staff
-                        f'''8.
-                        f''8
+                        cs'''8.
+                        c'''8
                         ~
                     }
                     \tuplet 5/4
                     {
-                        f''16
+                        c'''16
                         f'''8
                         r8
                     }
@@ -291,40 +291,40 @@
                     ~
                     <f,, b,, fs,>8.
                     \change Staff = Piano_Treble_Staff
-                    a''16
+                    f''16
                     ~
                 }
                 {
-                    a''8
-                    af''8
+                    f''8
+                    f'''8
                     \tuplet 5/4
                     {
-                        af''8
-                        e''16
+                        a''8
+                        af''16
                         ~
-                        e''16
-                        e'''16
+                        af''16
+                        af''16
                         ~
                     }
-                    e'''4
-                    c'''4
+                    af''4
+                    e''4
                 }
                 {
                     \tuplet 3/2
                     {
-                        c''8
-                        ef''4
+                        e'''8
+                        c'''4
                         ~
                     }
-                    ef''4
+                    c'''4
                     ~
                     \tuplet 3/2
                     {
-                        ef''4
-                        af'''8
+                        c'''4
+                        c''8
                         ~
                     }
-                    af'''8
+                    c''8
                     \change Staff = Piano_Bass_Staff
                     <bf, d af bf>8
                 }
@@ -332,21 +332,21 @@
                     \tuplet 5/4
                     {
                         \change Staff = Piano_Treble_Staff
-                        ef'''8.
-                        cs''8
+                        ef''8.
+                        af'''8
                     }
                     \change Staff = Piano_Bass_Staff
                     <f, gf, b,>8
                     \change Staff = Piano_Treble_Staff
-                    b'''16
+                    ef'''16
                     r16
                     r4
                     \tuplet 5/4
                     {
                         r8
-                        c'''16
+                        cs''16
                         ~
-                        c'''16
+                        cs''16
                         r16
                     }
                 }
@@ -360,30 +360,30 @@
                     r4
                     r8
                     \change Staff = Piano_Treble_Staff
-                    cs'''8
+                    b'''8
                     ~
                     \tuplet 5/4
                     {
+                        b'''16
+                        c'''16
+                        cs'''16
+                        ~
                         cs'''16
                         f''16
-                        c'''16
-                        ~
-                        c'''16
-                        af''16
                         ~
                     }
                     \tuplet 3/2
                     {
-                        af''4
-                        e''8
+                        f''4
+                        c'''8
                         ~
                     }
                 }
                 {
-                    e''16
-                    a''16
+                    c'''16
+                    af''16
                     ~
-                    a''16
+                    af''16
                     \change Staff = Piano_Bass_Staff
                     <e,, fs,, e,>16
                     ~
@@ -391,27 +391,27 @@
                     {
                         <e,, fs,, e,>8.
                         \change Staff = Piano_Treble_Staff
-                        g'''8
+                        e''8
                     }
-                    g'''8.
-                    e'''16
+                    a''8.
+                    g'''16
                     ~
                     \tuplet 5/4
                     {
-                        e'''8
-                        cs'''16
+                        g'''8
+                        g'''16
                         ~
-                        cs'''8
+                        g'''8
                         ~
                     }
                 }
                 {
                     \tuplet 5/4
                     {
-                        cs'''16
-                        af'''8
+                        g'''16
+                        e'''8
                         ~
-                        af'''8
+                        e'''8
                     }
                     \change Staff = Piano_Bass_Staff
                     <af,, bf,, d, af,>4
@@ -419,24 +419,10 @@
                     \tuplet 5/4
                     {
                         <af,, bf,, d, af,>16
-                        r16
-                        \change Staff = Piano_Treble_Staff
-                        ef'''16
-                        ~
-                        ef'''8
-                        ~
-                    }
-                    ef'''4
-                    ~
-                }
-                {
-                    \tuplet 5/4
-                    {
-                        ef'''16
                         r8
                         r8
                     }
-                    r2.
+                    r4
                     \bar "|."
                     \end-note
                 }
@@ -783,26 +769,15 @@
                     \tuplet 5/4
                     {
                         s16
-                        s16
-                        s16
+                        s8
                         s8
                     }
                     s4
-                }
-                {
-                    \tuplet 5/4
-                    {
-                        s16
-                        s8
-                        s8
-                    }
-                    s2.
                 }
             }
             \context Voice = "Piano.Music.1"
             {
                 \clef "bass"
-                s1
                 s1
                 s1
                 s1
@@ -1246,24 +1221,10 @@
                 \tuplet 5/4
                 {
                     s16
-                    s16
-                    s16
-                    \mp
-                    ~
                     s8
-                    ~
+                    s8
                 }
                 s4
-                ~
-            }
-            {
-                \tuplet 5/4
-                {
-                    s16
-                    s8
-                    s8
-                }
-                s2.
             }
         }
     >>
