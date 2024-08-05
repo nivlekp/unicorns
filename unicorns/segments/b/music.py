@@ -20,7 +20,7 @@ def generate_first_sequence():
         average_intensity=3,
         seed=78973485515466867,
     )
-    return pang.Sequence(
+    return pang.Sequence.from_sound_points_generator(
         sound_points_generator=sound_points_generator, sequence_duration=20
     )
 
@@ -38,7 +38,7 @@ def generate_second_sequence():
         average_intensity=2,
         seed=4875268348975942,
     )
-    return pang.Sequence(
+    return pang.Sequence.from_sound_points_generator(
         sound_points_generator=sound_points_generator, sequence_duration=20
     )
 
@@ -56,7 +56,7 @@ def generate_third_sequence():
         average_intensity=1,
         seed=518757859238742,
     )
-    return pang.Sequence(
+    return pang.Sequence.from_sound_points_generator(
         sound_points_generator=sound_points_generator, sequence_duration=20
     )
 
@@ -64,9 +64,13 @@ def generate_third_sequence():
 def main():
     score = library.make_empty_score()
     scope = pang.Scope(voice_name=library.PIANO_MUSIC_VOICE_0_NAME)
-    sequence = generate_first_sequence()
-    sequence.extend(generate_second_sequence())
-    sequence.extend(generate_third_sequence())
+    sequence = pang.Sequence.from_sequences(
+        [
+            generate_first_sequence(),
+            generate_second_sequence(),
+            generate_third_sequence(),
+        ]
+    )
     search_tree = nauert.UnweightedSearchTree(
         definition={
             2: {2: None, 3: None},

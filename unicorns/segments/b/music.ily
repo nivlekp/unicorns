@@ -181,219 +181,232 @@
                         \change Staff = Piano_Bass_Staff
                         <b, f>2
                     }
-                    r2
                     \tuplet 7/4
                     {
                         r4.
-                        r8
-                        <af,, bf,>8
-                        ~
+                        r4
                         <af,, bf,>4
-                    }
-                }
-                {
-                    <af,, b,>8
-                    \change Staff = Piano_Treble_Staff
-                    \once \override Stem.direction = #up
-                    cs''8
-                    ~
-                    \tuplet 3/2
-                    {
-                        \once \override Stem.direction = #up
-                        cs''4
-                        r8
+                        ~
                     }
                     \tuplet 5/4
                     {
-                        r4
-                        <e' d'''>8
-                        r4
+                        <af,, bf,>8
+                        <af,, b,>8
+                        \change Staff = Piano_Treble_Staff
+                        \once \override Stem.direction = #up
+                        cs''8
+                        ~
+                        \once \override Stem.direction = #up
+                        cs''4
                     }
+                }
+                {
                     \tuplet 7/4
                     {
                         r4.
+                        r8
+                        <e' d'''>8
+                        r4
+                    }
+                    \tuplet 5/4
+                    {
+                        r4.
                         \change Staff = Piano_Bass_Staff
-                        <ef, as, b,>2
+                        <ef, as, b,>4
+                        ~
+                    }
+                    \tuplet 7/4
+                    {
+                        <ef, as, b,>8
+                        <fs,, ef, f>4
+                        r4
+                        r8
+                        <fs,, f>8
                     }
                 }
                 {
-                    <fs,, ef, f>8
-                    r8
+                    r2
                     \tuplet 3/2
                     {
                         r8
-                        <fs,, f>8
-                        r8
+                        <g, b, e'>8
+                        ~
+                        <g, b, e'>2
+                        ~
                     }
-                    r2
-                    <g, b, e'>2
-                    ~
-                }
-                {
-                    \tuplet 7/4
+                    \tuplet 5/4
                     {
                         <g, b, e'>4.
                         <ef, bf, e'>4
                         ~
+                    }
+                }
+                {
+                    \tuplet 3/2
+                    {
                         <ef, bf, e'>8
                         <fs,, af,, g,>8
+                        <b, f e'>4
+                        ~
+                        <b, f e'>8
+                        <as, b,>8
                         ~
                     }
-                    \tuplet 5/4
+                    \tuplet 3/2
                     {
-                        <fs,, af,, g,>8
-                        <b, f e'>4
-                        <as, b,>4
-                    }
-                    \tuplet 7/4
-                    {
-                        r4
+                        <as, b,>8
+                        r8
+                        r8
                         <fs,, g, f>8
                         \change Staff = Piano_Treble_Staff
-                        <f cs''>2
-                    }
-                }
-                {
-                    \tuplet 7/4
-                    {
-                        r4.
-                        \change Staff = Piano_Bass_Staff
-                        <fs,, af,, f>4
-                        ~
-                        <fs,, af,, f>8
-                        <bf, f e'>8
+                        <f cs''>4
                         ~
                     }
                     \tuplet 5/4
                     {
-                        <bf, f e'>4.
-                        <fs,, as, b,>4
-                        ~
+                        <f cs''>8
+                        r4
+                        \change Staff = Piano_Bass_Staff
+                        <fs,, af,, f>4
                     }
-                    \tuplet 3/2
-                    {
-                        <fs,, as, b,>8
-                        <ef, g, e'>8
-                        <ef, b,>8
-                        ~
-                    }
-                    <ef, b,>8
-                    \change Staff = Piano_Treble_Staff
-                    <e' cs'' a''>8
-                    ~
                 }
                 {
-                    <e' cs'' a''>8
-                    \change Staff = Piano_Bass_Staff
-                    <af,, ef, bf,>8
+                    <bf, f e'>4.
+                    <fs,, as, b,>8
+                    ~
                     \tuplet 3/2
                     {
+                        <fs,, as, b,>4
+                        <ef, g, e'>8
+                    }
+                    <ef, b,>4
+                    \tuplet 5/4
+                    {
+                        \change Staff = Piano_Treble_Staff
+                        <e' cs'' a''>4
+                        \change Staff = Piano_Bass_Staff
+                        <af,, ef, bf,>8
                         r8
                         <fs,, f>8
-                        r8
                     }
+                }
+                {
                     r2
                     \tuplet 7/4
                     {
                         r4.
+                        r8
                         \change Staff = Piano_Treble_Staff
-                        <bf' e'''>4
-                        <fs e' e''>4
+                        <bf' e'''>8
+                        ~
+                        <bf' e'''>8
+                        r8
+                    }
+                    \tuplet 5/4
+                    {
+                        <fs e' e''>8
+                        r4
+                        r4
                     }
                 }
                 {
-                    r1
-                    <bf' ds'' e''>4
-                    r4
-                }
-                {
+                    r2
+                    r8
+                    <bf' ds'' e''>8
+                    ~
+                    \tuplet 3/2
+                    {
+                        <bf' ds'' e''>8
+                        r4
+                    }
                     \tuplet 7/4
                     {
+                        r8
                         <fs''' bf'''>4
-                        <bf' fs''' bf'''>8
-                        ~
-                        <bf' fs''' bf'''>4
-                        ~
-                        <bf' fs''' bf'''>8
-                        <bf bf' fs''>8
-                        ~
+                        <bf' fs''' bf'''>2
                     }
+                }
+                {
                     \tuplet 7/4
                     {
                         <bf bf' fs''>4.
                         ~
                         <bf bf' fs''>4
-                        <fs e' fs''>4
-                    }
-                    r2
-                }
-                {
-                    \tuplet 3/2
-                    {
-                        <bf' e''>4
-                        <e' ds''' e'''>8
+                        ~
+                        <bf bf' fs''>8
+                        <fs e' fs''>8
                         ~
                     }
-                    <e' ds''' e'''>8
-                    <fs' bf''>8
-                    ~
                     \tuplet 7/4
                     {
-                        <fs' bf''>8
+                        <fs e' fs''>8
                         r4
                         r2
                     }
-                    r2
-                }
-                {
                     \tuplet 5/4
                     {
-                        r4.
-                        <fs'' bf'''>8
                         r8
+                        <bf' e''>4
+                        <e' ds''' e'''>4
                     }
-                    <ef' e'''>8
-                    <e' e''>8
-                    r4
-                    r8
-                    <fs' fs'''>8
-                    \tuplet 3/2
+                }
+                {
+                    <fs' bf''>8
+                    r4.
+                    r2
+                    r4.
+                    <fs'' bf'''>8
+                }
+                {
+                    \tuplet 7/4
+                    {
+                        r8
+                        <ef' e'''>4
+                        <e' e''>4
+                        r4
+                    }
+                    \tuplet 5/4
                     {
                         r4
+                        <fs' fs'''>8
+                        r4
+                    }
+                    \tuplet 5/4
+                    {
                         <ds'' e'' fs'''>8
-                    }
-                }
-                {
-                    r2
-                    \tuplet 3/2
-                    {
-                        <bf' fs'''>8
-                        <fs e'' bf''>8
-                        ~
-                        <fs e'' bf''>8
-                        r8
+                        r4
                         r4
                     }
-                    \tuplet 5/4
-                    {
-                        r4.
-                        <ef' bf' ef'''>4
-                    }
                 }
                 {
-                    r2
-                    r4
                     \tuplet 3/2
                     {
+                        r8
+                        <bf' fs'''>8
+                        <fs e'' bf''>4
+                        r4
+                    }
+                    r4.
+                    <ef' bf' ef'''>8
+                    ~
+                    <ef' bf' ef'''>8
+                    r4.
+                }
+                {
+                    \tuplet 3/2
+                    {
+                        r2
                         r8
                         <fs bf bf'>8
-                        r8
+                        ~
                     }
-                    r8
-                    <bf' e'' fs'''>8
-                    ~
-                    <bf' e'' fs'''>8
-                    r8
+                    \tuplet 7/4
+                    {
+                        <fs bf bf'>8
+                        r4
+                        <bf' e'' fs'''>2
+                    }
+                    r2
                 }
             }
         }
@@ -552,197 +565,211 @@
                         b,4
                         s2
                     }
-                    s2
                     \tuplet 7/4
                     {
                         s4.
-                        s8
-                        s8
+                        s4
                         s4
                     }
-                }
-                {
-                    s8
-                    \voiceOne
-                    \crossStaff
-                    <b, f>8
-                    _ ~
-                    \tuplet 3/2
+                    \tuplet 5/4
                     {
+                        s8
+                        s8
+                        \voiceOne
+                        \crossStaff
+                        <b, f>8
+                        _ ~
                         \voiceOne
                         \crossStaff
                         <b, f>4
+                    }
+                }
+                {
+                    \tuplet 7/4
+                    {
+                        s4.
                         s8
+                        s8
+                        s4
                     }
                     \tuplet 5/4
                     {
-                        s4
-                        s8
+                        s4.
                         s4
                     }
                     \tuplet 7/4
                     {
-                        s4.
-                        s2
+                        s8
+                        s4
+                        s4
+                        s8
+                        s8
                     }
                 }
                 {
-                    s8
-                    s8
+                    s2
                     \tuplet 3/2
                     {
                         s8
-                        s8
-                        s8
-                    }
-                    s2
-                    s2
-                }
-                {
-                    \tuplet 7/4
-                    {
-                        s4.
-                        s4
-                        s8
-                        s8
-                    }
-                    \tuplet 5/4
-                    {
-                        s8
-                        s4
-                        s4
-                    }
-                    \tuplet 7/4
-                    {
-                        s4
                         s8
                         s2
                     }
-                }
-                {
-                    \tuplet 7/4
-                    {
-                        s4.
-                        s4
-                        s8
-                        s8
-                    }
                     \tuplet 5/4
                     {
                         s4.
                         s4
                     }
-                    \tuplet 3/2
-                    {
-                        s8
-                        s8
-                        s8
-                    }
-                    s8
-                    s8
                 }
                 {
-                    s8
-                    s8
+                    \tuplet 3/2
+                    {
+                        s8
+                        s8
+                        s4
+                        s8
+                        s8
+                    }
                     \tuplet 3/2
                     {
                         s8
                         s8
                         s8
+                        s8
+                        s4
                     }
+                    \tuplet 5/4
+                    {
+                        s8
+                        s4
+                        s4
+                    }
+                }
+                {
+                    s4.
+                    s8
+                    \tuplet 3/2
+                    {
+                        s4
+                        s8
+                    }
+                    s4
+                    \tuplet 5/4
+                    {
+                        s4
+                        s8
+                        s8
+                        s8
+                    }
+                }
+                {
                     s2
                     \tuplet 7/4
                     {
                         s4.
+                        s8
+                        s8
+                        s8
+                        s8
+                    }
+                    \tuplet 5/4
+                    {
+                        s8
                         s4
                         s4
                     }
                 }
                 {
-                    s1
-                    s4
-                    s4
-                }
-                {
-                    \tuplet 7/4
-                    {
-                        s4
-                        s8
-                        s4
-                        s8
-                        s8
-                    }
-                    \tuplet 7/4
-                    {
-                        s4.
-                        s4
-                        s4
-                    }
                     s2
-                }
-                {
+                    s8
+                    s8
                     \tuplet 3/2
                     {
-                        s4
                         s8
+                        s4
                     }
-                    s8
-                    s8
                     \tuplet 7/4
                     {
                         s8
                         s4
                         s2
                     }
-                    s2
                 }
                 {
-                    \tuplet 5/4
-                    {
-                        s4.
-                        s8
-                        s8
-                    }
-                    s8
-                    s8
-                    s4
-                    s8
-                    s8
-                    \tuplet 3/2
-                    {
-                        s4
-                        s8
-                    }
-                }
-                {
-                    s2
-                    \tuplet 3/2
-                    {
-                        s8
-                        s8
-                        s8
-                        s8
-                        s4
-                    }
-                    \tuplet 5/4
+                    \tuplet 7/4
                     {
                         s4.
                         s4
+                        s8
+                        s8
+                    }
+                    \tuplet 7/4
+                    {
+                        s8
+                        s4
+                        s2
+                    }
+                    \tuplet 5/4
+                    {
+                        s8
+                        s4
+                        s4
                     }
                 }
                 {
+                    s8
+                    s4.
                     s2
-                    s4
+                    s4.
+                    s8
+                }
+                {
+                    \tuplet 7/4
+                    {
+                        s8
+                        s4
+                        s4
+                        s4
+                    }
+                    \tuplet 5/4
+                    {
+                        s4
+                        s8
+                        s4
+                    }
+                    \tuplet 5/4
+                    {
+                        s8
+                        s4
+                        s4
+                    }
+                }
+                {
                     \tuplet 3/2
                     {
                         s8
                         s8
+                        s4
+                        s4
+                    }
+                    s4.
+                    s8
+                    s8
+                    s4.
+                }
+                {
+                    \tuplet 3/2
+                    {
+                        s2
+                        s8
                         s8
                     }
-                    s8
-                    s8
-                    s8
-                    s8
+                    \tuplet 7/4
+                    {
+                        s8
+                        s4
+                        s2
+                    }
+                    s2
                 }
             }
             \context Voice = "Piano.Music.1"
@@ -939,10 +966,16 @@
                     s4
                     s2
                 }
-                s2
                 \tuplet 7/4
                 {
                     s4.
+                    s4
+                    s4
+                    ~
+                }
+                \tuplet 5/4
+                {
+                    s8
                     s8
                     s8
                     ~
@@ -950,70 +983,36 @@
                 }
             }
             {
-                s8
-                s8
-                ~
-                \tuplet 3/2
-                {
-                    s4
-                    s8
-                }
-                \tuplet 5/4
-                {
-                    s4
-                    s8
-                    s4
-                }
                 \tuplet 7/4
                 {
                     s4.
+                    s8
+                    s8
+                    s4
+                }
+                \tuplet 5/4
+                {
+                    s4.
+                    s4
+                    ~
+                }
+                \tuplet 7/4
+                {
+                    s8
+                    s4
+                    s4
+                    s8
+                    s8
+                }
+            }
+            {
+                s2
+                \tuplet 3/2
+                {
+                    s8
+                    s8
+                    ~
                     s2
-                }
-            }
-            {
-                s8
-                s8
-                \tuplet 3/2
-                {
-                    s8
-                    s8
-                    s8
-                }
-                s2
-                s2
-                ~
-            }
-            {
-                \tuplet 7/4
-                {
-                    s4.
-                    s4
-                    ~
-                    s8
-                    s8
-                    ~
-                }
-                \tuplet 5/4
-                {
-                    s8
-                    s4
-                    s4
-                }
-                \tuplet 7/4
-                {
-                    s4
-                    s8
-                    s2
-                }
-            }
-            {
-                \tuplet 7/4
-                {
-                    s4.
-                    s4
-                    ~
-                    s8
-                    s8
                     ~
                 }
                 \tuplet 5/4
@@ -1022,71 +1021,162 @@
                     s4
                     ~
                 }
+            }
+            {
                 \tuplet 3/2
                 {
                     s8
+                    s8
+                    s4
+                    ~
                     s8
                     s8
                     ~
                 }
-                s8
-                s8
-                ~
-            }
-            {
-                s8
-                s8
                 \tuplet 3/2
                 {
                     s8
                     s8
                     s8
+                    s8
+                    s4
+                    ~
                 }
+                \tuplet 5/4
+                {
+                    s8
+                    s4
+                    s4
+                }
+            }
+            {
+                s4.
+                s8
+                ~
+                \tuplet 3/2
+                {
+                    s4
+                    s8
+                }
+                s4
+                \tuplet 5/4
+                {
+                    s4
+                    s8
+                    s8
+                    s8
+                }
+            }
+            {
                 s2
                 \tuplet 7/4
                 {
                     s4.
-                    s4
+                    s8
+                    s8
                     \mf
+                    ~
+                    s8
+                    s8
+                }
+                \tuplet 5/4
+                {
+                    s8
+                    s4
                     s4
                 }
             }
             {
-                s1
-                s4
-                s4
-            }
-            {
+                s2
+                s8
+                s8
+                ~
+                \tuplet 3/2
+                {
+                    s8
+                    s4
+                }
                 \tuplet 7/4
                 {
+                    s8
                     s4
-                    s8
-                    ~
-                    s4
-                    ~
-                    s8
-                    s8
-                    ~
+                    s2
                 }
+            }
+            {
                 \tuplet 7/4
                 {
                     s4.
                     ~
                     s4
+                    ~
+                    s8
+                    s8
+                    ~
+                }
+                \tuplet 7/4
+                {
+                    s8
+                    s4
+                    s2
+                }
+                \tuplet 5/4
+                {
+                    s8
+                    s4
                     s4
                 }
+            }
+            {
+                s8
+                s4.
                 s2
+                s4.
+                s8
+            }
+            {
+                \tuplet 7/4
+                {
+                    s8
+                    s4
+                    s4
+                    s4
+                }
+                \tuplet 5/4
+                {
+                    s4
+                    s8
+                    s4
+                }
+                \tuplet 5/4
+                {
+                    s8
+                    s4
+                    s4
+                }
             }
             {
                 \tuplet 3/2
                 {
+                    s8
+                    s8
                     s4
+                    s4
+                }
+                s4.
+                s8
+                ~
+                s8
+                s4.
+            }
+            {
+                \tuplet 3/2
+                {
+                    s2
+                    s8
                     s8
                     ~
                 }
-                s8
-                s8
-                ~
                 \tuplet 7/4
                 {
                     s8
@@ -1094,56 +1184,6 @@
                     s2
                 }
                 s2
-            }
-            {
-                \tuplet 5/4
-                {
-                    s4.
-                    s8
-                    s8
-                }
-                s8
-                s8
-                s4
-                s8
-                s8
-                \tuplet 3/2
-                {
-                    s4
-                    s8
-                }
-            }
-            {
-                s2
-                \tuplet 3/2
-                {
-                    s8
-                    s8
-                    ~
-                    s8
-                    s8
-                    s4
-                }
-                \tuplet 5/4
-                {
-                    s4.
-                    s4
-                }
-            }
-            {
-                s2
-                s4
-                \tuplet 3/2
-                {
-                    s8
-                    s8
-                    s8
-                }
-                s8
-                s8
-                ~
-                s8
-                s8
             }
         }
     >>

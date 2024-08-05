@@ -42,7 +42,7 @@ def generate_first_sequence():
         average_intensity=2,
         seed=78365876487618376458,
     )
-    return pang.Sequence(
+    return pang.Sequence.from_sound_points_generator(
         sound_points_generator=sound_points_generator, sequence_duration=60
     )
 
@@ -61,7 +61,7 @@ def generate_second_sequence():
         average_intensity=-1,
         seed=79238759283758935827957284928,
     )
-    return pang.Sequence(
+    return pang.Sequence.from_sound_points_generator(
         sound_points_generator=sound_points_generator, sequence_duration=60
     )
 

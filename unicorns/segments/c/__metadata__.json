@@ -1,11 +1,11 @@
 {
-    "duration": 64.0,
+    "duration": 61.53846153846154,
     "last_metronome_mark": {
         "reference_duration": "1/4",
         "units_per_minute": 97.5
     },
     "last_time_signature": "4/4",
-    "empty_beatspan": "1/1",
+    "empty_beatspan": "1/2",
     "discarded_q_events_count": 0,
     "discarded_pitched_q_events_count": 0
 }
