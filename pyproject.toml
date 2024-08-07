@@ -7,7 +7,7 @@ allow-direct-references = true
 
 [project]
 name = "unicorns"
-version = "24.8b0"
+version = "24.8b1"
 authors = [
     { name="Tsz Kiu Pang" },
 ]
@@ -18,7 +18,7 @@ dependencies = [
     "abjad @ git+https://github.com/Abjad/abjad.git@7bca4dc7ab9b55441c3196e6e6d5b9e9184cc36f",
     "abjad-ext-nauert @ git+https://github.com/Abjad/abjad-ext-nauert.git@8dec05b66f537fba9ec153742658c05694c3aaec",
     "pang",
-    "numpy >= 1.26.0, < 2.0"
+    "numpy >= 2.0"
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
