@@ -1,6 +1,6 @@
 .PHONY: black-check black-reformat clean flake8 isort-check isort-reformat
 .PHONY: mypy pytest reformat check test
-.PHONY: sections test-sections score test-score
+.PHONY: test-sections test-score
 
 black-check:
 	black --check --diff .
@@ -82,19 +82,10 @@ test:
 	make isort-check
 	make pytest
 
-import-abjad-ily:
-	@python ${PANG_PATH}/scripts/import_abjad_ily.py
-
-sections:
-	@python ${PANG_PATH}/scripts/make_sections.py --sections $(sections)
-
-score:
-	@python ${PANG_PATH}/scripts/make_score.py
-
 score_directory = unicorns/builds/score
 
 full-score:
-	@python ${PANG_PATH}/scripts/make_score.py
+	@make_score
 	# run lualatex on front-cover.tex twice, otherwise rectangle is not
 	# centred
 	@lualatex --output-directory=${score_directory} ${score_directory}/front-cover.tex
@@ -104,7 +95,7 @@ full-score:
 	@lualatex --output-directory=${score_directory} ${score_directory}/score.tex
 
 test-sections:
-	@pytest ${PANG_PATH}/scripts/test_sections.py
+	@pytest ${PANG_PATH}/pang/scripts/test_sections.py
 
 test-score:
-	@pytest ${PANG_PATH}/scripts/test_score.py
+	@pytest ${PANG_PATH}/pang/scripts/test_score.py
