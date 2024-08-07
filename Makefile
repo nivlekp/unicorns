@@ -95,7 +95,7 @@ full-score:
 	@lualatex --output-directory=${score_directory} ${score_directory}/score.tex
 
 test-sections:
-	@pytest ${PANG_PATH}/scripts/test_sections.py
+	@pytest ${PANG_PATH}/pang/scripts/test_sections.py
 
 test-score:
-	@pytest ${PANG_PATH}/scripts/test_score.py
+	@pytest ${PANG_PATH}/pang/scripts/test_score.py
