@@ -6,6 +6,10 @@
     },
     "last_time_signature": "4/4",
     "empty_beatspan": "1/2",
-    "discarded_q_events_count": 0,
-    "discarded_pitched_q_events_count": 0
+    "per_voice_metadata": {
+        "Piano.Music.0": {
+            "number_of_all_discarded_q_events": 0,
+            "number_of_discarded_pitched_q_events": 0
+        }
+    }
 }

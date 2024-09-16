@@ -85,13 +85,17 @@ def main():
     q_schema = nauert.MeasurewiseQSchema(
         search_tree=search_tree, tempo=tempo, time_signature=(4, 4)
     )
-    grace_handler = nauert.DiscardingGraceHandler()
-    command = pang.QuantizeSequenceCommand(
+    quantizing_metadata = pang.populate_voices_from_sequence(
         sequence,
-        q_schema=q_schema,
-        grace_handler=grace_handler,
+        (
+            pang.VoiceSpecification(
+                score[scope.voice_name],
+                q_schema=q_schema,
+                grace_handler=nauert.DiscardingGraceHandler(),
+            ),
+        ),
     )
-    metadata = pang.build.section(score, scope, command)
+    metadata = pang.build.collect_metadata(score, quantizing_metadata)
     library.fix_tempi(score[scope.voice_name])
     library.do_dynamics(score[scope.voice_name], score[library.DYNAMIC_CONTEXT_NAME])
     library.rewrite_enharmonics(score[scope.voice_name])
