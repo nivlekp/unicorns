@@ -114,7 +114,7 @@ def main():
         direction=abjad.UP,
     )
     pang.build.persist(score, metadata)
-    library.move_music_ily_from_segment_directory_to_build_directory("b")
+    library.symlink_music_ily_from_segment_directory_to_build_directory("b")
 
 
 if __name__ == "__main__":

@@ -106,7 +106,7 @@ def main():
     library.split_voice_into_two_voices(score[scope.voice_name], abjad.Voice())
     library.adjust_tuplet_bracket_direction(score[scope.voice_name])
     pang.build.persist(score, metadata)
-    library.move_music_ily_from_segment_directory_to_build_directory("a")
+    library.symlink_music_ily_from_segment_directory_to_build_directory("a")
 
 
 if __name__ == "__main__":
