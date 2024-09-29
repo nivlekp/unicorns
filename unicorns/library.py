@@ -2,7 +2,6 @@ import collections
 import enum
 import itertools
 import pathlib
-import shutil
 
 import abjad
 import numpy as np
@@ -75,7 +74,9 @@ def move_music_ily_from_segment_directory_to_build_directory(segment_name):
     _sections_path = segment_directory.parents[1] / "builds" / "score" / "_sections"
     target_name = segment_directory.stem + ".ily"
     target_path = _sections_path / target_name
-    shutil.copy(music_ily_path, target_path)
+    if target_path.exists() or target_path.is_symlink():
+        target_path.unlink()
+    target_path.symlink_to(music_ily_path.resolve())
 
 
 def is_reachable_span(pitch_tuple, span=MAXIMUM_SPAN) -> bool:
