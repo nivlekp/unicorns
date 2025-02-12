@@ -7,7 +7,7 @@ allow-direct-references = true
 
 [project]
 name = "unicorns"
-version = "24.9b2"
+version = "25.02b0"
 authors = [
     { name="Tsz Kiu Pang" },
 ]
@@ -15,8 +15,8 @@ description = "The Last Unicorns, for solo piano"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "abjad @ git+https://github.com/Abjad/abjad.git@7bca4dc7ab9b55441c3196e6e6d5b9e9184cc36f",
-    "abjad-ext-nauert @ git+https://github.com/Abjad/abjad-ext-nauert.git@8dec05b66f537fba9ec153742658c05694c3aaec",
+    "abjad",
+    "abjad-ext-nauert",
     "pang",
     "numpy >= 2.0"
 ]
