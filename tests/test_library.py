@@ -220,10 +220,14 @@ def test_fixing_tempi():
     abjad.attach(last_metronome_mark, last_leaf)
     library.fix_tempi(voice)
 
-    assert abjad.get.effective(first_leaf, abjad.MetronomeMark) == first_metronome_mark
-    assert abjad.get.effective(last_leaf, abjad.MetronomeMark) == last_metronome_mark
-    assert abjad.get.effective(first_leaf, abjad.MetronomeMark).hide
-    assert abjad.get.effective(last_leaf, abjad.MetronomeMark).hide
+    assert (
+        abjad.get.effective_indicator(first_leaf, abjad.MetronomeMark)
+        == first_metronome_mark
+    )
+    assert (
+        abjad.get.effective_indicator(last_leaf, abjad.MetronomeMark)
+        == last_metronome_mark
+    )
 
     first_indicator = abjad.get.indicator(first_leaf, abjad.LilyPondLiteral)
     assert first_indicator.argument == r"\tszkiu-metronome-mark #90 #2"

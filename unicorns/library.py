@@ -365,12 +365,14 @@ def attach_end_note(voice):
 
 
 def _compute_number_of_clashed_notes(pitches):
-    base_pitches = [pitch.name[0] + str(pitch.octave.number) for pitch in pitches]
+    base_pitches = [
+        pitch.get_name()[0] + str(pitch.get_octave().number) for pitch in pitches
+    ]
     return collections.Counter(base_pitches).total() - len(set(base_pitches))
 
 
 def _generate_possible_enharmonics(pitch):
-    match pitch.accidental.name:
+    match pitch.get_accidental().name:
         case "natural":
             return (pitch,)
         case "sharp":
@@ -450,13 +452,12 @@ def adjust_tuplet_bracket_direction(voice):
                 abjad.override(tuplet).TupletBracket.direction = abjad.DOWN
 
 
-def _fix_tempo(leaf):
+def _fix_tempo(leaf) -> None:
     (metronome_mark,) = abjad.detach(abjad.MetronomeMark, leaf)
     metronome_mark = abjad.MetronomeMark(
         reference_duration=metronome_mark.reference_duration,
         units_per_minute=metronome_mark.units_per_minute,
         decimal=metronome_mark.decimal,
-        hide=True,
     )
     abjad.attach(metronome_mark, leaf)
     units_per_minute_number = (
@@ -464,7 +465,7 @@ def _fix_tempo(leaf):
         if metronome_mark.units_per_minute.is_integer()
         else float(metronome_mark.units_per_minute)
     )
-    duration_exponent = metronome_mark.reference_duration.exponent
+    duration_exponent = metronome_mark.reference_duration.get_exponent()
     string = rf"\tszkiu-metronome-mark #{units_per_minute_number} #{duration_exponent}"
     lilypond_literal = abjad.LilyPondLiteral(string)
     abjad.attach(lilypond_literal, leaf)
