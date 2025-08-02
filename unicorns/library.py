@@ -181,7 +181,7 @@ def _tidy_up_one_logical_tie_in_the_leading_voice(
     next_pitched_logical_tie,
     is_first_pitched_leaf,
 ):
-    head = logical_tie.head
+    head = logical_tie.get_head()
     match head:
         case abjad.Rest():
             pass
@@ -190,7 +190,7 @@ def _tidy_up_one_logical_tie_in_the_leading_voice(
             next_leaf_location = (
                 None
                 if next_pitched_logical_tie is None
-                else _get_pitched_leaf_location(next_pitched_logical_tie.head)
+                else _get_pitched_leaf_location(next_pitched_logical_tie.get_head())
             )
             if (
                 current_leaf_location == LEAF_LOCATION.TREBLE
@@ -262,7 +262,7 @@ def _make_chord_into_a_partial_chord_in_bass_staff(logical_tie, pitches):
 
 
 def _tidy_up_one_logical_tie_in_the_follower_voice(logical_tie):
-    head = logical_tie.head
+    head = logical_tie.get_head()
     match head:
         case abjad.Rest():
             assert len(logical_tie) == 1, logical_tie
@@ -281,7 +281,8 @@ def _tidy_up_one_logical_tie_in_the_follower_voice(logical_tie):
 
 def _get_next_pitched_logical_tie(logical_ties):
     return next(
-        (logical_tie for logical_tie in logical_ties if logical_tie.is_pitched), None
+        (logical_tie for logical_tie in logical_ties if logical_tie.get_is_pitched()),
+        None,
     )
 
 
@@ -319,7 +320,7 @@ def split_voice_into_two_voices(source_voice, target_voice):
             next_pitched_logical_tie,
             is_first_pitched_leaf,
         )
-        if logical_tie.is_pitched:
+        if logical_tie.get_is_pitched():
             is_first_pitched_leaf = False
 
 
