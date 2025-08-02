@@ -459,7 +459,7 @@ def _fix_tempo(leaf) -> None:
         units_per_minute=metronome_mark.units_per_minute,
         decimal=metronome_mark.decimal,
     )
-    abjad.attach(metronome_mark, leaf)
+    abjad.attach(metronome_mark, leaf, hide=True)
     units_per_minute_number = (
         int(metronome_mark.units_per_minute)
         if metronome_mark.units_per_minute.is_integer()
