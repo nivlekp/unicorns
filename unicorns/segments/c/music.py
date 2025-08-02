@@ -1,8 +1,8 @@
 import fractions
 
 import abjad
+import nauert
 import pang
-from abjadext import nauert
 
 from unicorns import library
 
